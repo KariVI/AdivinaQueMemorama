@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdivinaQue.Client", "AdivinaQue.Client\AdivinaQue.Client.csproj", "{AD94B114-711F-4918-84BB-782E998C06C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD94B114-711F-4918-84BB-782E998C06C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD94B114-711F-4918-84BB-782E998C06C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD94B114-711F-4918-84BB-782E998C06C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD94B114-711F-4918-84BB-782E998C06C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A14328D6-B98A-4BF4-891C-396D1E1F522B}
+	EndGlobalSection
+EndGlobal

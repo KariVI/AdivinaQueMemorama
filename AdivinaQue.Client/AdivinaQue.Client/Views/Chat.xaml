@@ -1,0 +1,72 @@
+﻿<Window x:Class="AdivinaQue.Client.Views.Chat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdivinaQue.Client.Views"
+        mc:Ignorable="d"
+        Title="Chat" Height="450" Width="600" Closed="Window_Closed">
+    <Grid Background ="Lavender">
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Name="TitleUsers" Content="Connected Users" Background="#dda0dd"  HorizontalAlignment="Right" FontFamily="Bubble Bobble" FontSize="14" Width="190" Margin="0,0,10,0" />
+                </Grid>
+                <Grid Grid.Row="1" HorizontalAlignment="Left" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="36*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="51*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox Name="UsersConnected" Background="#c0aee0" Grid.ColumnSpan="3" Margin="0,0,10,0"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="31"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label Name="Title" Background="Lightpink" HorizontalAlignment="Right" FontFamily="Bubble Bobble" FontSize="18" Width="401" Margin="-9,0,0,0">
+
+                </Label>
+                <Label Name="User" Content="" Margin="220,0,-220,0"/>
+
+            </Grid>
+            <Grid Grid.Row="1" >
+                <ScrollViewer Name="ContentScroller" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"></ScrollViewer>
+                <ListView x:Name="listMessages" Background="Lavender" Grid.ColumnSpan="1" Margin="-10,0,10,0" >
+
+                </ListView>
+
+
+            </Grid>
+            <Grid Grid.Row="2" Background="#efaeb9" Margin="-10,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="MessageContent" Background="#e4b6b3" Width="264" TextWrapping="Wrap" AcceptsReturn="true" Margin="10"  />
+                    <Button x:Name="SendButton" Content="Send" Margin="14" HorizontalAlignment="Center" Background="#cf7c77" Width="80" Height="30" Click="SendButton_Click"/>
+                </StackPanel>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
