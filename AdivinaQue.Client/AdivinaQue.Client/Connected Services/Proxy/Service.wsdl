@@ -60,6 +60,12 @@
   <wsdl:message name="IService_searchUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:searchUsernameResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_sendMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendMail" />
+  </wsdl:message>
+  <wsdl:message name="IService_sendMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendMailResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
@@ -86,6 +92,10 @@
     <wsdl:operation name="searchUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/searchUsername" message="tns:IService_searchUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/searchUsernameResponse" message="tns:IService_searchUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/sendMail" message="tns:IService_sendMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/sendMailResponse" message="tns:IService_sendMail_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
@@ -132,6 +142,15 @@
     </wsdl:operation>
     <wsdl:operation name="searchUsername">
       <soap12:operation soapAction="http://tempuri.org/IService/searchUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <soap12:operation soapAction="http://tempuri.org/IService/sendMail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

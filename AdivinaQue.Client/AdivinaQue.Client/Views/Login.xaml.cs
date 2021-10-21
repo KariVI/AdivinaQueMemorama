@@ -56,8 +56,8 @@ namespace AdivinaQue.Client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Register register = new Register();
-            register.Show();
+            ValidationCode validationCode = new ValidationCode();
+            validationCode.Show();
         }
     }
 }

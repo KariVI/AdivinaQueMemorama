@@ -39,12 +39,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,64 +59,77 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessRules\Service.cs" />
-    <Compile Include="DatabaseAccess\AdivinaQue.Context.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.Context.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAccess\AdivinaQue.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueDataBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAccess\AdivinaQue.Designer.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueDataBase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.edmx</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Authentication.cs" />
     <Compile Include="DatabaseAccess\Card.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Game.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Participate.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Players.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseAccess\Score.cs">
+      <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="InterfaceContract\IClient.cs" />
     <Compile Include="InterfaceContract\IService.cs" />
+    <Compile Include="Logs\Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DatabaseAccess\AdivinaQue.edmx">
+    <EntityDeploy Include="DatabaseAccess\AdivinaQueDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AdivinaQue.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdivinaQueDataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DatabaseAccess\AdivinaQue.edmx.diagram">
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
+    <None Include="DatabaseAccess\AdivinaQueDataBase.edmx.diagram">
+      <DependentUpon>AdivinaQueDataBase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DatabaseAccess\AdivinaQue.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AdivinaQue.Context.cs</LastGenOutput>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
-    </Content>
-    <Content Include="DatabaseAccess\AdivinaQue.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
-      <LastGenOutput>AdivinaQue.cs</LastGenOutput>
-    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseAccess\AdivinaQueDataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdivinaQueDataBase.edmx</DependentUpon>
+      <LastGenOutput>AdivinaQueDataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DatabaseAccess\AdivinaQueDataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdivinaQueDataBase.edmx</DependentUpon>
+      <LastGenOutput>AdivinaQueDataBase.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,26 +21,25 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Register : Window
     {
-        public Register()
+
+        Proxy.ServiceClient server;
+        private String email;
+
+        
+        public Register(Proxy.ServiceClient server, String email)
         {
+           
             InitializeComponent();
+            this.server = server;
+            this.email = email;
+           
         }
         private void RegisterBt_Click(object sender, RoutedEventArgs e)
         {
-            CallBack callback = new CallBack();
-            InstanceContext context = new InstanceContext(callback);
-            Proxy.ServiceClient server = new Proxy.ServiceClient(context);
-            if (tbUsername.Text != "" && Password.Password.ToString() != "" && tbEmail.Text != "" && tbName.Text != "")
+            
+            if (tbUsername.Text != "" && Password.Password.ToString() != ""  && tbName.Text != "")
             {
-               // (string username, string password, string name, string email)
-
-
-                    server.register(tbUsername.Text, Password.Password.ToString(), tbName.Text, tbEmail.Text);
-                    MessageBox.Show("User register succesful ");
-                    this.Close();
-                    MessageBox.Show("Please write another username ");
-                
-
+                register();
             }
             else
             {
@@ -48,6 +47,15 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        public void register() {
+          
+            server.register(tbUsername.Text, Password.Password.ToString(), tbName.Text,email);
+            MessageBox.Show("Saved Data");
+            this.Close();
+
+        }
+
+     
         private void CancelBt_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -58,6 +66,8 @@ namespace AdivinaQue.Client.Views
             this.Close();
         }
 
-      
+       
+
+     
     }
 }

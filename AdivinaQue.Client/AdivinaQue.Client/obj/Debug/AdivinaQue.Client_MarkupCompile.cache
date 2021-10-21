@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jack-\source\Proyecto\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\
 AdivinaQue.Client
 none
 false
 DEBUG;TRACE
-C:\Users\jack-\source\Proyecto\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
-3-1537348993
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
+665863902
 
-9444966088
-151842682125
-Views\Chat.xaml;Views\Login.xaml;Views\Register.xaml;
+12-1117134843
+18-1145372289
+Views\Chat.xaml;Views\Login.xaml;Views\Menu.xaml;Views\Podio.xaml;Views\Register.xaml;Views\ValidationCode.xaml;
 
 False
 

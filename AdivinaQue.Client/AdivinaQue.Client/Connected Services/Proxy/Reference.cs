@@ -50,6 +50,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/searchUsername", ReplyAction="http://tempuri.org/IService/searchUsernameResponse")]
         System.Threading.Tasks.Task<bool> searchUsernameAsync(string newUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
+        string sendMail(string to, string asunto, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
+        System.Threading.Tasks.Task<string> sendMailAsync(string to, string asunto, string body);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -136,6 +142,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<bool> searchUsernameAsync(string newUsername) {
             return base.Channel.searchUsernameAsync(newUsername);
+        }
+        
+        public string sendMail(string to, string asunto, string body) {
+            return base.Channel.sendMail(to, asunto, body);
+        }
+        
+        public System.Threading.Tasks.Task<string> sendMailAsync(string to, string asunto, string body) {
+            return base.Channel.sendMailAsync(to, asunto, body);
         }
     }
 }

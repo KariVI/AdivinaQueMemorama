@@ -5,17 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="500" Closed="closedWindow">
+        Title="Register" Height="350" Width="500" Closed="closedWindow">
     <Grid  Background ="Lavender">
-        <Label Content="Email:&#xA;" HorizontalAlignment="Left" Margin="78,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.161,0.527"/>
-        <TextBox Name="tbUsername" Background="#c0aee0" HorizontalAlignment="Left" Height="23" Margin="193,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <Label Content="Nombre de usuario&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;:" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbEmail" Background="#c0aee0" HorizontalAlignment="Left" Height="23" Margin="193,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="78,217,0,0" VerticalAlignment="Top"/>
-        <PasswordBox Name="Password" Background="#c0aee0" HorizontalAlignment="Left" Margin="193,217,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
-        <Label  Content="Nombre:" HorizontalAlignment="Left" Margin="78,42,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbName" HorizontalAlignment="Left" Background="#c0aee0" Height="23" Margin="193,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <Button Name ="CancelBt" Background="#dda0dd" Content="Cancel" HorizontalAlignment="Left" Margin="288,346,0,0" VerticalAlignment="Top" Width="75" Click="CancelBt_Click"/>
-        <Button Name ="RegisterBt" Background="#dda0dd" Content="Register" HorizontalAlignment="Left" Margin="384,346,0,0" VerticalAlignment="Top" Width="75" Click="RegisterBt_Click"/>
-</Grid>
+        <TextBox Name="tbUsername" Background="#c0aee0" HorizontalAlignment="Left" Height="23" Margin="193,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" />
+        <Label Content="Nombre de usuario:" HorizontalAlignment="Left" Margin="31,99,0,0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="37,158,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="Password" Background="#c0aee0" HorizontalAlignment="Left" Margin="193,158,0,0" VerticalAlignment="Top" Height="26" Width="266"/>
+        <Label  Content="Nombre:" HorizontalAlignment="Left" Margin="31,42,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbName" HorizontalAlignment="Left" Background="#c0aee0" Height="23" Margin="193,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" />
+        <Button Name ="CancelBt" Background="#dda0dd" Content="Cancel" HorizontalAlignment="Left" Margin="274,262,0,0" VerticalAlignment="Top" Width="76" Click="CancelBt_Click"/>
+        <Button Name ="RegisterBt" Background="#dda0dd" Content="Register" HorizontalAlignment="Left" Margin="384,262,0,0" VerticalAlignment="Top" Width="75" Click="RegisterBt_Click"/>
+    </Grid>
 </Window>

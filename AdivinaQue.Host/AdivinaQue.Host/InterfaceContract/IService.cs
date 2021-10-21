@@ -23,5 +23,11 @@ namespace AdivinaQue.Host.InterfaceContract
         void register(String username, String password, String name, String email);
         [OperationContract]
         bool searchUsername(String newUsername);
+        [OperationContract]
+        string sendMail(string to, string asunto, string body);
+
+        [OperationContract(IsOneWay = true)]
+        void getScores();
+       
     }
 }

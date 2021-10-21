@@ -10,3 +10,16 @@ C:\Users\jack-\source\Proyecto\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\Adivina
 C:\Users\jack-\source\Proyecto\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CopyComplete
 C:\Users\jack-\source\Proyecto\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.exe
 C:\Users\jack-\source\Proyecto\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\AdivinaQue.Host.exe.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\AdivinaQue.Host.exe
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\AdivinaQue.Host.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.xml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.xml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CoreCompileInputs.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CopyComplete
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.exe
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.pdb

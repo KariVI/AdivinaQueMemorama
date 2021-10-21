@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdivinaQueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Card1" Relationship="Self.Pair" FromRole="Card" ToRole="Card1" />
+    <NavigationProperty Name="Card2" Relationship="Self.Pair" FromRole="Card1" ToRole="Card" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="winner" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Players" Relationship="Self.FK_dbo_AdivinaQue_dbo_Game_winner" FromRole="Game" ToRole="Players" />
+    <NavigationProperty Name="Participate" Relationship="Self.FK_dbo_AdivinaQue_dbo_Participate_IdGame" FromRole="Game" ToRole="Participate" />
+  </EntityType>
+  <EntityType Name="Participate">
+    <Key>
+      <PropertyRef Name="IdPlayer" />
+      <PropertyRef Name="IdGame" />
+    </Key>
+    <Property Name="IdPlayer" Type="Int32" Nullable="false" />
+    <Property Name="score" Type="Int32" Nullable="false" />
+    <Property Name="IdGame" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_dbo_AdivinaQue_dbo_Participate_IdGame" FromRole="Participate" ToRole="Game" />
+    <NavigationProperty Name="Players" Relationship="Self.FK_dbo_AdivinaQue_dbo_Participate_IdPlayer" FromRole="Participate" ToRole="Players" />
+  </EntityType>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_dbo_AdivinaQue_dbo_Game_winner" FromRole="Players" ToRole="Game" />
+    <NavigationProperty Name="Participate" Relationship="Self.FK_dbo_AdivinaQue_dbo_Participate_IdPlayer" FromRole="Players" ToRole="Participate" />
+    <NavigationProperty Name="Score" Relationship="Self.fk_Players" FromRole="Players" ToRole="Score" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="IdPlayer" />
+    </Key>
+    <Property Name="IdPlayer" Type="Int32" Nullable="false" />
+    <Property Name="totalGames" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Players" Relationship="Self.fk_Players" FromRole="Score" ToRole="Players" />
+  </EntityType>
+  <Association Name="FK_dbo_AdivinaQue_dbo_Game_winner">
+    <End Role="Players" Type="Self.Players" Multiplicity="1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="winner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AdivinaQue_dbo_Participate_IdGame">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participate">
+        <PropertyRef Name="IdGame" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AdivinaQue_dbo_Participate_IdPlayer">
+    <End Role="Players" Type="Self.Players" Multiplicity="1" />
+    <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participate">
+        <PropertyRef Name="IdPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Players">
+    <End Role="Players" Type="Self.Players" Multiplicity="1" />
+    <End Role="Score" Type="Self.Score" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="IdPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pair">
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <End Role="Card1" Type="Self.Card" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AdivinaQueAppContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Card" EntityType="Self.Card" />
+    <EntitySet Name="Game" EntityType="Self.Game" />
+    <EntitySet Name="Participate" EntityType="Self.Participate" />
+    <EntitySet Name="Players" EntityType="Self.Players" />
+    <EntitySet Name="Score" EntityType="Self.Score" />
+    <AssociationSet Name="FK_dbo_AdivinaQue_dbo_Game_winner" Association="Self.FK_dbo_AdivinaQue_dbo_Game_winner">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AdivinaQue_dbo_Participate_IdGame" Association="Self.FK_dbo_AdivinaQue_dbo_Participate_IdGame">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="Participate" EntitySet="Participate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AdivinaQue_dbo_Participate_IdPlayer" Association="Self.FK_dbo_AdivinaQue_dbo_Participate_IdPlayer">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="Participate" EntitySet="Participate" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Players" Association="Self.fk_Players">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="Pair" Association="Self.Pair">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="Card1" EntitySet="Card" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
