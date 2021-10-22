@@ -22,6 +22,11 @@ namespace AdivinaQue.Host.BusinessRules
             users.Remove(username);
             getConnectedUsers();
         }
+        public void delete(string username)
+        {
+            Authentication authentication = new Authentication();
+            authentication.Delete(username);
+        }
 
         public void getConnectedUsers()
         {
@@ -56,6 +61,25 @@ namespace AdivinaQue.Host.BusinessRules
         {
             Authentication authentication = new Authentication();
             authentication.Register(username, password, name, email);
+        }
+        public void modify(Player player, String username)
+        {
+            Authentication authentication = new Authentication();
+            authentication.updatePlayer(player,  username);
+        }
+       
+        public string sendMail(string email)
+        {
+            Authentication authentication = new Authentication();
+            var code = authentication.sendMail(email);
+            return code;
+        }
+        public void searchInfoPlayerByUsername(String username)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IClient>();
+            Authentication authentication = new Authentication();
+            Player player = authentication.RetrievePlayer(username);
+            connection.RecievePlayer(player);
         }
 
         public bool searchUsername(string newUsername)

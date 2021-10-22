@@ -33,7 +33,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_join_InputMessage">
@@ -60,11 +61,29 @@
   <wsdl:message name="IService_searchUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:searchUsernameResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_searchInfoPlayerByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchInfoPlayerByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IService_sendMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendMail" />
+  </wsdl:message>
+  <wsdl:message name="IService_sendMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_modify_InputMessage">
+    <wsdl:part name="parameters" element="tns:modify" />
+  </wsdl:message>
+  <wsdl:message name="IService_delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:delete" />
+  </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
   <wsdl:message name="IService_RecieveUsers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecievePlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecievePlayer" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="join">
@@ -87,11 +106,27 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/searchUsername" message="tns:IService_searchUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/searchUsernameResponse" message="tns:IService_searchUsername_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="searchInfoPlayerByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/searchInfoPlayerByUsername" message="tns:IService_searchInfoPlayerByUsername_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/sendMail" message="tns:IService_sendMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/sendMailResponse" message="tns:IService_sendMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="modify">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/modify" message="tns:IService_modify_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/delete" message="tns:IService_delete_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveUsers">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveUsers" message="tns:IService_RecieveUsers_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecievePlayer" message="tns:IService_RecievePlayer_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -139,6 +174,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="searchInfoPlayerByUsername">
+      <soap12:operation soapAction="http://tempuri.org/IService/searchInfoPlayerByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <soap12:operation soapAction="http://tempuri.org/IService/sendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modify">
+      <soap12:operation soapAction="http://tempuri.org/IService/modify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap12:operation soapAction="http://tempuri.org/IService/delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
       <wsdl:output>
@@ -151,6 +213,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecievePlayer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
@@ -158,7 +226,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

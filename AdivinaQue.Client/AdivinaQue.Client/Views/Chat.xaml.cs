@@ -79,7 +79,7 @@ namespace AdivinaQue.Client.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            server.disconnectUser(username);
+           
             this.Close();
         }
     }

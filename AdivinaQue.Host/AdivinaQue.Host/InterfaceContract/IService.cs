@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Host.DatabaseAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -23,5 +24,14 @@ namespace AdivinaQue.Host.InterfaceContract
         void register(String username, String password, String name, String email);
         [OperationContract]
         bool searchUsername(String newUsername);
+        [OperationContract(IsOneWay = true)]
+
+        void searchInfoPlayerByUsername(String username);
+        [OperationContract]
+        string sendMail(String email);
+        [OperationContract(IsOneWay = true)]
+        void modify(Player player, String username);
+        [OperationContract(IsOneWay = true)]
+        void delete(string username);
     }
 }

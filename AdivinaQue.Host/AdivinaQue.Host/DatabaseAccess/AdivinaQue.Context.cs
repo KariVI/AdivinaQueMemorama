@@ -18,6 +18,9 @@ namespace AdivinaQue.Host.DatabaseAccess
         public AdivinaQueAppContext()
             : base("name=AdivinaQueAppContext")
         {
+            Configuration.ProxyCreationEnabled = false;
+
+      
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
