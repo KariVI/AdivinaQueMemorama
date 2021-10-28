@@ -193,6 +193,18 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
         System.Threading.Tasks.Task GetScoresAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
+        void GetEmails(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
+        System.Threading.Tasks.Task GetEmailsAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
+        void GetTopics(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
+        System.Threading.Tasks.Task GetTopicsAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -212,6 +224,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
         void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveEmails")]
+        void RecieveEmails(string[] emails);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveTopics")]
+        void RecieveTopics(string[] topics);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -352,6 +370,22 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task GetScoresAsync(string username) {
             return base.Channel.GetScoresAsync(username);
+        }
+        
+        public void GetEmails(string username) {
+            base.Channel.GetEmails(username);
+        }
+        
+        public System.Threading.Tasks.Task GetEmailsAsync(string username) {
+            return base.Channel.GetEmailsAsync(username);
+        }
+        
+        public void GetTopics(string username) {
+            base.Channel.GetTopics(username);
+        }
+        
+        public System.Threading.Tasks.Task GetTopicsAsync(string username) {
+            return base.Channel.GetTopicsAsync(username);
         }
     }
 }

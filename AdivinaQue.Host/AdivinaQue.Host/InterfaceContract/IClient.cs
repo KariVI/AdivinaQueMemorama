@@ -20,6 +20,10 @@ namespace AdivinaQue.Host.InterfaceContract
         bool SendInvitationGame(String username);
         [OperationContract(IsOneWay = true)]
         void RecieveScores(Dictionary<string, int> globalScores);
+        [OperationContract(IsOneWay = true)]
+        void RecieveEmails(List<String> emails);
+        [OperationContract(IsOneWay = true)]
+        void RecieveTopics(List<String> topics);
     }
 
     [DataContract]

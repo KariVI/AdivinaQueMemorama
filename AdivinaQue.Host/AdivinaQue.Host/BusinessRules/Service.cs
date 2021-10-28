@@ -17,8 +17,22 @@ namespace AdivinaQue.Host.BusinessRules
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
+        public void GetTopics(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> topics = authentication.getTopics();
 
 
+            users[username].RecieveTopics(topics);
+        }
+        public void GetEmails(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> emails = authentication.getEmails();
+
+
+            users[username].RecieveEmails(emails);
+        }
         public void DisconnectUser(String username)
         {
             users.Remove(username);

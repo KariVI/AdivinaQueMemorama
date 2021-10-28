@@ -37,7 +37,34 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             return status;
         }
-        public Player RetrievePlayer(string username)
+        public List<String> getTopics()
+        {
+
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                var query = from Cards in context.Card
+                            select Cards.topic;
+
+
+                return query.Distinct().ToList<String>();
+            }
+        }
+        public List<String> getEmails()
+        {
+
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                var query = from Players in context.Players
+                            select Players.email;
+
+
+                return query.ToList<String>();
+            }
+        }
+    
+    public Player RetrievePlayer(string username)
         {
             using (var context = new AdivinaQueAppContext())
             {

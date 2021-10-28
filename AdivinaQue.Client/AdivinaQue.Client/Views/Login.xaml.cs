@@ -10,17 +10,21 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Login : Window
     {
+        CallBack callback;
+        InstanceContext context;
+        Proxy.ServiceClient server;
         public Login()
         {
             InitializeComponent();
+            callback = new CallBack();
+            context = new InstanceContext(callback);
+            server = new Proxy.ServiceClient(context);
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text))
             {
-                CallBack callback = new CallBack();
-                InstanceContext context = new InstanceContext(callback);
-                Proxy.ServiceClient server = new Proxy.ServiceClient(context);
+           
 
                 Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
                 if (value == false)
@@ -48,7 +52,9 @@ namespace AdivinaQue.Client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ValidationCode validationCode = new ValidationCode();
+            ValidationCode validationCode = new ValidationCode(server);
+            callback.SetValidateCode(validationCode);
+            server.GetEmails("a");
             validationCode.Show();
         }
     }

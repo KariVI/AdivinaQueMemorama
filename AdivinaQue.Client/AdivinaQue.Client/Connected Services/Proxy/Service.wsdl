@@ -97,6 +97,12 @@
   <wsdl:message name="IService_GetScores_InputMessage">
     <wsdl:part name="parameters" element="tns:GetScores" />
   </wsdl:message>
+  <wsdl:message name="IService_GetEmails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmails" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTopics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopics" />
+  </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
@@ -114,6 +120,12 @@
   </wsdl:message>
   <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveScores" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveEmails_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveEmails" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveTopics_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveTopics" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Join">
@@ -164,6 +176,12 @@
     <wsdl:operation name="GetScores">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmails" message="tns:IService_GetEmails_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTopics" message="tns:IService_GetTopics_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
     </wsdl:operation>
@@ -179,6 +197,12 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveEmails" message="tns:IService_RecieveEmails_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveTopics" message="tns:IService_RecieveTopics_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -286,6 +310,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEmails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetTopics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
       <wsdl:output>
@@ -315,6 +351,18 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveEmails" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveTopics" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

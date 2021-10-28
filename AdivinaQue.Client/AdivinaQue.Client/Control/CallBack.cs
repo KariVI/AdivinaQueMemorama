@@ -16,6 +16,9 @@ namespace AdivinaQue.Client.Control
         private PlayersList playersList;
         private string currentUsername;
         private Podio podio;
+        private ValidationCode validationCode;
+        private GameConfiguration gameConfiguration;
+
         public void setPodio(Podio podio)
         {
             this.podio = podio;
@@ -42,6 +45,28 @@ namespace AdivinaQue.Client.Control
             }
             return value;
         }
+        public void RecieveTopics(string[] topics)
+        {
+            foreach (var topic in topics)
+            {
+                gameConfiguration.topicsCollection.Add(topic);
+
+            }
+        }
+        public void SetGameConfiguration(GameConfiguration gameConfiguration)
+        {
+            this.gameConfiguration = gameConfiguration;
+        }
+
+        public void RecieveEmails(string[] emails)
+        {
+            foreach (var email in emails)
+            {
+                //validationCode.emails.Add(email);
+            }
+        }
+  
+
         public void RecieveUsers(Dictionary<string, object> users)
         {
             chat.usersCollection.Clear();
@@ -88,6 +113,10 @@ namespace AdivinaQue.Client.Control
             }
 
 
+        }
+        public void SetValidateCode(ValidationCode validationCode)
+        {
+            this.validationCode = validationCode;
         }
     }
 }

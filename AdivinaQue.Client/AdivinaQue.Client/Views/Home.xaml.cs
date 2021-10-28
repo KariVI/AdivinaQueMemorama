@@ -75,7 +75,7 @@ namespace AdivinaQue.Client.Views
             InstanceContext context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
             callback.SetCurrentUsername(username);
-            PlayersList playersList = new PlayersList(server,username);
+            PlayersList playersList = new PlayersList(server,username,callback);
             callback.setPlayersList(playersList); 
             server.GetConnectedUsers();
             playersList.Show();

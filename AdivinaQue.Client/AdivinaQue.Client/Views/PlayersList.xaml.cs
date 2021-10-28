@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Client.Control;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,13 +15,15 @@ namespace AdivinaQue.Client.Views
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
         private String username;
-        public PlayersList(Proxy.ServiceClient server, String username)
+        CallBack callback;
+        public PlayersList(Proxy.ServiceClient server, String username, CallBack callback)
         {
             InitializeComponent();
             this.server = server;
             usersCollection = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;
             this.username = username;
+            this.callback = callback;
         }
 
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
@@ -36,7 +39,15 @@ namespace AdivinaQue.Client.Views
                 {
                     var player = listUsers.SelectedValue.ToString();
                     var result  = server.SendInvitation(player,username);
-                if (!result)
+                if (result)
+                {
+                    GameConfiguration gameConfiguration = new GameConfiguration(server,username);
+                    callback.SetGameConfiguration(gameConfiguration);
+                    server.GetTopics(username);
+                    gameConfiguration.Show();
+                    this.Close();
+                }
+                else
                 {
                     MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
                 }

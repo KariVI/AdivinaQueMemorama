@@ -35,5 +35,9 @@ namespace AdivinaQue.Host.InterfaceContract
         string SendMail(string to, string asunto, string body);
         [OperationContract(IsOneWay = true)]
         void GetScores(String username);
+        [OperationContract(IsOneWay = true)]
+        void GetEmails(string username);
+        [OperationContract(IsOneWay = true)]
+        void GetTopics(string username);
     }
 }
