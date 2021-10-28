@@ -48,8 +48,15 @@ namespace AdivinaQue.Client.Views
         }
 
         public void register() {
-          
-            server.register(tbUsername.Text, Password.Password.ToString(), tbName.Text,email);
+
+            Proxy.Player player = new Proxy.Player();
+            player.Username = tbUsername.Text;
+            player.Password = Password.Password.ToString();
+            player.Name = tbName.Text;
+            player.Email = email;
+
+
+            server.register(player);
             MessageBox.Show("Saved Data");
             this.Close();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Host.BusinessRules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -19,15 +20,15 @@ namespace AdivinaQue.Host.InterfaceContract
         void getConnectedUsers();
         [OperationContract(IsOneWay = true)]
         void disconnectUser(String username);
-        [OperationContract(IsOneWay = true)]
-        void register(String username, String password, String name, String email);
+        [OperationContract]
+        Boolean register(Player player);
         [OperationContract]
         bool searchUsername(String newUsername);
         [OperationContract]
         string sendMail(string to, string asunto, string body);
 
         [OperationContract(IsOneWay = true)]
-        void getScores();
+        void getScores(String username);
        
     }
 }

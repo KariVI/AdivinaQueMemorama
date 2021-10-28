@@ -16,8 +16,10 @@ namespace AdivinaQue.Client
     {
 
         public void Aplication_StartUp(object sender, StartupEventArgs eventArgs) {
-            Login login = new Login();
-            login.ShowDialog(); 
+            //Login login = new Login();
+            //login.ShowDialog(); 
+            GameConfiguration gameConfiguration = new GameConfiguration();
+            gameConfiguration.Show();
         }        
     }
 }

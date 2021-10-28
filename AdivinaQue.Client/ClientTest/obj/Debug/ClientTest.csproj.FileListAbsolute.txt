@@ -1,0 +1,2 @@
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\obj\Debug\ClientTest.csproj.AssemblyReference.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\obj\Debug\ClientTest.csproj.CoreCompileInputs.cache

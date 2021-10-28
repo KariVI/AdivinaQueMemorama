@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using AdivinaQue.Host.BusinessRules;
+using System.Data.Entity.Core;
+using log4net;
+using AdivinaQue.Host.Logs;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
@@ -11,9 +15,11 @@ namespace AdivinaQue.Host.DatabaseAccess
     {
        private List<int> listScores;
        private List<string> listPlayers;
+       private static readonly ILog Logs = Log.GetLogger();
 
 
-       public List<int> ListScores {  get{ return listScores; }  set { listScores = value; } }
+
+        public List<int> ListScores {  get{ return listScores; }  set { listScores = value; } }
        public List<string> ListPlayers { get { return listPlayers; } set { listPlayers = value; } }
         public Authentication()
         {
@@ -37,12 +43,22 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             return status;
         }
-        public void Register(string username, string password, string name, string email)
+        public AuthenticationStatus Register(Player player)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
-            string passwordHashed = ComputeSHA256Hash(password);
-            AdivinaQueAppContext.Players.Add(new Players() { name = name, userName = username, email = email, password = passwordHashed });
-            AdivinaQueAppContext.SaveChanges();
+            string passwordHashed = ComputeSHA256Hash(player.Password);
+            AuthenticationStatus status = AuthenticationStatus.Success;
+            try
+            {
+                AdivinaQueAppContext.Players.Add(new Players() { name = player.Name, userName = player.Username, email = player.Email, password = passwordHashed });
+                AdivinaQueAppContext.SaveChanges();
+            }catch(EntityException ex)
+            {
+                status = AuthenticationStatus.Failed;
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+
+            }
+            return status;
 
         }
 
@@ -62,18 +78,18 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         }
 
-        public void getPlayers()
+        public List<GlobalScore> getPlayers()
         {
 
             using (var context = new AdivinaQueAppContext()) {
-               IQueryable<int> scoreQuery = (IQueryable<int>)(from Score in context.Score select Score.totalGames);
-                IQueryable<string> playersQuery = (IQueryable<string>)(from Players in context.Players
-                                                                       from Score in context.Score 
-                                                                       where Players.Id == Score.IdPlayer
-                                                                       select Players.userName );
-                 listScores = new List<int>(scoreQuery);
-                 listPlayers = new List<string>(playersQuery);
 
+                var query = from Players in context.Players
+                            join
+                            Score in context.Score on Players.Id equals Score.IdPlayer
+                            select new GlobalScore { score = Score.totalGames, username= Players.userName  };
+
+         
+                return query.ToList();
             }
         }
     }

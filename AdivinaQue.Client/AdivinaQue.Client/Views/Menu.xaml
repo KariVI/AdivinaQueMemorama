@@ -9,7 +9,8 @@
     <Grid Background ="Lavender" Margin="0,0,2,0">
         <Label Name="lbUserName" Content="Usuario" HorizontalAlignment="Left" Margin="32,39,0,0" VerticalAlignment="Top" Width="93"/>
         <Button Name="StartGameBt" Content="Nueva Partida"  Background="#dda0dd"  HorizontalAlignment="Left" Margin="152,131,0,0" VerticalAlignment="Top" Width="138" Height="31"/>
-        <Button Content="Podio"  Name="QueryScoreBt"   Background="#dda0dd" HorizontalAlignment="Left" Margin="152,191,0,0" VerticalAlignment="Top" Width="138" Height="34"/>
+        <Button Content="Podio"  Name="QueryScoreBt"   Background="#dda0dd" HorizontalAlignment="Left" Margin="152,191,0,0" VerticalAlignment="Top" Width="138" Height="34" Click="QueryScoreBt_Click"/>
         <Button Content="Configuración"  x:Name="UserBt"   Background="#dda0dd" HorizontalAlignment="Left" Margin="152,257,0,0" VerticalAlignment="Top" Width="138" Height="34"/>
+        <Button Content="Chat"  x:Name="ChatBt"   Background="#dda0dd" HorizontalAlignment="Left" Margin="358,10,0,0" VerticalAlignment="Top" Width="87" Height="24" Click="ChatBt_Click"/>
     </Grid>
 </Window>

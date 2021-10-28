@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Client.Control;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Chat.xaml
-    /// </summary>
+    
     public partial class Chat : Window
     {
         public Chat()
@@ -27,6 +26,7 @@ namespace AdivinaQue.Client.Views
         Proxy.ServiceClient server;
         private string username;
         private string typeMessage;
+        private CallBack callback;
 
         public ObservableCollection<String> messagesCollection;
         public ObservableCollection<String> usersCollection;
@@ -40,10 +40,11 @@ namespace AdivinaQue.Client.Views
         public ListView messages { get { return listMessages; } set { listMessages = value; } }
 
 
-        public Chat(Proxy.ServiceClient server)
+        public Chat(Proxy.ServiceClient server, CallBack callback)
         {
             InitializeComponent();
             this.server = server;
+            this.callback = callback;
             messagesCollection = new ObservableCollection<String>();
             usersCollection = new ObservableCollection<string>();
             typeMessage = "Todos";
@@ -81,6 +82,8 @@ namespace AdivinaQue.Client.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Menu menu = new Menu(server,username, callback);
+            menu.Show();
             server.disconnectUser(username);
             this.Close();
         }

@@ -18,7 +18,7 @@ namespace AdivinaQue.Host.BusinessRules
     public class Service: IService
     {
         private static readonly ILog Logs = Log.GetLogger();
-        public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
+        private Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
         public void disconnectUser(String username)
         {
@@ -34,31 +34,50 @@ namespace AdivinaQue.Host.BusinessRules
             }
         }
 
+        public void getScores(String username)
+        {
+            Authentication authentication = new Authentication();
+            List<GlobalScore> scores = authentication.getPlayers();
+            Dictionary<String, int> globalScores = new Dictionary<string, int>();
+
+            foreach (var player in scores)
+            {
+                globalScores.Add(player.username, player.score);
+            }
+
+            users[username].RecieveScores(globalScores);
+
+
+        }
+
         public bool join(string username, string password)
         {
             Authentication authentication = new Authentication();
             AuthenticationStatus status = authentication.loginSuccesful(username, password);
-            Boolean value = true;
+            Boolean value = false;
             if (status == AuthenticationStatus.Success)
             {
                 var connection = OperationContext.Current.GetCallbackChannel<IClient>();
                 users[username] = connection;
                 Console.WriteLine("Usuario {0} se conecto", username);
-
-            }
-            else
-            {
-                value = false;
-                Console.WriteLine("No se conecto");
+                value = true;
 
             }
             return value;
         }
 
-        public void register(string username, string password, string name, string email)
+        public Boolean register(Player player)
         {
             Authentication authentication = new Authentication();
-            authentication.Register(username, password, name, email);
+            AuthenticationStatus status =authentication.Register(player);
+            Boolean value = false;
+
+            if (status == AuthenticationStatus.Success)
+            {
+                value = true;
+            }
+            return value;
+
         }
 
         public bool searchUsername(string newUsername)
@@ -74,7 +93,7 @@ namespace AdivinaQue.Host.BusinessRules
         public string sendMail(string to, string asunto, string body)
         {
             string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
-            string from = "angelicaiglesiase@hotmail.com";
+            string from = "adivinaQueTeam@hotmail.com";
             string displayName = "Administrador de Adivina ¿Qué? Memorama";
             try
             {
@@ -87,9 +106,9 @@ namespace AdivinaQue.Host.BusinessRules
                 mail.IsBodyHtml = true;
 
 
-                SmtpClient client = new SmtpClient("smtp.office365.com", 587); //Aquí debes sustituir tu servidor SMTP y el puerto
-                client.Credentials = new NetworkCredential(from, "karina");
-                client.EnableSsl = true;//En caso de que tu servidor de correo no utilice cifrado SSL,poner en false
+                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
+                client.Credentials = new NetworkCredential(from, "MarianaKarina1234");
+                client.EnableSsl = true;
 
 
                 client.Send(mail);

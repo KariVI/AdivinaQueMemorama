@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdivinaQue.Host", "AdivinaQue.Host\AdivinaQue.Host.csproj", "{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdivinaQue.Host.Pruebas", "AdivinaQue.Host.Pruebas\AdivinaQue.Host.Pruebas.csproj", "{E18BEC3B-6953-4069-8C37-2D34F3B6A913}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostTests", "HostTests\HostTests.csproj", "{CAAF54C6-7A7C-4A39-B253-FF87691D5125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E18BEC3B-6953-4069-8C37-2D34F3B6A913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E18BEC3B-6953-4069-8C37-2D34F3B6A913}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E18BEC3B-6953-4069-8C37-2D34F3B6A913}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E18BEC3B-6953-4069-8C37-2D34F3B6A913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAF54C6-7A7C-4A39-B253-FF87691D5125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAF54C6-7A7C-4A39-B253-FF87691D5125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAF54C6-7A7C-4A39-B253-FF87691D5125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAF54C6-7A7C-4A39-B253-FF87691D5125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessRules\Card.cs" />
+    <Compile Include="BusinessRules\Player.cs" />
     <Compile Include="BusinessRules\Service.cs" />
     <Compile Include="DatabaseAccess\AdivinaQueDataBase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -81,6 +83,7 @@
     <Compile Include="DatabaseAccess\Game.cs">
       <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseAccess\GlobalScore.cs" />
     <Compile Include="DatabaseAccess\Participate.cs">
       <DependentUpon>AdivinaQueDataBase.tt</DependentUpon>
     </Compile>

@@ -15,5 +15,7 @@ namespace AdivinaQue.Host.InterfaceContract
         void RecieveMessage(string message);
         [OperationContract(IsOneWay = true)]
         void RecieveUsers(Dictionary<String, IClient> users);
+        [OperationContract(IsOneWay = true)]
+        void RecieveScores(Dictionary<String, int> globalScores);
     }
 }

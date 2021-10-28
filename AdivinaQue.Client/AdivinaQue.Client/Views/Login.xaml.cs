@@ -41,12 +41,8 @@ namespace AdivinaQue.Client.Views
 
                 else
                 {
-                    Chat chat = new Chat(server);
-                    chat.setUsername(tbUsername.Text);
-                    callback.setChat(chat);
-                    callback.setChat(chat);
-                    server.getConnectedUsers();
-                    chat.Show();
+                    Menu menu = new Menu(server, tbUsername.Text, callback);
+                    menu.Show();
                     this.Close();
                 }
 

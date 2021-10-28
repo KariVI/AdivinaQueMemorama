@@ -9,7 +9,102 @@
 //------------------------------------------------------------------------------
 
 namespace AdivinaQue.Client.Proxy {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.BusinessRules")]
+    [System.SerializableAttribute()]
+    public partial class Player : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(AdivinaQue.Client.Proxy.IServiceCallback))]
@@ -39,11 +134,11 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/disconnectUser")]
         System.Threading.Tasks.Task disconnectUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/register")]
-        void register(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/register", ReplyAction="http://tempuri.org/IService/registerResponse")]
+        bool register(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/register")]
-        System.Threading.Tasks.Task registerAsync(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/register", ReplyAction="http://tempuri.org/IService/registerResponse")]
+        System.Threading.Tasks.Task<bool> registerAsync(AdivinaQue.Client.Proxy.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/searchUsername", ReplyAction="http://tempuri.org/IService/searchUsernameResponse")]
         bool searchUsername(string newUsername);
@@ -56,6 +151,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
         System.Threading.Tasks.Task<string> sendMailAsync(string to, string asunto, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getScores")]
+        void getScores(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getScores")]
+        System.Threading.Tasks.Task getScoresAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -66,6 +167,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveUsers")]
         void RecieveUsers(System.Collections.Generic.Dictionary<string, object> users);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
+        void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -128,12 +232,12 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.disconnectUserAsync(username);
         }
         
-        public void register(string username, string password, string name, string email) {
-            base.Channel.register(username, password, name, email);
+        public bool register(AdivinaQue.Client.Proxy.Player player) {
+            return base.Channel.register(player);
         }
         
-        public System.Threading.Tasks.Task registerAsync(string username, string password, string name, string email) {
-            return base.Channel.registerAsync(username, password, name, email);
+        public System.Threading.Tasks.Task<bool> registerAsync(AdivinaQue.Client.Proxy.Player player) {
+            return base.Channel.registerAsync(player);
         }
         
         public bool searchUsername(string newUsername) {
@@ -150,6 +254,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<string> sendMailAsync(string to, string asunto, string body) {
             return base.Channel.sendMailAsync(to, asunto, body);
+        }
+        
+        public void getScores(string username) {
+            base.Channel.getScores(username);
+        }
+        
+        public System.Threading.Tasks.Task getScoresAsync(string username) {
+            return base.Channel.getScoresAsync(username);
         }
     }
 }

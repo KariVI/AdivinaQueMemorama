@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Client.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,36 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Menu : Window
     {
-        public Menu()
+        Proxy.ServiceClient server;
+        CallBack callback;
+        string username;
+        public Menu(Proxy.ServiceClient server, string username, CallBack callback)
         {
             InitializeComponent();
+            this.server=server;
+            this.username = username;
+            this.callback = callback;
+            lbUserName.Content = "¡Hola " + username + "!";
+        }
+
+        private void ChatBt_Click(object sender, RoutedEventArgs e)
+        {
+            Chat chat = new Chat(server,callback);
+            chat.setUsername(username);
+            callback.setChat(chat);
+            callback.setChat(chat);
+            server.getConnectedUsers();
+            chat.Show();
+            this.Close();
+        }
+
+        private void QueryScoreBt_Click(object sender, RoutedEventArgs e)
+        {
+            Podio podio = new Podio(server, username);
+            callback.setPodio(podio);
+            server.getScores(username);
+            podio.Show();
+            this.Close();
         }
     }
 }

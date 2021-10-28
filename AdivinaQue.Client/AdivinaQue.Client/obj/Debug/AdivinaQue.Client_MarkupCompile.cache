@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
-665863902
+9-1299184308
 
-12-1117134843
+151761916318
 18-1145372289
-Views\Chat.xaml;Views\Login.xaml;Views\Menu.xaml;Views\Podio.xaml;Views\Register.xaml;Views\ValidationCode.xaml;
+Views\Chat.xaml;Views\Game.xaml;Views\GameConfiguration.xaml;Views\Login.xaml;Views\Menu.xaml;Views\Podio.xaml;Views\Register.xaml;Views\StartGame.xaml;Views\ValidationCode.xaml;
 
 False
 
