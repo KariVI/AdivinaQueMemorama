@@ -13,9 +13,9 @@ namespace AdivinaQue.Host.InterfaceContract
     public interface IService
     {
         [OperationContract]
-        Boolean join(string username, string password);
+        Boolean Join(string username, string password);
         [OperationContract(IsOneWay = true)]
-        void sendMessage(string message, String username, string userReceptor);
+        void SendMessage(string message, String username, string userReceptor);
         [OperationContract(IsOneWay = true)]
         void getConnectedUsers();
         [OperationContract(IsOneWay = true)]
@@ -28,7 +28,11 @@ namespace AdivinaQue.Host.InterfaceContract
         string sendMail(string to, string asunto, string body);
 
         [OperationContract(IsOneWay = true)]
-        void getScores(String username);
-       
+        void GetScores(String username);
+        [OperationContract(IsOneWay = true)]
+        void GetTopics(String username);
+        [OperationContract(IsOneWay = true)]
+        void GetEmails(String username);
+
     }
 }

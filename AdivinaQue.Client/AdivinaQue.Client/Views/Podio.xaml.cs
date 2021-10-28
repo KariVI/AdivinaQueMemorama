@@ -33,8 +33,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             playersCollection = new ObservableCollection<String>();
             scoresCollection = new ObservableCollection<int>();
-            this.server = server;
-            this.username = username;
+            
             players.ItemsSource = playersCollection;
             lvVictory.ItemsSource = scoresCollection;
     }

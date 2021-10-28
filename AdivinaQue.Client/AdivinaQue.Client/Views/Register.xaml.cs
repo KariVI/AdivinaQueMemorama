@@ -39,7 +39,7 @@ namespace AdivinaQue.Client.Views
             
             if (tbUsername.Text != "" && Password.Password.ToString() != ""  && tbName.Text != "")
             {
-                register();
+                RegisterUser();
             }
             else
             {
@@ -47,7 +47,7 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        public void register() {
+        public void RegisterUser() {
 
             Proxy.Player player = new Proxy.Player();
             player.Username = tbUsername.Text;

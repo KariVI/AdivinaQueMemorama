@@ -86,15 +86,43 @@ namespace AdivinaQue.Host.DatabaseAccess
                 var query = from Players in context.Players
                             join
                             Score in context.Score on Players.Id equals Score.IdPlayer
+                            orderby Score.totalGames descending
                             select new GlobalScore { score = Score.totalGames, username= Players.userName  };
 
-         
+
                 return query.ToList();
             }
         }
+   
+    public List<String> getTopics()
+    {
+
+        using (var context = new AdivinaQueAppContext())
+        {
+
+            var query = from Cards in context.Card
+                        select Cards.topic;
+
+
+            return query.Distinct().ToList<String>();
+        }
     }
 
-    public enum AuthenticationStatus
+        public List<String> getEmails()
+        {
+
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                var query = from Players in context.Players
+                            select Players.email;
+
+
+                return query.ToList<String>();
+            }
+        }
+    }
+public enum AuthenticationStatus
     {
         Success = 0,
         Failed

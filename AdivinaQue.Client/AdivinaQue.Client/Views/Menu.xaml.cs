@@ -36,8 +36,7 @@ namespace AdivinaQue.Client.Views
         {
             Chat chat = new Chat(server,callback);
             chat.setUsername(username);
-            callback.setChat(chat);
-            callback.setChat(chat);
+            callback.SetChat(chat);
             server.getConnectedUsers();
             chat.Show();
             this.Close();
@@ -46,9 +45,18 @@ namespace AdivinaQue.Client.Views
         private void QueryScoreBt_Click(object sender, RoutedEventArgs e)
         {
             Podio podio = new Podio(server, username);
-            callback.setPodio(podio);
-            server.getScores(username);
+            callback.SetPodio(podio);
+            server.GetScores(username);
             podio.Show();
+            this.Close();
+        }
+
+        private void StartGameBt_Click(object sender, RoutedEventArgs e)
+        {
+            GameConfiguration gameConfiguration = new GameConfiguration(server, username);
+            callback.SetGameConfiguration(gameConfiguration);
+            server.GetTopics(username);
+            gameConfiguration.Show();
             this.Close();
         }
     }

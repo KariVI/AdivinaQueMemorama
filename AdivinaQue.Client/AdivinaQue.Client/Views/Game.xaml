@@ -12,8 +12,33 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Column="0">
+            <Label>
+                <Label Content="User One "/>
+            </Label>
+            <DataGrid HorizontalAlignment="Left" Height="100" Margin="244,50,0,0" VerticalAlignment="Top" Width="532"/>
+        </Grid>
+
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
         <WrapPanel x:Name="wpCards" HorizontalAlignment="Left" Height="359" Margin="69,0,0,0" VerticalAlignment="Top" Width="853" Grid.Row="1"/>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="244,50,0,0" VerticalAlignment="Top" Width="532"/>
 
     </Grid>
 </Window>

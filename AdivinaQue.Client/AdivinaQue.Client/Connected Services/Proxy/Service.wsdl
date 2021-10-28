@@ -37,14 +37,14 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService_join_InputMessage">
-    <wsdl:part name="parameters" element="tns:join" />
+  <wsdl:message name="IService_Join_InputMessage">
+    <wsdl:part name="parameters" element="tns:Join" />
   </wsdl:message>
-  <wsdl:message name="IService_join_OutputMessage">
-    <wsdl:part name="parameters" element="tns:joinResponse" />
+  <wsdl:message name="IService_Join_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_sendMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:sendMessage" />
+  <wsdl:message name="IService_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
   <wsdl:message name="IService_getConnectedUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:getConnectedUsers" />
@@ -70,8 +70,14 @@
   <wsdl:message name="IService_sendMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:sendMailResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_getScores_InputMessage">
-    <wsdl:part name="parameters" element="tns:getScores" />
+  <wsdl:message name="IService_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTopics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopics" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetEmails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmails" />
   </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
@@ -82,13 +88,19 @@
   <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveScores" />
   </wsdl:message>
+  <wsdl:message name="IService_RecieveTopics_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveTopics" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveEmails_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveEmails" />
+  </wsdl:message>
   <wsdl:portType name="IService">
-    <wsdl:operation name="join">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/join" message="tns:IService_join_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/joinResponse" message="tns:IService_join_OutputMessage" />
+    <wsdl:operation name="Join">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Join" message="tns:IService_Join_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/JoinResponse" message="tns:IService_Join_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="sendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/sendMessage" message="tns:IService_sendMessage_InputMessage" />
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMessage" message="tns:IService_SendMessage_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getConnectedUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/getConnectedUsers" message="tns:IService_getConnectedUsers_InputMessage" />
@@ -108,8 +120,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/sendMail" message="tns:IService_sendMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/sendMailResponse" message="tns:IService_sendMail_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getScores">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/getScores" message="tns:IService_getScores_InputMessage" />
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTopics" message="tns:IService_GetTopics_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmails" message="tns:IService_GetEmails_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
@@ -120,12 +138,18 @@
     <wsdl:operation name="RecieveScores">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveTopics" message="tns:IService_RecieveTopics_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveEmails" message="tns:IService_RecieveEmails_OutputCallbackMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
     <wsp:PolicyReference URI="#NetTcpBinding_IService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="join">
-      <soap12:operation soapAction="http://tempuri.org/IService/join" style="document" />
+    <wsdl:operation name="Join">
+      <soap12:operation soapAction="http://tempuri.org/IService/Join" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -133,8 +157,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="sendMessage">
-      <soap12:operation soapAction="http://tempuri.org/IService/sendMessage" style="document" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -178,8 +202,20 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getScores">
-      <soap12:operation soapAction="http://tempuri.org/IService/getScores" style="document" />
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetTopics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEmails" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -198,6 +234,18 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveTopics" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveEmails" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

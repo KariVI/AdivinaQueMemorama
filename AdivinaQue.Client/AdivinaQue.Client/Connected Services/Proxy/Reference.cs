@@ -110,17 +110,17 @@ namespace AdivinaQue.Client.Proxy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(AdivinaQue.Client.Proxy.IServiceCallback))]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/join", ReplyAction="http://tempuri.org/IService/joinResponse")]
-        bool join(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        bool Join(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/join", ReplyAction="http://tempuri.org/IService/joinResponse")]
-        System.Threading.Tasks.Task<bool> joinAsync(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        System.Threading.Tasks.Task<bool> JoinAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/sendMessage")]
-        void sendMessage(string message, string username, string userReceptor);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        void SendMessage(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/sendMessage")]
-        System.Threading.Tasks.Task sendMessageAsync(string message, string username, string userReceptor);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getConnectedUsers")]
         void getConnectedUsers();
@@ -152,11 +152,23 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
         System.Threading.Tasks.Task<string> sendMailAsync(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getScores")]
-        void getScores(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        void GetScores(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getScores")]
-        System.Threading.Tasks.Task getScoresAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        System.Threading.Tasks.Task GetScoresAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
+        void GetTopics(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
+        System.Threading.Tasks.Task GetTopicsAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
+        void GetEmails(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
+        System.Threading.Tasks.Task GetEmailsAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -170,6 +182,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
         void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveTopics")]
+        void RecieveTopics(string[] topics);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveEmails")]
+        void RecieveEmails(string[] emails);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -200,20 +218,20 @@ namespace AdivinaQue.Client.Proxy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool join(string username, string password) {
-            return base.Channel.join(username, password);
+        public bool Join(string username, string password) {
+            return base.Channel.Join(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> joinAsync(string username, string password) {
-            return base.Channel.joinAsync(username, password);
+        public System.Threading.Tasks.Task<bool> JoinAsync(string username, string password) {
+            return base.Channel.JoinAsync(username, password);
         }
         
-        public void sendMessage(string message, string username, string userReceptor) {
-            base.Channel.sendMessage(message, username, userReceptor);
+        public void SendMessage(string message, string username, string userReceptor) {
+            base.Channel.SendMessage(message, username, userReceptor);
         }
         
-        public System.Threading.Tasks.Task sendMessageAsync(string message, string username, string userReceptor) {
-            return base.Channel.sendMessageAsync(message, username, userReceptor);
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor) {
+            return base.Channel.SendMessageAsync(message, username, userReceptor);
         }
         
         public void getConnectedUsers() {
@@ -256,12 +274,28 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.sendMailAsync(to, asunto, body);
         }
         
-        public void getScores(string username) {
-            base.Channel.getScores(username);
+        public void GetScores(string username) {
+            base.Channel.GetScores(username);
         }
         
-        public System.Threading.Tasks.Task getScoresAsync(string username) {
-            return base.Channel.getScoresAsync(username);
+        public System.Threading.Tasks.Task GetScoresAsync(string username) {
+            return base.Channel.GetScoresAsync(username);
+        }
+        
+        public void GetTopics(string username) {
+            base.Channel.GetTopics(username);
+        }
+        
+        public System.Threading.Tasks.Task GetTopicsAsync(string username) {
+            return base.Channel.GetTopicsAsync(username);
+        }
+        
+        public void GetEmails(string username) {
+            base.Channel.GetEmails(username);
+        }
+        
+        public System.Threading.Tasks.Task GetEmailsAsync(string username) {
+            return base.Channel.GetEmailsAsync(username);
         }
     }
 }

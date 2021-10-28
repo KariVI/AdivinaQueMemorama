@@ -34,23 +34,39 @@ namespace AdivinaQue.Host.BusinessRules
             }
         }
 
-        public void getScores(String username)
+        public void GetEmails(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> emails = authentication.getEmails();
+
+
+            users[username].RecieveEmails(emails);
+        }
+
+        public void GetScores(String username)
         {
             Authentication authentication = new Authentication();
             List<GlobalScore> scores = authentication.getPlayers();
             Dictionary<String, int> globalScores = new Dictionary<string, int>();
 
-            foreach (var player in scores)
+            foreach (var score in scores)
             {
-                globalScores.Add(player.username, player.score);
+                globalScores.Add(score.username, score.score);
             }
 
             users[username].RecieveScores(globalScores);
-
-
         }
 
-        public bool join(string username, string password)
+        public void GetTopics(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> topics = authentication.getTopics();
+
+           
+            users[username].RecieveTopics(topics);
+        }
+
+        public bool Join(string username, string password)
         {
             Authentication authentication = new Authentication();
             AuthenticationStatus status = authentication.loginSuccesful(username, password);
@@ -126,7 +142,7 @@ namespace AdivinaQue.Host.BusinessRules
         }
 
 
-        public void sendMessage(string message, String username, string userReceptor)
+        public void SendMessage(string message, String username, string userReceptor)
         {
             if (userReceptor.Equals("Todos"))
             {
