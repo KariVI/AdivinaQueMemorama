@@ -110,65 +110,77 @@ namespace AdivinaQue.Client.Proxy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(AdivinaQue.Client.Proxy.IServiceCallback))]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/join", ReplyAction="http://tempuri.org/IService/joinResponse")]
-        bool join(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        bool Join(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/join", ReplyAction="http://tempuri.org/IService/joinResponse")]
-        System.Threading.Tasks.Task<bool> joinAsync(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        System.Threading.Tasks.Task<bool> JoinAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/sendMessage")]
-        void sendMessage(string message, string username, string userReceptor);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        void SendMessage(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/sendMessage")]
-        System.Threading.Tasks.Task sendMessageAsync(string message, string username, string userReceptor);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getConnectedUsers")]
-        void getConnectedUsers();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        void GetConnectedUsers();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/getConnectedUsers")]
-        System.Threading.Tasks.Task getConnectedUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        System.Threading.Tasks.Task GetConnectedUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/disconnectUser")]
-        void disconnectUser(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        void DisconnectUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/disconnectUser")]
-        System.Threading.Tasks.Task disconnectUserAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        System.Threading.Tasks.Task DisconnectUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/register")]
-        void register(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Register")]
+        void Register(string username, string password, string name, string email);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/register")]
-        System.Threading.Tasks.Task registerAsync(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Register")]
+        System.Threading.Tasks.Task RegisterAsync(string username, string password, string name, string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/searchUsername", ReplyAction="http://tempuri.org/IService/searchUsernameResponse")]
-        bool searchUsername(string newUsername);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        bool SearchUsername(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/searchUsername", ReplyAction="http://tempuri.org/IService/searchUsernameResponse")]
-        System.Threading.Tasks.Task<bool> searchUsernameAsync(string newUsername);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        System.Threading.Tasks.Task<bool> SearchUsernameAsync(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/searchInfoPlayerByUsername")]
-        void searchInfoPlayerByUsername(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        void SearchInfoPlayerByUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/searchInfoPlayerByUsername")]
-        System.Threading.Tasks.Task searchInfoPlayerByUsernameAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        System.Threading.Tasks.Task SearchInfoPlayerByUsernameAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
-        string sendMail(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
+        string SendMailValidation(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/sendMail", ReplyAction="http://tempuri.org/IService/sendMailResponse")]
-        System.Threading.Tasks.Task<string> sendMailAsync(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
+        System.Threading.Tasks.Task<string> SendMailValidationAsync(string email);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/modify")]
-        void modify(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
+        void Modify(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/modify")]
-        System.Threading.Tasks.Task modifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
+        System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/delete")]
-        void delete(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Delete")]
+        void Delete(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/delete")]
-        System.Threading.Tasks.Task deleteAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Delete")]
+        System.Threading.Tasks.Task DeleteAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
+        void SendMailInvitation(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
+        System.Threading.Tasks.Task SendMailInvitationAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        bool SendInvitation(string toUsername, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -182,6 +194,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecievePlayer")]
         void RecievePlayer(AdivinaQue.Client.Proxy.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitationGame", ReplyAction="http://tempuri.org/IService/SendInvitationGameResponse")]
+        bool SendInvitationGame(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -212,84 +227,100 @@ namespace AdivinaQue.Client.Proxy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool join(string username, string password) {
-            return base.Channel.join(username, password);
+        public bool Join(string username, string password) {
+            return base.Channel.Join(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> joinAsync(string username, string password) {
-            return base.Channel.joinAsync(username, password);
+        public System.Threading.Tasks.Task<bool> JoinAsync(string username, string password) {
+            return base.Channel.JoinAsync(username, password);
         }
         
-        public void sendMessage(string message, string username, string userReceptor) {
-            base.Channel.sendMessage(message, username, userReceptor);
+        public void SendMessage(string message, string username, string userReceptor) {
+            base.Channel.SendMessage(message, username, userReceptor);
         }
         
-        public System.Threading.Tasks.Task sendMessageAsync(string message, string username, string userReceptor) {
-            return base.Channel.sendMessageAsync(message, username, userReceptor);
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor) {
+            return base.Channel.SendMessageAsync(message, username, userReceptor);
         }
         
-        public void getConnectedUsers() {
-            base.Channel.getConnectedUsers();
+        public void GetConnectedUsers() {
+            base.Channel.GetConnectedUsers();
         }
         
-        public System.Threading.Tasks.Task getConnectedUsersAsync() {
-            return base.Channel.getConnectedUsersAsync();
+        public System.Threading.Tasks.Task GetConnectedUsersAsync() {
+            return base.Channel.GetConnectedUsersAsync();
         }
         
-        public void disconnectUser(string username) {
-            base.Channel.disconnectUser(username);
+        public void DisconnectUser(string username) {
+            base.Channel.DisconnectUser(username);
         }
         
-        public System.Threading.Tasks.Task disconnectUserAsync(string username) {
-            return base.Channel.disconnectUserAsync(username);
+        public System.Threading.Tasks.Task DisconnectUserAsync(string username) {
+            return base.Channel.DisconnectUserAsync(username);
         }
         
-        public void register(string username, string password, string name, string email) {
-            base.Channel.register(username, password, name, email);
+        public void Register(string username, string password, string name, string email) {
+            base.Channel.Register(username, password, name, email);
         }
         
-        public System.Threading.Tasks.Task registerAsync(string username, string password, string name, string email) {
-            return base.Channel.registerAsync(username, password, name, email);
+        public System.Threading.Tasks.Task RegisterAsync(string username, string password, string name, string email) {
+            return base.Channel.RegisterAsync(username, password, name, email);
         }
         
-        public bool searchUsername(string newUsername) {
-            return base.Channel.searchUsername(newUsername);
+        public bool SearchUsername(string newUsername) {
+            return base.Channel.SearchUsername(newUsername);
         }
         
-        public System.Threading.Tasks.Task<bool> searchUsernameAsync(string newUsername) {
-            return base.Channel.searchUsernameAsync(newUsername);
+        public System.Threading.Tasks.Task<bool> SearchUsernameAsync(string newUsername) {
+            return base.Channel.SearchUsernameAsync(newUsername);
         }
         
-        public void searchInfoPlayerByUsername(string username) {
-            base.Channel.searchInfoPlayerByUsername(username);
+        public void SearchInfoPlayerByUsername(string username) {
+            base.Channel.SearchInfoPlayerByUsername(username);
         }
         
-        public System.Threading.Tasks.Task searchInfoPlayerByUsernameAsync(string username) {
-            return base.Channel.searchInfoPlayerByUsernameAsync(username);
+        public System.Threading.Tasks.Task SearchInfoPlayerByUsernameAsync(string username) {
+            return base.Channel.SearchInfoPlayerByUsernameAsync(username);
         }
         
-        public string sendMail(string email) {
-            return base.Channel.sendMail(email);
+        public string SendMailValidation(string email) {
+            return base.Channel.SendMailValidation(email);
         }
         
-        public System.Threading.Tasks.Task<string> sendMailAsync(string email) {
-            return base.Channel.sendMailAsync(email);
+        public System.Threading.Tasks.Task<string> SendMailValidationAsync(string email) {
+            return base.Channel.SendMailValidationAsync(email);
         }
         
-        public void modify(AdivinaQue.Client.Proxy.Player player, string username) {
-            base.Channel.modify(player, username);
+        public void Modify(AdivinaQue.Client.Proxy.Player player, string username) {
+            base.Channel.Modify(player, username);
         }
         
-        public System.Threading.Tasks.Task modifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
-            return base.Channel.modifyAsync(player, username);
+        public System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
+            return base.Channel.ModifyAsync(player, username);
         }
         
-        public void delete(string username) {
-            base.Channel.delete(username);
+        public void Delete(string username) {
+            base.Channel.Delete(username);
         }
         
-        public System.Threading.Tasks.Task deleteAsync(string username) {
-            return base.Channel.deleteAsync(username);
+        public System.Threading.Tasks.Task DeleteAsync(string username) {
+            return base.Channel.DeleteAsync(username);
+        }
+        
+        public void SendMailInvitation(string email) {
+            base.Channel.SendMailInvitation(email);
+        }
+        
+        public System.Threading.Tasks.Task SendMailInvitationAsync(string email) {
+            return base.Channel.SendMailInvitationAsync(email);
+        }
+        
+        public bool SendInvitation(string toUsername, string fromUsername) {
+            return base.Channel.SendInvitation(toUsername, fromUsername);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername) {
+            return base.Channel.SendInvitationAsync(toUsername, fromUsername);
         }
     }
 }

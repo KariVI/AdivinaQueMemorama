@@ -26,7 +26,7 @@ namespace AdivinaQue.Client.Views
             newPlayer.Username = tbUsername.Text;
             newPlayer.Email = tbEmail.Text;
             newPlayer.Password = pbPassword.Password;
-            String code = server.sendMail(tbEmail.Text);
+            String code = server.SendMailValidation(tbEmail.Text);
             AuthMail authmail = new AuthMail(code,newPlayer);
             authmail.setServer(server);
             authmail.setUsername(username);
@@ -40,9 +40,13 @@ namespace AdivinaQue.Client.Views
         }
         private void btDelete_Click(object sender, RoutedEventArgs e)
         {
-            server.delete(username);
-            home.disconect();
-            this.Close();
+            var option = MessageBox.Show("Delete user?", "Message", MessageBoxButton.YesNo);
+            if(option == MessageBoxResult.Yes)
+            {
+                server.Delete(username);
+                home.disconect();
+                this.Close();
+            }   
         }
 
         private void closedWindow(object sender, EventArgs e)
@@ -53,7 +57,7 @@ namespace AdivinaQue.Client.Views
         internal void setServer(ServiceClient server)
         {
             this.server = server;
-            server.searchInfoPlayerByUsername(username);
+            server.SearchInfoPlayerByUsername(username);
         }
 
         internal void setUsername(string username)

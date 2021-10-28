@@ -70,7 +70,7 @@ namespace AdivinaQue.Client.Views
                     typeMessage = listUsers.SelectedValue.ToString();
                 }
 
-            server.sendMessage(MessageContent.Text, username, typeMessage);
+            server.SendMessage(MessageContent.Text, username, typeMessage);
             listUsers.SelectedValue = null;
             MessageContent.Clear();
             typeMessage = "Todos";

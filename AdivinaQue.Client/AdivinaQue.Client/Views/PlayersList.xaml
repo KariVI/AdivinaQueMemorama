@@ -9,9 +9,9 @@
     <Grid Margin="0,0,2,7" Background="#FFE6E6F5">
         <ListBox Name="UsersConnected"  Margin="65,58,190,146" Background="#FFE6E6F5"/>
         <TextBox Name="tbEmail" HorizontalAlignment="Left" Height="23" Margin="121,345,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="120" Background="#FFC0AEE0"/>
-        <Button Name="btSendEmail" Content="Send" HorizontalAlignment="Left" Height="24" Margin="280,342,0,0" VerticalAlignment="Top" Width="75" Background="Plum"/>
+        <Button Name="btSendEmail" Content="Send" HorizontalAlignment="Left" Height="24" Margin="280,342,0,0" VerticalAlignment="Top" Width="75" Background="Plum" Click="btSendEmail_Click"/>
         <Label Content="Invite a player" HorizontalAlignment="Left" Margin="280,18,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="OCR A Extended"/>
-        <Label Content="Not on the list? Send him an email!" HorizontalAlignment="Left" Margin="101,308,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.185,-0.159"/>
-        <Button x:Name="btSend" Content="Send" HorizontalAlignment="Left" Height="24" Margin="525,271,0,0" VerticalAlignment="Top" Width="75" Background="Plum"/>
+        <Label Content="Not on the list? Send them an email!" HorizontalAlignment="Left" Margin="101,308,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.185,-0.159"/>
+        <Button x:Name="btSend" Content="Send" HorizontalAlignment="Left" Height="24" Margin="525,271,0,0" VerticalAlignment="Top" Width="75" Background="Plum" Click="btSend_Click"/>
     </Grid>
 </Window>

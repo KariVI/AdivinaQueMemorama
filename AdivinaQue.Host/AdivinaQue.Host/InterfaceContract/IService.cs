@@ -1,10 +1,5 @@
-﻿using AdivinaQue.Host.DatabaseAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdivinaQue.Host.InterfaceContract
 {
@@ -13,25 +8,28 @@ namespace AdivinaQue.Host.InterfaceContract
     public interface IService
     {
         [OperationContract]
-        Boolean join(string username, string password);
+        Boolean Join(string username, string password);
         [OperationContract(IsOneWay = true)]
-        void sendMessage(string message, String username, string userReceptor);
+        void SendMessage(string message, String username, string userReceptor);
         [OperationContract(IsOneWay = true)]
-        void getConnectedUsers();
+        void GetConnectedUsers();
         [OperationContract(IsOneWay = true)]
-        void disconnectUser(String username);
+        void DisconnectUser(String username);
         [OperationContract(IsOneWay = true)]
-        void register(String username, String password, String name, String email);
+        void Register(String username, String password, String name, String email);
         [OperationContract]
-        bool searchUsername(String newUsername);
+        bool SearchUsername(String newUsername);
         [OperationContract(IsOneWay = true)]
-
-        void searchInfoPlayerByUsername(String username);
+        void SearchInfoPlayerByUsername(String username);
         [OperationContract]
-        string sendMail(String email);
+        string SendMailValidation(String email);
         [OperationContract(IsOneWay = true)]
-        void modify(Player player, String username);
+        void Modify(Player player, String username);
         [OperationContract(IsOneWay = true)]
-        void delete(string username);
+        void Delete(string username);
+        [OperationContract(IsOneWay = true)]
+        void SendMailInvitation(string email);
+        [OperationContract]
+        bool SendInvitation(String toUsername,String fromUsername);
     }
 }

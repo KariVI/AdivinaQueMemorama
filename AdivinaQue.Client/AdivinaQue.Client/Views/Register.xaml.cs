@@ -32,10 +32,10 @@ namespace AdivinaQue.Client.Views
             Proxy.ServiceClient server = new Proxy.ServiceClient(context);
             if (tbUsername.Text != "" && Password.Password.ToString() != "" && tbEmail.Text != "" && tbName.Text != "")
             {
-               // (string username, string password, string name, string email)
+                // (string username, string password, string name, string email)
 
 
-                    server.register(tbUsername.Text, Password.Password.ToString(), tbName.Text, tbEmail.Text);
+                server.Register(tbUsername.Text, Password.Password.ToString(), tbName.Text, tbEmail.Text);
                     MessageBox.Show("User register succesful ");
                     this.Close();
                     MessageBox.Show("Please write another username ");

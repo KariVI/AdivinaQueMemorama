@@ -35,7 +35,7 @@ namespace AdivinaQue.Client.Views
             if (this.code == tbCode.Text)
             {
                 Console.WriteLine("Ok");
-                server.modify(player, username);
+                server.Modify(player, username);
                 MessageBox.Show("user modified successfully", "Message", MessageBoxButton.OK);
                 this.Close();
             }

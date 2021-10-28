@@ -1,6 +1,6 @@
 ﻿
 
-/*
+
     CREATE TABLE [dbo].[Players] (
         [Id] [int] NOT NULL IDENTITY,
         [name] [nvarchar](max),
@@ -10,4 +10,4 @@
         [state] [nvarchar](max),
         CONSTRAINT [PK_dbo.Players] PRIMARY KEY ([Id])
     )
-    */
+    

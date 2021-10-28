@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
@@ -23,13 +13,36 @@ namespace AdivinaQue.Client.Views
         Proxy.ServiceClient server;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
-
-        public PlayersList(Proxy.ServiceClient server)
+        private String username;
+        public PlayersList(Proxy.ServiceClient server, String username)
         {
             InitializeComponent();
             this.server = server;
             usersCollection = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;
+            this.username = username;
+        }
+
+        private void btSendEmail_Click(object sender, RoutedEventArgs e)
+        {
+            server.SendMailInvitation(tbEmail.Text);
+            this.Close();
+        }
+
+        private void btSend_Click(object sender, RoutedEventArgs e)
+        {
+            
+                if (listUsers.SelectedValue != null)
+                {
+                    var player = listUsers.SelectedValue.ToString();
+                    var result  = server.SendInvitation(player,username);
+                if (!result)
+                {
+                    MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
+                }
+                }
+
+           
         }
     }
 }

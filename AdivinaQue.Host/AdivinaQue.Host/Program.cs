@@ -14,7 +14,6 @@ namespace AdivinaQue.Host
         {
             using (ServiceHost host = new ServiceHost(typeof(Service)))
             {
-
                 host.Open();
                 Console.WriteLine("Server is running");
                 Console.ReadLine();

@@ -33,7 +33,7 @@ namespace AdivinaQue.Client.Views
                 InstanceContext context = new InstanceContext(callback);
                 Proxy.ServiceClient server = new Proxy.ServiceClient(context);
 
-                Boolean value = server.join(tbUsername.Text, Password.Password.ToString());
+                Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
                 if (value == false)
                 {
                     MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
@@ -47,7 +47,7 @@ namespace AdivinaQue.Client.Views
                     Home home = new Home(server,callback);
                     home.setUsername(tbUsername.Text);
                     home.setChat(chat);
-                    server.getConnectedUsers();
+                    server.GetConnectedUsers();
                     home.Show();
                     chat.Show();
                     this.Close();

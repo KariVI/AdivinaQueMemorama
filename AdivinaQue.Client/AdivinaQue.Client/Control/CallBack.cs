@@ -2,20 +2,20 @@
 using AdivinaQue.Client.Views;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+
 
 namespace AdivinaQue.Client.Control
 {
 
-  
+
     public class CallBack : IServiceCallback
     {
         private Chat chat;
         private Modify modify;
         private PlayersList playersList;
+        private string currentUsername;
+
         public void RecieveMessage(string message)
         {
             chat.messagesCollection.Add(message);
@@ -28,25 +28,35 @@ namespace AdivinaQue.Client.Control
         {
             this.modify = modify;
         }
-
+        public bool SendInvitationGame(String username)
+        {
+            var option = MessageBox.Show(username+ " invited you, acept?", "Message", MessageBoxButton.YesNo);
+            bool value = false;
+            if (option == MessageBoxResult.Yes)
+            {
+                value = true;
+            }
+            return value;
+        }
         public void RecieveUsers(Dictionary<string, object> users)
         {
             chat.usersCollection.Clear();
             if(playersList != null)
             {
-                Console.WriteLine("aaa");
                 playersList.usersCollection.Clear();
+                foreach (var username  in users.Keys)
+                {
+                    if(username != currentUsername)
+                    {
+                        playersList.usersCollection.Add(username);
+                    }
+                }
+                 
             }
-            
-
 
             foreach (var username in users.Keys)
             {
-                chat.usersCollection.Add(username);
-                if (playersList != null)
-                {
-                    playersList.usersCollection.Add(username);
-                }      
+                chat.usersCollection.Add(username);      
             }
 
 
@@ -56,7 +66,10 @@ namespace AdivinaQue.Client.Control
         {
            modify.setPlayer(player);
         }
-
+        public void SetCurrentUsername(String currentUsername)
+        {
+            this.currentUsername = currentUsername;
+        }
         internal void setPlayersList(PlayersList playersList)
         {
             this.playersList = playersList;

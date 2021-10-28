@@ -1,12 +1,7 @@
-﻿using AdivinaQue.Host.DatabaseAccess;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdivinaQue.Host.InterfaceContract
 {
@@ -20,7 +15,9 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void RecieveUsers(Dictionary<String, IClient> users);
         [OperationContract(IsOneWay = true)]
-        void RecievePlayer(Player player);  
+        void RecievePlayer(Player player);
+        [OperationContract]
+        bool SendInvitationGame(String username);
     }
 
     [DataContract]

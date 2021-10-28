@@ -52,7 +52,7 @@ namespace AdivinaQue.Client.Views
 
         public void disconect()
         {
-            server.disconnectUser(username);
+            server.DisconnectUser(username);
             Login login = new Login();
             login.Show();
             chat.Close();
@@ -74,8 +74,10 @@ namespace AdivinaQue.Client.Views
         {
             InstanceContext context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
-            PlayersList playersList = new PlayersList(server);
-            callback.setPlayersList(playersList);
+            callback.SetCurrentUsername(username);
+            PlayersList playersList = new PlayersList(server,username);
+            callback.setPlayersList(playersList); 
+            server.GetConnectedUsers();
             playersList.Show();
         }
     }

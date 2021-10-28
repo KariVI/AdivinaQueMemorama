@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 using AdivinaQue.Host.InterfaceContract;
@@ -84,14 +82,8 @@ namespace AdivinaQue.Host.DatabaseAccess
                 }
             }
         }
-
-        public string sendMail(string email)
+        public string GenerateCode()
         {
-            string userMail = "AdivinaQueTeam@hotmail.com";
-            string password = "MarianaKarina1234";
-            string subject = "Register Memorama game";
-            string sendMail = email;
-
             var posibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var code = new char[8];
             var random = new Random();
@@ -101,7 +93,17 @@ namespace AdivinaQue.Host.DatabaseAccess
                 code[i] = posibleCharacters[random.Next(posibleCharacters.Length)];
             }
             string codeString = new String(code);
-            string message = "Ingrese el codigo en la aplicacion: " + codeString;
+            return codeString;
+        }
+        public void sendMail(string email, string newMessage)
+        {
+            string userMail = "AdivinaQueTeam@hotmail.com";
+            string password = "MarianaKarina1234";
+            string subject = "Register Memorama game";
+            string sendMail = email;
+            string message = newMessage;
+            
+            
             MailMessage mail = new MailMessage(userMail, sendMail, subject, message);
 
             SmtpClient server = new SmtpClient("smtp.live.com");
@@ -119,7 +121,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             {
                 Console.WriteLine(ex.Message);
             }
-            return codeString;
+           
         }
 
         private string ComputeSHA256Hash(string input)
