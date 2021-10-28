@@ -19,16 +19,13 @@ namespace AdivinaQue.Client.Views
     public partial class ValidationCode : Window
     {
         private String codeExpected;
-        CallBack callback;
-        InstanceContext context;
+        
         Proxy.ServiceClient server;
 
         public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
-        public ValidationCode()
+        public ValidationCode(Proxy.ServiceClient server)
         {
-            callback = new CallBack();
-            context = new InstanceContext(callback);
-            server = new Proxy.ServiceClient(context);
+            this.server = server;
             InitializeComponent();
         }
 

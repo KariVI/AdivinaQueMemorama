@@ -59,6 +59,7 @@ namespace AdivinaQue.Client.Views
             
             ValidationCode validationCode = new ValidationCode(server);
             callback.SetValidateCode(validationCode);
+            server.GetEmails("a");
             validationCode.Show();
         }
     }
