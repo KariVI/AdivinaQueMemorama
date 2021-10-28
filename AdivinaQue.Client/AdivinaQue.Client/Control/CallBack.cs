@@ -15,7 +15,11 @@ namespace AdivinaQue.Client.Control
         private Modify modify;
         private PlayersList playersList;
         private string currentUsername;
-
+        private Podio podio;
+        public void setPodio(Podio podio)
+        {
+            this.podio = podio;
+        }
         public void RecieveMessage(string message)
         {
             chat.messagesCollection.Add(message);
@@ -73,6 +77,17 @@ namespace AdivinaQue.Client.Control
         internal void setPlayersList(PlayersList playersList)
         {
             this.playersList = playersList;
+        }
+        public void RecieveScores(Dictionary<string, int> globalScores)
+        {
+            foreach (var player in globalScores)
+            {
+                podio.playersCollection.Add(player.Key);
+                podio.scoresCollection.Add(player.Value);
+
+            }
+
+
         }
     }
 }

@@ -3,6 +3,8 @@ using AdivinaQue.Host.InterfaceContract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace AdivinaQue.Host.BusinessRules
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
 
-    public class Service: IService
+    public class Service : IService
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
@@ -51,23 +53,32 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
-        public void Register(string username, string password, string name, string email)
+        public Boolean Register(Player player)
         {
             Authentication authentication = new Authentication();
-            authentication.Register(username, password, name, email);
+            AuthenticationStatus status = authentication.Register(player);
+            Boolean value = false;
+
+            if (status == AuthenticationStatus.Success)
+            {
+                value = true;
+            }
+            return value;
+
         }
+
         public void Modify(Player player, String username)
         {
             Authentication authentication = new Authentication();
-            authentication.updatePlayer(player,  username);
+            authentication.updatePlayer(player, username);
         }
-       
+
         public string SendMailValidation(string email)
         {
             Authentication authentication = new Authentication();
             var code = authentication.GenerateCode();
             string message = "Ingrese el codigo en la aplicacion: " + code;
-            authentication.sendMail(email,message);
+            authentication.sendMail(email, message);
             return code;
         }
 
@@ -117,8 +128,56 @@ namespace AdivinaQue.Host.BusinessRules
         }
         public bool SendInvitation(String toUsername, String fromUsername)
         {
-           var result = users[toUsername].SendInvitationGame(fromUsername);
-           return result;
+            var result = users[toUsername].SendInvitationGame(fromUsername);
+            return result;
+        }
+        public string SendMail(string to, string asunto, string body)
+        {
+            string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
+            string from = "adivinaQueTeam@hotmail.com";
+            string displayName = "Administrador de Adivina ¿Qué? Memorama";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(from, displayName);
+                mail.To.Add(to);
+
+                mail.Subject = asunto;
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+
+
+                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
+                client.Credentials = new NetworkCredential(from, "MarianaKarina1234");
+                client.EnableSsl = true;
+
+
+                client.Send(mail);
+                message = "Exito";
+
+            }
+            catch (SmtpException ex)
+            {
+                message = "Error";
+
+            }
+            return message;
+        }
+        public void GetScores(String username)
+        {
+            Authentication authentication = new Authentication();
+            List<GlobalScore> scores = authentication.GetPlayers();
+            Dictionary<String, int> globalScores = new Dictionary<string, int>();
+
+            foreach (var player in scores)
+            {
+                globalScores.Add(player.username, player.score);
+            }
+
+            users[username].RecieveScores(globalScores);
+
+
         }
     }
+
 }

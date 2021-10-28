@@ -134,11 +134,11 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
         System.Threading.Tasks.Task DisconnectUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Register")]
-        void Register(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        bool Register(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Register")]
-        System.Threading.Tasks.Task RegisterAsync(string username, string password, string name, string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        System.Threading.Tasks.Task<bool> RegisterAsync(AdivinaQue.Client.Proxy.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
         bool SearchUsername(string newUsername);
@@ -181,6 +181,18 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
         System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        string SendMail(string to, string asunto, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        System.Threading.Tasks.Task<string> SendMailAsync(string to, string asunto, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        void GetScores(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        System.Threading.Tasks.Task GetScoresAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -197,6 +209,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitationGame", ReplyAction="http://tempuri.org/IService/SendInvitationGameResponse")]
         bool SendInvitationGame(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
+        void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -259,12 +274,12 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.DisconnectUserAsync(username);
         }
         
-        public void Register(string username, string password, string name, string email) {
-            base.Channel.Register(username, password, name, email);
+        public bool Register(AdivinaQue.Client.Proxy.Player player) {
+            return base.Channel.Register(player);
         }
         
-        public System.Threading.Tasks.Task RegisterAsync(string username, string password, string name, string email) {
-            return base.Channel.RegisterAsync(username, password, name, email);
+        public System.Threading.Tasks.Task<bool> RegisterAsync(AdivinaQue.Client.Proxy.Player player) {
+            return base.Channel.RegisterAsync(player);
         }
         
         public bool SearchUsername(string newUsername) {
@@ -321,6 +336,22 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername) {
             return base.Channel.SendInvitationAsync(toUsername, fromUsername);
+        }
+        
+        public string SendMail(string to, string asunto, string body) {
+            return base.Channel.SendMail(to, asunto, body);
+        }
+        
+        public System.Threading.Tasks.Task<string> SendMailAsync(string to, string asunto, string body) {
+            return base.Channel.SendMailAsync(to, asunto, body);
+        }
+        
+        public void GetScores(string username) {
+            base.Channel.GetScores(username);
+        }
+        
+        public System.Threading.Tasks.Task GetScoresAsync(string username) {
+            return base.Channel.GetScoresAsync(username);
         }
     }
 }

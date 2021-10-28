@@ -55,6 +55,9 @@
   <wsdl:message name="IService_Register_InputMessage">
     <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
+  <wsdl:message name="IService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_SearchUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchUsername" />
   </wsdl:message>
@@ -85,6 +88,15 @@
   <wsdl:message name="IService_SendInvitation_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_SendMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
+  </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
@@ -99,6 +111,9 @@
   </wsdl:message>
   <wsdl:message name="IService_SendInvitationGame_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendInvitationGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveScores" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Join">
@@ -116,6 +131,7 @@
     </wsdl:operation>
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Register" message="tns:IService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RegisterResponse" message="tns:IService_Register_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SearchUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchUsername" message="tns:IService_SearchUsername_InputMessage" />
@@ -141,6 +157,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitation" message="tns:IService_SendInvitation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationResponse" message="tns:IService_SendInvitation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMail" message="tns:IService_SendMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMailResponse" message="tns:IService_SendMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
     </wsdl:operation>
@@ -153,6 +176,9 @@
     <wsdl:operation name="SendInvitationGame">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationGame" message="tns:IService_SendInvitationGame_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitationGameResponse" message="tns:IService_SendInvitationGame_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -190,6 +216,9 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SearchUsername">
       <soap12:operation soapAction="http://tempuri.org/IService/SearchUsername" style="document" />
@@ -242,6 +271,21 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
       <wsdl:output>
@@ -265,6 +309,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

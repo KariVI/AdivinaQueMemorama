@@ -82,12 +82,18 @@
     <Compile Include="Views\PlayersList.xaml.cs">
       <DependentUpon>PlayersList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Podio.xaml.cs">
+      <DependentUpon>Podio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ValidationCode.xaml.cs">
+      <DependentUpon>ValidationCode.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AuthMail.xaml">
       <SubType>Designer</SubType>
@@ -113,7 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Podio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

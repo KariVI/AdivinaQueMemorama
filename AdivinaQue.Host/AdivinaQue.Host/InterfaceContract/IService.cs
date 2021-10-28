@@ -15,8 +15,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void GetConnectedUsers();
         [OperationContract(IsOneWay = true)]
         void DisconnectUser(String username);
-        [OperationContract(IsOneWay = true)]
-        void Register(String username, String password, String name, String email);
+        [OperationContract]
+        Boolean Register(Player player);
         [OperationContract]
         bool SearchUsername(String newUsername);
         [OperationContract(IsOneWay = true)]
@@ -31,5 +31,9 @@ namespace AdivinaQue.Host.InterfaceContract
         void SendMailInvitation(string email);
         [OperationContract]
         bool SendInvitation(String toUsername,String fromUsername);
+        [OperationContract]
+        string SendMail(string to, string asunto, string body);
+        [OperationContract(IsOneWay = true)]
+        void GetScores(String username);
     }
 }

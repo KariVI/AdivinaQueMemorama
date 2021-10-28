@@ -80,5 +80,14 @@ namespace AdivinaQue.Client.Views
             server.GetConnectedUsers();
             playersList.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Podio podio = new Podio(server, username);
+            callback.setPodio(podio);
+            server.GetScores(username);
+            podio.Show();
+            this.Close();
+        }
     }
 }

@@ -21,4 +21,3 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CopyComplete
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.exe
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.AssemblyReference.cache

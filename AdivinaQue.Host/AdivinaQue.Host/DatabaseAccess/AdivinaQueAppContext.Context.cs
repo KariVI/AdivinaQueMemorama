@@ -18,9 +18,6 @@ namespace AdivinaQue.Host.DatabaseAccess
         public AdivinaQueAppContext()
             : base("name=AdivinaQueAppContext")
         {
-            Configuration.ProxyCreationEnabled = false;
-
-      
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,5 +29,6 @@ namespace AdivinaQue.Host.DatabaseAccess
         public virtual DbSet<Game> Game { get; set; }
         public virtual DbSet<Participate> Participate { get; set; }
         public virtual DbSet<Players> Players { get; set; }
+        public virtual DbSet<Score> Score { get; set; }
     }
 }

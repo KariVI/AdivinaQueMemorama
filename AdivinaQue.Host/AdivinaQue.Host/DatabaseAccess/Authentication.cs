@@ -5,16 +5,20 @@ using System.Security.Cryptography;
 using System.Net.Mail;
 using System.Net;
 using AdivinaQue.Host.InterfaceContract;
+using System.Data.Entity.Core;
+using System.Collections.Generic;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
     public class Authentication
     {
-
+        private List<int> listScores;
+        private List<string> listPlayers;
         public Authentication()
         {
         }
-
+        public List<int> ListScores { get { return listScores; } set { listScores = value; } }
+        public List<string> ListPlayers { get { return listPlayers; } set { listPlayers = value; } }
         public AuthenticationStatus Login(string userName, string password)
         {
             AuthenticationStatus status = AuthenticationStatus.Failed;
@@ -60,14 +64,24 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
 
         }
-        public void Register(string username, string password, string name, string email )
+        public AuthenticationStatus Register(Player player)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
-            string passwordHashed = ComputeSHA256Hash(password);
-            
-            AdivinaQueAppContext.Players.Add(new Players() { name = name, userName = username, email= email, password=passwordHashed });
-            AdivinaQueAppContext.SaveChanges();
+            string passwordHashed = ComputeSHA256Hash(player.Password);
+            AuthenticationStatus status = AuthenticationStatus.Success;
+            try
+            {
+                AdivinaQueAppContext.Players.Add(new Players() { name = player.Name, userName = player.Username, email = player.Email, password = passwordHashed });
+                AdivinaQueAppContext.SaveChanges();
+            }
+            catch (EntityException ex)
+            {
+                status = AuthenticationStatus.Failed;
+            }
+            return status;
+
         }
+
 
         public void Delete(string username)
         {
@@ -139,8 +153,24 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return builder.ToString();
             }
         }
+        public List<GlobalScore> GetPlayers()
+        {
 
-    }
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                var query = from Players in context.Players
+                            join
+                            Score in context.Score on Players.Id equals Score.IdPlayer
+                            select new GlobalScore { score = (int)Score.totalGames, username = Players.userName };
+
+
+                return query.ToList();
+            }
+        }
+    
+
+}
 
     public enum AuthenticationStatus
     {
