@@ -1,18 +1,7 @@
 ﻿using AdivinaQue.Client.Control;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
@@ -21,19 +10,23 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Login : Window
     {
+        CallBack callback;
+        InstanceContext context;
+        Proxy.ServiceClient server;
         public Login()
         {
             InitializeComponent();
+            callback = new CallBack();
+            context = new InstanceContext(callback);
+            server = new Proxy.ServiceClient(context);
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text))
             {
-                CallBack callback = new CallBack();
-                InstanceContext context = new InstanceContext(callback);
-                Proxy.ServiceClient server = new Proxy.ServiceClient(context);
+           
 
-                Boolean value = server.join(tbUsername.Text, Password.Password.ToString());
+                Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
                 if (value == false)
                 {
                     MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
@@ -44,8 +37,11 @@ namespace AdivinaQue.Client.Views
                     Chat chat = new Chat(server);
                     chat.setUsername(tbUsername.Text);
                     callback.setChat(chat);
-                    callback.setChat(chat);
-                    server.getConnectedUsers();
+                    Home home = new Home(server,callback);
+                    home.setUsername(tbUsername.Text);
+                    home.setChat(chat);
+                    server.GetConnectedUsers();
+                    home.Show();
                     chat.Show();
                     this.Close();
                 }
@@ -56,8 +52,10 @@ namespace AdivinaQue.Client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Register register = new Register();
-            register.Show();
+            ValidationCode validationCode = new ValidationCode(server);
+            callback.SetValidateCode(validationCode);
+            server.GetEmails("a");
+            validationCode.Show();
         }
     }
 }

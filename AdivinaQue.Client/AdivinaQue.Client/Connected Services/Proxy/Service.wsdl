@@ -33,32 +33,75 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService_join_InputMessage">
-    <wsdl:part name="parameters" element="tns:join" />
+  <wsdl:message name="IService_Join_InputMessage">
+    <wsdl:part name="parameters" element="tns:Join" />
   </wsdl:message>
-  <wsdl:message name="IService_join_OutputMessage">
-    <wsdl:part name="parameters" element="tns:joinResponse" />
+  <wsdl:message name="IService_Join_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_sendMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:sendMessage" />
+  <wsdl:message name="IService_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
-  <wsdl:message name="IService_getConnectedUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:getConnectedUsers" />
+  <wsdl:message name="IService_GetConnectedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedUsers" />
   </wsdl:message>
-  <wsdl:message name="IService_disconnectUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:disconnectUser" />
+  <wsdl:message name="IService_DisconnectUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectUser" />
   </wsdl:message>
-  <wsdl:message name="IService_register_InputMessage">
-    <wsdl:part name="parameters" element="tns:register" />
+  <wsdl:message name="IService_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
-  <wsdl:message name="IService_searchUsername_InputMessage">
-    <wsdl:part name="parameters" element="tns:searchUsername" />
+  <wsdl:message name="IService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_searchUsername_OutputMessage">
-    <wsdl:part name="parameters" element="tns:searchUsernameResponse" />
+  <wsdl:message name="IService_SearchUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsername" />
+  </wsdl:message>
+  <wsdl:message name="IService_SearchUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SearchInfoPlayerByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchInfoPlayerByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMailValidation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMailValidation" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMailValidation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMailValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_Modify_InputMessage">
+    <wsdl:part name="parameters" element="tns:Modify" />
+  </wsdl:message>
+  <wsdl:message name="IService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMailInvitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMailInvitation" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendInvitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitation" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendInvitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetEmails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmails" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTopics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopics" />
   </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
@@ -66,26 +109,78 @@
   <wsdl:message name="IService_RecieveUsers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveUsers" />
   </wsdl:message>
+  <wsdl:message name="IService_RecievePlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecievePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendInvitationGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationGame" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendInvitationGame_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveScores" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveEmails_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveEmails" />
+  </wsdl:message>
+  <wsdl:message name="IService_RecieveTopics_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveTopics" />
+  </wsdl:message>
   <wsdl:portType name="IService">
-    <wsdl:operation name="join">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/join" message="tns:IService_join_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/joinResponse" message="tns:IService_join_OutputMessage" />
+    <wsdl:operation name="Join">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Join" message="tns:IService_Join_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/JoinResponse" message="tns:IService_Join_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="sendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/sendMessage" message="tns:IService_sendMessage_InputMessage" />
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMessage" message="tns:IService_SendMessage_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getConnectedUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/getConnectedUsers" message="tns:IService_getConnectedUsers_InputMessage" />
+    <wsdl:operation name="GetConnectedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetConnectedUsers" message="tns:IService_GetConnectedUsers_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="disconnectUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/disconnectUser" message="tns:IService_disconnectUser_InputMessage" />
+    <wsdl:operation name="DisconnectUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DisconnectUser" message="tns:IService_DisconnectUser_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="register">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/register" message="tns:IService_register_InputMessage" />
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Register" message="tns:IService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RegisterResponse" message="tns:IService_Register_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="searchUsername">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/searchUsername" message="tns:IService_searchUsername_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/searchUsernameResponse" message="tns:IService_searchUsername_OutputMessage" />
+    <wsdl:operation name="SearchUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchUsername" message="tns:IService_SearchUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SearchUsernameResponse" message="tns:IService_SearchUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchInfoPlayerByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchInfoPlayerByUsername" message="tns:IService_SearchInfoPlayerByUsername_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailValidation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMailValidation" message="tns:IService_SendMailValidation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMailValidationResponse" message="tns:IService_SendMailValidation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Modify">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Modify" message="tns:IService_Modify_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Delete" message="tns:IService_Delete_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailInvitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMailInvitation" message="tns:IService_SendMailInvitation_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitation" message="tns:IService_SendInvitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationResponse" message="tns:IService_SendInvitation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMail" message="tns:IService_SendMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMailResponse" message="tns:IService_SendMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmails" message="tns:IService_GetEmails_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTopics" message="tns:IService_GetTopics_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
@@ -93,12 +188,28 @@
     <wsdl:operation name="RecieveUsers">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveUsers" message="tns:IService_RecieveUsers_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecievePlayer" message="tns:IService_RecievePlayer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitationGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationGame" message="tns:IService_SendInvitationGame_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitationGameResponse" message="tns:IService_SendInvitationGame_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveEmails" message="tns:IService_RecieveEmails_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveTopics" message="tns:IService_RecieveTopics_OutputCallbackMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
     <wsp:PolicyReference URI="#NetTcpBinding_IService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="join">
-      <soap12:operation soapAction="http://tempuri.org/IService/join" style="document" />
+    <wsdl:operation name="Join">
+      <soap12:operation soapAction="http://tempuri.org/IService/Join" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -106,38 +217,110 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="sendMessage">
-      <soap12:operation soapAction="http://tempuri.org/IService/sendMessage" style="document" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getConnectedUsers">
-      <soap12:operation soapAction="http://tempuri.org/IService/getConnectedUsers" style="document" />
+    <wsdl:operation name="GetConnectedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetConnectedUsers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="disconnectUser">
-      <soap12:operation soapAction="http://tempuri.org/IService/disconnectUser" style="document" />
+    <wsdl:operation name="DisconnectUser">
+      <soap12:operation soapAction="http://tempuri.org/IService/DisconnectUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="register">
-      <soap12:operation soapAction="http://tempuri.org/IService/register" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="searchUsername">
-      <soap12:operation soapAction="http://tempuri.org/IService/searchUsername" style="document" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/IService/Register" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchUsername">
+      <soap12:operation soapAction="http://tempuri.org/IService/SearchUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchInfoPlayerByUsername">
+      <soap12:operation soapAction="http://tempuri.org/IService/SearchInfoPlayerByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailValidation">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMailValidation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modify">
+      <soap12:operation soapAction="http://tempuri.org/IService/Modify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/IService/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMailInvitation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendInvitation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEmails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetTopics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
@@ -151,6 +334,39 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecievePlayer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitationGame">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendInvitationGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveEmails">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveEmails" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveTopics">
+      <soap12:operation soapAction="http://tempuri.org/IService/RecieveTopics" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
@@ -158,7 +374,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

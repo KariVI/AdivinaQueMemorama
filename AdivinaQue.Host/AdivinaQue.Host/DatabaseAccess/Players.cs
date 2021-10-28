@@ -32,5 +32,6 @@ namespace AdivinaQue.Host.DatabaseAccess
         public virtual ICollection<Game> Game { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Participate> Participate { get; set; }
+        public virtual Score Score { get; set; }
     }
 }

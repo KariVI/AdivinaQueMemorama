@@ -54,33 +54,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessRules\Service.cs" />
-    <Compile Include="DatabaseAccess\AdivinaQue.Context.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueAppContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.Context.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAccess\AdivinaQue.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueAppContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAccess\AdivinaQue.Designer.cs">
+    <Compile Include="DatabaseAccess\AdivinaQueAppContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Authentication.cs" />
     <Compile Include="DatabaseAccess\Card.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Game.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseAccess\GlobalScore.cs" />
     <Compile Include="DatabaseAccess\Participate.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAccess\Players.cs">
-      <DependentUpon>AdivinaQue.tt</DependentUpon>
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseAccess\Score.cs">
+      <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
     <Compile Include="InterfaceContract\IClient.cs" />
     <Compile Include="InterfaceContract\IService.cs" />
@@ -89,29 +93,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DatabaseAccess\AdivinaQue.edmx">
+    <EntityDeploy Include="DatabaseAccess\AdivinaQueAppContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AdivinaQue.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdivinaQueAppContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DatabaseAccess\AdivinaQue.edmx.diagram">
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
+    <None Include="DatabaseAccess\AdivinaQueAppContext.edmx.diagram">
+      <DependentUpon>AdivinaQueAppContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseAccess\AdivinaQue.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AdivinaQue.Context.cs</LastGenOutput>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
-    </Content>
-    <Content Include="DatabaseAccess\AdivinaQue.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AdivinaQue.edmx</DependentUpon>
-      <LastGenOutput>AdivinaQue.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="DatabaseAccess\AdivinaQueAppContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdivinaQueAppContext.edmx</DependentUpon>
+      <LastGenOutput>AdivinaQueAppContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DatabaseAccess\AdivinaQueAppContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdivinaQueAppContext.edmx</DependentUpon>
+      <LastGenOutput>AdivinaQueAppContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

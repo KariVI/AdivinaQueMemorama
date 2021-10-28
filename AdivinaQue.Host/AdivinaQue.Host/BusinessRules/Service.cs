@@ -3,6 +3,8 @@ using AdivinaQue.Host.InterfaceContract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +13,38 @@ namespace AdivinaQue.Host.BusinessRules
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
 
-    public class Service: IService
+    public class Service : IService
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
+        public void GetTopics(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> topics = authentication.getTopics();
 
 
-        public void disconnectUser(String username)
+            users[username].RecieveTopics(topics);
+        }
+        public void GetEmails(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> emails = authentication.getEmails();
+
+
+            users[username].RecieveEmails(emails);
+        }
+        public void DisconnectUser(String username)
         {
             users.Remove(username);
-            getConnectedUsers();
+            GetConnectedUsers();
+        }
+        public void Delete(string username)
+        {
+            Authentication authentication = new Authentication();
+            authentication.Delete(username);
         }
 
-        public void getConnectedUsers()
+        public void GetConnectedUsers()
         {
             foreach (var other in users.Values)
             {
@@ -31,34 +52,66 @@ namespace AdivinaQue.Host.BusinessRules
             }
         }
 
-        public bool join(string username, string password)
+        public bool Join(string username, string password)
         {
             Authentication authentication = new Authentication();
             AuthenticationStatus status = authentication.Login(username, password);
-            Boolean value = true;
+            Boolean value = false;
             if (status == AuthenticationStatus.Success)
             {
                 var connection = OperationContext.Current.GetCallbackChannel<IClient>();
                 users[username] = connection;
                 Console.WriteLine("Usuario {0} se conecto", username);
-
-            }
-            else
-            {
-                value = false;
-                Console.WriteLine("No se conecto");
-
+                value = true;
             }
             return value;
         }
 
-        public void register(string username, string password, string name, string email)
+        public Boolean Register(Player player)
         {
             Authentication authentication = new Authentication();
-            authentication.Register(username, password, name, email);
+            AuthenticationStatus status = authentication.Register(player);
+            Boolean value = false;
+
+            if (status == AuthenticationStatus.Success)
+            {
+                value = true;
+            }
+            return value;
+
         }
 
-        public bool searchUsername(string newUsername)
+        public void Modify(Player player, String username)
+        {
+            Authentication authentication = new Authentication();
+            authentication.updatePlayer(player, username);
+        }
+
+        public string SendMailValidation(string email)
+        {
+            Authentication authentication = new Authentication();
+            var code = authentication.GenerateCode();
+            string message = "Ingrese el codigo en la aplicacion: " + code;
+            authentication.sendMail(email, message);
+            return code;
+        }
+
+        public void SendMailInvitation(string email)
+        {
+            Authentication authentication = new Authentication();
+            string message = "Lo han invitado a jugar Adivina Que! Instale el juego AQUI";
+            authentication.sendMail(email, message);
+        }
+
+        public void SearchInfoPlayerByUsername(String username)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IClient>();
+            Authentication authentication = new Authentication();
+            Player player = authentication.RetrievePlayer(username);
+            connection.RecievePlayer(player);
+        }
+
+        public bool SearchUsername(string newUsername)
         {
             bool value = false;
             if (users[newUsername] != null)
@@ -68,7 +121,7 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
-        public void sendMessage(string message, String username, string userReceptor)
+        public void SendMessage(string message, String username, string userReceptor)
         {
             if (userReceptor.Equals("Todos"))
             {
@@ -87,6 +140,58 @@ namespace AdivinaQue.Host.BusinessRules
 
             }
         }
+        public bool SendInvitation(String toUsername, String fromUsername)
+        {
+            var result = users[toUsername].SendInvitationGame(fromUsername);
+            return result;
+        }
+        public string SendMail(string to, string asunto, string body)
+        {
+            string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
+            string from = "adivinaQueTeam@hotmail.com";
+            string displayName = "Administrador de Adivina ¿Qué? Memorama";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(from, displayName);
+                mail.To.Add(to);
 
+                mail.Subject = asunto;
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+
+
+                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
+                client.Credentials = new NetworkCredential(from, "MarianaKarina1234");
+                client.EnableSsl = true;
+
+
+                client.Send(mail);
+                message = "Exito";
+
+            }
+            catch (SmtpException ex)
+            {
+                message = "Error";
+
+            }
+            return message;
+        }
+        public void GetScores(String username)
+        {
+            Authentication authentication = new Authentication();
+            List<GlobalScore> scores = authentication.GetPlayers();
+            Dictionary<String, int> globalScores = new Dictionary<string, int>();
+
+            foreach (var player in scores)
+            {
+                globalScores.Add(player.username, player.score);
+            }
+
+            users[username].RecieveScores(globalScores);
+
+
+        }
     }
+
 }

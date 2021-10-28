@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdivinaQue.Host.InterfaceContract
 {
@@ -12,16 +8,36 @@ namespace AdivinaQue.Host.InterfaceContract
     public interface IService
     {
         [OperationContract]
-        Boolean join(string username, string password);
+        Boolean Join(string username, string password);
         [OperationContract(IsOneWay = true)]
-        void sendMessage(string message, String username, string userReceptor);
+        void SendMessage(string message, String username, string userReceptor);
         [OperationContract(IsOneWay = true)]
-        void getConnectedUsers();
+        void GetConnectedUsers();
         [OperationContract(IsOneWay = true)]
-        void disconnectUser(String username);
-        [OperationContract(IsOneWay = true)]
-        void register(String username, String password, String name, String email);
+        void DisconnectUser(String username);
         [OperationContract]
-        bool searchUsername(String newUsername);
+        Boolean Register(Player player);
+        [OperationContract]
+        bool SearchUsername(String newUsername);
+        [OperationContract(IsOneWay = true)]
+        void SearchInfoPlayerByUsername(String username);
+        [OperationContract]
+        string SendMailValidation(String email);
+        [OperationContract(IsOneWay = true)]
+        void Modify(Player player, String username);
+        [OperationContract(IsOneWay = true)]
+        void Delete(string username);
+        [OperationContract(IsOneWay = true)]
+        void SendMailInvitation(string email);
+        [OperationContract]
+        bool SendInvitation(String toUsername,String fromUsername);
+        [OperationContract]
+        string SendMail(string to, string asunto, string body);
+        [OperationContract(IsOneWay = true)]
+        void GetScores(String username);
+        [OperationContract(IsOneWay = true)]
+        void GetEmails(string username);
+        [OperationContract(IsOneWay = true)]
+        void GetTopics(string username);
     }
 }

@@ -1,0 +1,5 @@
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.csproj.AssemblyReference.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.AssemblyInfoInputs.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.AssemblyInfo.cs
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.csproj.CoreCompileInputs.cache

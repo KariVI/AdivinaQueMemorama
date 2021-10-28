@@ -7,15 +7,14 @@
         mc:Ignorable="d"
         Title="Login" Height="500" Width="472.5">
     <Grid Background ="Lavender" Margin="0,0,-8,-53" >
-        <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="25" Margin="78,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
-        <Button x:Name="LoginButton" Background="Plum" Content="Login" Margin="316,370,69,132" Click="LoginButton_Click"/>
+        <TextBox x:Name="tbUsername" Background="#c0aee0" HorizontalAlignment="Left" Height="25" Margin="78,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
 
 
-        <Label Content="Username" HorizontalAlignment="Left" Margin="45,134,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" Height="26" Width="115"/>
-        <Label Content="Inicio de sesión&#xD;&#xA;" HorizontalAlignment="Left" Margin="45,64,0,0" VerticalAlignment="Top" FontFamily="Bubble Bobble" FontSize="24" Height="65" Width="152"/>
-        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Height="25" Margin="78,271,0,0"  VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="45,237,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" Height="26" Width="136"/>
-        <Button Content="Register" Background="Plum" HorizontalAlignment="Left" Margin="215,370,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click" RenderTransformOrigin="1.39,0.777" Height="20"/>
-
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="45,151,0,0" VerticalAlignment="Top" FontFamily="Tw Cen MT Condensed" Height="32" Width="115" FontSize="18"/>
+        <Label Content="Inicio de sesión&#xD;&#xA;" HorizontalAlignment="Left" Margin="45,57,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="24" Height="65" Width="279"/>
+        <PasswordBox x:Name="Password" Background="#c0aee0" HorizontalAlignment="Left" Height="25" Margin="78,271,0,0"  VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="45,237,0,0" VerticalAlignment="Top" FontFamily="Tw Cen MT Condensed" Height="26" Width="136" FontSize="18"/>
+        <Button Content="Register" Background="Plum" HorizontalAlignment="Left" Margin="331,376,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" RenderTransformOrigin="1.39,0.777" Height="22" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
+        <Button Content="Login"  Background="Plum" Name="LoginBt" HorizontalAlignment="Left" Margin="225,376,0,0" VerticalAlignment="Top" Width="87" Height="22" Click="LoginButton_Click" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
     </Grid>
 </Window>
