@@ -36,8 +36,8 @@ namespace AdivinaQue.Client.Views
         public Button SendMessageButton { get { return SendButton; } set { SendButton = value; } }
         public ScrollViewer ScrollTextBox { get { return ContentScroller; } set { ContentScroller = value; } }
         public TextBox MessageContainer { get { return MessageContent; } set { MessageContent = value; } }
-        public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
-        public ListView messages { get { return listMessages; } set { listMessages = value; } }
+        public ListBox ListUsers { get { return UsersConnected; } set { UsersConnected = value; } }
+        public ListView Messages { get { return listMessages; } set { listMessages = value; } }
 
 
         public Chat(Proxy.ServiceClient server)
@@ -47,8 +47,8 @@ namespace AdivinaQue.Client.Views
             messagesCollection = new ObservableCollection<String>();
             usersCollection = new ObservableCollection<string>();
             typeMessage = "Todos";
-            messages.ItemsSource = messagesCollection;
-            listUsers.ItemsSource = usersCollection;
+            Messages.ItemsSource = messagesCollection;
+            ListUsers.ItemsSource = usersCollection;
 
         }
 
@@ -64,14 +64,14 @@ namespace AdivinaQue.Client.Views
         {
             if (!string.IsNullOrEmpty(MessageContent.Text))
 
-                if (listUsers.SelectedValue != null)
+                if (ListUsers.SelectedValue != null)
                 {
                     Console.WriteLine(typeMessage);
-                    typeMessage = listUsers.SelectedValue.ToString();
+                    typeMessage = ListUsers.SelectedValue.ToString();
                 }
 
             server.SendMessage(MessageContent.Text, username, typeMessage);
-            listUsers.SelectedValue = null;
+            ListUsers.SelectedValue = null;
             MessageContent.Clear();
             typeMessage = "Todos";
 

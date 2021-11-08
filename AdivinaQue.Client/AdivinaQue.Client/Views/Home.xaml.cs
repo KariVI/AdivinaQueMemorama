@@ -25,8 +25,8 @@ namespace AdivinaQue.Client.Views
         private ServiceClient server;
         private string username;
         private Chat chat;
-        private CallBack callback;
-        public Home(ServiceClient server,CallBack callback)
+        private CallBackTest callback;
+        public Home(ServiceClient server,CallBackTest callback)
         {
             InitializeComponent();
             this.server = server;
@@ -35,11 +35,11 @@ namespace AdivinaQue.Client.Views
 
         private void btModify_Click(object sender, RoutedEventArgs e)
         {
-            CallBack callback = new CallBack();
+            CallBackTest callback = new CallBackTest();
             InstanceContext context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
             Modify modify = new Modify();
-            callback.setModify(modify);
+            callback.SetModify(modify);
             modify.setHome(this);
             modify.setUsername(username);
             modify.setServer(server);
@@ -76,15 +76,16 @@ namespace AdivinaQue.Client.Views
             server = new Proxy.ServiceClient(context);
             callback.SetCurrentUsername(username);
             PlayersList playersList = new PlayersList(server,username,callback);
-            callback.setPlayersList(playersList); 
+            callback.SetPlayersList(playersList); 
             server.GetConnectedUsers();
             playersList.Show();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Podio podio = new Podio(server, username);
-            callback.setPodio(podio);
+            callback.SetPodio(podio);
             server.GetScores(username);
             podio.Show();
             this.Close();

@@ -14,10 +14,12 @@
 
 
         </ComboBox>
-        <Button x:Name="ConfirmBt" Background="Plum"  FontFamily="Tw Cen MT Condensed" FontSize="16" Content="Aceptar&#xA;" HorizontalAlignment="Left" Margin="290,335,0,0" VerticalAlignment="Top" Width="75" Height="21" Click="ConfirmBt_Click" RenderTransformOrigin="0.48,1.238"/>
-        <Label Content="Tamaño&#xD;&#xA;" HorizontalAlignment="Left" Margin="73,276,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ConfirmBt" Content ="Start" Background="Plum"  FontFamily="Tw Cen MT Condensed" FontSize="16"  HorizontalAlignment="Left" Margin="290,335,0,0" VerticalAlignment="Top" Width="75" Height="21" Click="ConfirmBt_Click" RenderTransformOrigin="0.48,1.238"/>
+        <Label Content="Size&#xA;" HorizontalAlignment="Left" Margin="73,276,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lbxTopics" HorizontalAlignment="Left" Background="#FFE6E6F5" Height="136" Margin="48,135,0,0" VerticalAlignment="Top" Width="309"/>
-        <Label Content="Escoge el tema del juego&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="48,100,0,0" VerticalAlignment="Top"/>
-        <Label Content="Configuración " HorizontalAlignment="Left" Margin="111,24,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="20"/>
+        <Label Content="Select a topic&#xA;&#xA;" HorizontalAlignment="Left" Margin="48,96,0,0" VerticalAlignment="Top" Height="34"/>
+        <Label Content="Configurate" HorizontalAlignment="Left" Margin="111,24,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="20"/>
+        <Label Name="lbUsername" Content="" HorizontalAlignment="Left" Margin="317,24,0,0" VerticalAlignment="Top" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
+        <Label Content="If you not select topic for default is all categories" HorizontalAlignment="Left" Margin="48,78,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
         Title="Game" Height="700" Width="1000">
-    <Grid>
+    <Grid Background="Lavender">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -14,12 +14,15 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Label Name="lbRival" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="89,10,0,0" VerticalAlignment="Top" Height="34" Width="83"/>
         </Grid>
-        <Grid Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0">
             <Label>
-                <Label Content="User One "/>
+                <Label Name="lbUserName" Content=" "/>
             </Label>
             <DataGrid HorizontalAlignment="Left" Height="100" Margin="244,50,0,0" VerticalAlignment="Top" Width="532"/>
         </Grid>

@@ -64,6 +64,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Control\CallBack.cs" />
+    <Compile Include="Control\Validate.cs" />
     <Compile Include="Views\AuthMail.xaml.cs">
       <DependentUpon>AuthMail.xaml</DependentUpon>
     </Compile>

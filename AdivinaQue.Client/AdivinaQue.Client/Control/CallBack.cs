@@ -9,7 +9,7 @@ namespace AdivinaQue.Client.Control
 {
 
 
-    public class CallBack : IServiceCallback
+    public class CallBackTest : IServiceCallback
     {
         private Chat chat;
         private Modify modify;
@@ -19,7 +19,7 @@ namespace AdivinaQue.Client.Control
         private ValidationCode validationCode;
         private GameConfiguration gameConfiguration;
 
-        public void setPodio(Podio podio)
+        public void SetPodio(Podio podio)
         {
             this.podio = podio;
         }
@@ -27,11 +27,11 @@ namespace AdivinaQue.Client.Control
         {
             chat.messagesCollection.Add(message);
         }
-        public void setChat(Chat chat)
+        public void SetChat(Chat chat)
         {
             this.chat = chat;
         }
-        public void setModify(Modify modify)
+        public void SetModify(Modify modify)
         {
             this.modify = modify;
         }
@@ -58,13 +58,7 @@ namespace AdivinaQue.Client.Control
             this.gameConfiguration = gameConfiguration;
         }
 
-        public void RecieveEmails(string[] emails)
-        {
-            foreach (var email in emails)
-            {
-                //validationCode.emails.Add(email);
-            }
-        }
+     
   
 
         public void RecieveUsers(Dictionary<string, object> users)
@@ -99,7 +93,7 @@ namespace AdivinaQue.Client.Control
         {
             this.currentUsername = currentUsername;
         }
-        internal void setPlayersList(PlayersList playersList)
+        internal void SetPlayersList(PlayersList playersList)
         {
             this.playersList = playersList;
         }
@@ -117,6 +111,15 @@ namespace AdivinaQue.Client.Control
         public void SetValidateCode(ValidationCode validationCode)
         {
             this.validationCode = validationCode;
+        }
+
+        public void SendBoardConfigurate(string username, int size, string category)
+        {
+            Game game = new Game(size, category);
+            game.SetUsername(username);
+            game.SetUsernameRival(currentUsername);
+            game.Show();
+           
         }
     }
 }

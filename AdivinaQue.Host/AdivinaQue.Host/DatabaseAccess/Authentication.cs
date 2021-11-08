@@ -63,8 +63,21 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.ToList<String>();
             }
         }
-    
-    public Player RetrievePlayer(string username)
+
+        public List<String> getUsers()
+        {
+
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                var query = from Players in context.Players
+                            select Players.userName;
+
+
+                return query.ToList<String>();
+            }
+        }
+        public Player RetrievePlayer(string username)
         {
             using (var context = new AdivinaQueAppContext())
             {
@@ -189,6 +202,7 @@ namespace AdivinaQue.Host.DatabaseAccess
                 var query = from Players in context.Players
                             join
                             Score in context.Score on Players.Id equals Score.IdPlayer
+                            orderby Score.totalGames descending
                             select new GlobalScore { score = (int)Score.totalGames, username = Players.userName };
 
 

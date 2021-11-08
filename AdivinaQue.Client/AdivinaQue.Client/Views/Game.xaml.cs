@@ -20,7 +20,10 @@ namespace AdivinaQue.Client.Views
     public partial class Game : Window
     {
         private int sizeBoard;
-        public Game(int sizeBoard)
+        private string category;
+        private string username;
+        private string usernarmeRival;
+        public Game(int sizeBoard, string category)
         {
             this.sizeBoard = sizeBoard;
             wpCards = new WrapPanel();
@@ -28,6 +31,17 @@ namespace AdivinaQue.Client.Views
             addButton();
         }
 
+        public void SetUsername(string username)
+        {
+            this.username = username;
+            lbUserName.Content = username;
+        }
+
+        public void SetUsernameRival(string usernameRival)
+        {
+            this.usernarmeRival = usernameRival;
+            lbRival.Content = usernameRival;
+        }
         public void addButton()
         {
             Button buttonAuxiliar;
@@ -36,7 +50,7 @@ namespace AdivinaQue.Client.Views
                 buttonAuxiliar = new Button();
                 buttonAuxiliar.Width = 100;
                 buttonAuxiliar.Height = 70;
-                buttonAuxiliar.Background = Brushes.Black;
+                buttonAuxiliar.Background = Brushes.PaleVioletRed;
 
                 wpCards.Children.Add(buttonAuxiliar);
             }

@@ -22,9 +22,10 @@ namespace AdivinaQue.Client.Views
     {
         public ObservableCollection<String> topicsCollection;
         Proxy.ServiceClient server;
-        String username;
+        private String username;
+        private String toUsername;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
-        public GameConfiguration(Proxy.ServiceClient server, String username)
+        public GameConfiguration(Proxy.ServiceClient server, String username, String toUsername)
         {
 
             InitializeComponent();
@@ -32,11 +33,20 @@ namespace AdivinaQue.Client.Views
             lbxTopic.ItemsSource = topicsCollection;
             this.server = server;
             this.username = username;
+            this.toUsername = toUsername;
+            lbUsername.Content=username;
         }
 
 
         private void ConfirmBt_Click(object sender, RoutedEventArgs e)
         {
+            string category = "All";
+
+            if (lbxTopic.SelectedItem != null)
+            {
+                category = lbxTopic.SelectedItem.ToString();
+            }
+
             int sizeBoard = 0;
             if (cbSizeBoard.SelectedItem.ToString().Equals("4 x 4"))
             {
@@ -52,7 +62,10 @@ namespace AdivinaQue.Client.Views
                 sizeBoard = 6;
 
             }
-            Game game = new Game(sizeBoard);
+            Game game = new Game(sizeBoard,category);
+            server.SendBoard(toUsername,sizeBoard,category);
+            game.SetUsername(username);
+            game.SetUsernameRival(toUsername);
             game.Show();
             this.Close();
         }

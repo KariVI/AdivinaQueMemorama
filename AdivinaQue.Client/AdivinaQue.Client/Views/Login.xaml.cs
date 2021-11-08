@@ -10,13 +10,13 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Login : Window
     {
-        CallBack callback;
+        CallBackTest callback;
         InstanceContext context;
         Proxy.ServiceClient server;
         public Login()
         {
             InitializeComponent();
-            callback = new CallBack();
+            callback = new CallBackTest();
             context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
         }
@@ -36,7 +36,7 @@ namespace AdivinaQue.Client.Views
                 {
                     Chat chat = new Chat(server);
                     chat.setUsername(tbUsername.Text);
-                    callback.setChat(chat);
+                    callback.SetChat(chat);
                     Home home = new Home(server,callback);
                     home.setUsername(tbUsername.Text);
                     home.setChat(chat);
@@ -54,7 +54,7 @@ namespace AdivinaQue.Client.Views
         {
             ValidationCode validationCode = new ValidationCode(server);
             callback.SetValidateCode(validationCode);
-            server.GetEmails("a");
+
             validationCode.Show();
         }
     }

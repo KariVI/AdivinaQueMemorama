@@ -25,13 +25,19 @@ namespace AdivinaQue.Host.BusinessRules
 
             users[username].RecieveTopics(topics);
         }
-        public void GetEmails(string username)
+      
+
+        public List<String> GetEmails(){
+          Authentication authentication = new Authentication();
+            List<String> emails = authentication.getEmails();
+            return emails;
+          }
+
+        public List<String> GetUsers()
         {
             Authentication authentication = new Authentication();
-            List<String> emails = authentication.getEmails();
-
-
-            users[username].RecieveEmails(emails);
+            List<String> users = authentication.getUsers();
+            return users;
         }
         public void DisconnectUser(String username)
         {
@@ -144,6 +150,11 @@ namespace AdivinaQue.Host.BusinessRules
         {
             var result = users[toUsername].SendInvitationGame(fromUsername);
             return result;
+        }
+
+        public void SendBoard(String toUsername, int size, string category)
+        {
+             users[toUsername].SendBoardConfigurate(toUsername,size,category);
         }
         public string SendMail(string to, string asunto, string body)
         {

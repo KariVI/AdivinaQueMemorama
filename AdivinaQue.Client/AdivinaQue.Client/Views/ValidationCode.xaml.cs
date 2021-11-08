@@ -47,8 +47,12 @@ namespace AdivinaQue.Client.Views
                     MessageBox.Show("Please write the correct code ");
                 }
             }
+            else
+            {
+                MessageBox.Show("Please write a code");
+            }
         }
-        public string generateCodeValidation()
+        public string GenerateCodeValidation()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var charsArray = new char[5];
@@ -67,25 +71,50 @@ namespace AdivinaQue.Client.Views
         {
             if (tbEmail.Text != "")
             {
-                String code = generateCodeValidation();
-                codeExpected = code;
-                string body = @"<style>
-                                h2{color:#E267B4;}
-                                </style>
-                                <h2>" + code + "</h2>";
-                String messageEmailSuccesful = server.SendMail(tbEmail.Text, "Código de validación", body);
+                Validate validate = new Validate();
+                if (validate.ValidationEmail(tbEmail.Text)){
+                    if (!SearchDuplicateEmail())
+                    {
+                        String code = GenerateCodeValidation();
+                        codeExpected = code;
+                        string body = @"<style>
+                                            h2{color:#E267B4;}
+                                            </style>
+                                            <h2>" + code + "</h2>";
+                        String messageEmailSuccesful = server.SendMail(tbEmail.Text, "Código de validación", body);
 
-                if (messageEmailSuccesful == "Exito")
+                        if (messageEmailSuccesful == "Exito")
+                        {
+
+                            MessageBox.Show("Code sended");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("This email already exists , try again ");
+                    }
+                } else
                 {
-
-                    MessageBox.Show("Code sended");
-
-                }
-                else
-                {
-                    MessageBox.Show("Please write a valid email");
+                    MessageBox.Show("Please write a correct email");
                 }
             }
+            else
+            {
+                MessageBox.Show("Please write an email");
+            }
+            
+        }
+
+        private bool SearchDuplicateEmail() {
+            bool value = false;
+            string[] emails = server.GetEmails();
+                foreach(var email in emails ){  
+                    if(email.Equals(tbEmail.Text)){ 
+                        value=true;
+                    }
+                }
+                         
+            return value;
         }
     }
 }

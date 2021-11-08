@@ -15,8 +15,8 @@ namespace AdivinaQue.Client.Views
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
         private String username;
-        CallBack callback;
-        public PlayersList(Proxy.ServiceClient server, String username, CallBack callback)
+        CallBackTest callback;
+        public PlayersList(Proxy.ServiceClient server, String username, CallBackTest callback)
         {
             InitializeComponent();
             this.server = server;
@@ -41,7 +41,7 @@ namespace AdivinaQue.Client.Views
                     var result  = server.SendInvitation(player,username);
                 if (result)
                 {
-                    GameConfiguration gameConfiguration = new GameConfiguration(server,username);
+                    GameConfiguration gameConfiguration = new GameConfiguration(server,username, player);
                     callback.SetGameConfiguration(gameConfiguration);
                     server.GetTopics(username);
                     gameConfiguration.Show();
