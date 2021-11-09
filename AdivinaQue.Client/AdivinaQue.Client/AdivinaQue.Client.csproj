@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Control\CallBack.cs" />
     <Compile Include="Control\Validate.cs" />
+    <Compile Include="Views\Alert.xaml.cs">
+      <DependentUpon>Alert.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AuthMail.xaml.cs">
       <DependentUpon>AuthMail.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <DependentUpon>ValidationCode.xaml</DependentUpon>
     </Compile>
     <Page Include="Strings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Alert.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

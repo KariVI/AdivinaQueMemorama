@@ -34,7 +34,6 @@ namespace AdivinaQue.Client.Views
             this.server = server;
             this.username = username;
             this.toUsername = toUsername;
-            lbUsername.Content=username;
         }
 
 

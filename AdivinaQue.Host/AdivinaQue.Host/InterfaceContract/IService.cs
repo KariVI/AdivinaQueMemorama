@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace AdivinaQue.Host.InterfaceContract
@@ -31,12 +32,14 @@ namespace AdivinaQue.Host.InterfaceContract
         bool SendInvitation(String toUsername,String fromUsername);
         [OperationContract]
         string SendMail(string to, string asunto, string body);
-        [OperationContract(IsOneWay = true)]
-        void GetScores(String username);
-        [OperationContract(IsOneWay = true)]
-        void GetEmails(string username);
+        [OperationContract]
+        List<String> GetEmails();
         [OperationContract(IsOneWay = true)]
         void GetTopics(string username);
-       
+        [OperationContract(IsOneWay = true)]
+        void SendBoard(string toUsername, int size, string category);
+
+        [OperationContract]
+        List<String> GetUsers();
     }
 }

@@ -17,28 +17,7 @@ namespace AdivinaQue.Host.BusinessRules
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
-        public void GetTopics(string username)
-        {
-            Authentication authentication = new Authentication();
-            List<String> topics = authentication.getTopics();
-
-
-            users[username].RecieveTopics(topics);
-        }
-      
-
-        public List<String> GetEmails(){
-          Authentication authentication = new Authentication();
-            List<String> emails = authentication.getEmails();
-            return emails;
-          }
-
-        public List<String> GetUsers()
-        {
-            Authentication authentication = new Authentication();
-            List<String> users = authentication.getUsers();
-            return users;
-        }
+     
         public void DisconnectUser(String username)
         {
             users.Remove(username);
@@ -214,6 +193,30 @@ namespace AdivinaQue.Host.BusinessRules
 
         }
 
-    
+        public void GetTopics(string username)
+        {
+            Authentication authentication = new Authentication();
+            List<String> topics = authentication.getTopics();
+
+
+            users[username].RecieveTopics(topics);
+        }
+
+
+        public List<String> GetEmails()
+        {
+            Authentication authentication = new Authentication();
+            List<String> emails = authentication.getEmails();
+            return emails;
+        }
+
+        public List<String> GetUsers()
+        {
+            Authentication authentication = new Authentication();
+            List<String> users = authentication.getUsers();
+            return users;
+        }
+
+
     }
 }
