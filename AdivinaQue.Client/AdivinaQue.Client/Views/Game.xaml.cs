@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,37 +25,51 @@ namespace AdivinaQue.Client.Views
         public Game(int sizeBoard, string category)
         {
             this.sizeBoard = sizeBoard;
+            Console.WriteLine(sizeBoard);
             wpCards = new WrapPanel();
+          
             InitializeComponent();
             addButton();
+
         }
 
         public void SetUsername(string username)
         {
             this.username = username;
-            lbUserName.Content = username;
+          
         }
 
         public void SetUsernameRival(string usernameRival)
         {
             this.usernarmeRival = usernameRival;
-            lbRival.Content = usernameRival;
+            
         }
         public void addButton()
         {
-            Button buttonAuxiliar;
+
             for (int i = 0; i < (sizeBoard * sizeBoard); i++)
             {
-                buttonAuxiliar = new Button();
-                buttonAuxiliar.Width = 100;
-                buttonAuxiliar.Height = 70;
-                buttonAuxiliar.Background = Brushes.PaleVioletRed;
 
-                wpCards.Children.Add(buttonAuxiliar);
+                Button bt = new Button();
+
+                bt.Click += new RoutedEventHandler(button_onclick);
+                bt.Width = 639 / sizeBoard;
+                bt.Height = 624 / sizeBoard;
+                bt.Background = Brushes.LavenderBlush;
+                wpCards.Children.Add(bt);
+            
             }
+        }
 
-
-
+        public void button_onclick(object sender, RoutedEventArgs e)
+        {
+            Button bt = sender as Button;
+            Image buttonAuxiliar = new Image();
+            buttonAuxiliar.Source = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
++ ";component/"
++ "images/testImage2.jpg", UriKind.Absolute));
+            bt.Content = buttonAuxiliar;
         }
     }
-}
+    }
+

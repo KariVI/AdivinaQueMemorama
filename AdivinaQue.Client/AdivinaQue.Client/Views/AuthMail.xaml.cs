@@ -44,7 +44,7 @@ namespace AdivinaQue.Client.Views
                 MessageBox.Show("Incorrect code", "Message", MessageBoxButton.OK);
             }
         }
-        private void btCancel_Click(object sender, RoutedEventArgs e)
+        private void btCancel_Click()
         {
             this.Close();
         }
@@ -59,5 +59,9 @@ namespace AdivinaQue.Client.Views
             this.username = username;
         }
 
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

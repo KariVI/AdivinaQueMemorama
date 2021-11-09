@@ -47,11 +47,21 @@ namespace AdivinaQue.Client.Views
             }
 
             int sizeBoard = 0;
-            if (cbSizeBoard.SelectedItem.ToString().Equals("4 x 4"))
+            if (cbSizeBoard.Text.Equals("2 x 2"))
+            {
+                sizeBoard = 2;
+            }
+            else if (cbSizeBoard.Text.Equals("3 x 3"))
+            {
+                sizeBoard = 3;
+
+            }
+            else if (cbSizeBoard.Text.Equals("4 x 4"))
             {
                 sizeBoard = 4;
+
             }
-            else if (cbSizeBoard.SelectedItem.ToString().Equals("5 x 5"))
+            else if (cbSizeBoard.Text.Equals("5 x 5"))
             {
                 sizeBoard = 5;
 
