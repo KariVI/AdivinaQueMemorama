@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Podio.xaml
-    /// </summary>
+   
     public partial class Podio : Window
     {
         public ObservableCollection<String> playersCollection;

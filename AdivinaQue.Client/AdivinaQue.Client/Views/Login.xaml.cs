@@ -39,6 +39,7 @@ namespace AdivinaQue.Client.Views
                     callback.SetChat(chat);
                     Home home = new Home(server,callback);
                     home.setUsername(tbUsername.Text);
+                    callback.SetCurrentUsername(tbUsername.Text);
                     home.setChat(chat);
                     server.GetConnectedUsers();
                     home.Show();

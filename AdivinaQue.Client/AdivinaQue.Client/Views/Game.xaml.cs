@@ -14,15 +14,13 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Game.xaml
-    /// </summary>
     public partial class Game : Window
     {
         private int sizeBoard;
         private string category;
         private string username;
         private string usernarmeRival;
+        
         public Game(int sizeBoard, string category)
         {
             this.sizeBoard = sizeBoard;

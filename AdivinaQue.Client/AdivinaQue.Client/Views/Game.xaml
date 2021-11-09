@@ -6,42 +6,23 @@
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
         Title="Game" Height="700" Width="1000">
-    <Grid Background="Lavender">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Name="lbRival" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="89,10,0,0" VerticalAlignment="Top" Height="34" Width="83"/>
+    <Grid  Background="Lavender">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <WrapPanel x:Name="wpCards" HorizontalAlignment="Left" Height="624" Margin="24,22,0,0" VerticalAlignment="Top" Width="639"/>
+
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="0">
-            <Label>
-                <Label Name="lbUserName" Content=" "/>
-            </Label>
-            <DataGrid HorizontalAlignment="Left" Height="100" Margin="244,50,0,0" VerticalAlignment="Top" Width="532"/>
+        <Grid Grid.Column="1">
+            <Label  Content="Contrincante" Margin="10,5,0,0"/>
+            <Label Name="lbUserName" Content=" AAA" Margin="10,25,0,0"/>
+            <Label  Content="Rival" Margin="180,5,0,0"/>
+            <Label Name="lbRival" Content=" aaaa" Margin="180,25,0,0" />
+            <DataGrid HorizontalAlignment="Left" Height="100" Margin="50,120,50,0" VerticalAlignment="Top" Width="200"/>
         </Grid>
-
-
-
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <WrapPanel x:Name="wpCards" HorizontalAlignment="Left" Height="359" Margin="69,0,0,0" VerticalAlignment="Top" Width="853" Grid.Row="1"/>
 
     </Grid>
 </Window>
