@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:AdivinaQue.Client"
              Startup="Aplication_StartUp">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Strings.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

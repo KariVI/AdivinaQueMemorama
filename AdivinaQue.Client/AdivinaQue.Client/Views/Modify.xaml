@@ -5,28 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="Modify" Height="391" Width="495" Closed="closedWindow">
+        Title="{DynamicResource lbTitleModify}" Height="391" Width="495" Closed="closedWindow">
     <Grid  Background ="#FFE6E6F5" Margin="0,0,2,0">
-        <Label Content="Email:&#xA;" HorizontalAlignment="Left" Margin="107,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.161,0.527"/>
+        <Label Content="{DynamicResource lbEmail}" HorizontalAlignment="Left" Margin="75,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.161,0.527"/>
         <TextBox Name="tbUsername" Background="#FFC0AEE0" HorizontalAlignment="Left" Height="23" Margin="195,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" />
-        <Label Content="Nombre de usuario:" HorizontalAlignment="Left" Margin="39,124,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.49,1.442"/>
+        <Label Content="{DynamicResource lbUsername}" HorizontalAlignment="Left" Margin="65,124,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.49,1.442"/>
         <TextBox Name="tbEmail" Background="#FFC0AEE0" HorizontalAlignment="Left" Height="23" Margin="195,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" />
-        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="78,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="74,232,0,0" VerticalAlignment="Top"/>
         <PasswordBox Name="pbPassword" Background="#FFC0AEE0" HorizontalAlignment="Left" Margin="195,235,0,0" VerticalAlignment="Top" Height="26" Width="247"/>
-        <Label  Content="lbNombre:" HorizontalAlignment="Left" Margin="78,62,0,0" VerticalAlignment="Top"/>
+        <Label  Content="{DynamicResource lbName}" HorizontalAlignment="Left" Margin="75,62,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbName" HorizontalAlignment="Left" Background="#FFC0AEE0" Height="23" Margin="195,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" />
-        <Button Name ="btCancel" Background="Plum" Content="Cancel" HorizontalAlignment="Left" Margin="244,298,0,0" VerticalAlignment="Top" Width="86" Click="btCancel_Click" Height="21" ClipToBounds="True" SnapsToDevicePixels="True">
+        <Button Name ="btCancel" Background="Plum" Content="{DynamicResource btCancel}" HorizontalAlignment="Left" Margin="244,298,0,0" VerticalAlignment="Top" Width="86" Click="btCancel_Click" Height="21" ClipToBounds="True" SnapsToDevicePixels="True">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Name ="btUpdate" Background="Plum" Content="Update" HorizontalAlignment="Left" Margin="359,298,0,0" VerticalAlignment="Top" Width="83" Click="btUpdate_Click" Height="21" RenderTransformOrigin="1.072,0.472" BorderThickness="1" ClipToBounds="True" SnapsToDevicePixels="True">
+        <Button Name ="btUpdate" Background="Plum" Content="{DynamicResource btUpdate}" HorizontalAlignment="Left" Margin="359,298,0,0" VerticalAlignment="Top" Width="83" Click="btUpdate_Click" Height="21" RenderTransformOrigin="1.072,0.472" BorderThickness="1" ClipToBounds="True" SnapsToDevicePixels="True">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="Account setup" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="205" FontSize="24" FontFamily="OCR A Extended" FontWeight="Bold"/>
-        <Button x:Name ="btDelete" Background="Plum" Content="Delete" HorizontalAlignment="Left" Margin="136,298,0,0" VerticalAlignment="Top" Width="86"  Height="21" ClipToBounds="True" SnapsToDevicePixels="True" Click="btDelete_Click">
+        <Label Content="{DynamicResource lbTitleModify}" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="205" FontSize="24" FontFamily="OCR A Extended" FontWeight="Bold"/>
+        <Button x:Name ="btDelete" Background="Plum" Content="{DynamicResource btDelete}" HorizontalAlignment="Left" Margin="136,298,0,0" VerticalAlignment="Top" Width="86"  Height="21" ClipToBounds="True" SnapsToDevicePixels="True" Click="btDelete_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

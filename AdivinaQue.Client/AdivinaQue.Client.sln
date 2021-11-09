@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdivinaQue.Client", "Adivin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\ClientTest.csproj", "{C2DA2159-F018-4371-9C4A-612CB00AA703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources_en-US", "Resources_en-US\Resources_en-US.csproj", "{8BFDC630-BE99-4F8C-B6F3-87B5CC1780AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources_es-MEX", "Resources_es-MEX\Resources_es-MEX.csproj", "{4C11EC5C-EEAB-490C-99A2-057AD62D669A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C2DA2159-F018-4371-9C4A-612CB00AA703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2DA2159-F018-4371-9C4A-612CB00AA703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2DA2159-F018-4371-9C4A-612CB00AA703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFDC630-BE99-4F8C-B6F3-87B5CC1780AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFDC630-BE99-4F8C-B6F3-87B5CC1780AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFDC630-BE99-4F8C-B6F3-87B5CC1780AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFDC630-BE99-4F8C-B6F3-87B5CC1780AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C11EC5C-EEAB-490C-99A2-057AD62D669A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C11EC5C-EEAB-490C-99A2-057AD62D669A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C11EC5C-EEAB-490C-99A2-057AD62D669A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C11EC5C-EEAB-490C-99A2-057AD62D669A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -54,10 +54,14 @@ namespace AdivinaQue.Client.Views
 
         public void setUsername(string username)
         {
-            User.Content = "Bienvenido, " + username;
+            
             this.username = username;
+            setLabel();
         }
-
+        public void setLabel()
+        {
+            lbUser.Content = Application.Current.Resources["lbGretting"].ToString() + " " + username;
+        }
 
 
         private void SendButton_Click(object sender, RoutedEventArgs e)

@@ -28,7 +28,7 @@ namespace AdivinaQue.Client.Views
 
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            server.SendMailInvitation(tbEmail.Text);
+            server.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
             this.Close();
         }
 

@@ -31,6 +31,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.server = server;
             this.callback = callback;
+            LoadStringResource("es-MEX");
         }
 
         private void btModify_Click(object sender, RoutedEventArgs e)
@@ -61,8 +62,14 @@ namespace AdivinaQue.Client.Views
 
         public void setUsername(string username)
         {
-            lbUser.Content = "Welcome, " + username;
             this.username = username;
+            setLabel();
+            
+        }
+
+        public void setLabel()
+        {
+            lbUser.Content = Application.Current.Resources["lbGretting"].ToString()+" " + username;
         }
 
         public void setChat(Chat chat)
@@ -89,6 +96,40 @@ namespace AdivinaQue.Client.Views
             server.GetScores(username);
             podio.Show();
             this.Close();
+        }
+
+        private void LoadStringResource(string locale)
+        {
+            var resources = new ResourceDictionary();
+
+            resources.Source = new Uri("pack://application:,,,/Resources_" + locale + ";component/Strings.xaml", UriKind.Absolute);
+
+            var current = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
+                             m => m.Source.OriginalString.EndsWith("Strings.xaml"));
+
+
+            if (current != null)
+            {
+                Application.Current.Resources.MergedDictionaries.Remove(current);
+            }
+
+            Application.Current.Resources.MergedDictionaries.Add(resources);
+        }
+
+        private void US_OnClick(object sender, RoutedEventArgs e)
+        {
+            LoadStringResource("en-US");
+            setLabel();
+            chat.setLabel();
+            chat.InitializeComponent();
+        }
+
+        private void ES_OnClick(object sender, RoutedEventArgs e)
+        {
+            LoadStringResource("es-MEX");
+            setLabel();
+            chat.setLabel();
+            chat.InitializeComponent();
         }
     }
 }

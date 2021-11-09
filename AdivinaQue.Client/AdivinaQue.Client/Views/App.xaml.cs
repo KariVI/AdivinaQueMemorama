@@ -14,7 +14,7 @@ namespace AdivinaQue.Client
     /// </summary>
     public partial class App : Application
     {
-
+      
         public void Aplication_StartUp(object sender, StartupEventArgs eventArgs) {
             Login login = new Login();
             login.ShowDialog(); 

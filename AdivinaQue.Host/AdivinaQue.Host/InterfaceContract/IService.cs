@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace AdivinaQue.Host.InterfaceContract
@@ -23,29 +22,21 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void SearchInfoPlayerByUsername(String username);
         [OperationContract]
-        string SendMailValidation(String email);
-        [OperationContract(IsOneWay = true)]
-        void Modify(Player player, String username);
-        [OperationContract(IsOneWay = true)]
-        void Delete(string username);
-        [OperationContract(IsOneWay = true)]
-        void SendMailInvitation(string email);
+        string GenerateCode();
+        [OperationContract]
+        bool Modify(Player player, String username);
+        [OperationContract]
+        bool Delete(string username);
         [OperationContract]
         bool SendInvitation(String toUsername,String fromUsername);
         [OperationContract]
         string SendMail(string to, string asunto, string body);
         [OperationContract(IsOneWay = true)]
         void GetScores(String username);
-        [OperationContract]
-        List<String> GetEmails();
         [OperationContract(IsOneWay = true)]
-        
+        void GetEmails(string username);
+        [OperationContract(IsOneWay = true)]
         void GetTopics(string username);
-        [OperationContract(IsOneWay = true)]
-        void SendBoard(string toUsername, int size, string category);
-
-        [OperationContract]
-        List<String> GetUsers();
-
+       
     }
 }

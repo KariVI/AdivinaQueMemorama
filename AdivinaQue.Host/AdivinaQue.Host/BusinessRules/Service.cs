@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AdivinaQue.Host.BusinessRules
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single)]
 
     public class Service : IService
     {
@@ -44,12 +44,17 @@ namespace AdivinaQue.Host.BusinessRules
             users.Remove(username);
             GetConnectedUsers();
         }
-        public void Delete(string username)
+        public bool Delete(string username)
         {
             Authentication authentication = new Authentication();
-            authentication.Delete(username);
+            AuthenticationStatus status = authentication.Delete(username);
+            bool value = false;
+            if (status == AuthenticationStatus.Success)
+            {
+                value = true;
+            }
+            return value;
         }
-
         public void GetConnectedUsers()
         {
             foreach (var other in users.Values)
@@ -84,29 +89,25 @@ namespace AdivinaQue.Host.BusinessRules
                 value = true;
             }
             return value;
-
         }
 
-        public void Modify(Player player, String username)
+        public bool Modify(Player player, String username)
         {
             Authentication authentication = new Authentication();
-            authentication.updatePlayer(player, username);
+            AuthenticationStatus status = authentication.updatePlayer(player, username);
+            bool value = true;
+            if(status == AuthenticationStatus.Failed)
+            {
+                value = false;
+            }
+            return value;
         }
 
-        public string SendMailValidation(string email)
+        public string GenerateCode()
         {
             Authentication authentication = new Authentication();
             var code = authentication.GenerateCode();
-            string message = "Ingrese el codigo en la aplicacion: " + code;
-            authentication.sendMail(email, message);
             return code;
-        }
-
-        public void SendMailInvitation(string email)
-        {
-            Authentication authentication = new Authentication();
-            string message = "Lo han invitado a jugar Adivina Que! Instale el juego AQUI";
-            authentication.sendMail(email, message);
         }
 
         public void SearchInfoPlayerByUsername(String username)
@@ -114,20 +115,29 @@ namespace AdivinaQue.Host.BusinessRules
             var connection = OperationContext.Current.GetCallbackChannel<IClient>();
             Authentication authentication = new Authentication();
             Player player = authentication.RetrievePlayer(username);
-            connection.RecievePlayer(player);
+            if(player != null)
+            {
+                connection.RecievePlayer(player);
+
+            }
         }
 
         public bool SearchUsername(string newUsername)
         {
             bool value = false;
-            if (users[newUsername] != null)
+            try
             {
-                value = true;
+                if (users[newUsername] != null)
+                {
+                    value = true;
+                }  
+            }catch(KeyNotFoundException ex) { 
+       
             }
             return value;
         }
 
-        public void SendMessage(string message, String username, string userReceptor)
+        public void SendMessage(String message, String username, String userReceptor)
         {
             if (userReceptor.Equals("Todos"))
             {
@@ -203,6 +213,7 @@ namespace AdivinaQue.Host.BusinessRules
 
 
         }
-    }
 
+    
+    }
 }

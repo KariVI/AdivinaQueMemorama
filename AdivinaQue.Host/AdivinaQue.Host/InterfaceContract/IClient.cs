@@ -11,7 +11,7 @@ namespace AdivinaQue.Host.InterfaceContract
     public interface IClient
     {
         [OperationContract(IsOneWay = true)]
-        void RecieveMessage(string message);
+        void RecieveMessage(String message);
         [OperationContract(IsOneWay = true)]
         void RecieveUsers(Dictionary<String, IClient> users);
         [OperationContract(IsOneWay = true)]

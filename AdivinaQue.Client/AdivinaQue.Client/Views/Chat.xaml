@@ -24,7 +24,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Label Name="TitleUsers" Content="Connected Users" Background="#dda0dd"  HorizontalAlignment="Right" FontFamily="Bubble Bobble" FontSize="14" Width="190" Margin="0,0,10,0" />
+                    <Label Name="TitleUsers" Content="{DynamicResource lbTitleUsers}" Background="#dda0dd"  HorizontalAlignment="Right" FontFamily="Bubble Bobble" FontSize="14" Width="190" Margin="0,0,10,0" />
                 </Grid>
                 <Grid Grid.Row="1" HorizontalAlignment="Left" Width="200">
                     <Grid.ColumnDefinitions>
@@ -48,12 +48,18 @@
                 <Label Name="Title" Background="Lightpink" HorizontalAlignment="Right" FontFamily="Bubble Bobble" FontSize="18" Width="401" Margin="-9,0,0,0">
 
                 </Label>
-                <Label Name="User" Content="" Margin="220,0,-220,0"/>
+                <Label Name="lbUser" Content="" Margin="220,0,-220,0"/>
 
             </Grid>
             <Grid Grid.Row="1" >
-                <ScrollViewer Name="ContentScroller" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"></ScrollViewer>
-                <ListView x:Name="listMessages" Background="Lavender" Grid.ColumnSpan="1" Margin="-10,0,10,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="203*"/>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="26*"/>
+                    <ColumnDefinition Width="147*"/>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Name="ContentScroller" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4"></ScrollViewer>
+                <ListView x:Name="listMessages" Background="Lavender" Grid.ColumnSpan="4" Margin="-10,0,10,0" >
 
                 </ListView>
 
@@ -62,7 +68,7 @@
             <Grid Grid.Row="2" Background="#efaeb9" Margin="-10,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="MessageContent" Background="#e4b6b3" Width="264" TextWrapping="Wrap" AcceptsReturn="true" Margin="10"  />
-                    <Button x:Name="SendButton" Content="Send" Margin="14" HorizontalAlignment="Center" Background="#cf7c77" Width="80" Height="30" Click="SendButton_Click"/>
+                    <Button x:Name="SendButton" Content="{DynamicResource btSend}" Margin="14" HorizontalAlignment="Center" Background="#cf7c77" Width="80" Height="30" Click="SendButton_Click"/>
                 </StackPanel>
 
 

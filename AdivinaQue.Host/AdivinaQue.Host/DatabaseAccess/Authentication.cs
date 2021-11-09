@@ -82,26 +82,39 @@ namespace AdivinaQue.Host.DatabaseAccess
             using (var context = new AdivinaQueAppContext())
             {
                 var player = context.Players.SingleOrDefault(x => x.userName == username);
-                Player newPlayer = new Player { Name = player.name, Username = player.userName, Password = player.password, Email = player.email};
+                Player newPlayer = null;
+                if (player != null)
+                {
+                   newPlayer = new Player { Name = player.name, Username = player.userName, Password = player.password, Email = player.email };
+                }
+               
                 return newPlayer;
             }
         
         }
-        public void updatePlayer(Player player,String username)
+        public AuthenticationStatus updatePlayer(Player player,String username)
         {
             string passwordHashed = ComputeSHA256Hash(player.Password);
-
-            using (var context = new AdivinaQueAppContext())
+            AuthenticationStatus status = AuthenticationStatus.Success;
+            try
             {
-                var Players = ( from account in context.Players
-                               where account.userName == username
-                               select account);
-                Players.First().password = passwordHashed;
-                Players.First().name = player.Name;
-                Players.First().userName = player.Username;
-                Players.First().email = player.Email;
-               context.SaveChanges();
+                using (var context = new AdivinaQueAppContext())
+                {
+                    var Players = (from account in context.Players
+                                   where account.userName == username
+                                   select account);
+                    Players.First().password = passwordHashed;
+                    Players.First().name = player.Name;
+                    Players.First().userName = player.Username;
+                    Players.First().email = player.Email;
+                    context.SaveChanges();
+                }
             }
+            catch (EntityException ex)
+            {
+                status = AuthenticationStatus.Failed;
+            }
+            return status;
 
         }
         public AuthenticationStatus Register(Player player)
@@ -123,18 +136,21 @@ namespace AdivinaQue.Host.DatabaseAccess
         }
 
 
-        public void Delete(string username)
+        public AuthenticationStatus Delete(string username)
         {
+            AuthenticationStatus status;
             using (var context = new AdivinaQueAppContext())
             {
-                var itemToRemove = context.Players.SingleOrDefault(x => x.userName == username); 
-
+                var itemToRemove = context.Players.SingleOrDefault(x => x.userName == username);
+                status = AuthenticationStatus.Failed;
                 if (itemToRemove != null)
                 {
                     context.Players.Remove(itemToRemove);
                     context.SaveChanges();
+                    status = AuthenticationStatus.Success;
                 }
             }
+            return status;
         }
         public string GenerateCode()
         {
@@ -149,15 +165,15 @@ namespace AdivinaQue.Host.DatabaseAccess
             string codeString = new String(code);
             return codeString;
         }
-        public void sendMail(string email, string newMessage)
+        public AuthenticationStatus sendMail(string email, string newMessage)
         {
             string userMail = "AdivinaQueTeam@hotmail.com";
             string password = "MarianaKarina1234";
             string subject = "Register Memorama game";
             string sendMail = email;
             string message = newMessage;
-            
-            
+
+            AuthenticationStatus status = AuthenticationStatus.Failed;
             MailMessage mail = new MailMessage(userMail, sendMail, subject, message);
 
             SmtpClient server = new SmtpClient("smtp.live.com");
@@ -170,12 +186,13 @@ namespace AdivinaQue.Host.DatabaseAccess
                 server.Send(mail);
                 Console.WriteLine("\t\tCorreo enviado de manera exitosa");
                 mail.Dispose();
+                status = AuthenticationStatus.Success;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-           
+            return status;
         }
 
         private string ComputeSHA256Hash(string input)
