@@ -73,17 +73,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendMailValidation">
+  <xs:element name="GenerateCode">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendMailValidationResponse">
+  <xs:element name="GenerateCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SendMailValidationResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GenerateCodeResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -95,10 +93,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ModifyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModifyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

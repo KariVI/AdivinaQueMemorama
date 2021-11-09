@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="HeaderLogin">Inicio de sesion</system:String>
+    <system:String x:Key="lbUsername">Nickname: </system:String>
+    <system:String x:Key="lbPassword">Contraseña: </system:String>
+    <system:String x:Key="btRegister">Registrarse</system:String>
+    <system:String x:Key="btLogin">Entrar</system:String>
+    <system:String x:Key="lbTitleRegister">Registro de usuario</system:String>
+    <system:String x:Key="lbName">Nombre: </system:String>
+    <system:String x:Key="btCancel">Cancelar</system:String>
+    <system:String x:Key="lbTitleModify">Configuración de cuenta</system:String>
+    <system:String x:Key="lbEmail">Correo: </system:String>
+    <system:String x:Key="btUpdate">Actualizar</system:String>
+    <system:String x:Key="btDelete">Eliminar</system:String>
+    <system:String x:Key="btLogout">Salir</system:String>
+
+    <system:String x:Key="btStartGame">Iniciar juego</system:String>
+    <system:String x:Key="btGlobalScore">Puntaje global</system:String>
+    <system:String x:Key="btModify">Configuracion</system:String>
+    <system:String x:Key="lbGretting">Bienvenido</system:String>
+    <system:String x:Key="lbTitleHome">Menu principal</system:String>
+
+    <system:String x:Key="lbTitleUsers">Usuarios conectados</system:String>
+
+    <system:String x:Key="lbTitleValidationCode">Verificación de correo</system:String>
+    <system:String x:Key="btSendCode">Enviar código</system:String>
+    <system:String x:Key="btVerify">Verificar</system:String>
+    <system:String x:Key="lbCodeMessage">Ingresa el código que se envió a tu correo</system:String>
+    <system:String x:Key="lbEmailMessage">Ingresa tu correo</system:String>
+    <system:String x:Key="btConfirm">Confirmar</system:String>
+
+    <system:String x:Key="btSend">Enviar</system:String>
+
+    <system:String x:Key="btReturn">Regresar</system:String>
+    <system:String x:Key="lbPlayers">Jugadores</system:String>
+    <system:String x:Key="lbWins">Victorias</system:String>
+    <system:String x:Key="lbScore">Podio</system:String>
+
+    <system:String x:Key="lbTitlePlayersList">Invitar un jugador</system:String>
+    <system:String x:Key="lbInviteMessage">No esta en la lista? Eviale un email!</system:String>
+
+    <system:String x:Key="lbTitleConfiguration">Configuración</system:String>
+    <system:String x:Key="lbSize">Tamaño:</system:String>
+    <system:String x:Key="lbTopicMessage">Selecciona un tema</system:String>
+</ResourceDictionary>

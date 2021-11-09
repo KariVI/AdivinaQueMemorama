@@ -23,7 +23,7 @@ namespace AdivinaQue.Client.Control
         {
             this.podio = podio;
         }
-        public void RecieveMessage(string message)
+        public void RecieveMessage(String message)
         {
             chat.messagesCollection.Add(message);
         }

@@ -152,23 +152,23 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
         System.Threading.Tasks.Task SearchInfoPlayerByUsernameAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
-        string SendMailValidation(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GenerateCode", ReplyAction="http://tempuri.org/IService/GenerateCodeResponse")]
+        string GenerateCode();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
-        System.Threading.Tasks.Task<string> SendMailValidationAsync(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GenerateCode", ReplyAction="http://tempuri.org/IService/GenerateCodeResponse")]
+        System.Threading.Tasks.Task<string> GenerateCodeAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
-        void Modify(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Modify", ReplyAction="http://tempuri.org/IService/ModifyResponse")]
+        bool Modify(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
-        System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Modify", ReplyAction="http://tempuri.org/IService/ModifyResponse")]
+        System.Threading.Tasks.Task<bool> ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Delete")]
-        void Delete(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        bool Delete(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Delete")]
-        System.Threading.Tasks.Task DeleteAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
         void SendMailInvitation(string email);
@@ -316,27 +316,27 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.SearchInfoPlayerByUsernameAsync(username);
         }
         
-        public string SendMailValidation(string email) {
-            return base.Channel.SendMailValidation(email);
+        public string GenerateCode() {
+            return base.Channel.GenerateCode();
         }
         
-        public System.Threading.Tasks.Task<string> SendMailValidationAsync(string email) {
-            return base.Channel.SendMailValidationAsync(email);
+        public System.Threading.Tasks.Task<string> GenerateCodeAsync() {
+            return base.Channel.GenerateCodeAsync();
         }
         
-        public void Modify(AdivinaQue.Client.Proxy.Player player, string username) {
-            base.Channel.Modify(player, username);
+        public bool Modify(AdivinaQue.Client.Proxy.Player player, string username) {
+            return base.Channel.Modify(player, username);
         }
         
-        public System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
+        public System.Threading.Tasks.Task<bool> ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
             return base.Channel.ModifyAsync(player, username);
         }
         
-        public void Delete(string username) {
-            base.Channel.Delete(username);
+        public bool Delete(string username) {
+            return base.Channel.Delete(username);
         }
         
-        public System.Threading.Tasks.Task DeleteAsync(string username) {
+        public System.Threading.Tasks.Task<bool> DeleteAsync(string username) {
             return base.Channel.DeleteAsync(username);
         }
         

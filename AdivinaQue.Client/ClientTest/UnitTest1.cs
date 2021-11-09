@@ -1,8 +1,9 @@
 ﻿using AdivinaQue.Client.Control;
 using AdivinaQue.Client.Proxy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Moq;
 using System.ServiceModel;
+using System.Threading;
 
 namespace ClientTest
 {
@@ -23,14 +24,139 @@ namespace ClientTest
         }
 
         [TestMethod]
-        public void TestJoin()
+        public void TestRegister()
         {
             CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
-            Assert.IsTrue(server.Join("Mari", "123"));
+            Player player = new Player();
+            player.Username = "Marii";
+            player.Password = "1234";
+            player.Name = "Mariana Yazmin Vargas";
+            player.Email = "MarianaVSYazmin@gmail.com";
+            Assert.IsTrue(server.Register(player));
         }
 
-   
+        [TestMethod]
+        public void TestDelete()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            Assert.IsTrue(server.Delete("Marii"));
+        }
+        [TestMethod]
+        public void TestDeleteFailed()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            Assert.IsFalse(server.Delete("Juan"));
+        }
+
+        [TestMethod]
+        public void TestReceiveMessage()
+        {
+            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
+            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            ServiceClient server = new ServiceClient(context);
+            server.Join("Mari", "1234");
+         
+            server.SendMessage("Hola", "Mari","Todos");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.RecieveMessage(It.IsAny<string>()), Times.AtLeastOnce());
+            server.DisconnectUser("Mari");
+            // mockSomeClass.VerifyAll();
+        }
+        [TestMethod]
+        public void TextSearchUsername()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            server.Join("Mari", "1234");
+            Assert.IsTrue(server.SearchUsername("Mari"));
+            server.DisconnectUser("Mari");
+        }
+        [TestMethod]
+        public void TextSearchUsernameFailed()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            Assert.IsFalse(server.SearchUsername("Roberto"));
+        }
+
+        [TestMethod]
+        public void TestSearchInfoPlayerByUsername()
+        {
+            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
+            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            ServiceClient server = new ServiceClient(context);
+            server.SearchInfoPlayerByUsername("Mari");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.RecievePlayer(It.IsAny<Player>()), Times.AtLeastOnce());
+            
+            // mockSomeClass.VerifyAll();
+        }
+
+        [TestMethod]
+        public void TestSearchInfoPlayerByUsernameFailed()
+        {
+            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
+            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            ServiceClient server = new ServiceClient(context);
+       
+
+            server.SearchInfoPlayerByUsername("Pepe");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.RecievePlayer(It.IsAny<Player>()), Times.Never);
+
+            // mockSomeClass.VerifyAll();
+        }
+
+        [TestMethod]
+        public void TestModify()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            Player player = new Player();
+            player.Username = "Mari";
+            player.Password = "1234";
+            player.Name = "Mariana Yazmin Vargas";
+            player.Email = "MarianaVSYazmin@gmail.com";
+            Assert.IsTrue(server.Modify(player,"Mari"));
+        }
+
+        [TestMethod]
+        public void TestSendInvitation()
+        {
+            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
+            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            ServiceClient server = new ServiceClient(context);
+            server.Join("Mari", "1234");
+            server.Join("Kari", "123");
+            server.SendInvitation("Mari", "Kari");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.SendInvitationGame(It.IsAny<string>()), Times.AtLeastOnce());
+           
+            // mockSomeClass.VerifyAll();
+        }
+
+        [TestMethod]
+        public void TextGenerateCode()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            string code = server.GenerateCode();
+            Assert.IsNotNull(code);
+        }
+
     }
 }

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="AuthMail" Height="339" Width="555.5">
+        Title="{DynamicResource lbTitleValidationCode}" Height="339" Width="555.5">
     <Grid Margin="0,0,2,-4" Background="#FFE6E6F5">
-        <Button Name ="btConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="386,230,0,0" VerticalAlignment="Top" Width="108" Click="btConfirm_Click" Height="22" Background="Plum" />
-        <TextBox Name="tbCode" HorizontalAlignment="Left" Height="52" Margin="182,132,0,0" TextWrapping="Wrap" Text="Enter the code" VerticalAlignment="Top" Width="238" Background="#FFC0AEE0"/>
-        <Label Content="Mail authentication" HorizontalAlignment="Left" Margin="143,42,0,0" VerticalAlignment="Top" Height="54" Width="306" FontWeight="Bold" FontSize="24" FontFamily="OCR A Extended"/>
-        <Button x:Name ="btCancel" Content="Cancel" HorizontalAlignment="Left" Margin="256,230,0,0" VerticalAlignment="Top" Width="108"  Height="22" Background="Plum" Click="btCancel_Click" />
+        <Button Name ="btConfirm" Content="{DynamicResource btConfirm}" HorizontalAlignment="Left" Margin="386,230,0,0" VerticalAlignment="Top" Width="108" Click="btConfirm_Click" Height="22" Background="Plum" />
+        <TextBox Name="tbCode" HorizontalAlignment="Left" Height="52" Margin="182,132,0,0" TextWrapping="Wrap" Text="{DynamicResource lbCodeMessage}" VerticalAlignment="Top" Width="238" Background="#FFC0AEE0"/>
+        <Label Content="{DynamicResource lbTitleValidationCode}" HorizontalAlignment="Left" Margin="143,42,0,0" VerticalAlignment="Top" Height="54" Width="306" FontWeight="Bold" FontSize="24" FontFamily="OCR A Extended"/>
+        <Button x:Name ="btCancel" Content="{DynamicResource btCancel}" HorizontalAlignment="Left" Margin="256,230,0,0" VerticalAlignment="Top" Width="108"  Height="22" Background="Plum" Click="btCancel_Click" />
 
     </Grid>
 </Window>

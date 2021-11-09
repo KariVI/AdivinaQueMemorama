@@ -22,13 +22,11 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void SearchInfoPlayerByUsername(String username);
         [OperationContract]
-        string SendMailValidation(String email);
-        [OperationContract(IsOneWay = true)]
-        void Modify(Player player, String username);
-        [OperationContract(IsOneWay = true)]
-        void Delete(string username);
-        [OperationContract(IsOneWay = true)]
-        void SendMailInvitation(string email);
+        string GenerateCode();
+        [OperationContract]
+        bool Modify(Player player, String username);
+        [OperationContract]
+        bool Delete(string username);
         [OperationContract]
         bool SendInvitation(String toUsername,String fromUsername);
         [OperationContract]
@@ -39,5 +37,6 @@ namespace AdivinaQue.Host.InterfaceContract
         void GetEmails(string username);
         [OperationContract(IsOneWay = true)]
         void GetTopics(string username);
+       
     }
 }

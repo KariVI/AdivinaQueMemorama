@@ -26,7 +26,8 @@ namespace AdivinaQue.Client.Views
             newPlayer.Username = tbUsername.Text;
             newPlayer.Email = tbEmail.Text;
             newPlayer.Password = pbPassword.Password;
-            String code = server.SendMailValidation(tbEmail.Text);
+            String code = server.GenerateCode();
+            server.SendMail(tbEmail.Text,"Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
             AuthMail authmail = new AuthMail(code,newPlayer);
             authmail.setServer(server);
             authmail.setUsername(username);
