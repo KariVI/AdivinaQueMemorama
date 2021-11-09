@@ -37,6 +37,9 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void GetTopics(string username);
         [OperationContract(IsOneWay = true)]
+        void GetScores(string username);
+
+        [OperationContract(IsOneWay = true)]
         void SendBoard(string toUsername, int size, string category);
 
         [OperationContract]

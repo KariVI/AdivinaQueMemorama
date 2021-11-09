@@ -25,8 +25,8 @@ namespace AdivinaQue.Client.Views
         private ServiceClient server;
         private string username;
         private Chat chat;
-        private CallBackTest callback;
-        public Home(ServiceClient server,CallBackTest callback)
+        private CallBack callback;
+        public Home(ServiceClient server,CallBack callback)
         {
             InitializeComponent();
             this.server = server;
@@ -36,7 +36,7 @@ namespace AdivinaQue.Client.Views
 
         private void btModify_Click(object sender, RoutedEventArgs e)
         {
-            CallBackTest callback = new CallBackTest();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
             Modify modify = new Modify();

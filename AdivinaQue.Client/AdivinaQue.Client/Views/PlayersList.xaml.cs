@@ -15,8 +15,8 @@ namespace AdivinaQue.Client.Views
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
         private String username;
-        CallBackTest callback;
-        public PlayersList(Proxy.ServiceClient server, String username, CallBackTest callback)
+        CallBack callback;
+        public PlayersList(Proxy.ServiceClient server, String username, CallBack callback)
         {
             InitializeComponent();
             this.server = server;

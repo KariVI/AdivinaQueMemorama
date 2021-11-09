@@ -10,13 +10,13 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Login : Window
     {
-        CallBackTest callback;
+        CallBack callback;
         InstanceContext context;
         Proxy.ServiceClient server;
         public Login()
         {
             InitializeComponent();
-            callback = new CallBackTest();
+            callback = new CallBack();
             context = new InstanceContext(callback);
             server = new Proxy.ServiceClient(context);
         }

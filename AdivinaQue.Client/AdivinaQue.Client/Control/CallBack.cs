@@ -9,7 +9,7 @@ namespace AdivinaQue.Client.Control
 {
 
 
-    public class CallBackTest : IServiceCallback
+    public class CallBack : IServiceCallback
     {
         private Chat chat;
         private Modify modify;
