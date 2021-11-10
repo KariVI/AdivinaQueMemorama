@@ -170,12 +170,6 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
         System.Threading.Tasks.Task<bool> DeleteAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
-        void SendMailInvitation(string email);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
-        System.Threading.Tasks.Task SendMailInvitationAsync(string email);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
         bool SendInvitation(string toUsername, string fromUsername);
         
@@ -188,12 +182,6 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
         System.Threading.Tasks.Task<string> SendMailAsync(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
-        void GetScores(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
-        System.Threading.Tasks.Task GetScoresAsync(string username);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmails", ReplyAction="http://tempuri.org/IService/GetEmailsResponse")]
         string[] GetEmails();
         
@@ -205,6 +193,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
         System.Threading.Tasks.Task GetTopicsAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        void GetScores(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        System.Threading.Tasks.Task GetScoresAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoard")]
         void SendBoard(string toUsername, int size, string category);
@@ -352,14 +346,6 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.DeleteAsync(username);
         }
         
-        public void SendMailInvitation(string email) {
-            base.Channel.SendMailInvitation(email);
-        }
-        
-        public System.Threading.Tasks.Task SendMailInvitationAsync(string email) {
-            return base.Channel.SendMailInvitationAsync(email);
-        }
-        
         public bool SendInvitation(string toUsername, string fromUsername) {
             return base.Channel.SendInvitation(toUsername, fromUsername);
         }
@@ -376,14 +362,6 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.SendMailAsync(to, asunto, body);
         }
         
-        public void GetScores(string username) {
-            base.Channel.GetScores(username);
-        }
-        
-        public System.Threading.Tasks.Task GetScoresAsync(string username) {
-            return base.Channel.GetScoresAsync(username);
-        }
-        
         public string[] GetEmails() {
             return base.Channel.GetEmails();
         }
@@ -398,6 +376,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task GetTopicsAsync(string username) {
             return base.Channel.GetTopicsAsync(username);
+        }
+        
+        public void GetScores(string username) {
+            base.Channel.GetScores(username);
+        }
+        
+        public System.Threading.Tasks.Task GetScoresAsync(string username) {
+            return base.Channel.GetScoresAsync(username);
         }
         
         public void SendBoard(string toUsername, int size, string category) {

@@ -7,3 +7,12 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.csproj.CoreCompileInputs.cache
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.csproj.AssemblyReference.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Strings.baml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX_MarkupCompile.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.g.resources
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.csproj.CoreCompileInputs.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.pdb

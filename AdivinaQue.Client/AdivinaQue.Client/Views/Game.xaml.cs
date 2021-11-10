@@ -21,7 +21,9 @@ namespace AdivinaQue.Client.Views
         private string category;
         private string username;
         private string usernarmeRival;
-        
+        private List<BitmapImage> imagesQuestions = new List<BitmapImage>();
+        private List<BitmapImage> imagesAnswers = new List<BitmapImage>();
+        private List<BitmapImage> totalImages = new List<BitmapImage>();
         public Game(int sizeBoard, string category)
         {
             this.sizeBoard = sizeBoard;
@@ -46,7 +48,7 @@ namespace AdivinaQue.Client.Views
         }
         public void addButton()
         {
-
+     
             for (int i = 0; i < (sizeBoard * sizeBoard); i++)
             {
 
@@ -55,19 +57,51 @@ namespace AdivinaQue.Client.Views
                 bt.Click += new RoutedEventHandler(button_onclick);
                 bt.Width = 639 / sizeBoard;
                 bt.Height = 624 / sizeBoard;
-                bt.Background = Brushes.LavenderBlush;
+                bt.Background = Brushes.PaleVioletRed;
                 wpCards.Children.Add(bt);
+                
             
             }
         }
 
+        public void getImages()
+        {
+            
+
+            for (int i =1; i< 4; i++)
+            {
+                string location = "images / Diseño /"+i+"-1.jpg";
+                BitmapImage image = new BitmapImage();
+
+                image= new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
+               + ";component/"
+                 + location, UriKind.Absolute));
+                imagesQuestions.Add(image);
+                totalImages.Add(image);
+
+            }
+
+            for (int i = 1; i < 4; i++)
+            {
+                string location = "images / Diseño /" + i + "-2.jpg";
+                BitmapImage image;
+
+                image= new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
+               + ";component/"
+                 + location, UriKind.Absolute));
+                imagesAnswers.Add(image);
+                totalImages.Add(image);
+
+            }
+
+        }
         public void button_onclick(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
             Image buttonAuxiliar = new Image();
-            buttonAuxiliar.Source = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
-+ ";component/"
-+ "images/testImage2.jpg", UriKind.Absolute));
+            Random random = new Random();
+            int index = random.Next(totalImages.Count);
+            buttonAuxiliar.Source = totalImages[index];
             bt.Content = buttonAuxiliar;
         }
     }

@@ -85,9 +85,6 @@
   <wsdl:message name="IService_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SendMailInvitation_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendMailInvitation" />
-  </wsdl:message>
   <wsdl:message name="IService_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
   </wsdl:message>
@@ -100,9 +97,6 @@
   <wsdl:message name="IService_SendMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendMailResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetScores_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetScores" />
-  </wsdl:message>
   <wsdl:message name="IService_GetEmails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmails" />
   </wsdl:message>
@@ -111,6 +105,9 @@
   </wsdl:message>
   <wsdl:message name="IService_GetTopics_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTopics" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
   </wsdl:message>
   <wsdl:message name="IService_SendBoard_InputMessage">
     <wsdl:part name="parameters" element="tns:SendBoard" />
@@ -182,9 +179,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Delete" message="tns:IService_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteResponse" message="tns:IService_Delete_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendMailInvitation">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMailInvitation" message="tns:IService_SendMailInvitation_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="SendInvitation">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitation" message="tns:IService_SendInvitation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationResponse" message="tns:IService_SendInvitation_OutputMessage" />
@@ -193,15 +187,15 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMail" message="tns:IService_SendMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMailResponse" message="tns:IService_SendMail_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetScores">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetEmails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmails" message="tns:IService_GetEmails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetEmailsResponse" message="tns:IService_GetEmails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTopics">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTopics" message="tns:IService_GetTopics_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendBoard">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendBoard" message="tns:IService_SendBoard_InputMessage" />
@@ -314,12 +308,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendMailInvitation">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendMailInvitation" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="SendInvitation">
       <soap12:operation soapAction="http://tempuri.org/IService/SendInvitation" style="document" />
       <wsdl:input>
@@ -338,12 +326,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetScores">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="GetEmails">
       <soap12:operation soapAction="http://tempuri.org/IService/GetEmails" style="document" />
       <wsdl:input>
@@ -355,6 +337,12 @@
     </wsdl:operation>
     <wsdl:operation name="GetTopics">
       <soap12:operation soapAction="http://tempuri.org/IService/GetTopics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
