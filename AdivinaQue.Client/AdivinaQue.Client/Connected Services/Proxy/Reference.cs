@@ -223,6 +223,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
         System.Threading.Tasks.Task<string[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
+        void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
+        System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -254,6 +260,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCardSeed")]
         void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCorrectPair")]
+        void ReceiveCorrectPair(System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -434,6 +443,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<string[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
+        }
+        
+        public void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards) {
+            base.Channel.SendCorrectCards(toUsername, cards);
+        }
+        
+        public System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards) {
+            return base.Channel.SendCorrectCardsAsync(toUsername, cards);
         }
     }
 }

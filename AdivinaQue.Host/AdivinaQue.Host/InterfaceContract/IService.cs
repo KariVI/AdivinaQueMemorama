@@ -50,6 +50,6 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract]
         List<String> GetUsers();
         [OperationContract(IsOneWay = true)]
-        void SendCorrectCards(string toUsername, Dictionary<BitmapImage, Button> cards);
+        void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards);
     }
 }

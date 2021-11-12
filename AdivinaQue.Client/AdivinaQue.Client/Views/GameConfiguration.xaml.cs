@@ -76,7 +76,7 @@ namespace AdivinaQue.Client.Views
                 sizeBoard = 6;
 
             }
-            Game game = new Game( sizeBoard, category);
+            Game game = new Game( server, sizeBoard, category);
             int[] randomPositionList = GenerateRandomNumbers(sizeBoard * sizeBoard);
             int[] randomImageList = GenerateRandomNumbers(sizeBoard);
             server.SendBoard(toUsername, sizeBoard, category);

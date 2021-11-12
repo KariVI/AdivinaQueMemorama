@@ -32,7 +32,7 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void ReceiveCardSeed(List<int> randomImageList, List<int> randomPositionList);
         [OperationContract(IsOneWay = true)]
-        void ReceiveCorrectPair(Dictionary<BitmapImage, Button> cards);
+        void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards);
     }
 
     [DataContract]

@@ -35,6 +35,14 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Animation" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System.Windows" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/System.Windows.Threading" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/System.Net.Cache" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Join_InputMessage">
@@ -124,6 +132,9 @@
   <wsdl:message name="IService_GetUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_SendCorrectCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendCorrectCards" />
+  </wsdl:message>
   <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
@@ -153,6 +164,9 @@
   </wsdl:message>
   <wsdl:message name="IService_ReceiveCardSeed_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveCardSeed" />
+  </wsdl:message>
+  <wsdl:message name="IService_ReceiveCorrectPair_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveCorrectPair" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Join">
@@ -222,6 +236,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUsersResponse" message="tns:IService_GetUsers_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendCorrectCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendCorrectCards" message="tns:IService_SendCorrectCards_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
     </wsdl:operation>
@@ -249,6 +266,9 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardSeed">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCardSeed" message="tns:IService_ReceiveCardSeed_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCorrectPair">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCorrectPair" message="tns:IService_ReceiveCorrectPair_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -398,6 +418,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendCorrectCards">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendCorrectCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
       <wsdl:output>
@@ -451,6 +477,12 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardSeed">
       <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCardSeed" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCorrectPair">
+      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCorrectPair" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -83,7 +83,8 @@ namespace AdivinaQue.Client.Views
             server = new Proxy.ServiceClient(context);
             callback.SetCurrentUsername(username);
             PlayersList playersList = new PlayersList(server,username,callback);
-            callback.SetPlayersList(playersList); 
+            callback.SetPlayersList(playersList);
+            
             server.GetConnectedUsers();
             playersList.Show();
 

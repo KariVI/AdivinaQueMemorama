@@ -19,11 +19,18 @@ namespace AdivinaQue.Client.Control
         private ValidationCode validationCode;
         private GameConfiguration gameConfiguration;
         private Game game;
+        Proxy.ServiceClient server;
 
         public void SetPodio(Podio podio)
         {
             this.podio = podio;
         }
+
+        public void setServer(Proxy.ServiceClient server)
+        {
+           this.server = server;
+        }
+
         public void RecieveMessage(String message)
         {
             chat.messagesCollection.Add(message);
@@ -116,7 +123,7 @@ namespace AdivinaQue.Client.Control
 
         public void SendBoardConfigurate(string username, int size, string category)
         {
-            game = new Game(size, category);
+            game = new Game(server,size, category);
             game.SetUsername(username);
             game.Show();        
         }
@@ -129,6 +136,12 @@ namespace AdivinaQue.Client.Control
         public void ReceiveRival(string rival)
         {
             game.SetUsernameRival(rival);
+        }
+
+        public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
+        {
+            Console.WriteLine("ss");
+            game.SetCorrectCards(cards);
         }
     }
 }

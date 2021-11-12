@@ -2,12 +2,10 @@
 using AdivinaQue.Host.InterfaceContract;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Windows;
 using System.Net;
 using System.Net.Mail;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
 
@@ -229,8 +227,9 @@ namespace AdivinaQue.Host.BusinessRules
             users[toUsername].ReceiveCardSeed(randomImageList, randomPositionList);
         }
 
-        public void SendCorrectCards(string toUsername, Dictionary<BitmapImage, Button> cards)
+        public void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards)
         {
+            Console.WriteLine("s");
             users[toUsername].ReceiveCorrectPair(cards);
         }
     }
