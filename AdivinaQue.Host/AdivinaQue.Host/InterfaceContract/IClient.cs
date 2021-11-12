@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Web.UI.WebControls;
+using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Host.InterfaceContract
 {
@@ -27,6 +29,10 @@ namespace AdivinaQue.Host.InterfaceContract
         
         [OperationContract(IsOneWay = true)]
         void RecieveTopics(List<String> topics);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveCardSeed(List<int> randomImageList, List<int> randomPositionList);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveCorrectPair(Dictionary<BitmapImage, Button> cards);
     }
 
     [DataContract]

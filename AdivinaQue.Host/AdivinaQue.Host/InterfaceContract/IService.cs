@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Web.UI.WebControls;
+using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Host.InterfaceContract
 {
@@ -43,8 +45,11 @@ namespace AdivinaQue.Host.InterfaceContract
         void SendBoard(string toUsername, int size, string category);
         [OperationContract(IsOneWay = true)]
         void SendRival(string rival, string fromUsername);
-
+        [OperationContract(IsOneWay = true)]
+        void SendBoardLists(String toUsername, List<int> randomImageList, List<int> randomPositionList);
         [OperationContract]
         List<String> GetUsers();
+        [OperationContract(IsOneWay = true)]
+        void SendCorrectCards(string toUsername, Dictionary<BitmapImage, Button> cards);
     }
 }

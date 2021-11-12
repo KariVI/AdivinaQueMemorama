@@ -25,6 +25,10 @@ namespace AdivinaQue.Client.Views
         private String username;
         private String toUsername;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
+        Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
+        private List<BitmapImage> totalImages = new List<BitmapImage>();
+        Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+
         public GameConfiguration(Proxy.ServiceClient server, String username, String toUsername)
         {
 
@@ -43,7 +47,7 @@ namespace AdivinaQue.Client.Views
             {
                 string categoryAuxiliar = lbxTopic.SelectedItem.ToString();
                 int found = categoryAuxiliar.IndexOf(": ");
-                category = categoryAuxiliar.Substring(found +2 );
+                category = categoryAuxiliar.Substring(found + 2);
 
             }
 
@@ -72,13 +76,32 @@ namespace AdivinaQue.Client.Views
                 sizeBoard = 6;
 
             }
-            Game game = new Game(sizeBoard,category);
-            server.SendBoard(toUsername,sizeBoard,category);
-            server.SendRival(username,toUsername);
+            Game game = new Game( sizeBoard, category);
+            int[] randomPositionList = GenerateRandomNumbers(sizeBoard * sizeBoard);
+            int[] randomImageList = GenerateRandomNumbers(sizeBoard);
+            server.SendBoard(toUsername, sizeBoard, category);
+            server.SendBoardLists(toUsername, randomImageList, randomPositionList);
+            server.SendRival(username, toUsername);
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
+            game.SetRandomLists(randomImageList, randomPositionList);
             game.Show();
             this.Close();
+        }
+
+        public int[] GenerateRandomNumbers(int size)
+        {
+            Random randomNumber = new Random();
+            List<int> randomList = new List<int>();
+            while (randomList.Count() < size)
+            {
+                int buttonPosition = randomNumber.Next(size);
+                if (!randomList.Contains(buttonPosition))
+                {
+                    randomList.Add(buttonPosition);
+                }
+            }
+            return randomList.ToArray();
         }
     }
 }

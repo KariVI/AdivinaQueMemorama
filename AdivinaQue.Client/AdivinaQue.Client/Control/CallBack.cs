@@ -3,7 +3,7 @@ using AdivinaQue.Client.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-
+using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Client.Control
 {
@@ -118,8 +118,12 @@ namespace AdivinaQue.Client.Control
         {
             game = new Game(size, category);
             game.SetUsername(username);
-            game.Show();
-           
+            game.Show();        
+        }
+
+        public void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList)
+        {
+            game.SetRandomLists(randomImageList, randomPositionList);
         }
 
         public void ReceiveRival(string rival)

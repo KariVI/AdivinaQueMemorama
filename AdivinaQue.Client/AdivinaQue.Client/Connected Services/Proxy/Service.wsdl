@@ -115,6 +115,9 @@
   <wsdl:message name="IService_SendRival_InputMessage">
     <wsdl:part name="parameters" element="tns:SendRival" />
   </wsdl:message>
+  <wsdl:message name="IService_SendBoardLists_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendBoardLists" />
+  </wsdl:message>
   <wsdl:message name="IService_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
   </wsdl:message>
@@ -147,6 +150,9 @@
   </wsdl:message>
   <wsdl:message name="IService_RecieveTopics_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveTopics" />
+  </wsdl:message>
+  <wsdl:message name="IService_ReceiveCardSeed_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveCardSeed" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Join">
@@ -209,6 +215,9 @@
     <wsdl:operation name="SendRival">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendRival" message="tns:IService_SendRival_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendBoardLists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendBoardLists" message="tns:IService_SendBoardLists_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUsersResponse" message="tns:IService_GetUsers_OutputMessage" />
@@ -237,6 +246,9 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveTopics">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveTopics" message="tns:IService_RecieveTopics_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCardSeed">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCardSeed" message="tns:IService_ReceiveCardSeed_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -371,6 +383,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SendBoardLists">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendBoardLists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap12:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
       <wsdl:input>
@@ -431,6 +449,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReceiveCardSeed">
+      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCardSeed" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
@@ -438,7 +462,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

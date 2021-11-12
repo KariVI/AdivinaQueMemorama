@@ -212,6 +212,12 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendRival")]
         System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoardLists")]
+        void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoardLists")]
+        System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
         string[] GetUsers();
         
@@ -245,6 +251,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveTopics")]
         void RecieveTopics(string[] topics);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCardSeed")]
+        void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -409,6 +418,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername) {
             return base.Channel.SendRivalAsync(rival, fromUsername);
+        }
+        
+        public void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList) {
+            base.Channel.SendBoardLists(toUsername, randomImageList, randomPositionList);
+        }
+        
+        public System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList) {
+            return base.Channel.SendBoardListsAsync(toUsername, randomImageList, randomPositionList);
         }
         
         public string[] GetUsers() {

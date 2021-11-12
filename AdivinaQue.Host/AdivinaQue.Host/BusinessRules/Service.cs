@@ -8,6 +8,8 @@ using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
+using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Host.BusinessRules
 {
@@ -220,6 +222,16 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendRival(string rival, string fromUsername)
         {
             users[fromUsername].ReceiveRival(rival);
+        }
+
+        public void SendBoardLists(string toUsername, List<int> randomImageList, List<int> randomPositionList)
+        {
+            users[toUsername].ReceiveCardSeed(randomImageList, randomPositionList);
+        }
+
+        public void SendCorrectCards(string toUsername, Dictionary<BitmapImage, Button> cards)
+        {
+            users[toUsername].ReceiveCorrectPair(cards);
         }
     }
 }

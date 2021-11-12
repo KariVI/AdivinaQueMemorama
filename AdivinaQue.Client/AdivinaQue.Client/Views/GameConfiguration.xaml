@@ -8,6 +8,8 @@
         Title="{DynamicResource lbTitleConfiguration}" Height="438" Width="400">
     <Grid  Background ="Lavender">
         <ComboBox Background="#c0aee0" x:Name="cbSizeBoard" HorizontalAlignment="Left" Margin="181,283,0,0" VerticalAlignment="Top" Width="176" Height="19" RenderTransformOrigin="0.78,5.596" BorderBrush="#FFC0AEE0">
+            <ComboBoxItem Background="#c0aee0" Content="2 x 2"></ComboBoxItem>
+            <ComboBoxItem Background="#c0aee0" Content="3 x 3"></ComboBoxItem>
             <ComboBoxItem Background="#c0aee0" Content="4 x 4"></ComboBoxItem>
             <ComboBoxItem Background="#c0aee0" Content="5 x 5"></ComboBoxItem>
             <ComboBoxItem Background="#c0aee0" Content="6 x 6"></ComboBoxItem>

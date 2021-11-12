@@ -25,7 +25,10 @@ namespace AdivinaQue.Client.Views
         //private List<BitmapImage> imagesAnswers = new List<BitmapImage>();
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
-
+        private Dictionary<BitmapImage,Button> upCards = new Dictionary<BitmapImage,Button>();
+        Dictionary<string,BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+        private int[] randomImageList;
+        private int[] randomPositionList;
         public Game(int sizeBoard, string category)
         {
             this.sizeBoard = sizeBoard;
@@ -34,10 +37,15 @@ namespace AdivinaQue.Client.Views
             
           
             InitializeComponent();
+           
+
+        }
+        public void initializeBoard()
+        {
             getImages();
 
             addButton();
-
+            GetRandomCards();
         }
 
         public void SetUsername(string username)
@@ -65,6 +73,9 @@ namespace AdivinaQue.Client.Views
                 bt.Width = 639 / sizeBoard;
                 bt.Height = 624 / sizeBoard;
                 bt.Background = Brushes.LavenderBlush;
+                bt.Content = null;
+                string btName = "bt" + i.ToString();
+                bt.Name = btName;
                 wpCards.Children.Add(bt);
             
             }
@@ -77,7 +88,7 @@ namespace AdivinaQue.Client.Views
             for (int i = 1; i < 4; i++)
             {
                 Console.WriteLine(category);
-                string locationQuestion = "images/"+category+"/" + i +"-1.png";
+                string locationQuestion = "images/" + category + "/" + i + "-1.png";
                 string locationAnswer = "images/Diseño/" + i + "-2.png";
 
                 BitmapImage imageQuestion = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
@@ -88,20 +99,94 @@ namespace AdivinaQue.Client.Views
              + locationAnswer, UriKind.Absolute));
                 pairCards.Add(imageQuestion, imageAnswer);
                 totalImages.Add(imageQuestion);
-                totalImages.Add(imageAnswer);
+
 
             }
+        }
+        public void SetRandomLists(int[] randomImageList, int[] randomPositionList)
+        {
+            this.randomImageList = randomImageList;
+            this.randomPositionList = randomPositionList;
+            initializeBoard();
+        }
 
+        public void GetRandomCards()
+        {
+            string btName = "";
+            Random randomPosition = new Random();
+            int indexButton = 0 ;
+            for (int i = 0; i < sizeBoard; i++)
+            {
+                int index = randomImageList[i];
+                btName = "bt" + randomPositionList[indexButton].ToString();
+                indexButton++;                
+                gameCards.Add(btName, totalImages[index]);
+                btName = "bt" + randomPositionList[indexButton].ToString();
+                indexButton++;
+                gameCards.Add(btName, pairCards[totalImages[index]]);
+              
+            }
+            
+        }
+        public void verifyTurn()
+        {
+            bool correct = false;
+            if (pairCards.ContainsKey(upCards.Keys.First())) {
+
+                if (pairCards[upCards.Keys.First()].Equals(upCards.Keys.ElementAt(1))){
+                  
+                    correct = true;
+                }
+            }
+            else if (pairCards.ContainsKey(upCards.Keys.ElementAt(1)))
+            {
+                if (pairCards[upCards.Keys.ElementAt(1)].Equals(upCards.Keys.First())){
+                    
+                    correct = true;
+                }
+            }
+            if(correct)
+            {
+                
+                var option = MessageBox.Show(" Yei", "Message", MessageBoxButton.YesNo);
+                upCards.Values.First().Name = "blocked";
+                upCards.Values.ElementAt(1).Name = "blocked";
+            }
+            else
+            {
+                var option = MessageBox.Show(" :(", "Message", MessageBoxButton.YesNo);
+                upCards.Values.First().Content = null;
+                upCards.Values.ElementAt(1).Content = null;
+            }
+            
+            upCards = new Dictionary<BitmapImage, Button>();
 
         }
         public void button_onclick(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
             Image buttonAuxiliar = new Image();
-            Random random = new Random();
-            int index = random.Next(totalImages.Count);
-            buttonAuxiliar.Source = totalImages[index];
-            bt.Content = buttonAuxiliar;
+            if (bt.Name != "blocked")
+            {
+                if (bt.Content == null)
+                {
+
+                    buttonAuxiliar.Source = gameCards[bt.Name];
+                    bt.Content = buttonAuxiliar;
+                    upCards.Add(gameCards[bt.Name], bt);
+                    if (upCards.Count() == 2)
+                    {
+
+                        verifyTurn();
+                    }
+                }
+                else
+                {
+                    bt.Content = null;
+                    upCards.Remove(gameCards[bt.Name]);
+                }
+            }
+           
         }
     }
     }
