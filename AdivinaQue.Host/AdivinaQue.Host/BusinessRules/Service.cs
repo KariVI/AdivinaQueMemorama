@@ -217,6 +217,9 @@ namespace AdivinaQue.Host.BusinessRules
             return users;
         }
 
-
+        public void SendRival(string rival, string fromUsername)
+        {
+            users[fromUsername].ReceiveRival(rival);
+        }
     }
 }

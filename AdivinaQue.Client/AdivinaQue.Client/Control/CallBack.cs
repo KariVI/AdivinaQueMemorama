@@ -18,6 +18,7 @@ namespace AdivinaQue.Client.Control
         private Podio podio;
         private ValidationCode validationCode;
         private GameConfiguration gameConfiguration;
+        private Game game;
 
         public void SetPodio(Podio podio)
         {
@@ -49,7 +50,7 @@ namespace AdivinaQue.Client.Control
         {
             foreach (var topic in topics)
             {
-                gameConfiguration.topicsCollection.Add(topic);
+               // gameConfiguration.topicsCollection.Add(topic);
 
             }
         }
@@ -115,11 +116,15 @@ namespace AdivinaQue.Client.Control
 
         public void SendBoardConfigurate(string username, int size, string category)
         {
-            Game game = new Game(size, category);
+            game = new Game(size, category);
             game.SetUsername(username);
-            game.SetUsernameRival(currentUsername);
             game.Show();
            
+        }
+
+        public void ReceiveRival(string rival)
+        {
+            game.SetUsernameRival(rival);
         }
     }
 }

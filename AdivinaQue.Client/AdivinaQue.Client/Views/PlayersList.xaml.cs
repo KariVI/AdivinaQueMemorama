@@ -43,7 +43,7 @@ namespace AdivinaQue.Client.Views
                 {
                     GameConfiguration gameConfiguration = new GameConfiguration(server,username, player);
                     callback.SetGameConfiguration(gameConfiguration);
-                    server.GetTopics(username);
+                   
                     gameConfiguration.Show();
                     this.Close();
                 }

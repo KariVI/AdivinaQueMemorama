@@ -30,12 +30,10 @@ namespace AdivinaQue.Client.Views
 
             InitializeComponent();
             topicsCollection = new ObservableCollection<string>();
-            lbxTopic.ItemsSource = topicsCollection;
             this.server = server;
             this.username = username;
             this.toUsername = toUsername;
         }
-
 
         private void ConfirmBt_Click(object sender, RoutedEventArgs e)
         {
@@ -43,7 +41,10 @@ namespace AdivinaQue.Client.Views
 
             if (lbxTopic.SelectedItem != null)
             {
-                category = lbxTopic.SelectedItem.ToString();
+                string categoryAuxiliar = lbxTopic.SelectedItem.ToString();
+                int found = categoryAuxiliar.IndexOf(": ");
+                category = categoryAuxiliar.Substring(found +2 );
+
             }
 
             int sizeBoard = 0;
@@ -73,6 +74,7 @@ namespace AdivinaQue.Client.Views
             }
             Game game = new Game(sizeBoard,category);
             server.SendBoard(toUsername,sizeBoard,category);
+            server.SendRival(username,toUsername);
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
             game.Show();

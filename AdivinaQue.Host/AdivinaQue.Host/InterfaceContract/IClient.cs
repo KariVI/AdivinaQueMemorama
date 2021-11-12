@@ -21,6 +21,8 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void SendBoardConfigurate(String username, int size, string category);
         [OperationContract(IsOneWay = true)]
+        void ReceiveRival(String rival);
+        [OperationContract(IsOneWay = true)]
         void RecieveScores(Dictionary<string, int> globalScores);
         
         [OperationContract(IsOneWay = true)]

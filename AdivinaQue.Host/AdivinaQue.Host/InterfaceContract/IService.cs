@@ -41,6 +41,8 @@ namespace AdivinaQue.Host.InterfaceContract
 
         [OperationContract(IsOneWay = true)]
         void SendBoard(string toUsername, int size, string category);
+        [OperationContract(IsOneWay = true)]
+        void SendRival(string rival, string fromUsername);
 
         [OperationContract]
         List<String> GetUsers();

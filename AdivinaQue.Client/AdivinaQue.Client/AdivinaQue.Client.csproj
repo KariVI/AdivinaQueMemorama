@@ -206,9 +206,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\imageTest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -244,9 +241,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="Images\Administración\" />
+    <Folder Include="Images\Pruebas\" />
+    <Folder Include="Images\Tecnologías\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\testImage2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Diseño\1-1.png" />
+    <Resource Include="Images\Diseño\1-2.png" />
+    <Resource Include="Images\Diseño\2-1.png" />
+    <Resource Include="Images\Diseño\2-2.png" />
+    <Resource Include="Images\Diseño\3-1.png" />
+    <Resource Include="Images\Diseño\3-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
