@@ -16,7 +16,9 @@
         <TextBlock Text="{DynamicResource HeaderLogin}" HorizontalAlignment="Left" Margin="45,57,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="24" Height="65" Width="279"/>
         <PasswordBox x:Name="Password" Background="#c0aee0" HorizontalAlignment="Left" Height="25" Margin="78,271,0,0"  VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
         <Label Content="{DynamicResource lbPassword}" HorizontalAlignment="Left" Margin="45,237,0,0" VerticalAlignment="Top" FontFamily="Tw Cen MT Condensed" Height="26" Width="136" FontSize="18"/>
-        <Button Content="{DynamicResource btRegister}" Background="Plum" HorizontalAlignment="Left" Margin="331,376,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" RenderTransformOrigin="1.39,0.777" Height="22" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
-        <Button Content="{DynamicResource btLogin}"  Background="Plum" Name="LoginBt" HorizontalAlignment="Left" Margin="225,376,0,0" VerticalAlignment="Top" Width="87" Height="22" Click="LoginButton_Click" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
+        <Button Content="{DynamicResource btRegister}" Background="Plum" HorizontalAlignment="Left" Margin="331,376,0,0" VerticalAlignment="Top" Width="88" BorderThickness="0" Click="Button_Click" RenderTransformOrigin="1.39,0.777" Height="22" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
+        <Button Content="{DynamicResource btLogin}"  Background="Plum" Name="LoginBt" HorizontalAlignment="Left" Margin="225,376,0,0" VerticalAlignment="Top" BorderThickness="0" Width="87" Height="22" Click="LoginButton_Click" FontFamily="Tw Cen MT Condensed" FontSize="16"/>
+        <Button x:Name="btLanguageSpanish" Content="ES" HorizontalAlignment="Left" Margin="391,10,0,0" Background="Plum" VerticalAlignment="Top" Width="53" BorderThickness="0" Click="btLanguageSpanish_Click" RenderTransformOrigin="-0.038,0.5"/>
+        <Button x:Name="btLanguageEnglish" Content="EN" HorizontalAlignment="Left" Margin="314,10,0,0" Background="Plum" VerticalAlignment="Top" Width="53" BorderThickness="0" Click="btLanguageEnglish_Click"/>
     </Grid>
 </Window>

@@ -91,9 +91,10 @@
     <Compile Include="DatabaseAccess\Score.cs">
       <DependentUpon>AdivinaQueAppContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Exception\BusinessException.cs" />
+    <Compile Include="Logs\BusinessException.cs" />
     <Compile Include="InterfaceContract\IClient.cs" />
     <Compile Include="InterfaceContract\IService.cs" />
+    <Compile Include="Logs\Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

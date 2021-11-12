@@ -13,8 +13,7 @@
         <Button x:Name="btModify" Content="{DynamicResource btModify}" HorizontalAlignment="Left" Margin="206,316,0,0" VerticalAlignment="Top" Width="190" Height="38" Click="btModify_Click" Background="Plum"/>
         <Label Name="lbTitle" Content="{DynamicResource lbTitleHome}" HorizontalAlignment="Left" Margin="32,19,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" RenderTransformOrigin="0.944,1.552" FontFamily="OCR A Extended" Width="249"/>
         <Button Content="{DynamicResource btLogout}" HorizontalAlignment="Left" Margin="515,374,0,0" VerticalAlignment="Top" Width="75" Click="btLogout_Click" Background="Plum"/>
-        <Button Content="EN" Margin="77,374,490,25" Click="US_OnClick" Background="Plum"/>
-        <Button Content="ES" Margin="32,374,536,25" Click="ES_OnClick" Background="Plum"/>
+     
 
     </Grid>
 </Window>

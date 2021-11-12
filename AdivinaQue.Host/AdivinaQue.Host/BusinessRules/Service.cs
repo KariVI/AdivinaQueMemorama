@@ -1,4 +1,5 @@
 ﻿using AdivinaQue.Host.DatabaseAccess;
+using AdivinaQue.Host.Exception;
 using AdivinaQue.Host.InterfaceContract;
 using System;
 using System.Collections.Generic;
@@ -173,6 +174,7 @@ namespace AdivinaQue.Host.BusinessRules
             catch (SmtpException ex)
             {
                 message = "Error";
+                throw new BusinessException("Error send Mail", ex);
 
             }
             return message;

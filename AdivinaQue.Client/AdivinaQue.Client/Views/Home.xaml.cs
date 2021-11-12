@@ -31,7 +31,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.server = server;
             this.callback = callback;
-            LoadStringResource("es-MEX");
+            
         }
 
         private void btModify_Click(object sender, RoutedEventArgs e)
@@ -98,38 +98,13 @@ namespace AdivinaQue.Client.Views
             this.Close();
         }
 
-        private void LoadStringResource(string locale)
+       
+
+        private void Window_Closed(object sender, EventArgs e)
         {
-            var resources = new ResourceDictionary();
 
-            resources.Source = new Uri("pack://application:,,,/Resources_" + locale + ";component/Strings.xaml", UriKind.Absolute);
-
-            var current = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
-                             m => m.Source.OriginalString.EndsWith("Strings.xaml"));
-
-
-            if (current != null)
-            {
-                Application.Current.Resources.MergedDictionaries.Remove(current);
-            }
-
-            Application.Current.Resources.MergedDictionaries.Add(resources);
-        }
-
-        private void US_OnClick(object sender, RoutedEventArgs e)
-        {
-            LoadStringResource("en-US");
-            setLabel();
-            chat.setLabel();
-            chat.InitializeComponent();
-        }
-
-        private void ES_OnClick(object sender, RoutedEventArgs e)
-        {
-            LoadStringResource("es-MEX");
-            setLabel();
-            chat.setLabel();
-            chat.InitializeComponent();
+            server.DisconnectUser(username);
+            this.Close();
         }
     }
 }

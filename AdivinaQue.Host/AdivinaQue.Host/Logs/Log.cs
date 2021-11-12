@@ -16,6 +16,6 @@ namespace AdivinaQue.Host.Logs
                 return LogManager.GetLogger(filename);
             }
         }
-    }
-}
-}
+ }
+
+

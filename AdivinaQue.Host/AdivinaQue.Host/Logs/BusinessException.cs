@@ -3,6 +3,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,10 +21,17 @@ namespace AdivinaQue.Host.Exception
         {
         }
 
-        public BusinessException(string message, SystemException inner) {
+        public BusinessException(string message, SmtpException inner) {
              this.message = message;
              Logs.Error($"Fallo la conexión ({ inner.Message})");
         
+        }
+
+        public BusinessException(string message, SystemException inner)
+        {
+            this.message = message;
+            Logs.Error($"Fallo la conexión ({ inner.Message})");
+
         }
     }
 }

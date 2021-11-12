@@ -188,7 +188,7 @@ namespace AdivinaQue.Host.DatabaseAccess
                 mail.Dispose();
                 status = AuthenticationStatus.Success;
             }
-            catch (Exception ex)
+            catch (SmtpException ex)
             {
                 Console.WriteLine(ex.Message);
             }
