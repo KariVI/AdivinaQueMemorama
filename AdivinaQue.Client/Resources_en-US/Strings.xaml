@@ -44,5 +44,9 @@
     <system:String x:Key="lbTitleConfiguration">Board configuration</system:String>
     <system:String x:Key="lbSize">Size: </system:String>
     <system:String x:Key="lbTopicMessage">Select a topic</system:String>
+    <system:String x:Key="lbiFirstTopic">Design</system:String>
+    <system:String x:Key="lbiSecondTopic">Tests</system:String>
+    <system:String x:Key="lbiThirdTopic">Technologies</system:String>
+    <system:String x:Key="lbiFourthTopic">Administration</system:String>
 </ResourceDictionary>
    

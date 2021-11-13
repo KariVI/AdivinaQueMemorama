@@ -81,12 +81,17 @@ namespace AdivinaQue.Client.Views
                                             h2{color:#E267B4;}
                                             </style>
                                             <h2>" + code + "</h2>";
-                        String messageEmailSuccesful = server.SendMail(tbEmail.Text, "Código de validación", body);
-
+                        
+                            String messageEmailSuccesful = server.SendMail(tbEmail.Text, "Código de validación", body);
+                        
                         if (messageEmailSuccesful == "Exito")
                         {
 
                             MessageBox.Show("Code sended");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Don't be possible send an email");
                         }
                     }
                     else

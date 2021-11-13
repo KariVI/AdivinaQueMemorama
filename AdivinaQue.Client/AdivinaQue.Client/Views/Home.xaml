@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="{DynamicResource lbTitleHome}"  Height="450" Width="618.5">
     <Grid Margin="0,0,2,1" Background="#FFE6E6F5">
-        <Button Name="btStartGame" Content="{DynamicResource btStartGame}" HorizontalAlignment="Left" Margin="206,109,0,0" VerticalAlignment="Top" Width="190" Height="42" Background="Plum" RenderTransformOrigin="0.05,0.643" Click="btStartGame_Click"  />
-        <Button Content="{DynamicResource btGlobalScore}"  HorizontalAlignment="Left" Margin="206,212,0,0" VerticalAlignment="Top" Width="190" Height="36" Background="Plum" RenderTransformOrigin="0.021,0.875" Click="Button_Click"/>
+        <Button Name="btStartGame" Content="{DynamicResource btStartGame}" HorizontalAlignment="Left" Margin="206,109,0,0" VerticalAlignment="Top" Width="190" Height="42" BorderThickness="0" Background="Plum" RenderTransformOrigin="0.05,0.643" Click="btStartGame_Click"  />
+        <Button Content="{DynamicResource btGlobalScore}"  HorizontalAlignment="Left" Margin="206,212,0,0" VerticalAlignment="Top" Width="190" Height="36" BorderThickness="0"   Background="Plum" RenderTransformOrigin="0.021,0.875" Click="Button_Click"/>
         <Label x:Name="lbUser" Content="Label" HorizontalAlignment="Left" Margin="388,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.944,1.552" FontFamily="OCR A Extended" Width="192"/>
-        <Button x:Name="btModify" Content="{DynamicResource btModify}" HorizontalAlignment="Left" Margin="206,316,0,0" VerticalAlignment="Top" Width="190" Height="38" Click="btModify_Click" Background="Plum"/>
+        <Button x:Name="btModify" Content="{DynamicResource btModify}" HorizontalAlignment="Left" Margin="206,316,0,0" VerticalAlignment="Top" Width="190" Height="38" BorderThickness="0"   Click="btModify_Click" Background="Plum"/>
         <Label Name="lbTitle" Content="{DynamicResource lbTitleHome}" HorizontalAlignment="Left" Margin="32,19,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" RenderTransformOrigin="0.944,1.552" FontFamily="OCR A Extended" Width="249"/>
-        <Button Content="{DynamicResource btLogout}" HorizontalAlignment="Left" Margin="515,374,0,0" VerticalAlignment="Top" Width="75" Click="btLogout_Click" Background="Plum"/>
-        <Button Content="EN" Margin="77,374,490,25" Click="US_OnClick" Background="Plum"/>
-        <Button Content="ES" Margin="32,374,536,25" Click="ES_OnClick" Background="Plum"/>
+        <Button Content="{DynamicResource btLogout}" HorizontalAlignment="Left" Margin="494,366,0,0" VerticalAlignment="Top" Width="86" Click="btLogout_Click" BorderThickness="0"   Background="Plum" Height="28"/>
+        <Button  x:Name="btChat" Content="Chat Global" HorizontalAlignment="Left" Margin="32,366,0,0" VerticalAlignment="Top" Width="86" Background="Plum" BorderThickness="0"  Height="28" Click="btChat_Click"/>
+
 
     </Grid>
 </Window>

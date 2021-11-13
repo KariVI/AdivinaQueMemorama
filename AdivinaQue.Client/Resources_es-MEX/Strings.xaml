@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="HeaderLogin">Inicio de sesion</system:String>
-    <system:String x:Key="lbUsername">Nickname: </system:String>
+    <system:String x:Key="lbUsername">Nombre de usuario: </system:String>
     <system:String x:Key="lbPassword">Contraseña: </system:String>
     <system:String x:Key="btRegister">Registrarse</system:String>
     <system:String x:Key="btLogin">Entrar</system:String>
@@ -43,4 +43,8 @@
     <system:String x:Key="lbTitleConfiguration">Configuración</system:String>
     <system:String x:Key="lbSize">Tamaño:</system:String>
     <system:String x:Key="lbTopicMessage">Selecciona un tema</system:String>
+    <system:String x:Key="lbiFirstTopic">Diseño</system:String>
+    <system:String x:Key="lbiSecondTopic">Pruebas</system:String>
+    <system:String x:Key="lbiThirdTopic">Tecnologías</system:String>
+    <system:String x:Key="lbiFourthTopic">Administración</system:String>
 </ResourceDictionary>

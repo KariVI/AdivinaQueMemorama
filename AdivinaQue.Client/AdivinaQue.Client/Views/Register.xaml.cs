@@ -36,7 +36,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                MessageBox.Show("Exist empty fields");
+                MessageBox.Show("Exists empty fields");
             }
         }
 
@@ -146,13 +146,5 @@ namespace AdivinaQue.Client.Views
         }
     }
 
-    public enum DataStatus
-    {
-        Correct = 0,
-        UserNameInvalid,
-        NameInvalid, 
-        PasswordInvalid,
-        UserNameDuplicate,
-        ShortPassword
-    }
+  
 }

@@ -7,6 +7,7 @@ using System.Net;
 using AdivinaQue.Host.InterfaceContract;
 using System.Data.Entity.Core;
 using System.Collections.Generic;
+using AdivinaQue.Host.Exception;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
@@ -130,6 +131,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             catch (EntityException ex)
             {
                 status = AuthenticationStatus.Failed;
+                throw new BusinessException("Failed Register", ex);
             }
             return status;
 
@@ -188,7 +190,7 @@ namespace AdivinaQue.Host.DatabaseAccess
                 mail.Dispose();
                 status = AuthenticationStatus.Success;
             }
-            catch (Exception ex)
+            catch (SmtpException ex)
             {
                 Console.WriteLine(ex.Message);
             }
