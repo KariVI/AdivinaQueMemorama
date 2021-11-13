@@ -116,6 +116,12 @@ namespace AdivinaQue.Client.Control
 
 
         }
+
+        internal void SetGame(Game game)
+        {
+            this.game = game;
+        }
+
         public void SetValidateCode(ValidationCode validationCode)
         {
             this.validationCode = validationCode;

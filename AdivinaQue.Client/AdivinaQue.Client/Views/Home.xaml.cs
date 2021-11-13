@@ -84,7 +84,7 @@ namespace AdivinaQue.Client.Views
             callback.SetCurrentUsername(username);
             PlayersList playersList = new PlayersList(server,username,callback);
             callback.SetPlayersList(playersList);
-            
+           
             server.GetConnectedUsers();
             playersList.Show();
 

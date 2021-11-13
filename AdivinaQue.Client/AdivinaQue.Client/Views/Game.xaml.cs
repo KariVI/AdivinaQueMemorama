@@ -37,7 +37,8 @@ namespace AdivinaQue.Client.Views
             this.sizeBoard = sizeBoard;
             this.category = category;
             wpCards = new WrapPanel();
-
+            if(server == null)
+                MessageBox.Show(" a", "Message", MessageBoxButton.YesNo);
 
             InitializeComponent();  
 
@@ -88,11 +89,11 @@ namespace AdivinaQue.Client.Views
         {
 
 
-            for (int i = 1; i < 4; i++)
+            for (int i = 1; i < 9; i++)
             {
                 Console.WriteLine(category);
                 string locationQuestion = "images/" + category + "/" + i + "-1.png";
-                string locationAnswer = "images/Diseño/" + i + "-2.png";
+                string locationAnswer = "images/" + category + "/" + i + "-2.png";
 
                 BitmapImage imageQuestion = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
                + ";component/"
@@ -118,7 +119,7 @@ namespace AdivinaQue.Client.Views
             string btName = "";
             Random randomPosition = new Random();
             int indexButton = 0 ;
-            for (int i = 0; i < sizeBoard; i++)
+            for (int i = 0; i < (sizeBoard * sizeBoard) / 2; i++)
             {
                 int index = randomImageList[i];
                 btName = "bt" + randomPositionList[indexButton].ToString();

@@ -41,7 +41,7 @@ namespace AdivinaQue.Client.Views
                     var result  = server.SendInvitation(player,username);
                 if (result)
                 {
-                    GameConfiguration gameConfiguration = new GameConfiguration(server,username, player);
+                    GameConfiguration gameConfiguration = new GameConfiguration(callback,username, player);
                     callback.SetGameConfiguration(gameConfiguration);
                    
                     gameConfiguration.Show();

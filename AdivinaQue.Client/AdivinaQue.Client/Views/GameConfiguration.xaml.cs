@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AdivinaQue.Client.Control;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,17 +26,20 @@ namespace AdivinaQue.Client.Views
         Proxy.ServiceClient server;
         private String username;
         private String toUsername;
+        CallBack callback;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
 
-        public GameConfiguration(Proxy.ServiceClient server, String username, String toUsername)
+        public GameConfiguration(CallBack callback, String username, String toUsername)
         {
 
             InitializeComponent();
             topicsCollection = new ObservableCollection<string>();
-            this.server = server;
+            this.callback = callback;
+            InstanceContext context = new InstanceContext(callback);
+            server = new Proxy.ServiceClient(context);
             this.username = username;
             this.toUsername = toUsername;
         }
@@ -78,10 +83,11 @@ namespace AdivinaQue.Client.Views
             }
             Game game = new Game( server, sizeBoard, category);
             int[] randomPositionList = GenerateRandomNumbers(sizeBoard * sizeBoard);
-            int[] randomImageList = GenerateRandomNumbers(sizeBoard);
+            int[] randomImageList = GenerateRandomNumbers((sizeBoard * sizeBoard) / 2);
             server.SendBoard(toUsername, sizeBoard, category);
             server.SendBoardLists(toUsername, randomImageList, randomPositionList);
             server.SendRival(username, toUsername);
+            callback.SetGame(game);
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
             game.SetRandomLists(randomImageList, randomPositionList);

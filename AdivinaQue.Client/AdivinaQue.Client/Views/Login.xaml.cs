@@ -40,6 +40,7 @@ namespace AdivinaQue.Client.Views
                     Home home = new Home(server,callback);
                     home.setUsername(tbUsername.Text);
                     callback.SetCurrentUsername(tbUsername.Text);
+                    callback.setServer(server);
                     home.setChat(chat);
                     server.GetConnectedUsers();
                     home.Show();
@@ -55,7 +56,7 @@ namespace AdivinaQue.Client.Views
         {
             ValidationCode validationCode = new ValidationCode(server);
             callback.SetValidateCode(validationCode);
-            callback.setServer(server);
+            
             validationCode.Show();
         }
     }

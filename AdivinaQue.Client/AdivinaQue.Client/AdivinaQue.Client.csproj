@@ -266,7 +266,6 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="Images\Administración\" />
-    <Folder Include="Images\Pruebas\" />
     <Folder Include="Images\Tecnologías\" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +278,26 @@
     <Resource Include="Images\Diseño\2-2.png" />
     <Resource Include="Images\Diseño\3-1.png" />
     <Resource Include="Images\Diseño\3-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pruebas\1-1.png" />
+    <Resource Include="Images\Pruebas\1-2.png" />
+    <Resource Include="Images\Pruebas\2-1.png" />
+    <Resource Include="Images\Pruebas\2-2.png" />
+    <Resource Include="Images\Pruebas\3-1.png" />
+    <Resource Include="Images\Pruebas\3-2.png" />
+    <Resource Include="Images\Pruebas\4-1.png" />
+    <Resource Include="Images\Pruebas\4-2.png" />
+    <Resource Include="Images\Pruebas\5-1.png" />
+    <Resource Include="Images\Pruebas\5-2.png" />
+    <Resource Include="Images\Pruebas\6-1.png" />
+    <Resource Include="Images\Pruebas\6-2.png" />
+    <Resource Include="Images\Pruebas\7-1.png" />
+    <Resource Include="Images\Pruebas\7-2.png" />
+    <Resource Include="Images\Pruebas\8-1.png" />
+    <Resource Include="Images\Pruebas\8-2.png" />
+    <Resource Include="Images\Pruebas\9-1.png" />
+    <Resource Include="Images\Pruebas\9-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
