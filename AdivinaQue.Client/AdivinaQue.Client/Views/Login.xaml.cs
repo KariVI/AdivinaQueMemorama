@@ -6,9 +6,7 @@ using System.Windows;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Login.xaml
-    /// </summary>
+  
     public partial class Login : Window
     {
         CallBack callback;
@@ -26,35 +24,31 @@ namespace AdivinaQue.Client.Views
         {
             if (!string.IsNullOrEmpty(tbUsername.Text))               
             {
-                Boolean value=false;
                 try
                 {
-                     value = server.Join(tbUsername.Text, Password.Password.ToString());
-                }catch(EndpointNotFoundException ex)
+                    Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
+                    if (value == false)
+                    {
+                        MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
+                    }
+
+                    else
+                    {
+                       
+                        Home home = new Home(server, callback);
+                        home.setUsername(tbUsername.Text);
+                        callback.SetCurrentUsername(tbUsername.Text);
+                        home.Show();
+                        this.Close();
+                    }
+
+                }
+                catch (EndpointNotFoundException ex)
                 {
                     MessageBox.Show("Sorry, the server isn't running");
                 }
                 
-                if (value == false)
-                {
-                    MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
-                }
-
-                else
-                {
-                    Chat chat = new Chat(server);
-                    chat.setUsername(tbUsername.Text);
-                    callback.SetChat(chat);
-                    Home home = new Home(server,callback);
-                    home.setUsername(tbUsername.Text);
-                    callback.SetCurrentUsername(tbUsername.Text);
-                    home.setChat(chat);
-                    server.GetConnectedUsers();
-                    home.Show();
-                    chat.Show();
-                    this.Close();
-                }
-
+             
             }
 
         }

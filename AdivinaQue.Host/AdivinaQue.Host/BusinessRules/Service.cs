@@ -112,7 +112,7 @@ namespace AdivinaQue.Host.BusinessRules
                     value = true;
                 }  
             }catch(KeyNotFoundException ex) { 
-       
+                throw new BusinessException("User doesn't exist", ex);
             }
             return value;
         }

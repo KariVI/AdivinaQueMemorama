@@ -1,4 +1,5 @@
-﻿using AdivinaQue.Client.Proxy;
+﻿using AdivinaQue.Client.Control;
+using AdivinaQue.Client.Proxy;
 using System;
 using System.Windows;
 
@@ -22,19 +23,111 @@ namespace AdivinaQue.Client.Views
 
         private void btUpdate_Click(object sender, RoutedEventArgs e)
         {
-            newPlayer.Name = tbName.Text;
-            newPlayer.Username = tbUsername.Text;
-            newPlayer.Email = tbEmail.Text;
-            newPlayer.Password = pbPassword.Password;
-            String code = server.GenerateCode();
-            server.SendMail(tbEmail.Text,"Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
-            AuthMail authmail = new AuthMail(code,newPlayer);
-            authmail.setServer(server);
-            authmail.setUsername(username);
-            authmail.Show();
-            this.Close();
+            if (tbUsername.Text != "" && pbPassword.Password.ToString() != "" && tbName.Text != "" && tbEmail.Text!="")
+            {
+                if (ValidateData()== DataStatus.Correct)
+                {
+                    newPlayer.Name = tbName.Text;
+                    newPlayer.Username = tbUsername.Text;
+                    newPlayer.Email = tbEmail.Text;
+                    newPlayer.Password = pbPassword.Password;
+                    String code = server.GenerateCode();
+                    server.SendMail(tbEmail.Text, "Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
+                    AuthMail authmail = new AuthMail(code, newPlayer);
+                    authmail.setServer(server);
+                    authmail.setUsername(username);
+                    authmail.Show();
+                    this.Close();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Exists empty fields");
+            }
         }
 
+        private DataStatus ValidateData()
+        {
+            Validate validate = new Validate();
+            DataStatus dataStatus = DataStatus.Correct;
+
+            if (!validate.ValidationAlphanumeric(tbUsername.Text))
+            {
+                dataStatus = DataStatus.UserNameInvalid;
+            }      
+            if (!validate.ValidationString(tbName.Text))
+            {
+                dataStatus = DataStatus.NameInvalid;
+            }
+
+            if (!validate.ValidationAlphanumeric(pbPassword.Password.ToString()))
+            {
+                dataStatus = DataStatus.PasswordInvalid;
+            }
+
+            if (pbPassword.Password.ToString().Length < 9)
+            {
+                dataStatus = DataStatus.ShortPassword;
+
+            }
+
+            if (!validate.ValidationEmail(tbEmail.Text))
+            {
+                dataStatus = DataStatus.EmailIncorrect;
+            }
+
+
+            return dataStatus;
+
+        }
+
+        private void SendMessage(DataStatus dataStatus)
+        {
+            if (dataStatus == DataStatus.UserNameInvalid)
+            {
+                MessageBox.Show("Please write a valid username");
+            }
+
+            if (dataStatus == DataStatus.NameInvalid)
+            {
+                MessageBox.Show("Name field doesn't have special characters");
+            }
+
+            if (dataStatus == DataStatus.PasswordInvalid)
+            {
+                MessageBox.Show("Password field doesn't have special characters");
+            }
+
+            if (dataStatus == DataStatus.ShortPassword)
+            {
+                MessageBox.Show("Password minimum 8 characters");
+            }
+
+            if (dataStatus == DataStatus.EmailIncorrect)
+            {
+                MessageBox.Show("Email incorrect, please write again");
+            }
+
+        }
+
+        private bool SearchDuplicateUsername()
+        {
+            bool value = false;
+            string[] usernames = server.GetUsers();
+            foreach (var username in usernames)
+            {
+                if (username.Equals(tbUsername.Text))
+                {
+                    value = true;
+                }
+            }
+
+            return value;
+        }
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -44,9 +137,17 @@ namespace AdivinaQue.Client.Views
             var option = MessageBox.Show("Delete user?", "Message", MessageBoxButton.YesNo);
             if(option == MessageBoxResult.Yes)
             {
-                server.Delete(username);
-                home.disconect();
-                this.Close();
+
+
+                if (server.Delete(username))
+                {
+                    home.disconect();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Not be possible delete your account");
+                }
             }   
         }
 

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para AuthMail.xaml
-    /// </summary>
     public partial class AuthMail : Window
     {
         private String code ;

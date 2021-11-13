@@ -56,7 +56,6 @@ namespace AdivinaQue.Client.Views
             server.DisconnectUser(username);
             Login login = new Login();
             login.Show();
-            chat.Close();
             this.Close();
         }
 
@@ -105,6 +104,16 @@ namespace AdivinaQue.Client.Views
 
             server.DisconnectUser(username);
             this.Close();
+        }
+
+        private void btChat_Click(object sender, RoutedEventArgs e)
+        {
+
+            Chat chat = new Chat(server);
+            chat.setUsername(username);
+            callback.SetChat(chat);
+            server.GetConnectedUsers();
+            chat.Show();
         }
     }
 }
