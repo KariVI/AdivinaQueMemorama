@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Home.xaml
-    /// </summary>
+   
     public partial class Home : Window
     {
         private ServiceClient server;

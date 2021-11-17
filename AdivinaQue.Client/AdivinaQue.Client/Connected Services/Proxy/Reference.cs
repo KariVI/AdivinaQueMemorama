@@ -106,6 +106,115 @@ namespace AdivinaQue.Client.Proxy {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameCurrently", Namespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract")]
+    [System.SerializableAttribute()]
+    public partial class GameCurrently : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, int> PlayersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScoreWinnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TopicField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WinnerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, int> Players {
+            get {
+                return this.PlayersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayersField, value) != true)) {
+                    this.PlayersField = value;
+                    this.RaisePropertyChanged("Players");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ScoreWinner {
+            get {
+                return this.ScoreWinnerField;
+            }
+            set {
+                if ((this.ScoreWinnerField.Equals(value) != true)) {
+                    this.ScoreWinnerField = value;
+                    this.RaisePropertyChanged("ScoreWinner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Topic {
+            get {
+                return this.TopicField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TopicField, value) != true)) {
+                    this.TopicField = value;
+                    this.RaisePropertyChanged("Topic");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Winner {
+            get {
+                return this.WinnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WinnerField, value) != true)) {
+                    this.WinnerField = value;
+                    this.RaisePropertyChanged("Winner");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(AdivinaQue.Client.Proxy.IServiceCallback))]
     public interface IService {
@@ -229,6 +338,30 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
         System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendScoreRival")]
+        void SendScoreRival(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendScoreRival")]
+        System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNextTurnRival")]
+        void SendNextTurnRival(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNextTurnRival")]
+        System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNumberCardsFinded")]
+        void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNumberCardsFinded")]
+        System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
+        bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
+        System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -263,6 +396,15 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCorrectPair")]
         void ReceiveCorrectPair(System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveScoreRival")]
+        void ReceiveScoreRival(int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveNextTurn")]
+        void ReceiveNextTurn(bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveNumberCardsFinded")]
+        void ReceiveNumberCardsFinded(int numberCardsFinded);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -451,6 +593,38 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards) {
             return base.Channel.SendCorrectCardsAsync(toUsername, cards);
+        }
+        
+        public void SendScoreRival(string toUsername, int score) {
+            base.Channel.SendScoreRival(toUsername, score);
+        }
+        
+        public System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score) {
+            return base.Channel.SendScoreRivalAsync(toUsername, score);
+        }
+        
+        public void SendNextTurnRival(string toUsername, bool nextTurn) {
+            base.Channel.SendNextTurnRival(toUsername, nextTurn);
+        }
+        
+        public System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn) {
+            return base.Channel.SendNextTurnRivalAsync(toUsername, nextTurn);
+        }
+        
+        public void SendNumberCardsFinded(string toUsername, int numberCardsFinded) {
+            base.Channel.SendNumberCardsFinded(toUsername, numberCardsFinded);
+        }
+        
+        public System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded) {
+            return base.Channel.SendNumberCardsFindedAsync(toUsername, numberCardsFinded);
+        }
+        
+        public bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
+            return base.Channel.SendGame(gameCurrently);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
+            return base.Channel.SendGameAsync(gameCurrently);
         }
     }
 }

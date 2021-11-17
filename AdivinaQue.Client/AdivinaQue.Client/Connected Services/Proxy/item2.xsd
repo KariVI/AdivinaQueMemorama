@@ -217,6 +217,44 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendScoreRival">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="toUsername" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendNextTurnRival">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="toUsername" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nextTurn" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendNumberCardsFinded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="toUsername" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numberCardsFinded" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" minOccurs="0" name="gameCurrently" nillable="true" type="q8:GameCurrently" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendGameResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RecieveMessage">
     <xs:complexType>
       <xs:sequence>
@@ -227,14 +265,14 @@
   <xs:element name="RecieveUsers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="users" nillable="true" type="q8:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="users" nillable="true" type="q9:ArrayOfKeyValueOfstringanyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RecievePlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" minOccurs="0" name="player" nillable="true" type="q9:Player" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" minOccurs="0" name="player" nillable="true" type="q10:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -271,29 +309,50 @@
   <xs:element name="RecieveScores">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="globalScores" nillable="true" type="q10:ArrayOfKeyValueOfstringint" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="globalScores" nillable="true" type="q11:ArrayOfKeyValueOfstringint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RecieveTopics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q12:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveCardSeed">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomImageList" nillable="true" type="q12:ArrayOfint" />
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomPositionList" nillable="true" type="q13:ArrayOfint" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomImageList" nillable="true" type="q13:ArrayOfint" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomPositionList" nillable="true" type="q14:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveCorrectPair">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cards" nillable="true" type="q14:ArrayOfKeyValueOfBitmapImagestringLeJ6E6Rh" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cards" nillable="true" type="q15:ArrayOfKeyValueOfBitmapImagestringLeJ6E6Rh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveScoreRival">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveNextTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nextTurn" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveNumberCardsFinded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numberCardsFinded" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

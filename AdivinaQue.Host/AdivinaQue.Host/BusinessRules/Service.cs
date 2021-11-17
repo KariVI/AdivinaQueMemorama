@@ -22,6 +22,7 @@ namespace AdivinaQue.Host.BusinessRules
         public void DisconnectUser(String username)
         {
             users.Remove(username);
+            Console.WriteLine("Usuario {0} se desconecto", username);
             GetConnectedUsers();
         }
         public bool Delete(string username)
@@ -74,7 +75,7 @@ namespace AdivinaQue.Host.BusinessRules
         public bool Modify(Player player, String username)
         {
             Authentication authentication = new Authentication();
-            AuthenticationStatus status = authentication.updatePlayer(player, username);
+            AuthenticationStatus status = authentication.UpdatePlayer(player, username);
             bool value = true;
             if(status == AuthenticationStatus.Failed)
             {
@@ -198,7 +199,7 @@ namespace AdivinaQue.Host.BusinessRules
         public void GetTopics(string username)
         {
             Authentication authentication = new Authentication();
-            List<String> topics = authentication.getTopics();
+            List<String> topics = authentication.GetTopics();
 
 
             users[username].RecieveTopics(topics);
@@ -208,14 +209,14 @@ namespace AdivinaQue.Host.BusinessRules
         public List<String> GetEmails()
         {
             Authentication authentication = new Authentication();
-            List<String> emails = authentication.getEmails();
+            List<String> emails = authentication.GetEmails();
             return emails;
         }
 
         public List<String> GetUsers()
         {
             Authentication authentication = new Authentication();
-            List<String> users = authentication.getUsers();
+            List<String> users = authentication.GetUsers();
             return users;
         }
 
@@ -231,8 +232,39 @@ namespace AdivinaQue.Host.BusinessRules
 
         public void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards)
         {
-            Console.WriteLine("s");
             users[toUsername].ReceiveCorrectPair(cards);
+        }
+
+        public void SendScoreRival(string toUsername, int score)
+        {
+            users[toUsername].ReceiveScoreRival(score);
+        }
+
+        public void SendNextTurnRival(string toUsername, bool nextTurn)
+        {
+            users[toUsername].ReceiveNextTurn(nextTurn);
+        }
+
+        public void SendNumberCardsFinded(string toUsername, int numberCardsFinded)
+        {
+            users[toUsername].ReceiveNumberCardsFinded(numberCardsFinded);
+        }
+
+        public bool SendGame(GameCurrently gameCurrently)
+        {
+            bool value = false;
+            Authentication authentication = new Authentication();
+
+                if (authentication.AddGame(gameCurrently) == AuthenticationStatus.Success)
+                {
+                    value = true;
+                }
+            
+           
+
+
+            return value;
+            
         }
     }
 }

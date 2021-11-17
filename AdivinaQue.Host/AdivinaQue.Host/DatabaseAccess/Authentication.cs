@@ -38,7 +38,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             return status;
         }
-        public List<String> getTopics()
+        public List<String> GetTopics()
         {
 
             using (var context = new AdivinaQueAppContext())
@@ -51,7 +51,7 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.Distinct().ToList<String>();
             }
         }
-        public List<String> getEmails()
+        public List<String> GetEmails()
         {
 
             using (var context = new AdivinaQueAppContext())
@@ -65,7 +65,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         }
 
-        public List<String> getUsers()
+        public List<String> GetUsers()
         {
 
             using (var context = new AdivinaQueAppContext())
@@ -93,7 +93,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         
         }
-        public AuthenticationStatus updatePlayer(Player player,String username)
+        public AuthenticationStatus UpdatePlayer(Player player,String username)
         {
             string passwordHashed = ComputeSHA256Hash(player.Password);
             AuthenticationStatus status = AuthenticationStatus.Success;
@@ -126,6 +126,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             try
             {
                 AdivinaQueAppContext.Players.Add(new Players() { name = player.Name, userName = player.Username, email = player.Email, password = passwordHashed });
+                AddPodio(player.Username);
                 AdivinaQueAppContext.SaveChanges();
             }
             catch (EntityException ex)
@@ -167,7 +168,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             string codeString = new String(code);
             return codeString;
         }
-        public AuthenticationStatus sendMail(string email, string newMessage)
+        public AuthenticationStatus SendMail(string email, string newMessage)
         {
             string userMail = "AdivinaQueTeam@hotmail.com";
             string password = "MarianaKarina1234";
@@ -228,9 +229,155 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.ToList();
             }
         }
-    
 
-}
+
+        public AuthenticationStatus AddGame(GameCurrently gameCurrently)
+        {
+            AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+            AuthenticationStatus status = AuthenticationStatus.Success;
+            try
+            {
+                if (gameCurrently.Winner != "Both")
+                {
+                    AdivinaQueAppContext.Game.Add(new Game() { date = gameCurrently.Date, topic = gameCurrently.Topic, winner = GetIdUser(gameCurrently.Winner) });
+                    AdivinaQueAppContext.SaveChanges();
+                }
+                else
+                {
+                    AdivinaQueAppContext.Game.Add(new Game() { date = gameCurrently.Date, topic = gameCurrently.Topic, winner = GetIdUser(gameCurrently.Players.First().Key) });
+                    AdivinaQueAppContext.SaveChanges();
+                }
+                AddParticipateGame(gameCurrently);
+                AddVictory(gameCurrently);
+            }
+            catch (EntityException ex)
+            {
+                status = AuthenticationStatus.Failed;
+                throw new BusinessException("Failed Register", ex);
+            }
+            return status;
+
+        }
+
+
+        private int GetIdUser(string username)
+        {
+            int id = 0;
+            using (var context = new AdivinaQueAppContext())
+            {
+                var query = (from Players in context.Players where Players.userName==username
+                            select  Players.Id).First(); 
+                id =query;
+            }
+
+
+            return id;
+        }
+
+        private void AddPodio(string username) {
+            AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+
+            AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= GetIdUser(username), totalGames=0 });
+            AdivinaQueAppContext.SaveChanges();
+        }
+
+        private void AddVictory(GameCurrently gameCurrently)
+        {
+            AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+
+            if (gameCurrently.Winner.Equals("Both"))
+            {
+
+                foreach (var player in gameCurrently.Players)
+                {
+                    using (var context = new AdivinaQueAppContext())
+                    {
+                        var idWinner = GetIdUser(player.Key);
+                        var oldScore = (from account in context.Score
+                                     where account.IdPlayer == idWinner
+                                     select account.totalGames).First();
+
+                        int newScore = (int)(oldScore + 1);
+                        int idPlayer = GetIdUser(player.Key);
+
+                        var Score = (from account in context.Score
+                                     where account.IdPlayer == idPlayer
+                                     select account);
+                        Score.First().totalGames = newScore;
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+            else
+            {
+                using (var context = new AdivinaQueAppContext())
+                {
+                    var idWinner = GetIdUser(gameCurrently.Winner);
+                    var oldScore = (from account in context.Score
+                                    where account.IdPlayer == idWinner
+                                    select account.totalGames).First();
+
+                    int newScore = (int)(oldScore + 1);
+
+                    var Score = (from account in context.Score
+                                 where account.IdPlayer == GetIdUser(gameCurrently.Winner)
+                                 select account);
+                    Score.First().totalGames = newScore;
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public int GetIdGame(GameCurrently gameCurrently)
+        {
+            int id = 0;
+            using (var context = new AdivinaQueAppContext())
+            {
+
+                try
+                {
+                    var query = (from Game in context.Game
+                                 where Game.topic.Equals(gameCurrently.Topic)
+                                 where Game.date.Equals(gameCurrently.Date)
+
+                                 select Game.Id).First();
+                    id = query;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new BusinessException("Invalid operation", ex);
+                }
+            }
+
+
+            return id;
+        }
+        private void AddParticipateGame( GameCurrently gameCurrently)
+        {
+            AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+            int idGame = GetIdGame(gameCurrently);
+            try
+            {
+                foreach(var player in gameCurrently.Players)
+                {
+                    int idPlayer = GetIdUser(player.Key);
+
+                    AdivinaQueAppContext.Participate.Add(new Participate() { IdPlayer = idPlayer, score = player.Value, IdGame = idGame });
+                    AdivinaQueAppContext.SaveChanges();
+
+
+                }
+
+            }
+            catch (EntityException ex)
+            {
+                throw new BusinessException("Failed Register", ex);
+            }
+
+        }
+    }
 
     public enum AuthenticationStatus
     {

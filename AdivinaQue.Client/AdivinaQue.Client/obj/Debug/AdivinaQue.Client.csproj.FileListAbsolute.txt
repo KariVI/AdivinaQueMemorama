@@ -20,8 +20,6 @@ C:\Users\jack-\source\Proyecto\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Adi
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\AdivinaQue.Client.exe.config
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\AdivinaQue.Client.exe
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\AdivinaQue.Client.pdb
-C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
-C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.pdb
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.AssemblyReference.cache
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Strings.baml
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\Strings.baml
@@ -146,3 +144,7 @@ C:\Users\Mariana\Desktop\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQu
 C:\Users\Mariana\Desktop\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.CopyComplete
 C:\Users\Mariana\Desktop\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.exe
 C:\Users\Mariana\Desktop\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.pdb
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\log4net.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\log4net.xml

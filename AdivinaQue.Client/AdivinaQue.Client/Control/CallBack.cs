@@ -71,7 +71,7 @@ namespace AdivinaQue.Client.Control
 
         public void RecieveUsers(Dictionary<string, object> users)
         {
-            chat.usersCollection.Clear();
+            
             if(playersList != null)
             {
                 playersList.usersCollection.Clear();
@@ -84,10 +84,13 @@ namespace AdivinaQue.Client.Control
                 }
                  
             }
-
-            foreach (var username in users.Keys)
+            if (chat!= null)
             {
-                chat.usersCollection.Add(username);      
+                chat.usersCollection.Clear();
+                foreach (var username in users.Keys)
+                {
+                    chat.usersCollection.Add(username);
+                }
             }
 
 
@@ -119,6 +122,7 @@ namespace AdivinaQue.Client.Control
 
         internal void SetGame(Game game)
         {
+
             this.game = game;
         }
 
@@ -146,8 +150,25 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
         {
-            Console.WriteLine("ss");
             game.SetCorrectCards(cards);
+        }
+
+        public void ReceiveScoreRival(int score)
+        {
+            game.ScoreRival = score;
+            game.tbRivalScore.Text = Convert.ToString(score);
+        }
+
+        public void ReceiveNextTurn(bool nextTurn)
+        {
+            game.NextTurn = nextTurn;
+        }
+
+        public void ReceiveNumberCardsFinded(int numberCardsFinded)
+        {
+            game.NumberCardsFinded = numberCardsFinded;
+           
+               
         }
     }
 }

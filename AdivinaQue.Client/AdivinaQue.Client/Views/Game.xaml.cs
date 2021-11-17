@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Client.Proxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -20,27 +21,43 @@ namespace AdivinaQue.Client.Views
         private int sizeBoard;
         private string category;
         private string username;
-        private string usernarmeRival;
-       // private List<BitmapImage> imagesQuestions = new List<BitmapImage>();
-        //private List<BitmapImage> imagesAnswers = new List<BitmapImage>();
+        private string usernameRival;
+        private int scorePlayer;
+        private int scoreRival;
+        private int numberCardsFinded;
+        public int ScorePlayer { set { scorePlayer = value; } get { return scorePlayer; } }
+        public int ScoreRival { set { scoreRival = value; } get { return scoreRival; } }
+        public int NumberCardsFinded { set { numberCardsFinded = value; } get { return numberCardsFinded; } }
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         private List<Button> buttons = new List<Button>();
-        private Dictionary<BitmapImage,string> upCards = new Dictionary<BitmapImage,string>();
-        Dictionary<string,BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+        private Dictionary<BitmapImage, string> upCards = new Dictionary<BitmapImage, string>();
+        public Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+        private bool nextTurn;
+        public bool NextTurn { set { nextTurn = value; } get { return nextTurn; } }
         private int[] randomImageList;
         private int[] randomPositionList;
+
         Proxy.ServiceClient server;
-        public Game(Proxy.ServiceClient server,int sizeBoard, string category)
+        public Game(Proxy.ServiceClient server, int sizeBoard, string category)
         {
             this.server = server;
             this.sizeBoard = sizeBoard;
             this.category = category;
             wpCards = new WrapPanel();
-            if(server == null)
-                MessageBox.Show(" a", "Message", MessageBoxButton.YesNo);
+            tbRivalScore = new TextBox();
+            tbPlayerScore = new TextBox();
+            scorePlayer = 0;
+            scoreRival = 0;
+            numberCardsFinded = 0;
+            nextTurn = true;
 
-            InitializeComponent();  
+            if (server == null)
+            {
+                MessageBox.Show(" a");
+            }
+
+            InitializeComponent();
 
         }
         public void InitializeBoard()
@@ -60,7 +77,7 @@ namespace AdivinaQue.Client.Views
 
         public void SetUsernameRival(string usernameRival)
         {
-            this.usernarmeRival = usernameRival;
+            this.usernameRival = usernameRival;
             lbRivalScore.Content = usernameRival;
 
         }
@@ -81,7 +98,7 @@ namespace AdivinaQue.Client.Views
                 bt.Name = btName;
                 wpCards.Children.Add(bt);
                 buttons.Add(bt);
-            
+
             }
         }
 
@@ -118,52 +135,54 @@ namespace AdivinaQue.Client.Views
         {
             string btName = "";
             Random randomPosition = new Random();
-            int indexButton = 0 ;
+            int indexButton = 0;
             for (int i = 0; i < (sizeBoard * sizeBoard) / 2; i++)
             {
                 int index = randomImageList[i];
                 btName = "bt" + randomPositionList[indexButton].ToString();
-                indexButton++;                
+                indexButton++;
                 gameCards.Add(btName, totalImages[index]);
                 btName = "bt" + randomPositionList[indexButton].ToString();
                 indexButton++;
                 gameCards.Add(btName, pairCards[totalImages[index]]);
-              
+
             }
-            
+
         }
 
         internal void SetCorrectCards(Dictionary<BitmapImage, string> cards)
         {
-            Console.WriteLine("sss");
-            Console.WriteLine("sss");
             Button btCard1 = getButton(cards.Values.First());
             Button btCard2 = getButton(cards.Values.ElementAt(1));
             Image buttonAuxiliar1 = new Image();
             Image buttonAuxiliar2 = new Image();
             buttonAuxiliar1.Source = gameCards[btCard1.Name];
-            btCard1.Content = buttonAuxiliar1;  
-             buttonAuxiliar2.Source = gameCards[btCard2.Name];
+            btCard1.Content = buttonAuxiliar1;
+            buttonAuxiliar2.Source = gameCards[btCard2.Name];
             btCard2.Content = buttonAuxiliar2;
             btCard1.Name = "blocked";
             btCard2.Name = "blocked";
-            
+
         }
 
         public void VerifyTurn()
         {
+            nextTurn = false;
             bool correct = false;
-            if (pairCards.ContainsKey(upCards.Keys.First())) {
+            if (pairCards.ContainsKey(upCards.Keys.First()))
+            {
 
-                if (pairCards[upCards.Keys.First()].Equals(upCards.Keys.ElementAt(1))){
-                  
+                if (pairCards[upCards.Keys.First()].Equals(upCards.Keys.ElementAt(1)))
+                {
+
                     correct = true;
                 }
             }
             else if (pairCards.ContainsKey(upCards.Keys.ElementAt(1)))
             {
-                if (pairCards[upCards.Keys.ElementAt(1)].Equals(upCards.Keys.First())){
-                    
+                if (pairCards[upCards.Keys.ElementAt(1)].Equals(upCards.Keys.First()))
+                {
+
                     correct = true;
                 }
             }
@@ -171,9 +190,15 @@ namespace AdivinaQue.Client.Views
             Button btCard2 = getButton(upCards.Values.ElementAt(1));
             if (correct)
             {
-               server.SendCorrectCards(usernarmeRival,upCards);
-               var option = MessageBox.Show(" Yei", "Message", MessageBoxButton.YesNo);
-                
+                server.SendCorrectCards(usernameRival, upCards);
+                var option = MessageBox.Show(" Yei", "Message", MessageBoxButton.YesNo);
+                scorePlayer++;
+                server.SendScoreRival(usernameRival, scorePlayer);
+                numberCardsFinded = numberCardsFinded + 2;
+                server.SendNumberCardsFinded(usernameRival, numberCardsFinded);
+                tbPlayerScore.Text = Convert.ToString(scorePlayer);
+
+
                 btCard1.Name = "blocked";
                 btCard2.Name = "blocked";
             }
@@ -183,7 +208,12 @@ namespace AdivinaQue.Client.Views
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
-            
+            server.SendNextTurnRival(usernameRival, true);
+
+            if (numberCardsFinded == gameCards.Count)
+            {
+                AssignWinner();
+            }
             upCards = new Dictionary<BitmapImage, string>();
 
         }
@@ -198,30 +228,75 @@ namespace AdivinaQue.Client.Views
         }
         public void button_onclick(object sender, RoutedEventArgs e)
         {
-            Button bt = sender as Button;
-            
-            Image buttonAuxiliar = new Image();
-            if (bt.Name != "blocked")
+            if (numberCardsFinded != gameCards.Count)
             {
-                if (bt.Content == null)
+                if (nextTurn)
                 {
+                    Button bt = sender as Button;
 
-                    buttonAuxiliar.Source = gameCards[bt.Name];
-                    bt.Content = buttonAuxiliar;
-                    upCards.Add(gameCards[bt.Name], bt.Name);
-                    if (upCards.Count() == 2)
+                    Image buttonAuxiliar = new Image();
+                    if (bt.Name != "blocked")
                     {
-                        VerifyTurn();
+                        if (bt.Content == null)
+                        {
+
+                            buttonAuxiliar.Source = gameCards[bt.Name];
+                            bt.Content = buttonAuxiliar;
+                            upCards.Add(gameCards[bt.Name], bt.Name);
+                            if (upCards.Count() == 2)
+                            {
+                                VerifyTurn();
+                            }
+                        }
+                        else
+                        {
+                            bt.Content = null;
+                            upCards.Remove(gameCards[bt.Name]);
+                        }
                     }
                 }
                 else
                 {
-                    bt.Content = null;
-                    upCards.Remove(gameCards[bt.Name]);
+                    MessageBox.Show("Please wait your next turn ");
                 }
             }
-           
+            
+
+        }
+
+        public void AssignWinner()
+        {
+            string winner = "";
+            DateTime thisDay = DateTime.Now;
+            GameCurrently gameCurrently = new GameCurrently();
+            gameCurrently.Date = thisDay.ToString();
+            gameCurrently.Topic = category;
+            gameCurrently.Players = new Dictionary<string, int>();
+            gameCurrently.Players.Add(username, ScorePlayer);
+            gameCurrently.Players.Add(usernameRival, scoreRival);
+
+            if (scorePlayer > scoreRival)
+            {
+                winner = username;
+                gameCurrently.Winner = username;
+                gameCurrently.ScoreWinner = scorePlayer;
+            }
+            else if(scoreRival > scorePlayer)
+            {
+                winner = usernameRival;
+                gameCurrently.Winner = usernameRival;
+                gameCurrently.ScoreWinner = scoreRival;
+            }
+            else
+            {
+                winner = "Both";
+                gameCurrently.Winner = winner;
+            }
+
+            server.SendGame(gameCurrently);
+            MessageBox.Show("The winner is " + winner + " Congratulations!");
+
         }
     }
-    }
+}
 

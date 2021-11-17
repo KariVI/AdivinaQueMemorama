@@ -52,5 +52,15 @@ namespace AdivinaQue.Host.InterfaceContract
         List<String> GetUsers();
         [OperationContract(IsOneWay = true)]
         void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards);
+
+        [OperationContract(IsOneWay = true)]
+        void SendScoreRival(string toUsername, int score);
+        [OperationContract(IsOneWay = true)]
+        void SendNextTurnRival(string toUsername, bool nextTurn);
+        [OperationContract(IsOneWay = true)]
+        void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
+
+        [OperationContract]
+        bool SendGame(GameCurrently gameCurrently);
     }
 }

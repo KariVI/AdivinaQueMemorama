@@ -36,3 +36,5 @@ C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Ho
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.xml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.AssemblyReference.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.xml

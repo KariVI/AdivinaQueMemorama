@@ -2,6 +2,7 @@
 using AdivinaQue.Client.Proxy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.ServiceModel;
 using System.Threading;
 
@@ -156,6 +157,26 @@ namespace ClientTest
             ServiceClient server = new ServiceClient(context);
             string code = server.GenerateCode();
             Assert.IsNotNull(code);
+        }
+
+        [TestMethod]
+
+        public void SendGameTest()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            ServiceClient server = new ServiceClient(context);
+            GameCurrently gameCurrently = new GameCurrently();
+            System.DateTime dateTime = System.DateTime.Today;
+            gameCurrently.Players =  new System.Collections.Generic.Dictionary<string, int>();
+            gameCurrently.date = dateTime.ToString();
+            gameCurrently.winner = "angy";
+            gameCurrently.scoreWinner = 5;
+            gameCurrently.topic = "Pruebas";
+            gameCurrently.Players.Add("angy", 5);
+            gameCurrently.Players.Add("MariV", 3);
+            Console.WriteLine(gameCurrently.Players.ToString());
+           Assert.IsTrue( server.SendGame(gameCurrently));
         }
 
     }

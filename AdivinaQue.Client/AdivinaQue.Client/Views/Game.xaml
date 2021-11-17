@@ -22,9 +22,9 @@
             <Label  Content="Rival" Margin="180,5,0,0" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
             <Label Name="lbRival" Content=" aaaa" Margin="180,25,27,600" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
             <Label x:Name="lbPlayerScore" Content="Player One" Background="Pink"  FontFamily="Tw Cen MT Condensed" FontSize="13" HorizontalAlignment="Left" Width="100" Margin="50,100,0,0" VerticalAlignment="Top"/>
-            <ListView  Background="#efaeb9" HorizontalAlignment="Left" Height="100" Margin="50,120,50,0" VerticalAlignment="Top" Width="100"/>
+            <TextBox x:Name="tbPlayerScore"  Text="0" FontFamily="Tw Cen MT Condensed" FontSize="27" TextAlignment="Center" Background="#efaeb9" HorizontalAlignment="Left" Height="36" Margin="50,120,0,0" VerticalAlignment="Top" Width="100"/>
             <Label x:Name="lbRivalScore" Content="PlayerTwo" Background="Pink" FontFamily="Tw Cen MT Condensed" FontSize="13" HorizontalAlignment="Left" Width="100" Margin="150,100,0,0" VerticalAlignment="Top"/>
-            <ListView  Background="#efaeb9" HorizontalAlignment="Left" Height="100" Margin="150,120,50,0" VerticalAlignment="Top" Width="100"/>
+            <TextBox  x:Name="tbRivalScore" Text="0" FontFamily="Tw Cen MT Condensed" FontSize="27" TextAlignment="Center" Background="#efaeb9" HorizontalAlignment="Left" Height="36" Margin="150,120,0,0" VerticalAlignment="Top" Width="100"/>
         </Grid>
 
     </Grid>

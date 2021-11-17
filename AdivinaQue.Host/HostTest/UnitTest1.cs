@@ -1,18 +1,26 @@
 using NUnit.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AdivinaQue.Host.DatabaseAccess;
+using AdivinaQue.Host.InterfaceContract;
 
 namespace HostTest
 {
+    [TestClass]
     public class Tests
     {
 
-        private static ServiceHost serviceHost;
-
-        [ClassInitialize]
-        public static void InitializeClass(TestContext context)
+        [TestMethod]
+        public void testRegister()
         {
-            serviceHost = new ServiceHost(typeof(CalculatorService.CalculatorService));
-            serviceHost.Open();
+            Authentication authentication = new Authentication();
+            Player player = new Player();
+            player.Name = "Alonso Hernandez Hernandez";
+            player.Username = "aloHer";
+            player.Email = "alonso@outlook.com";
+            player.Password = "Alonso12Hernandez";
+            AuthenticationStatus authenticationStatus = AuthenticationStatus.Success;
+
+            NUnit.Framework.Assert.AreEqual(authenticationStatus, authentication.Register(player));
         }
     }
 }

@@ -33,19 +33,14 @@ namespace AdivinaQue.Host.InterfaceContract
         void ReceiveCardSeed(List<int> randomImageList, List<int> randomPositionList);
         [OperationContract(IsOneWay = true)]
         void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveScoreRival(int score);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveNextTurn( bool nextTurn);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveNumberCardsFinded( int numberCardsFinded);
     }
 
-    [DataContract]
-    public class Player
-    {
-        [DataMember]
-        public string Username { get; set; }
-        [DataMember]
-        public string Name { get; set; }
-        [DataMember]
-        public string Password { get; set; }
-        [DataMember]
-        public string Email { get; set; }
-    }
+    
 }
 

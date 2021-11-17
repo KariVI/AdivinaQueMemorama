@@ -34,36 +34,30 @@ namespace AdivinaQue.Client.Views
 
                     else
                     {
-                       
+
                         Home home = new Home(server, callback);
                         home.setUsername(tbUsername.Text);
                         callback.SetCurrentUsername(tbUsername.Text);
+                        callback.setServer(server);
+                        server.GetConnectedUsers();
                         home.Show();
                         this.Close();
+                       
                     }
 
                 }
                 catch (EndpointNotFoundException ex)
                 {
-<<<<<<< HEAD
-                    Chat chat = new Chat(server);
-                    chat.setUsername(tbUsername.Text);
-                    callback.SetChat(chat);
-                    Home home = new Home(server,callback);
-                    home.setUsername(tbUsername.Text);
-                    callback.SetCurrentUsername(tbUsername.Text);
-                    callback.setServer(server);
-                    home.setChat(chat);
-                    server.GetConnectedUsers();
-                    home.Show();
-                    chat.Show();
-                    this.Close();
-=======
+                    
                     MessageBox.Show("Sorry, the server isn't running");
->>>>>>> ExceptionHandler
+                }catch(CommunicationObjectFaultedException ex)
+                {
+                    
+                    MessageBox.Show("Sorry, the server isn't running");
+
                 }
-                
-             
+
+
             }
 
         }
