@@ -144,11 +144,14 @@ namespace AdivinaQue.Host.DatabaseAccess
             AuthenticationStatus status;
             using (var context = new AdivinaQueAppContext())
             {
-                var itemToRemove = context.Players.SingleOrDefault(x => x.userName == username);
+                var playerToRemove = context.Players.SingleOrDefault(x => x.userName == username);
+                var scoreToRemove = context.Score.SingleOrDefault(x => x.IdPlayer == playerToRemove.Id);
+
                 status = AuthenticationStatus.Failed;
-                if (itemToRemove != null)
+                if (playerToRemove != null)
                 {
-                    context.Players.Remove(itemToRemove);
+                    context.Players.Remove(playerToRemove);
+                    context.Score.Remove(scoreToRemove);
                     context.SaveChanges();
                     status = AuthenticationStatus.Success;
                 }
@@ -237,7 +240,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             AuthenticationStatus status = AuthenticationStatus.Success;
             try
             {
-                if (gameCurrently.Winner != "Both")
+                if (!gameCurrently.Winner.Equals("both"))
                 {
                     AdivinaQueAppContext.Game.Add(new Game() { date = gameCurrently.Date, topic = gameCurrently.Topic, winner = GetIdUser(gameCurrently.Winner) });
                     AdivinaQueAppContext.SaveChanges();
@@ -285,7 +288,7 @@ namespace AdivinaQue.Host.DatabaseAccess
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
 
-            if (gameCurrently.Winner.Equals("Both"))
+            if (gameCurrently.Winner.Equals("both"))
             {
 
                 foreach (var player in gameCurrently.Players)
@@ -319,9 +322,9 @@ namespace AdivinaQue.Host.DatabaseAccess
                                     select account.totalGames).First();
 
                     int newScore = (int)(oldScore + 1);
-
+                    int id = GetIdUser(gameCurrently.Winner);
                     var Score = (from account in context.Score
-                                 where account.IdPlayer == GetIdUser(gameCurrently.Winner)
+                                 where account.IdPlayer == id
                                  select account);
                     Score.First().totalGames = newScore;
 

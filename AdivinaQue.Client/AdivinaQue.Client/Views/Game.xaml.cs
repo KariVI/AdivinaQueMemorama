@@ -3,16 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
@@ -25,6 +19,7 @@ namespace AdivinaQue.Client.Views
         private int scorePlayer;
         private int scoreRival;
         private int numberCardsFinded;
+        private bool endGame = false;
         public int ScorePlayer { set { scorePlayer = value; } get { return scorePlayer; } }
         public int ScoreRival { set { scoreRival = value; } get { return scoreRival; } }
         public int NumberCardsFinded { set { numberCardsFinded = value; } get { return numberCardsFinded; } }
@@ -49,13 +44,9 @@ namespace AdivinaQue.Client.Views
             tbPlayerScore = new TextBox();
             scorePlayer = 0;
             scoreRival = 0;
+          
             numberCardsFinded = 0;
             nextTurn = true;
-
-            if (server == null)
-            {
-                MessageBox.Show(" a");
-            }
 
             InitializeComponent();
 
@@ -73,12 +64,15 @@ namespace AdivinaQue.Client.Views
             this.username = username;
             lbPlayerScore.Content = username;
 
+            lbUserName.Content = username;
+
         }
 
         public void SetUsernameRival(string usernameRival)
         {
             this.usernameRival = usernameRival;
             lbRivalScore.Content = usernameRival;
+            lbRival.Content = usernameRival;
 
         }
         public void AddButton()
@@ -150,6 +144,13 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        internal void ShowWinner(string winner)
+        {
+            MessageBox.Show("The winner is " + winner + " Congratulations!");
+            endGame = true;
+            this.Close();
+        }
+
         internal void SetCorrectCards(Dictionary<BitmapImage, string> cards)
         {
             Button btCard1 = getButton(cards.Values.First());
@@ -204,7 +205,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                var option = MessageBox.Show(" :(", "Message", MessageBoxButton.YesNo);
+                var option = MessageBox.Show(":(", "Message", MessageBoxButton.YesNo);
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
@@ -226,6 +227,7 @@ namespace AdivinaQue.Client.Views
             }
             return buttons[i];
         }
+        
         public void button_onclick(object sender, RoutedEventArgs e)
         {
             if (numberCardsFinded != gameCards.Count)
@@ -289,13 +291,34 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                winner = "Both";
+                winner = "both";
                 gameCurrently.Winner = winner;
             }
 
             server.SendGame(gameCurrently);
-            MessageBox.Show("The winner is " + winner + " Congratulations!");
+            server.SendWinner(usernameRival, winner);
+            ShowWinner( winner);
 
+        }
+
+
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!endGame)
+            {
+                DateTime thisDay = DateTime.Now;
+                GameCurrently gameCurrently = new GameCurrently();
+                gameCurrently.Date = thisDay.ToString();
+                gameCurrently.Topic = category;
+                gameCurrently.Players = new Dictionary<string, int>();
+                gameCurrently.Players.Add(username, ScorePlayer);
+                gameCurrently.Players.Add(usernameRival, scoreRival);
+                gameCurrently.Winner = usernameRival;
+                gameCurrently.ScoreWinner = scorePlayer;
+                server.SendGame(gameCurrently);
+                server.SendWinner(usernameRival, usernameRival);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource lbScore}" Height="550" Width="600">
+        Title="{DynamicResource lbScore}" Height="550" Width="600" >
     <Grid Background ="Lavender">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="42*"/>

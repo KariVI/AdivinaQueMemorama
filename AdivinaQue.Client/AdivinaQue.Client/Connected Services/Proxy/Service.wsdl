@@ -144,6 +144,9 @@
   <wsdl:message name="IService_SendNumberCardsFinded_InputMessage">
     <wsdl:part name="parameters" element="tns:SendNumberCardsFinded" />
   </wsdl:message>
+  <wsdl:message name="IService_SendWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendWinner" />
+  </wsdl:message>
   <wsdl:message name="IService_SendGame_InputMessage">
     <wsdl:part name="parameters" element="tns:SendGame" />
   </wsdl:message>
@@ -191,6 +194,9 @@
   </wsdl:message>
   <wsdl:message name="IService_ReceiveNumberCardsFinded_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveNumberCardsFinded" />
+  </wsdl:message>
+  <wsdl:message name="IService_ReceiveWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveWinner" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Join">
@@ -272,6 +278,9 @@
     <wsdl:operation name="SendNumberCardsFinded">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendNumberCardsFinded" message="tns:IService_SendNumberCardsFinded_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendWinner" message="tns:IService_SendWinner_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SendGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendGame" message="tns:IService_SendGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendGameResponse" message="tns:IService_SendGame_OutputMessage" />
@@ -315,6 +324,9 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveNumberCardsFinded">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveNumberCardsFinded" message="tns:IService_ReceiveNumberCardsFinded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveWinner" message="tns:IService_ReceiveWinner_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -488,6 +500,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="SendGame">
       <soap12:operation soapAction="http://tempuri.org/IService/SendGame" style="document" />
       <wsdl:input>
@@ -578,6 +596,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReceiveWinner">
+      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveWinner" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
@@ -585,7 +609,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

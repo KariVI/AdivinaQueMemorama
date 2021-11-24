@@ -47,4 +47,8 @@
     <system:String x:Key="lbiSecondTopic">Pruebas</system:String>
     <system:String x:Key="lbiThirdTopic">Tecnologías</system:String>
     <system:String x:Key="lbiFourthTopic">Administración</system:String>
+    <system:String x:Key="lbServerError">Lo siento, el servidor no esta disponible. Intente de nuevo</system:String>
+    <system:String x:Key="btOk">Aceptar</system:String>
+    <system:String x:Key="btYes">Si</system:String>
+    <system:String x:Key="btNo">No</system:String>
 </ResourceDictionary>

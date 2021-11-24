@@ -59,6 +59,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void SendNextTurnRival(string toUsername, bool nextTurn);
         [OperationContract(IsOneWay = true)]
         void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
+        [OperationContract(IsOneWay = true)]
+        void SendWinner(string toUsername, string winner);
 
         [OperationContract]
         bool SendGame(GameCurrently gameCurrently);

@@ -37,6 +37,11 @@ namespace AdivinaQue.Client.Views
             lvVictory.ItemsSource = scoresCollection;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            server.DisconnectUser(username);
+        }
 
+    
     }
 }
