@@ -45,4 +45,9 @@
     <system:String x:Key="lbTitleConfiguration">Board configuration</system:String>
     <system:String x:Key="lbSize">Size:</system:String>
     <system:String x:Key="lbTopicMessage">Select a topic</system:String>
+
+    <system:String x:Key="btYes">Yes</system:String>
+    <system:String x:Key="btNo">No</system:String>
+    <system:String x:Key="lbServerError">Sorry, the server isn't running. Try again</system:String>
+    <system:String x:Key="btOk">Ok</system:String>
 </ResourceDictionary>

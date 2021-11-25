@@ -46,15 +46,13 @@ namespace AdivinaQue.Client.Views
                     }
 
                 }
-                catch (EndpointNotFoundException ex)
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
                 {
                     
-                    MessageBox.Show("Sorry, the server isn't running");
-                }catch(CommunicationObjectFaultedException ex)
-                {
-                    
-                    MessageBox.Show("Sorry, the server isn't running");
-
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    Login login = new Login();
+                    this.Close();
+                    login.Show();
                 }
 
 

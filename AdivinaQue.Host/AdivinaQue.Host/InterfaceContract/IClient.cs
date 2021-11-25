@@ -39,6 +39,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void ReceiveNextTurn( bool nextTurn);
         [OperationContract(IsOneWay = true)]
         void ReceiveNumberCardsFinded( int numberCardsFinded);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveWinner(string winner);
     }
 
     

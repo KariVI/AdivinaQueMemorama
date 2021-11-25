@@ -357,6 +357,12 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNumberCardsFinded")]
         System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendWinner")]
+        void SendWinner(string toUsername, string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendWinner")]
+        System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
         bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
         
@@ -405,6 +411,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveNumberCardsFinded")]
         void ReceiveNumberCardsFinded(int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveWinner")]
+        void ReceiveWinner(string winner);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -617,6 +626,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded) {
             return base.Channel.SendNumberCardsFindedAsync(toUsername, numberCardsFinded);
+        }
+        
+        public void SendWinner(string toUsername, string winner) {
+            base.Channel.SendWinner(toUsername, winner);
+        }
+        
+        public System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner) {
+            return base.Channel.SendWinnerAsync(toUsername, winner);
         }
         
         public bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {

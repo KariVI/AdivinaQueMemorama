@@ -162,13 +162,17 @@ namespace AdivinaQue.Client.Control
         public void ReceiveNextTurn(bool nextTurn)
         {
             game.NextTurn = nextTurn;
+   
         }
 
         public void ReceiveNumberCardsFinded(int numberCardsFinded)
         {
             game.NumberCardsFinded = numberCardsFinded;
-           
-               
+        }
+
+        public void ReceiveWinner(string winner)
+        {
+            game.ShowWinner(winner);
         }
     }
 }

@@ -106,14 +106,9 @@ namespace AdivinaQue.Host.BusinessRules
         public bool SearchUsername(string newUsername)
         {
             bool value = false;
-            try
+            if (users.ContainsKey(newUsername))
             {
-                if (users[newUsername] != null)
-                {
-                    value = true;
-                }  
-            }catch(KeyNotFoundException ex) { 
-                throw new BusinessException("User doesn't exist", ex);
+                value = true;
             }
             return value;
         }
@@ -265,6 +260,11 @@ namespace AdivinaQue.Host.BusinessRules
 
             return value;
             
+        }
+
+        public void SendWinner(string toUsername, string winner)
+        {
+            users[toUsername].ReceiveWinner(winner);
         }
     }
 }
