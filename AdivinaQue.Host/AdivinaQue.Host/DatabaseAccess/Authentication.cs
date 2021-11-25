@@ -279,8 +279,9 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         private void AddPodio(string username) {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+            int idUsername = GetIdUser(username);
 
-            AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= GetIdUser(username), totalGames=0 });
+            AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= idUsername, totalGames=0 });
             AdivinaQueAppContext.SaveChanges();
         }
 
