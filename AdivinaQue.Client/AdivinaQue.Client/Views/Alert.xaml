@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="" Height="219.903" Width="467.962">
+        Title="" Height="189.32" Width="425.729">
     <Grid Margin="0,0,2,-1" Background="Lavender">
-        <Label Name="lbMessage" Content="Label" HorizontalAlignment="Left" Height="37" Margin="10,29,0,0" VerticalAlignment="Top" Width="415"/>
-        <Button Name ="btNo" Content="" HorizontalAlignment="Left" Height="33" Margin="182,117,0,0" VerticalAlignment="Top" Width="75" Background="Plum" RenderTransformOrigin="0.997,0.623" Click="no_Click"/>
-        <Button Name ="btYes" Content="" HorizontalAlignment="Left" Height="33" Margin="316,117,0,0" VerticalAlignment="Top" Width="75" Background="Plum" Click="yes_Click"/>
+        <Label Name="lbTime" Content="" HorizontalAlignment="Left" Height="30" Margin="335,13,0,0" VerticalAlignment="Top" Width="71"/>
+        <Button Name ="btNo" Content="" HorizontalAlignment="Left" Height="33" Margin="147,101,0,0" VerticalAlignment="Top" Width="75" Background="Plum" RenderTransformOrigin="0.997,0.623" Click="no_Click"/>
+        <Button Name ="btYes" Content="" HorizontalAlignment="Left" Height="33" Margin="249,101,0,0" VerticalAlignment="Top" Width="75" Background="Plum" Click="yes_Click"/>
+        <TextBlock Name="tbMessage" HorizontalAlignment="Left" Margin="65,13,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="53" Width="259"/>
 
     </Grid>
 </Window>

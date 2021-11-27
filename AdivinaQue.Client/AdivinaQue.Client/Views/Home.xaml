@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource lbTitleHome}"  Height="450" Width="618.5">
+        Title="{DynamicResource lbTitleHome}"  Height="450" Width="618.5" Closed="Window_Closed">
     <Grid Margin="0,0,2,1" Background="#FFE6E6F5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Button Name="btStartGame" Content="{DynamicResource btStartGame}" HorizontalAlignment="Left" Margin="206,109,0,0" VerticalAlignment="Top" Width="190" Height="42" BorderThickness="0" Background="Plum" RenderTransformOrigin="0.05,0.643" Click="btStartGame_Click"  />
         <Button Content="{DynamicResource btGlobalScore}"  HorizontalAlignment="Left" Margin="206,212,0,0" VerticalAlignment="Top" Width="190" Height="36" BorderThickness="0"   Background="Plum" RenderTransformOrigin="0.021,0.875" Click="Button_Click"/>
         <Label x:Name="lbUser" Content="Label" HorizontalAlignment="Left" Margin="388,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.944,1.552" FontFamily="OCR A Extended" Width="192"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource lbTitlePlayersList}" Height="450" Width="800">
+        Title="{DynamicResource lbTitlePlayersList}" Height="450" Width="800" Closed="Window_Closed">
     <Grid Margin="0,0,2,7" Background="#FFE6E6F5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="19*"/>
@@ -17,5 +17,6 @@
         <Label Content="{DynamicResource lbTitlePlayersList}" HorizontalAlignment="Left" Margin="242.333,18,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="OCR A Extended" Grid.Column="1"/>
         <Label Content="{DynamicResource lbInviteMessage}" HorizontalAlignment="Left" Margin="63.333,308,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.185,-0.159" Grid.Column="1"/>
         <Button x:Name="btSend" Content="{DynamicResource btSend}" HorizontalAlignment="Left" Height="24" Margin="487.333,271,0,0" VerticalAlignment="Top" Width="75" Background="Plum" Click="btSend_Click" Grid.Column="1"/>
+        <Button x:Name="btReturn" Content="{DynamicResource btReturn}"  HorizontalAlignment="Left" Height="24" Margin="636,366,0,0" VerticalAlignment="Top" Width="75" Background="Plum"  Grid.Column="1" Click="btReturn_Click"/>
     </Grid>
 </Window>

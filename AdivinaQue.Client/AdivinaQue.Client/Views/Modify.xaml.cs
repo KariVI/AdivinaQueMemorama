@@ -1,6 +1,7 @@
 ﻿using AdivinaQue.Client.Control;
 using AdivinaQue.Client.Proxy;
 using System;
+using System.ServiceModel;
 using System.Windows;
 
 namespace AdivinaQue.Client.Views
@@ -11,42 +12,50 @@ namespace AdivinaQue.Client.Views
     public partial class Modify : Window
     {
         private string username;
-        private Player player;
         private Player newPlayer;
+        private CallBack callback;
         private ServiceClient server;
         private Home home;
-        public Modify()
+        public Modify(CallBack callback,Home home)
         {      
             InitializeComponent();
             newPlayer = new Player();
+            this.callback = callback;
+            this.home = home;
         }
 
         private void btUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (tbUsername.Text != "" && pbPassword.Password.ToString() != "" && tbName.Text != "" && tbEmail.Text!="")
             {
-                if (ValidateData()== DataStatus.Correct)
+                if (ValidateData() == DataStatus.Correct)
                 {
                     newPlayer.Name = tbName.Text;
                     newPlayer.Username = tbUsername.Text;
                     newPlayer.Email = tbEmail.Text;
                     newPlayer.Password = pbPassword.Password;
-                    String code = server.GenerateCode();
-                    server.SendMail(tbEmail.Text, "Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
-                    AuthMail authmail = new AuthMail(code, newPlayer);
-                    authmail.setServer(server);
-                    authmail.setUsername(username);
-                    authmail.Show();
+     
+                    try
+                    {
+                        String code = server.GenerateCode();
+                        server.SendMail(tbEmail.Text, "Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
+                        AuthMail authmail = new AuthMail(code, newPlayer);
+                        authmail.setServer(server);
+                        authmail.setUsername(username);
+                        authmail.Show();
+                    }
+                    catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        Login login = new Login();
+                        login.Show();
+                    }
                     this.Close();
-                }
-                else
-                {
-
                 }
             }
             else
             {
-                MessageBox.Show("Exists empty fields");
+                Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
@@ -89,27 +98,27 @@ namespace AdivinaQue.Client.Views
         {
             if (dataStatus == DataStatus.UserNameInvalid)
             {
-                MessageBox.Show("Please write a valid username");
+                Alert.ShowDialog(Application.Current.Resources["lbValidUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.NameInvalid)
             {
-                MessageBox.Show("Name field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbNameInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.PasswordInvalid)
             {
-                MessageBox.Show("Password field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.ShortPassword)
             {
-                MessageBox.Show("Password minimum 8 characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordShort"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.EmailIncorrect)
             {
-                MessageBox.Show("Email incorrect, please write again");
+                Alert.ShowDialog(Application.Current.Resources["lbEmailInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
         }
@@ -128,59 +137,78 @@ namespace AdivinaQue.Client.Views
 
             return value;
         }
-        private void btCancel_Click(object sender, RoutedEventArgs e)
+
+        private void BtCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            home.Show();
         }
-        private void btDelete_Click(object sender, RoutedEventArgs e)
+        private void BtDelete_Click(object sender, RoutedEventArgs e)
         {
-            var option = MessageBox.Show("Delete user?", "Message", MessageBoxButton.YesNo);
-            if(option == MessageBoxResult.Yes)
+            var option = Alert.ShowDialog(Application.Current.Resources["lbDeleteAccount"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
+            if (option == AlertResult.Yes)
             {
-
-
-                if (server.Delete(username))
+                try
                 {
-                    home.disconect();
+                    if (server.Delete(username))
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbDeleteAccountCorrect"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        home.disconect();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbDeleteAccountFailed"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    }
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                {
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    Login login = new Login();
                     this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Not be possible delete your account");
-                }
+                    login.Show();
+                } 
             }   
         }
 
-        private void closedWindow(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        internal void setServer(ServiceClient server)
+        internal void SetServer(ServiceClient server)
         {
             this.server = server;
-            server.SearchInfoPlayerByUsername(username);
+            try
+            {
+                server.SearchInfoPlayerByUsername(username);
+            }
+            catch (Exception ex) when(ex is EndpointNotFoundException || ex is TimeoutException)
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Login login = new Login();
+                this.Close();
+                login.Show();
+            }  
         }
 
-        internal void setUsername(string username)
+        internal void SetUsername(string username)
         {
             this.username = username;
         }
 
-        internal void setHome(Home home)
+        internal void SetHome(Home home)
         {
             this.home = home;
         }
 
-        public void setPlayer(Player player)
+        public void SetPlayer(Player player)
         {
-            this.player = player;
             tbName.Text =player.Name;
             tbUsername.Text = player.Username;
             tbEmail.Text = player.Email;
-            pbPassword.Password = player.Password;
+            pbPassword.Password = "";
         }
 
-
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+            home.Show();
+        }
     }
 }

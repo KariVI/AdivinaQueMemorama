@@ -1,18 +1,6 @@
 ﻿using AdivinaQue.Client.Control;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
@@ -36,7 +24,7 @@ namespace AdivinaQue.Client.Views
                 string codeReceived = tbCode.Text;
                 if (codeReceived.Equals(codeExpected))
                 {
-                    MessageBox.Show("Email validate");
+                    Alert.ShowDialog(Application.Current.Resources["lbCorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Register register = new Register(server, tbEmail.Text);
                     this.Close();
                     register.Show();
@@ -44,7 +32,7 @@ namespace AdivinaQue.Client.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please write the correct code ");
+                    Alert.ShowDialog(Application.Current.Resources["lbIncorrectCode"].ToString(), Application.Current.Resources["btOk"].ToString());
                 }
             }
             else

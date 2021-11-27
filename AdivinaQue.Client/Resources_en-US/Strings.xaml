@@ -3,13 +3,13 @@
                      xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="HeaderLogin">Login</system:String>
     <system:String x:Key="lbUsername">Username:</system:String>
-    <system:String x:Key="lbPassword">Password: </system:String>
+    <system:String x:Key="lbPassword">Password:</system:String>
     <system:String x:Key="btRegister">Register</system:String>
     <system:String x:Key="btLogin">Login</system:String>
     <system:String x:Key="lbTitleRegister">User register</system:String>
     <system:String x:Key="lbName">Name:</system:String>
     <system:String x:Key="btCancel">Cancel</system:String>
-    <system:String x:Key="lbEmail">Email: </system:String>
+    <system:String x:Key="lbEmail">Email:</system:String>
     <system:String x:Key="btUpdate">Update</system:String>
     <system:String x:Key="btDelete">Delete</system:String>
     <system:String x:Key="lbTitleModify">Account setup</system:String>
@@ -27,12 +27,12 @@
     <system:String x:Key="btSendCode">Send code</system:String>
     <system:String x:Key="btVerify">Verify</system:String>
     <system:String x:Key="lbCodeMessage">Enter the code that was sent to your email</system:String>
-    <system:String x:Key="lbEmailMessage">Enter your email </system:String>
+    <system:String x:Key="lbEmailMessage">Enter your email</system:String>
     <system:String x:Key="btConfirm">Confirm</system:String>
-    
-    
+
+
     <system:String x:Key="btSend">Send</system:String>
-    
+
     <system:String x:Key="btReturn">Return</system:String>
     <system:String x:Key="lbPlayers">Players</system:String>
     <system:String x:Key="lbWins">Wins</system:String>
@@ -42,7 +42,7 @@
     <system:String x:Key="lbInviteMessage">Not on the list? Send them an email!</system:String>
 
     <system:String x:Key="lbTitleConfiguration">Board configuration</system:String>
-    <system:String x:Key="lbSize">Size: </system:String>
+    <system:String x:Key="lbSize">Size:</system:String>
     <system:String x:Key="lbTopicMessage">Select a topic</system:String>
     <system:String x:Key="lbiFirstTopic">Design</system:String>
     <system:String x:Key="lbiSecondTopic">Tests</system:String>
@@ -53,5 +53,28 @@
     <system:String x:Key="btNo">No</system:String>
     <system:String x:Key="btOk">Ok</system:String>
     <system:String x:Key="lbServerError">Sorry, the server isn't running. Try again</system:String>
+    <system:String x:Key="lbWrongCredentials">Wrong Credentials</system:String>
+
+    <system:String x:Key="lbEmptyFields">Existis empty fields</system:String>
+    <system:String x:Key="lbValidUsername">Please write a valid username</system:String>
+    <system:String x:Key="lbDeleteAccount">Are you sure?</system:String>
+    <system:String x:Key="lbNameInvalid">Name must not have special characters</system:String>
+    <system:String x:Key="lbPasswordInvalid">Password must not have special characters</system:String>
+    <system:String x:Key="lbPasswordShort">Minimum password of 8 characters</system:String>
+    <system:String x:Key="lbEmailInvalid">Email incorrect, please write again</system:String>
+    <system:String x:Key="lbDeleteAccountFailed">Unable to delete your account, try again</system:String>
+    <system:String x:Key="lbDeleteAccountCorrect">Account successfully deleted</system:String>
+
+    <system:String x:Key="lbDeclineInvitation">decline your invitation</system:String>
+    <system:String x:Key="lbAvailability">Are you still playing?</system:String>
+
+    <system:String x:Key="lbInvitation">invite you, acept?</system:String>
+    <system:String x:Key="lbWin">You win !!!</system:String>
+    <system:String x:Key="lbLost">You lost :(</system:String>
+    <system:String x:Key="lbTie">it's a tie!</system:String>
+    <system:String x:Key="lbTurn">Please wait your next turn</system:String>
+    <system:String x:Key="lbModifySucces">user modified successfully</system:String>
+    <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
+    <system:String x:Key="lbCorrectEmail">Email validated</system:String>
 </ResourceDictionary>
    

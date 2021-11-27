@@ -29,7 +29,7 @@ namespace AdivinaQue.Client.Views
                     Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
                     if (value == false)
                     {
-                        MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
+                        Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
                     }
 
                     else
@@ -44,7 +44,6 @@ namespace AdivinaQue.Client.Views
                         this.Close();
                        
                     }
-
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
                 {

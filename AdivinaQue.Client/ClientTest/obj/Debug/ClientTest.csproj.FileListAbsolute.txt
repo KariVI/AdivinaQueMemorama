@@ -43,6 +43,7 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTes
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\Moq.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\AdivinaQue.Client.pdb
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\AdivinaQue.Client.exe.config
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\Castle.Core.xml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
@@ -55,4 +56,3 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTes
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\obj\Debug\ClientTest.csproj.CopyComplete
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\obj\Debug\ClientTest.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\obj\Debug\ClientTest.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\AdivinaQue.Client.pdb

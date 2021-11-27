@@ -45,9 +45,9 @@ namespace AdivinaQue.Client.Control
         }
         public bool SendInvitationGame(String username)
         {
-            var option = MessageBox.Show(username+ " invited you, acept?", "Message", MessageBoxButton.YesNo);
+            var option = Alert.ShowDialog(username + " " + Application.Current.Resources["lbInvitation"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
             bool value = false;
-            if (option == MessageBoxResult.Yes)
+            if (option == AlertResult.Yes)
             {
                 value = true;
             }
@@ -98,7 +98,7 @@ namespace AdivinaQue.Client.Control
 
         public void RecievePlayer(Player player)
         {
-           modify.setPlayer(player);
+           modify.SetPlayer(player);
         }
         public void SetCurrentUsername(String currentUsername)
         {

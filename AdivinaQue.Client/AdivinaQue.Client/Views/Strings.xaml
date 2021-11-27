@@ -45,4 +45,16 @@
     <system:String x:Key="lbTitleConfiguration">Board configuration</system:String>
     <system:String x:Key="lbSize">Size:</system:String>
     <system:String x:Key="lbTopicMessage">Select a topic</system:String>
+
+    <system:String x:Key="btYes">Si</system:String>
+    <system:String x:Key="btNo">No</system:String>
+    <system:String x:Key="lbInvitation">invite you, acept?</system:String>
+
+    <system:String x:Key="lbWin">You win !!! </system:String>
+    <system:String x:Key="lbLost">You lost :(</system:String>
+    <system:String x:Key="lbTie">it's a tie!</system:String>
+    <system:String x:Key="lbTurn">Please wait your next turn</system:String>
+    <system:String x:Key="lbModifySucces">user modified successfully</system:String>
+    <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
+    <system:String x:Key="lbCorrectEmail">Email validated</system:String>
 </ResourceDictionary>

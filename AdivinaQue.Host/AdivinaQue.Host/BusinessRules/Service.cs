@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
+using System.Threading;
 
 namespace AdivinaQue.Host.BusinessRules
 {
@@ -147,8 +148,7 @@ namespace AdivinaQue.Host.BusinessRules
             string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
             string from = "adivinaQueTeam@hotmail.com";
             string displayName = "Administrador de Adivina ¿Qué? Memorama";
-            try
-            {
+           
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(from, displayName);
                 mail.To.Add(to);
@@ -166,13 +166,8 @@ namespace AdivinaQue.Host.BusinessRules
                 client.Send(mail);
                 message = "Exito";
 
-            }
-            catch (SmtpException ex)
-            {
-                message = "Error";
-                throw new BusinessException("Error send Mail", ex);
-
-            }
+            
+            
             return message;
         }
         public void GetScores(String username)

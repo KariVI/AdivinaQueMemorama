@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace AdivinaQue.Client.Views
 {
@@ -32,6 +35,7 @@ namespace AdivinaQue.Client.Views
         public bool NextTurn { set { nextTurn = value; } get { return nextTurn; } }
         private int[] randomImageList;
         private int[] randomPositionList;
+        private static DispatcherTimer timer;
 
         Proxy.ServiceClient server;
         public Game(Proxy.ServiceClient server, int sizeBoard, string category)
@@ -44,12 +48,12 @@ namespace AdivinaQue.Client.Views
             tbPlayerScore = new TextBox();
             scorePlayer = 0;
             scoreRival = 0;
-          
+            
             numberCardsFinded = 0;
             nextTurn = true;
 
             InitializeComponent();
-
+            SetTimer(this);
         }
         public void InitializeBoard()
         {
@@ -146,7 +150,19 @@ namespace AdivinaQue.Client.Views
 
         internal void ShowWinner(string winner)
         {
-            MessageBox.Show("The winner is " + winner + " Congratulations!");
+            timer.Stop();
+            if (winner.Equals("both"))
+            {
+                Alert.ShowDialogWithResponse(Application.Current.Resources["lbTie"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
+            else if (winner.Equals(username))
+            {
+                Alert.ShowDialogWithResponse(Application.Current.Resources["lbWin"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
+            else 
+            {
+                Alert.ShowDialogWithResponse(Application.Current.Resources["lbLost"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
             endGame = true;
             this.Close();
         }
@@ -192,7 +208,7 @@ namespace AdivinaQue.Client.Views
             if (correct)
             {
                 server.SendCorrectCards(usernameRival, upCards);
-                var option = MessageBox.Show(" Yei", "Message", MessageBoxButton.YesNo);
+               
                 scorePlayer++;
                 server.SendScoreRival(usernameRival, scorePlayer);
                 numberCardsFinded = numberCardsFinded + 2;
@@ -205,7 +221,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                var option = MessageBox.Show(":(", "Message", MessageBoxButton.YesNo);
+             
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
@@ -245,21 +261,17 @@ namespace AdivinaQue.Client.Views
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
                             upCards.Add(gameCards[bt.Name], bt.Name);
+                            Thread.Sleep(3000);
                             if (upCards.Count() == 2)
                             {
                                 VerifyTurn();
                             }
                         }
-                        else
-                        {
-                            bt.Content = null;
-                            upCards.Remove(gameCards[bt.Name]);
-                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please wait your next turn ");
+                    Alert.ShowDialogWithResponse(Application.Current.Resources["lbTurn"].ToString(), Application.Current.Resources["btOk"].ToString());
                 }
             }
             
@@ -268,6 +280,7 @@ namespace AdivinaQue.Client.Views
 
         public void AssignWinner()
         {
+           
             string winner = "";
             DateTime thisDay = DateTime.Now;
             GameCurrently gameCurrently = new GameCurrently();
@@ -319,6 +332,32 @@ namespace AdivinaQue.Client.Views
                 server.SendGame(gameCurrently);
                 server.SendWinner(usernameRival, usernameRival);
             }
+           
+        }
+
+        public static void SetTimer(Game game)
+        {
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
+            timer.Tick += delegate {
+              var response =  Alert.ShowDialogWithResponse(Application.Current.Resources["lbAvailability"].ToString(), Application.Current.Resources["btYes"].ToString());
+                if(response == AlertResult.Unavaible)
+                {
+                    game.Close();
+                    timer.Stop();
+                }
+                else
+                {
+                    timer.Stop();
+                    timer.Start();
+                }
+            };
+            timer.Start();
+        }
+
+        private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            timer.Stop();
+            timer.Start();
         }
     }
 }

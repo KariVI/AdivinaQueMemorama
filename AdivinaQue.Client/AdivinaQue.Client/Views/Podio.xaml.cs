@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdivinaQue.Client.Control;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -22,26 +23,33 @@ namespace AdivinaQue.Client.Views
         public ObservableCollection<int> scoresCollection;
         Proxy.ServiceClient server;
         String username;
+        private Home home;
+
         public ListView players { get { return lvPlayer; } set { lvPlayer = value; } }
         public ListView victories { get { return lvVictory; } set { lvVictory = value; } }
 
-        public Podio(Proxy.ServiceClient server, String username)
+        public Podio(Proxy.ServiceClient server, String username, Home home)
         {
-
             InitializeComponent();
             playersCollection = new ObservableCollection<String>();
             scoresCollection = new ObservableCollection<int>();
             this.server = server;
             this.username = username;
+            this.home = home;
             players.ItemsSource = playersCollection;
             lvVictory.ItemsSource = scoresCollection;
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            server.DisconnectUser(username);
+            this.Close();
+            home.Show();
         }
 
-    
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            home.Show();
+        }
     }
 }
