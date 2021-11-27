@@ -109,6 +109,8 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQu
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\AdivinaQue.Client.exe
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\AdivinaQue.Client.pdb
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\log4net.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.pdb
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\log4net.xml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.AssemblyReference.cache
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Strings.baml
@@ -148,5 +150,3 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQu
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.CopyComplete
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.exe
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_es-MEX.pdb

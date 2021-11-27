@@ -32,7 +32,18 @@ namespace AdivinaQue.Client.Views
 
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            server.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
+            try
+            {
+                server.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                backHome = false;
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
             this.Close();
         }
 
@@ -49,6 +60,9 @@ namespace AdivinaQue.Client.Views
                     catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
                     {
                         Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        backHome = false;
+                        Login login = new Login();
+                        login.Show();   
                         this.Close();
                     }
             }          

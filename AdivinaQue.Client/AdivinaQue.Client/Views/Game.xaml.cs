@@ -33,11 +33,16 @@ namespace AdivinaQue.Client.Views
         public Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
         private bool nextTurn;
         public bool NextTurn { set { nextTurn = value; } get { return nextTurn; } }
+
+        public Home home { get; internal set; }
+
         private int[] randomImageList;
         private int[] randomPositionList;
         private static DispatcherTimer timer;
 
         Proxy.ServiceClient server;
+        private bool backHome = true;
+
         public Game(Proxy.ServiceClient server, int sizeBoard, string category)
         {
             this.server = server;
@@ -261,7 +266,6 @@ namespace AdivinaQue.Client.Views
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
                             upCards.Add(gameCards[bt.Name], bt.Name);
-                            Thread.Sleep(3000);
                             if (upCards.Count() == 2)
                             {
                                 VerifyTurn();
@@ -332,7 +336,11 @@ namespace AdivinaQue.Client.Views
                 server.SendGame(gameCurrently);
                 server.SendWinner(usernameRival, usernameRival);
             }
-           
+            if (backHome)
+            {
+                home.Show();
+            }
+            timer.Stop();
         }
 
         public static void SetTimer(Game game)

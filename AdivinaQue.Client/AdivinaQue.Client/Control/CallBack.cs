@@ -19,11 +19,16 @@ namespace AdivinaQue.Client.Control
         private ValidationCode validationCode;
         private GameConfiguration gameConfiguration;
         private Game game;
+        private Home home;
         Proxy.ServiceClient server;
 
         public void SetPodio(Podio podio)
         {
             this.podio = podio;
+        }
+        public void setHome(Home home)
+        {
+            this.home = home;
         }
 
         public void setServer(Proxy.ServiceClient server)
@@ -135,6 +140,8 @@ namespace AdivinaQue.Client.Control
         {
             game = new Game(server,size, category);
             game.SetUsername(username);
+            home.Hide();
+            game.home = home;
             game.Show();        
         }
 

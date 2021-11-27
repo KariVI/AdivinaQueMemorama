@@ -19,7 +19,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.server = server;
             this.callback = callback;
-            
+            callback.setHome(this);
         }
 
         private void btModify_Click(object sender, RoutedEventArgs e)

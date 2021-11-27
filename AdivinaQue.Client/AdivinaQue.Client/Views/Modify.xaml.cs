@@ -16,6 +16,8 @@ namespace AdivinaQue.Client.Views
         private CallBack callback;
         private ServiceClient server;
         private Home home;
+        private bool backHome = true;
+
         public Modify(CallBack callback,Home home)
         {      
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace AdivinaQue.Client.Views
                     {
                         Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                         Login login = new Login();
+                        backHome = false;
                         login.Show();
                     }
                     this.Close();
@@ -165,6 +168,7 @@ namespace AdivinaQue.Client.Views
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
+                    backHome = false;
                     this.Close();
                     login.Show();
                 } 
@@ -182,6 +186,7 @@ namespace AdivinaQue.Client.Views
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();
+                backHome = false;
                 this.Close();
                 login.Show();
             }  
@@ -208,7 +213,9 @@ namespace AdivinaQue.Client.Views
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
-            home.Show();
+            if(backHome){
+                home.Show();
+            }
         }
     }
 }
