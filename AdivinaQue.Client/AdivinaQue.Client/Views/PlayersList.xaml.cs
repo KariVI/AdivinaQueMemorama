@@ -14,6 +14,7 @@ namespace AdivinaQue.Client.Views
         Proxy.ServiceClient server;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
+        public ObservableCollection<string> usersPlayed;
         private String username;
         CallBack callback;
         public PlayersList(Proxy.ServiceClient server, String username, CallBack callback)
@@ -21,6 +22,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.server = server;
             usersCollection = new ObservableCollection<string>();
+            usersPlayed = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;
             this.username = username;
             this.callback = callback;
@@ -38,22 +40,25 @@ namespace AdivinaQue.Client.Views
                 if (listUsers.SelectedValue != null)
                 {
                     var player = listUsers.SelectedValue.ToString();
-                    var result  = server.SendInvitation(player,username);
-                if (result)
-                {
-                    GameConfiguration gameConfiguration = new GameConfiguration(callback,username, player);
-                    callback.SetGameConfiguration(gameConfiguration);
-                   
-                    gameConfiguration.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
-                }
+
+                        var result = server.SendInvitation(player, username);
+                        if (result)
+                        {
+                             GameConfiguration gameConfiguration = new GameConfiguration(callback, username, player);
+                            callback.SetGameConfiguration(gameConfiguration);
+
+                            gameConfiguration.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
+                        }
+                    }
+                    
                 }
 
            
         }
-    }
+    
 }

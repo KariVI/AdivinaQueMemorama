@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
+using System.Configuration;
 
 namespace AdivinaQue.Host.BusinessRules
 {
@@ -17,8 +18,9 @@ namespace AdivinaQue.Host.BusinessRules
     public class Service : IService
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
-
+        public List<string> currentlyUserPlayed = new List<string>();
      
+        
         public void DisconnectUser(String username)
         {
             users.Remove(username);
@@ -145,7 +147,10 @@ namespace AdivinaQue.Host.BusinessRules
         public string SendMail(string to, string asunto, string body)
         {
             string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
-            string from = "adivinaQueTeam@hotmail.com";
+            string from = ConfigurationManager.AppSettings["EmailAdmin"];
+            string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
+            int port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"]);
+            string passwordAdmin = ConfigurationManager.AppSettings["PasswordAdmin"];
             string displayName = "Administrador de Adivina ¿Qué? Memorama";
             try
             {
@@ -158,8 +163,8 @@ namespace AdivinaQue.Host.BusinessRules
                 mail.IsBodyHtml = true;
 
 
-                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
-                client.Credentials = new NetworkCredential(from, "MarianaKarina1234");
+                SmtpClient client = new SmtpClient(smtpServer, port);
+                client.Credentials = new NetworkCredential(from, passwordAdmin);
                 client.EnableSsl = true;
 
 
@@ -191,14 +196,7 @@ namespace AdivinaQue.Host.BusinessRules
 
         }
 
-        public void GetTopics(string username)
-        {
-            Authentication authentication = new Authentication();
-            List<String> topics = authentication.GetTopics();
-
-
-            users[username].RecieveTopics(topics);
-        }
+  
 
 
         public List<String> GetEmails()
@@ -265,6 +263,44 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendWinner(string toUsername, string winner)
         {
             users[toUsername].ReceiveWinner(winner);
+        }
+
+        public string GetEmailByUser(string username)
+        {
+            Authentication authentication = new Authentication();
+
+            return authentication.GetEmail(username);
+        }
+
+        public bool ChangePassword(string username, string newPassword)
+        {
+            Authentication authentication = new Authentication();
+            bool value = false;
+
+            if (authentication.UpdatePassword(username, newPassword) == AuthenticationStatus.Success)
+            {
+                value = true;
+            }
+            return value;
+        }
+
+        public bool FindUsername(string username)
+        {
+            bool value = false;
+            Authentication authentication = new Authentication();
+            List<string> usersRegister = authentication.GetUsers();
+            if (usersRegister.Contains(username)) {
+                value = true;
+            } 
+
+            return value;
+        }
+
+       
+
+        public void SendCardTurn(string toUsername, BitmapImage image, string name)
+        {
+            users[toUsername].ReceiveCardTurn(image, name);
         }
     }
 }

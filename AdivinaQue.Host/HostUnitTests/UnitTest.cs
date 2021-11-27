@@ -1,14 +1,14 @@
-using NUnit.Framework;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdivinaQue.Host.DatabaseAccess;
+﻿using AdivinaQue.Host.DatabaseAccess;
 using AdivinaQue.Host.InterfaceContract;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 
-namespace HostTest
+namespace HostUnitTests
 {
     [TestClass]
-    public class Tests
+    public class UnitTest
     {
-
         [TestMethod]
         public void testRegister()
         {
@@ -20,7 +20,7 @@ namespace HostTest
             player.Password = "Alonso12Hernandez";
             AuthenticationStatus authenticationStatus = AuthenticationStatus.Success;
 
-            NUnit.Framework.Assert.AreEqual(authenticationStatus, authentication.Register(player));
+             NUnit.Framework.Assert.IsTrue(authenticationStatus==authentication.Register(player));
         }
     }
 }

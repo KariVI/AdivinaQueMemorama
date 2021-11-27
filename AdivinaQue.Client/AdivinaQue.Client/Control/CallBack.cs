@@ -110,11 +110,16 @@ namespace AdivinaQue.Client.Control
         }
         public void RecieveScores(Dictionary<string, int> globalScores)
         {
-            foreach (var player in globalScores)
+            if (podio != null)
             {
-                podio.playersCollection.Add(player.Key);
-                podio.scoresCollection.Add(player.Value);
+                podio.playersCollection.Clear();
+                podio.scoresCollection.Clear();
+                foreach (var player in globalScores)
+                {
+                    podio.playersCollection.Add(player.Key);
+                    podio.scoresCollection.Add(player.Value);
 
+                }
             }
 
 
@@ -150,7 +155,10 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
         {
+            game.upCardRival.Clear();
+            game.upCardsRival.Clear();
             game.SetCorrectCards(cards);
+          
         }
 
         public void ReceiveScoreRival(int score)
@@ -161,8 +169,13 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveNextTurn(bool nextTurn)
         {
+            
             game.NextTurn = nextTurn;
-   
+            game.turnOffRivalCards();
+            game.upCardRival.Clear();
+            game.upCardsRival.Clear();
+
+
         }
 
         public void ReceiveNumberCardsFinded(int numberCardsFinded)
@@ -173,6 +186,28 @@ namespace AdivinaQue.Client.Control
         public void ReceiveWinner(string winner)
         {
             game.ShowWinner(winner);
+        }
+
+        public void ReceiveUsersPlayed(string[] usersPlayed)
+        {
+            if (playersList != null)
+            {
+                playersList.usersPlayed.Clear();
+                foreach (var user in usersPlayed)
+                {
+                    playersList.usersPlayed.Add(user);
+                }
+            }
+        }
+
+        public void ReceiveCardTurn(BitmapImage image, string name)
+        {
+            game.upCardRival.Clear();
+            game.upCardRival.Add(image, name);
+            game.upCardsRival.Add(image, name);
+            game.turnRivalSelection();
+
+            
         }
     }
 }

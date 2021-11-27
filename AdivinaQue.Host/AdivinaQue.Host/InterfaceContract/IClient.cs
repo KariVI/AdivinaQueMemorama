@@ -34,6 +34,8 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards);
         [OperationContract(IsOneWay = true)]
+        void ReceiveCardTurn(BitmapImage image, string name);
+        [OperationContract(IsOneWay = true)]
         void ReceiveScoreRival(int score);
         [OperationContract(IsOneWay = true)]
         void ReceiveNextTurn( bool nextTurn);
@@ -41,6 +43,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void ReceiveNumberCardsFinded( int numberCardsFinded);
         [OperationContract(IsOneWay = true)]
         void ReceiveWinner(string winner);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveUsersPlayed(List<string> usersPlayed);
     }
 
     
