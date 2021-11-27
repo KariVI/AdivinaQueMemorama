@@ -1,5 +1,14 @@
 ﻿using AdivinaQue.Client.Control;
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+>>>>>>> main
 using System.Windows;
 
 namespace AdivinaQue.Client.Views
@@ -13,13 +22,14 @@ namespace AdivinaQue.Client.Views
         public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
         public ValidationCode(Proxy.ServiceClient server)
         {
+            
             this.server = server;
             InitializeComponent();
         }
 
         private void EnterBt_Click(object sender, RoutedEventArgs e)
         {
-            if (tbCode.Text != "")
+            if (!string.IsNullOrEmpty(tbCode.Text )  && !IsVoid())
             {
                 string codeReceived = tbCode.Text;
                 if (codeReceived.Equals(codeExpected))
@@ -40,6 +50,16 @@ namespace AdivinaQue.Client.Views
                 MessageBox.Show("Please write a code");
             }
         }
+
+        private bool IsVoid()
+        {
+            bool value = false;
+            if(string.IsNullOrWhiteSpace(tbEmail.Text)){
+                value = true;
+            }
+            return value;
+        }
+
         public string GenerateCodeValidation()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -57,7 +77,7 @@ namespace AdivinaQue.Client.Views
 
         private void SendCodeBt_Click(object sender, RoutedEventArgs e)
         {
-            if (tbEmail.Text != "")
+            if (!string.IsNullOrEmpty(tbEmail.Text) )
             {
                 Validate validate = new Validate();
                 if (validate.ValidationEmail(tbEmail.Text)){

@@ -255,6 +255,12 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
         System.Threading.Tasks.Task<bool> SearchUsernameAsync(string newUsername);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
+        bool FindUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
+        System.Threading.Tasks.Task<bool> FindUsernameAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
         void SearchInfoPlayerByUsername(string username);
         
@@ -297,12 +303,6 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmails", ReplyAction="http://tempuri.org/IService/GetEmailsResponse")]
         System.Threading.Tasks.Task<string[]> GetEmailsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
-        void GetTopics(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
-        System.Threading.Tasks.Task GetTopicsAsync(string username);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
         void GetScores(string username);
         
@@ -339,6 +339,12 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
         System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCardTurn")]
+        void SendCardTurn(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCardTurn")]
+        System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendScoreRival")]
         void SendScoreRival(string toUsername, int score);
         
@@ -368,6 +374,18 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
         System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmailByUser", ReplyAction="http://tempuri.org/IService/GetEmailByUserResponse")]
+        string GetEmailByUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmailByUser", ReplyAction="http://tempuri.org/IService/GetEmailByUserResponse")]
+        System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ChangePassword", ReplyAction="http://tempuri.org/IService/ChangePasswordResponse")]
+        bool ChangePassword(string username, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ChangePassword", ReplyAction="http://tempuri.org/IService/ChangePasswordResponse")]
+        System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -403,6 +421,9 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCorrectPair")]
         void ReceiveCorrectPair(System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCardTurn")]
+        void ReceiveCardTurn(System.Windows.Media.Imaging.BitmapImage image, string name);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveScoreRival")]
         void ReceiveScoreRival(int score);
         
@@ -414,6 +435,9 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveWinner")]
         void ReceiveWinner(string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveUsersPlayed")]
+        void ReceiveUsersPlayed(string[] usersPlayed);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -492,6 +516,14 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.SearchUsernameAsync(newUsername);
         }
         
+        public bool FindUsername(string username) {
+            return base.Channel.FindUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> FindUsernameAsync(string username) {
+            return base.Channel.FindUsernameAsync(username);
+        }
+        
         public void SearchInfoPlayerByUsername(string username) {
             base.Channel.SearchInfoPlayerByUsername(username);
         }
@@ -548,14 +580,6 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.GetEmailsAsync();
         }
         
-        public void GetTopics(string username) {
-            base.Channel.GetTopics(username);
-        }
-        
-        public System.Threading.Tasks.Task GetTopicsAsync(string username) {
-            return base.Channel.GetTopicsAsync(username);
-        }
-        
         public void GetScores(string username) {
             base.Channel.GetScores(username);
         }
@@ -604,6 +628,14 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.SendCorrectCardsAsync(toUsername, cards);
         }
         
+        public void SendCardTurn(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name) {
+            base.Channel.SendCardTurn(toUsername, image, name);
+        }
+        
+        public System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name) {
+            return base.Channel.SendCardTurnAsync(toUsername, image, name);
+        }
+        
         public void SendScoreRival(string toUsername, int score) {
             base.Channel.SendScoreRival(toUsername, score);
         }
@@ -642,6 +674,22 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
             return base.Channel.SendGameAsync(gameCurrently);
+        }
+        
+        public string GetEmailByUser(string username) {
+            return base.Channel.GetEmailByUser(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username) {
+            return base.Channel.GetEmailByUserAsync(username);
+        }
+        
+        public bool ChangePassword(string username, string newPassword) {
+            return base.Channel.ChangePassword(username, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword) {
+            return base.Channel.ChangePasswordAsync(username, newPassword);
         }
     }
 }

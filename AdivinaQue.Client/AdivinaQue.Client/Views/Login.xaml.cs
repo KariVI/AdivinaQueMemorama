@@ -12,6 +12,7 @@ namespace AdivinaQue.Client.Views
         CallBack callback;
         InstanceContext context;
         Proxy.ServiceClient server;
+        private int numberFailedEnter=0;
         public Login()
         {
             InitializeComponent();
@@ -27,22 +28,34 @@ namespace AdivinaQue.Client.Views
                 try
                 {
                     Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
-                    if (value == false)
+                    if (!value && numberFailedEnter<3)
                     {
+<<<<<<< HEAD
                         Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
                     }
 
                     else
+=======
+                        MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
+                        numberFailedEnter++;
+                        Console.WriteLine(numberFailedEnter);
+                     }
+                    else if(!value && numberFailedEnter==3)
+>>>>>>> main
                     {
+                        MessageBox.Show("No se permiten más intentos para ingresar al sistema");
+                        this.Close();
 
+                    } 
+                    else if(value)
+                    {
                         Home home = new Home(server, callback);
                         home.setUsername(tbUsername.Text);
                         callback.SetCurrentUsername(tbUsername.Text);
                         callback.setServer(server);
                         server.GetConnectedUsers();
                         home.Show();
-                        this.Close();
-                       
+                        this.Close();                      
                     }
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
@@ -96,6 +109,57 @@ namespace AdivinaQue.Client.Views
         private void btLanguageSpanish_Click(object sender, RoutedEventArgs e)
         {
             LoadStringResource("es-MEX");
+        }
+
+        public string GenerateCodeValidation()
+        {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var charsArray = new char[5];
+            var random = new Random();
+
+            for (int i = 0; i < charsArray.Length; i++)
+            {
+                charsArray[i] = characters[random.Next(characters.Length)];
+            }
+
+            var resultString = new String(charsArray);
+            return resultString;
+        }
+
+
+        private void btPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrWhiteSpace(tbUsername.Text))
+            {
+                if (server.FindUsername(tbUsername.Text))
+                {
+                    String passwordDefault = GenerateCodeValidation();
+
+                    if (server.ChangePassword(tbUsername.Text, passwordDefault))
+                    {
+                        string email = server.GetEmailByUser(tbUsername.Text);
+
+                        string body = @"<style>     
+                                                        h3{color:#E267B4;}
+                                                        </style>
+                                                        <p> Tu nueva contraseña es: </p>
+                                                        <h4>" + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                                        "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
+
+                        String messageEmailSuccesful = server.SendMail(email, "Nueva contraseña", body);
+                        MessageBox.Show("Check your email for a new password");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This username doesn't exist in the app");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please write an username for send a new password");
+            }
+
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AdivinaQue.Client.Control;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AdivinaQue.Client.Views
 {
@@ -14,16 +16,17 @@ namespace AdivinaQue.Client.Views
 
         public Register(Proxy.ServiceClient server, String email)
         {
-
-            InitializeComponent();
+          
             this.server = server;
             this.email = email;
+            InitializeComponent();
+
 
         }
         private void RegisterBt_Click(object sender, RoutedEventArgs e)
         {
 
-            if (tbUsername.Text != "" && Password.Password.ToString() != "" && tbName.Text != "")
+            if ( ! string.IsNullOrEmpty(tbUsername.Text)  && !string.IsNullOrEmpty(Password.Password.ToString()) && !string.IsNullOrEmpty(tbName.Text)  && !IsVoid() )
             {
                 if (ValidateData() == DataStatus.Correct)
                 {
@@ -40,6 +43,15 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        private bool IsVoid()
+        {
+            bool value = false;
+            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) || string.IsNullOrWhiteSpace(Password.Password.ToString()))
+            {
+                value = true;
+            }
+            return value;
+        }
         private DataStatus  ValidateData()
         {
             Validate validate = new Validate();
@@ -103,13 +115,28 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        private string[] ConvertUpperStrings()
+        {
+            int numberUsers = server.GetUsers().Length;
+            string[] usernames = new string[numberUsers];
+            for (int i = 0; i < numberUsers; i++)
+            {
+                usernames[i] = server.GetUsers()[i].ToUpper();
+
+            }
+
+            return usernames;
+
+        }
+
         private bool SearchDuplicateUsername()
         {
             bool value = false;
-            string[] usernames = server.GetUsers();
+            string[] usernames = ConvertUpperStrings();
+
             foreach (var username in usernames)
             {
-                if (username.Equals(tbUsername.Text))
+                if (username.Equals(tbUsername.Text.ToUpper()))
                 {
                     value = true;
                 }
@@ -122,12 +149,10 @@ namespace AdivinaQue.Client.Views
         {
 
             Proxy.Player player = new Proxy.Player();
-            player.Username = tbUsername.Text;
+            player.Username = tbUsername.Text.Trim();
             player.Password = Password.Password.ToString();
-            player.Name = tbName.Text;
+            player.Name = tbName.Text.Trim();
             player.Email = email;
-
-
             server.Register(player);
             MessageBox.Show("Saved Data");
             this.Close();

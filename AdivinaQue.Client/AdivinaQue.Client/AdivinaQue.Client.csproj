@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Control\CallBack.cs" />
     <Compile Include="Control\Validate.cs" />
+    <Compile Include="Logs\Log.cs" />
     <Compile Include="Views\Alert.xaml.cs">
       <DependentUpon>Alert.xaml</DependentUpon>
     </Compile>
@@ -268,15 +269,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\imageTest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="Images\Administración\" />
     <Folder Include="Images\Tecnologías\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\testImage2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Diseño\1-1.png" />
@@ -305,6 +299,120 @@
     <Resource Include="Images\Pruebas\8-2.png" />
     <Resource Include="Images\Pruebas\9-1.png" />
     <Resource Include="Images\Pruebas\9-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pruebas\10-1.png" />
+    <Resource Include="Images\Pruebas\10-2.png" />
+    <Resource Include="Images\Pruebas\11-1.png" />
+    <Resource Include="Images\Pruebas\11-2.png" />
+    <Resource Include="Images\Pruebas\12-1.png" />
+    <Resource Include="Images\Pruebas\12-2.png" />
+    <Resource Include="Images\Pruebas\13-1.png" />
+    <Resource Include="Images\Pruebas\13-2.png" />
+    <Resource Include="Images\Pruebas\14-1.png" />
+    <Resource Include="Images\Pruebas\14-2.png" />
+    <Resource Include="Images\Pruebas\15-1.png" />
+    <Resource Include="Images\Pruebas\15-2.png" />
+    <Resource Include="Images\Pruebas\16-1.png" />
+    <Resource Include="Images\Pruebas\16-2.png" />
+    <Resource Include="Images\Pruebas\17-1.png" />
+    <Resource Include="Images\Pruebas\17-2.png" />
+    <Resource Include="Images\Pruebas\18-1.png" />
+    <Resource Include="Images\Pruebas\18-2.png" />
+    <Resource Include="Images\Pruebas\19-1.png" />
+    <Resource Include="Images\Pruebas\19-2.png" />
+    <Resource Include="Images\Pruebas\20-1.png" />
+    <Resource Include="Images\Pruebas\20-2.png" />
+    <Resource Include="Images\Pruebas\21-1.png" />
+    <Resource Include="Images\Pruebas\21-2.png" />
+    <Resource Include="Images\Pruebas\22-1.png" />
+    <Resource Include="Images\Pruebas\22-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Diseño\10-1.png" />
+    <Resource Include="Images\Diseño\10-2.png" />
+    <Resource Include="Images\Diseño\11-1.png" />
+    <Resource Include="Images\Diseño\11-2.png" />
+    <Resource Include="Images\Diseño\12-1.png" />
+    <Resource Include="Images\Diseño\12-2.png" />
+    <Resource Include="Images\Diseño\13-1.png" />
+    <Resource Include="Images\Diseño\13-2.png" />
+    <Resource Include="Images\Diseño\14-1.png" />
+    <Resource Include="Images\Diseño\14-2.png" />
+    <Resource Include="Images\Diseño\15-1.png" />
+    <Resource Include="Images\Diseño\15-2.png" />
+    <Resource Include="Images\Diseño\16-1.png" />
+    <Resource Include="Images\Diseño\16-2.png" />
+    <Resource Include="Images\Diseño\17-1.png" />
+    <Resource Include="Images\Diseño\17-2.png" />
+    <Resource Include="Images\Diseño\18-1.png" />
+    <Resource Include="Images\Diseño\18-2.png" />
+    <Resource Include="Images\Diseño\19-1.png" />
+    <Resource Include="Images\Diseño\19-2.png" />
+    <Resource Include="Images\Diseño\20-1.png" />
+    <Resource Include="Images\Diseño\20-2.png" />
+    <Resource Include="Images\Diseño\21-1.png" />
+    <Resource Include="Images\Diseño\21-2.png" />
+    <Resource Include="Images\Diseño\22-1.png" />
+    <Resource Include="Images\Diseño\22-2.png" />
+    <Resource Include="Images\Diseño\4-1.png" />
+    <Resource Include="Images\Diseño\4-2.png" />
+    <Resource Include="Images\Diseño\5-1.png" />
+    <Resource Include="Images\Diseño\5-2.png" />
+    <Resource Include="Images\Diseño\6-1.png" />
+    <Resource Include="Images\Diseño\6-2.png" />
+    <Resource Include="Images\Diseño\7-1.png" />
+    <Resource Include="Images\Diseño\7-2.png" />
+    <Resource Include="Images\Diseño\8-1.png" />
+    <Resource Include="Images\Diseño\8-2.png" />
+    <Resource Include="Images\Diseño\9-1.png" />
+    <Resource Include="Images\Diseño\9-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Administración\1-1.png" />
+    <Resource Include="Images\Administración\1-2.png" />
+    <Resource Include="Images\Administración\10-1.png" />
+    <Resource Include="Images\Administración\10-2.png" />
+    <Resource Include="Images\Administración\11-1.png" />
+    <Resource Include="Images\Administración\11-2.png" />
+    <Resource Include="Images\Administración\12-1.png" />
+    <Resource Include="Images\Administración\12-2.png" />
+    <Resource Include="Images\Administración\13-1.png" />
+    <Resource Include="Images\Administración\13-2.png" />
+    <Resource Include="Images\Administración\14-1.png" />
+    <Resource Include="Images\Administración\14-2.png" />
+    <Resource Include="Images\Administración\15-1.png" />
+    <Resource Include="Images\Administración\15-2.png" />
+    <Resource Include="Images\Administración\16-1.png" />
+    <Resource Include="Images\Administración\16-2.png" />
+    <Resource Include="Images\Administración\17-1.png" />
+    <Resource Include="Images\Administración\17-2.png" />
+    <Resource Include="Images\Administración\18-1.png" />
+    <Resource Include="Images\Administración\18-2.png" />
+    <Resource Include="Images\Administración\19-1.png" />
+    <Resource Include="Images\Administración\19-2.png" />
+    <Resource Include="Images\Administración\2-1.png" />
+    <Resource Include="Images\Administración\2-2.png" />
+    <Resource Include="Images\Administración\20-1.png" />
+    <Resource Include="Images\Administración\20-2.png" />
+    <Resource Include="Images\Administración\21-1.png" />
+    <Resource Include="Images\Administración\21-2.png" />
+    <Resource Include="Images\Administración\22-1.png" />
+    <Resource Include="Images\Administración\22-2.png" />
+    <Resource Include="Images\Administración\3-1.png" />
+    <Resource Include="Images\Administración\3-2.png" />
+    <Resource Include="Images\Administración\4-1.png" />
+    <Resource Include="Images\Administración\4-2.png" />
+    <Resource Include="Images\Administración\5-1.png" />
+    <Resource Include="Images\Administración\5-2.png" />
+    <Resource Include="Images\Administración\6-1.png" />
+    <Resource Include="Images\Administración\6-2.png" />
+    <Resource Include="Images\Administración\7-1.png" />
+    <Resource Include="Images\Administración\7-2.png" />
+    <Resource Include="Images\Administración\8-1.png" />
+    <Resource Include="Images\Administración\8-2.png" />
+    <Resource Include="Images\Administración\9-1.png" />
+    <Resource Include="Images\Administración\9-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

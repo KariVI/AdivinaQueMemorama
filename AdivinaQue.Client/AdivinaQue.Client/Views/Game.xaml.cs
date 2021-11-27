@@ -30,6 +30,8 @@ namespace AdivinaQue.Client.Views
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         private List<Button> buttons = new List<Button>();
         private Dictionary<BitmapImage, string> upCards = new Dictionary<BitmapImage, string>();
+        public Dictionary<BitmapImage, string> upCardRival = new Dictionary<BitmapImage, string>();
+        public Dictionary<BitmapImage, string> upCardsRival = new Dictionary<BitmapImage, string>();
         public Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
         private bool nextTurn;
         public bool NextTurn { set { nextTurn = value; } get { return nextTurn; } }
@@ -111,7 +113,6 @@ namespace AdivinaQue.Client.Views
 
             for (int i = 1; i < 9; i++)
             {
-                Console.WriteLine(category);
                 string locationQuestion = "images/" + category + "/" + i + "-1.png";
                 string locationAnswer = "images/" + category + "/" + i + "-2.png";
 
@@ -186,8 +187,7 @@ namespace AdivinaQue.Client.Views
             btCard2.Name = "blocked";
 
         }
-
-        public void VerifyTurn()
+        public bool VerifyTurn()
         {
             nextTurn = false;
             bool correct = false;
@@ -208,12 +208,22 @@ namespace AdivinaQue.Client.Views
                     correct = true;
                 }
             }
+            return correct;
+        }
+
+       public void UpdateBoard()
+        {
+            bool correct = VerifyTurn();            
             Button btCard1 = getButton(upCards.Values.First());
             Button btCard2 = getButton(upCards.Values.ElementAt(1));
             if (correct)
             {
+<<<<<<< HEAD
                 server.SendCorrectCards(usernameRival, upCards);
                
+=======
+                server.SendCorrectCards(usernameRival, upCards);               
+>>>>>>> main
                 scorePlayer++;
                 server.SendScoreRival(usernameRival, scorePlayer);
                 numberCardsFinded = numberCardsFinded + 2;
@@ -226,11 +236,15 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
+<<<<<<< HEAD
              
+=======
+>>>>>>> main
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
             server.SendNextTurnRival(usernameRival, true);
+
 
             if (numberCardsFinded == gameCards.Count)
             {
@@ -251,12 +265,11 @@ namespace AdivinaQue.Client.Views
         
         public void button_onclick(object sender, RoutedEventArgs e)
         {
-            if (numberCardsFinded != gameCards.Count)
+            Button bt = sender as Button;
+            if (numberCardsFinded != gameCards.Count )
             {
                 if (nextTurn)
-                {
-                    Button bt = sender as Button;
-
+                {             
                     Image buttonAuxiliar = new Image();
                     if (bt.Name != "blocked")
                     {
@@ -265,12 +278,17 @@ namespace AdivinaQue.Client.Views
 
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
+                            server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
                             upCards.Add(gameCards[bt.Name], bt.Name);
                             if (upCards.Count() == 2)
                             {
-                                VerifyTurn();
+                                UpdateBoard();
                             }
                         }
+<<<<<<< HEAD
+=======
+                        
+>>>>>>> main
                     }
                 }
                 else
@@ -318,8 +336,26 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        public void turnRivalSelection()
+        {
+            Button btCard1 = getButton(upCardRival.Values.First());
+            Image buttonAuxiliar1 = new Image();
+            buttonAuxiliar1.Source = gameCards[btCard1.Name];
+            btCard1.Content = buttonAuxiliar1;
 
+        }
 
+        public void turnOffRivalCards()
+        {
+            if (upCardsRival.Count() == 2)
+            {
+                
+                    Button btCard1 = getButton(upCardsRival.Values.First());
+                    Button btCard2 = getButton(upCardsRival.Values.ElementAt(1));
+                    btCard1.Content =null ;
+                    btCard2.Content = null;
+            }
+        }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!endGame)

@@ -28,13 +28,14 @@ namespace AdivinaQue.Client.Views
 
         private void btUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (tbUsername.Text != "" && pbPassword.Password.ToString() != "" && tbName.Text != "" && tbEmail.Text!="")
+            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(pbPassword.Password.ToString() ) && !string.IsNullOrEmpty(tbName.Text ) &&
+                !string.IsNullOrEmpty(tbEmail.Text) && !IsVoid())
             {
                 if (ValidateData() == DataStatus.Correct)
                 {
-                    newPlayer.Name = tbName.Text;
-                    newPlayer.Username = tbUsername.Text;
-                    newPlayer.Email = tbEmail.Text;
+                    newPlayer.Name = tbName.Text.Trim();
+                    newPlayer.Username = tbUsername.Text.Trim();
+                    newPlayer.Email = tbEmail.Text.Trim();
                     newPlayer.Password = pbPassword.Password;
      
                     try
@@ -60,6 +61,17 @@ namespace AdivinaQue.Client.Views
             {
                 Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
+        }
+
+        private bool IsVoid()
+        {
+            bool value = false;
+            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) || 
+                string.IsNullOrWhiteSpace(pbPassword.Password.ToString()) || string.IsNullOrWhiteSpace(tbEmail.Text))
+            {
+                value = true;
+            }
+            return value;
         }
 
         private DataStatus ValidateData()

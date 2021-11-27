@@ -23,6 +23,8 @@ namespace AdivinaQue.Host.InterfaceContract
         Boolean Register(Player player);
         [OperationContract]
         bool SearchUsername(String newUsername);
+        [OperationContract]
+        bool FindUsername(String username);
         [OperationContract(IsOneWay = true)]
         void SearchInfoPlayerByUsername(String username);
         [OperationContract]
@@ -38,8 +40,7 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract]
         List<String> GetEmails();
         [OperationContract(IsOneWay = true)]
-        void GetTopics(string username);
-        [OperationContract(IsOneWay = true)]
+      
         void GetScores(string username);
 
         [OperationContract(IsOneWay = true)]
@@ -52,6 +53,8 @@ namespace AdivinaQue.Host.InterfaceContract
         List<String> GetUsers();
         [OperationContract(IsOneWay = true)]
         void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards);
+        [OperationContract(IsOneWay = true)]
+        void SendCardTurn(string toUsername, BitmapImage image, string name);
 
         [OperationContract(IsOneWay = true)]
         void SendScoreRival(string toUsername, int score);
@@ -64,5 +67,11 @@ namespace AdivinaQue.Host.InterfaceContract
 
         [OperationContract]
         bool SendGame(GameCurrently gameCurrently);
+
+        [OperationContract]
+        string GetEmailByUser(string username);
+
+        [OperationContract]
+        bool ChangePassword(string username, string newPassword);
     }
 }

@@ -6,3 +6,6 @@ AdivinaQue.Host/AdivinaQue.Host/obj/Debug/AdivinaQue.Host.exe
 *.exe
 AdivinaQue.Host/.vs/AdivinaQue.Host/v16/.suo
 AdivinaQue.Host/AdivinaQue.Host/obj/Debug/AdivinaQue.Host.csproj.FileListAbsolute.txt
+*.cache
+*.pdb
+*.dll

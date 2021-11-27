@@ -8,6 +8,8 @@ using AdivinaQue.Host.InterfaceContract;
 using System.Data.Entity.Core;
 using System.Collections.Generic;
 using AdivinaQue.Host.Exception;
+using log4net;
+using AdivinaQue.Host.Logs;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
@@ -15,6 +17,7 @@ namespace AdivinaQue.Host.DatabaseAccess
     {
         private List<int> listScores;
         private List<string> listPlayers;
+        private static readonly ILog Logs = Log.GetLogger();
         public Authentication()
         {
         }
@@ -38,19 +41,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             return status;
         }
-        public List<String> GetTopics()
-        {
 
-            using (var context = new AdivinaQueAppContext())
-            {
-
-                var query = from Cards in context.Card
-                            select Cards.topic;
-
-
-                return query.Distinct().ToList<String>();
-            }
-        }
         public List<String> GetEmails()
         {
 
@@ -120,6 +111,29 @@ namespace AdivinaQue.Host.DatabaseAccess
             return status;
 
         }
+
+        public AuthenticationStatus UpdatePassword( String username, String password)
+        {
+            string passwordHashed = ComputeSHA256Hash(password);
+            AuthenticationStatus status = AuthenticationStatus.Success;
+            try
+            {
+                using (var context = new AdivinaQueAppContext())
+                {
+                    var Players = (from account in context.Players
+                                   where account.userName == username
+                                   select account);
+                    Players.First().password = passwordHashed;
+                    context.SaveChanges();
+                }
+            }
+            catch (EntityException ex)
+            {
+                status = AuthenticationStatus.Failed;
+            }
+            return status;
+
+        }
         public AuthenticationStatus Register(Player player)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
@@ -127,14 +141,16 @@ namespace AdivinaQue.Host.DatabaseAccess
             AuthenticationStatus status = AuthenticationStatus.Success;
             try
             {
-                AdivinaQueAppContext.Players.Add(new Players() { name = player.Name, userName = player.Username, email = player.Email, password = passwordHashed });
-                AddPodio(player.Username);
+                AdivinaQueAppContext.Players.Add(new Players() { name = player.Name, userName = player.Username, email = player.Email, password = passwordHashed });              
                 AdivinaQueAppContext.SaveChanges();
+                AddPodio(player.Username);
             }
             catch (EntityException ex)
             {
                 status = AuthenticationStatus.Failed;
-                throw new BusinessException("Failed Register", ex);
+                Console.WriteLine(ex.Message);
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+                
             }
             return status;
 
@@ -279,10 +295,25 @@ namespace AdivinaQue.Host.DatabaseAccess
             return id;
         }
 
+        public string GetEmail(string username)
+        {
+            string email = "";
+            using (var context = new AdivinaQueAppContext())
+            {
+                var query = (from Players in context.Players
+                             where Players.userName == username
+                             select Players.email).First();
+                email = query;
+            }
+
+
+            return email;
+        }
         private void AddPodio(string username) {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
+            int idUsername = GetIdUser(username);
 
-            AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= GetIdUser(username), totalGames=0 });
+            AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= idUsername, totalGames=0 });
             AdivinaQueAppContext.SaveChanges();
         }
 

@@ -15,6 +15,7 @@ namespace AdivinaQue.Client.Views
         Proxy.ServiceClient server;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
+        public ObservableCollection<string> usersPlayed;
         private String username;
         private Home home;
         Boolean backHome = true;
@@ -25,6 +26,7 @@ namespace AdivinaQue.Client.Views
             this.callback = callBack;
             this.server = server;
             usersCollection = new ObservableCollection<string>();
+            usersPlayed = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;
             this.username = username;
             this.home = home;
@@ -52,6 +54,7 @@ namespace AdivinaQue.Client.Views
             
                 if (listUsers.SelectedValue != null)
                 {
+<<<<<<< HEAD
                      try { 
                         var player = listUsers.SelectedValue.ToString();
                         bool result  = server.SendInvitation(player,username);
@@ -84,6 +87,26 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+=======
+                    var player = listUsers.SelectedValue.ToString();
+
+                        var result = server.SendInvitation(player, username);
+                        if (result)
+                        {
+                             GameConfiguration gameConfiguration = new GameConfiguration(callback, username, player);
+                            callback.SetGameConfiguration(gameConfiguration);
+
+                            gameConfiguration.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
+                        }
+                    }
+                    
+                }
+>>>>>>> main
 
         private void btReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -100,5 +123,5 @@ namespace AdivinaQue.Client.Views
             }
             
         }
-    }
+    
 }

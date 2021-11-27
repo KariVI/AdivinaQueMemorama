@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para GameConfiguration.xaml
-    /// </summary>
+
     public partial class GameConfiguration : Window
     {
         public ObservableCollection<String> topicsCollection;
@@ -94,6 +92,7 @@ namespace AdivinaQue.Client.Views
             callback.setServer(server);
             callback.SetGame(game);
             server.SendRival(username, toUsername);
+            
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
             game.SetRandomLists(randomImageList, randomPositionList);
