@@ -218,12 +218,8 @@ namespace AdivinaQue.Client.Views
             Button btCard2 = getButton(upCards.Values.ElementAt(1));
             if (correct)
             {
-<<<<<<< HEAD
+
                 server.SendCorrectCards(usernameRival, upCards);
-               
-=======
-                server.SendCorrectCards(usernameRival, upCards);               
->>>>>>> main
                 scorePlayer++;
                 server.SendScoreRival(usernameRival, scorePlayer);
                 numberCardsFinded = numberCardsFinded + 2;
@@ -236,10 +232,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-<<<<<<< HEAD
-             
-=======
->>>>>>> main
+
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
@@ -285,10 +278,6 @@ namespace AdivinaQue.Client.Views
                                 UpdateBoard();
                             }
                         }
-<<<<<<< HEAD
-=======
-                        
->>>>>>> main
                     }
                 }
                 else

@@ -1,14 +1,12 @@
 ﻿using AdivinaQue.Client.Control;
 using System;
-<<<<<<< HEAD
-=======
+
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
->>>>>>> main
 using System.Windows;
 
 namespace AdivinaQue.Client.Views

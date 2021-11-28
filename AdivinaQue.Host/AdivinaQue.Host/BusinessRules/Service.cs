@@ -9,11 +9,8 @@ using System.Net.Mail;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
-<<<<<<< HEAD
 using System.Threading;
-=======
 using System.Configuration;
->>>>>>> main
 
 namespace AdivinaQue.Host.BusinessRules
 {

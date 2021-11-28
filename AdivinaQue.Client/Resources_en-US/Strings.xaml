@@ -53,7 +53,6 @@
     <system:String x:Key="btNo">No</system:String>
     <system:String x:Key="btOk">Ok</system:String>
     <system:String x:Key="lbServerError">Sorry, the server isn't running. Try again</system:String>
-<<<<<<< HEAD
     <system:String x:Key="lbWrongCredentials">Wrong Credentials</system:String>
 
     <system:String x:Key="lbEmptyFields">Existis empty fields</system:String>
@@ -77,8 +76,6 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
     <system:String x:Key="lbCorrectEmail">Email validated</system:String>
-=======
-   
->>>>>>> main
+
 </ResourceDictionary>
    

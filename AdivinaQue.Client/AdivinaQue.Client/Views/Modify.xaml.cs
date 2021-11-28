@@ -18,17 +18,16 @@ namespace AdivinaQue.Client.Views
         private Home home;
         private bool backHome = true;
 
-        public Modify(CallBack callback,Home home)
-        {      
+        public Modify(CallBack callback, Home home)
+        {
             InitializeComponent();
             newPlayer = new Player();
             this.callback = callback;
             this.home = home;
         }
-
-        private void btUpdate_Click(object sender, RoutedEventArgs e)
+      private void btUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(pbPassword.Password.ToString() ) && !string.IsNullOrEmpty(tbName.Text ) &&
+            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(pbPassword.Password.ToString()) && !string.IsNullOrEmpty(tbName.Text) &&
                 !string.IsNullOrEmpty(tbEmail.Text) && !IsVoid())
             {
                 if (ValidateData() == DataStatus.Correct)
@@ -37,7 +36,7 @@ namespace AdivinaQue.Client.Views
                     newPlayer.Username = tbUsername.Text.Trim();
                     newPlayer.Email = tbEmail.Text.Trim();
                     newPlayer.Password = pbPassword.Password;
-     
+
                     try
                     {
                         String code = server.GenerateCode();
@@ -66,7 +65,7 @@ namespace AdivinaQue.Client.Views
         private bool IsVoid()
         {
             bool value = false;
-            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) || 
+            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) ||
                 string.IsNullOrWhiteSpace(pbPassword.Password.ToString()) || string.IsNullOrWhiteSpace(tbEmail.Text))
             {
                 value = true;
@@ -82,7 +81,7 @@ namespace AdivinaQue.Client.Views
             if (!validate.ValidationAlphanumeric(tbUsername.Text))
             {
                 dataStatus = DataStatus.UserNameInvalid;
-            }      
+            }
             if (!validate.ValidationString(tbName.Text))
             {
                 dataStatus = DataStatus.NameInvalid;
@@ -183,8 +182,8 @@ namespace AdivinaQue.Client.Views
                     backHome = false;
                     this.Close();
                     login.Show();
-                } 
-            }   
+                }
+            }
         }
 
         internal void SetServer(ServiceClient server)
@@ -194,14 +193,14 @@ namespace AdivinaQue.Client.Views
             {
                 server.SearchInfoPlayerByUsername(username);
             }
-            catch (Exception ex) when(ex is EndpointNotFoundException || ex is TimeoutException)
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();
                 backHome = false;
                 this.Close();
                 login.Show();
-            }  
+            }
         }
 
         internal void SetUsername(string username)
@@ -216,7 +215,7 @@ namespace AdivinaQue.Client.Views
 
         public void SetPlayer(Player player)
         {
-            tbName.Text =player.Name;
+            tbName.Text = player.Name;
             tbUsername.Text = player.Username;
             tbEmail.Text = player.Email;
             pbPassword.Password = "";
@@ -225,9 +224,11 @@ namespace AdivinaQue.Client.Views
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
-            if(backHome){
+            if (backHome)
+            {
                 home.Show();
             }
         }
+
     }
 }

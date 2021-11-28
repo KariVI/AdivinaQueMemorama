@@ -20,7 +20,7 @@ namespace AdivinaQue.Client.Views
         private Home home;
         Boolean backHome = true;
         CallBack callback;
-        public PlayersList(Proxy.ServiceClient server, String username, Home home,CallBack callBack)
+        public PlayersList(Proxy.ServiceClient server, String username, Home home, CallBack callBack)
         {
             InitializeComponent();
             this.callback = callBack;
@@ -51,24 +51,24 @@ namespace AdivinaQue.Client.Views
 
         private void btSend_Click(object sender, RoutedEventArgs e)
         {
-            
-                if (listUsers.SelectedValue != null)
+
+            if (listUsers.SelectedValue != null)
+            {
+                try
                 {
-<<<<<<< HEAD
-                     try { 
-                        var player = listUsers.SelectedValue.ToString();
-                        bool result  = server.SendInvitation(player,username);
-                        showResponse(result,player);
-                     }
-                    catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
-                    {
-                        Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
-                        backHome = false;
-                        Login login = new Login();
-                        login.Show();   
-                        this.Close();
-                    }
-            }          
+                    var player = listUsers.SelectedValue.ToString();
+                    bool result = server.SendInvitation(player, username);
+                    showResponse(result, player);
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                {
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    backHome = false;
+                    Login login = new Login();
+                    login.Show();
+                    this.Close();
+                }
+            }
         }
         private void showResponse(bool result, string player)
         {
@@ -87,26 +87,7 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-=======
-                    var player = listUsers.SelectedValue.ToString();
 
-                        var result = server.SendInvitation(player, username);
-                        if (result)
-                        {
-                             GameConfiguration gameConfiguration = new GameConfiguration(callback, username, player);
-                            callback.SetGameConfiguration(gameConfiguration);
-
-                            gameConfiguration.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show(player + " decline your invitation", "Message", MessageBoxButton.OK);
-                        }
-                    }
-                    
-                }
->>>>>>> main
 
         private void btReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -121,7 +102,8 @@ namespace AdivinaQue.Client.Views
             {
                 home.Show();
             }
-            
+
         }
+    }
     
 }
