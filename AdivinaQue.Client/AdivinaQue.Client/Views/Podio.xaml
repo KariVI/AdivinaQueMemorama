@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource lbScore}" Height="550" Width="600" >
+        Title="{DynamicResource lbScore}" Height="550" Width="600" Closed="Window_Closed" >
     <Grid Background ="Lavender">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="42*"/>
@@ -52,7 +52,7 @@
             </Grid>
 
         </Grid>
-        <Button Content="{DynamicResource btReturn}" HorizontalAlignment="Left"  FontFamily="Tw Cen MT Condensed" FontSize="16" Background="Plum" Margin="445,477,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
+        <Button Content="{DynamicResource btReturn}" HorizontalAlignment="Left"  FontFamily="Tw Cen MT Condensed" FontSize="16" Background="Plum" Margin="445,477,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="Button_Click"/>
         <Label Content="{DynamicResource lbScore}" HorizontalAlignment="Left" Margin="199,14,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="20" Grid.Column="2"/>
 
     </Grid>

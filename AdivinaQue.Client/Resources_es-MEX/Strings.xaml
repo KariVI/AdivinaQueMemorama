@@ -48,7 +48,31 @@
     <system:String x:Key="lbiThirdTopic">Tecnologías</system:String>
     <system:String x:Key="lbiFourthTopic">Administración</system:String>
     <system:String x:Key="lbServerError">Lo siento, el servidor no esta disponible. Intente de nuevo</system:String>
+    <system:String x:Key="lbWrongCredentials">Credenciales incorrectas</system:String>
+    
+    <system:String x:Key="lbEmptyFields">Existen campos vacios</system:String>
+    <system:String x:Key="lbValidUsername">Por favor, escribe un nombre de usuario valido</system:String>
+    <system:String x:Key="lbDeleteAccount">¿Esta seguro? Esto eliminara su cuenta permanentemente</system:String>
+    <system:String x:Key="lbNameInvalid">El nombre no debe contener caracteres especiales</system:String>
+    <system:String x:Key="lbPasswordInvalid">La contraseña no debe contener caracteres especiales</system:String>
+    <system:String x:Key="lbPasswordShort">La contraseña debe contener como minimo 8 caracteres</system:String>
+    <system:String x:Key="lbEmailInvalid">Correo incorrecto, por favor ingreselo de nuevo</system:String>
+    <system:String x:Key="lbDeleteAccountFailed">No fue posible eliminar su cuenta, intentelo de nuevo</system:String>
+    <system:String x:Key="lbDeleteAccountCorrect">Cuenta eliminada con exito</system:String>
+
     <system:String x:Key="btOk">Aceptar</system:String>
     <system:String x:Key="btYes">Si</system:String>
     <system:String x:Key="btNo">No</system:String>
+    <system:String x:Key="lbDeclineInvitation">rechazo tu invitacion</system:String>
+    <system:String x:Key="lbAvailability">¿Sigues jugando?</system:String>
+
+    <system:String x:Key="lbInvitation">te invito, ¿Aceptas?</system:String>
+
+    <system:String x:Key="lbWin">Ganaste !!!</system:String>
+    <system:String x:Key="lbLost">Perdiste :(</system:String>
+    <system:String x:Key="lbTie">Empate !</system:String>
+    <system:String x:Key="lbTurn">Porfavor espera tu turno</system:String>
+    <system:String x:Key="lbModifySucces">user modified successfully</system:String>
+    <system:String x:Key="lbIncorrectCode">Porfavor escribe el codigo correcto</system:String>
+    <system:String x:Key="lbCorrectEmail">Correo validado</system:String>
 </ResourceDictionary>

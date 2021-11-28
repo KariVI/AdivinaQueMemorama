@@ -31,14 +31,16 @@ namespace AdivinaQue.Client.Views
         {
             if (this.code == tbCode.Text)
             {
-                Console.WriteLine("Ok");
+                
                 server.Modify(player, username);
-                MessageBox.Show("user modified successfully", "Message", MessageBoxButton.OK);
+                Alert.ShowDialog(Application.Current.Resources["lbModifySucces"].ToString(), Application.Current.Resources["btOk"].ToString());
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Incorrect code", "Message", MessageBoxButton.OK);
+                
+               Alert.ShowDialog(Application.Current.Resources["lbIncorrectCode"].ToString(), Application.Current.Resources["btOk"].ToString());
+            
             }
         }
         private void btCancel_Click()

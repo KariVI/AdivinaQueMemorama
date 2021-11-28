@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AdivinaQue.Client.Views
 {
@@ -20,14 +10,26 @@ namespace AdivinaQue.Client.Views
     public partial class Alert : Window
     {
         AlertResult result;
+        private static DispatcherTimer timer;
+        Alert alert;
+        public AlertResult Result { get => result; set => result = value; }
+
         private Alert()
         {
-            InitializeComponent();
+            alert = this;
+                InitializeComponent();
+           
+
         }
         public static AlertResult ShowDialog( string message, string button1Text, string button2Text)
         {
             Alert messageBox = new Alert();
             return messageBox.ShowDialogInternal( message, button1Text, button2Text);
+        }
+        public static AlertResult ShowDialogWithResponse(string message, string button1Text)
+        {
+            Alert messageBox = new Alert();
+            return messageBox.ShowDialogInternal(message, button1Text);
         }
         public static void ShowDialog(string message, string button1Text)
         {
@@ -37,20 +39,25 @@ namespace AdivinaQue.Client.Views
 
         public AlertResult ShowDialogInternal(string message, string button1Text, string button2Text)
         {
-            lbMessage.Content = message;
+            tbMessage.Text = message;
             btNo.Content = button1Text;
-            btYes.Content = button2Text;
+            btYes.Content = button2Text;          
+            SetTimer(); 
+            timer.Start();
             ShowDialog();
             return result;
         }
 
-        public void ShowDialogInternal(string message, string button1Text)
+        public AlertResult ShowDialogInternal(string message, string button1Text)
         {
-            lbMessage.Content = message;
+            tbMessage.Text = message;
             btNo.Opacity = 0;
             btNo.IsEnabled = false;
             btYes.Content = button1Text;
+            SetTimer();
+            timer.Start();
             ShowDialog();
+            return result;
         }
 
         private void no_Click(object sender, RoutedEventArgs e)
@@ -62,15 +69,32 @@ namespace AdivinaQue.Client.Views
         private void yes_Click(object sender, RoutedEventArgs e)
         {
             result = AlertResult.Yes;
+            timer.Stop();
             Close();
         }
-
-      
+        private void SetTimer()
+        {        
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            timer.Tick += onTick;
+        }
+        private int time = 0;
+        private  void onTick(object sender, EventArgs e)
+        {
+               time++;
+                lbTime.Content = "("+ (40 - time).ToString()+")";
+               if(time == 40) { 
+                alert.result = AlertResult.Unavaible;
+                alert.Close();
+                timer.Stop();
+            }
+        }
     }
 
     public enum AlertResult
     {
         No = 1,
         Yes = 2,
+        Unavaible = 3,
     }
+    
 }

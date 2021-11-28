@@ -19,11 +19,16 @@ namespace AdivinaQue.Client.Control
         private ValidationCode validationCode;
         private GameConfiguration gameConfiguration;
         private Game game;
+        private Home home;
         Proxy.ServiceClient server;
 
         public void SetPodio(Podio podio)
         {
             this.podio = podio;
+        }
+        public void setHome(Home home)
+        {
+            this.home = home;
         }
 
         public void setServer(Proxy.ServiceClient server)
@@ -45,9 +50,9 @@ namespace AdivinaQue.Client.Control
         }
         public bool SendInvitationGame(String username)
         {
-            var option = MessageBox.Show(username+ " invited you, acept?", "Message", MessageBoxButton.YesNo);
+            var option = Alert.ShowDialog(username + " " + Application.Current.Resources["lbInvitation"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
             bool value = false;
-            if (option == MessageBoxResult.Yes)
+            if (option == AlertResult.Yes)
             {
                 value = true;
             }
@@ -98,7 +103,7 @@ namespace AdivinaQue.Client.Control
 
         public void RecievePlayer(Player player)
         {
-           modify.setPlayer(player);
+           modify.SetPlayer(player);
         }
         public void SetCurrentUsername(String currentUsername)
         {
@@ -140,6 +145,8 @@ namespace AdivinaQue.Client.Control
         {
             game = new Game(server,size, category);
             game.SetUsername(username);
+            home.Hide();
+            game.home = home;
             game.Show();        
         }
 
@@ -155,9 +162,11 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
         {
-            game.upCardRival.Clear();
-            game.upCardsRival.Clear();
-            game.SetCorrectCards(cards);
+          
+                game.upCardRival.Clear();
+                game.upCardsRival.Clear();
+            
+             game.SetCorrectCards(cards);
           
         }
 
@@ -169,11 +178,11 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveNextTurn(bool nextTurn)
         {
-            
             game.NextTurn = nextTurn;
             game.turnOffRivalCards();
             game.upCardRival.Clear();
             game.upCardsRival.Clear();
+
 
 
         }

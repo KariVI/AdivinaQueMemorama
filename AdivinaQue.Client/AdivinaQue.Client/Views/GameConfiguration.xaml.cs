@@ -26,9 +26,14 @@ namespace AdivinaQue.Client.Views
         private String toUsername;
         CallBack callback;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
+
+        public Home Home { get => home; set => home = value; }
+
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+        private Home home;
+        private bool backHome = true;
 
         public GameConfiguration(CallBack callback, String username, String toUsername)
         {
@@ -91,7 +96,9 @@ namespace AdivinaQue.Client.Views
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
             game.SetRandomLists(randomImageList, randomPositionList);
+            game.home = home;
             game.Show();
+            backHome = false;
             this.Close();
         }
 
@@ -108,6 +115,14 @@ namespace AdivinaQue.Client.Views
                 }
             }
             return randomList.ToArray();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (backHome)
+            {
+                Home.Show();
+            }
         }
     }
 }

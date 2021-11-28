@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource lbTitleConfiguration}" Height="438" Width="400">
+        Title="{DynamicResource lbTitleConfiguration}" Height="438" Width="400" Closed="Window_Closed">
     <Grid  Background ="Lavender">
         <ComboBox Background="Gainsboro" x:Name="cbSizeBoard" HorizontalAlignment="Left" Margin="181,283,0,0" VerticalAlignment="Top" Width="176" Height="19" RenderTransformOrigin="0.78,5.596" BorderBrush="#FFC0AEE0">
             <ComboBoxItem Background="Gainsboro" Content="2 x 2"></ComboBoxItem>
@@ -18,7 +18,6 @@
         <ListBox x:Name="lbxTopics" HorizontalAlignment="Left" Background="#FFE6E6F5" Height="136" Margin="48,135,0,0" VerticalAlignment="Top" Width="309">
             <ListBoxItem x:Name="lbiFirstTopic"  Content="Diseño"></ListBoxItem>
             <ListBoxItem x:Name="lbiSecondTopic"  Content="Pruebas"></ListBoxItem>
-            <ListBoxItem x:Name="lbiThirdTopic"  Content="Tecnologías"></ListBoxItem>
             <ListBoxItem x:Name="lbiFourthTopic"  Content="Administración"></ListBoxItem>
         </ListBox>
         <Label Content="{DynamicResource lbTopicMessage}" HorizontalAlignment="Left" Margin="48,100,0,0" VerticalAlignment="Top"/>

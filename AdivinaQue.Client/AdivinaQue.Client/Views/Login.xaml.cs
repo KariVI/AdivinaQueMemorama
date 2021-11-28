@@ -6,13 +6,13 @@ using System.Windows;
 
 namespace AdivinaQue.Client.Views
 {
-  
+
     public partial class Login : Window
     {
         CallBack callback;
         InstanceContext context;
         Proxy.ServiceClient server;
-        private int numberFailedEnter=0;
+        private int numberFailedEnter = 0;
         public Login()
         {
             InitializeComponent();
@@ -23,24 +23,21 @@ namespace AdivinaQue.Client.Views
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbUsername.Text))               
+            if (!string.IsNullOrEmpty(tbUsername.Text))
             {
                 try
                 {
                     Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
-                    if (!value && numberFailedEnter<3)
+                    if (!value && numberFailedEnter < 3)
                     {
-                        MessageBox.Show("Credenciales incorrectas", "Message", MessageBoxButton.OK);
+                        Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
                         numberFailedEnter++;
-                        Console.WriteLine(numberFailedEnter);
-                     }
-                    else if(!value && numberFailedEnter==3)
+                    }
+                    else if (!value && numberFailedEnter == 3)
                     {
-                        MessageBox.Show("No se permiten más intentos para ingresar al sistema");
-                        this.Close();
 
-                    } 
-                    else if(value)
+                    }
+                    else if (value)
                     {
                         Home home = new Home(server, callback);
                         home.setUsername(tbUsername.Text);
@@ -48,24 +45,20 @@ namespace AdivinaQue.Client.Views
                         callback.setServer(server);
                         server.GetConnectedUsers();
                         home.Show();
-                        this.Close();                      
+                        this.Close();
                     }
-
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
                 {
-                    
+
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
                     this.Close();
                     login.Show();
                 }
-
-
             }
 
         }
-
         private void LoadStringResource(string locale)
         {
             var resources = new ResourceDictionary();
@@ -84,20 +77,20 @@ namespace AdivinaQue.Client.Views
             Application.Current.Resources.MergedDictionaries.Add(resources);
         }
 
-      
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ValidationCode validationCode = new ValidationCode(server);
             callback.SetValidateCode(validationCode);
-            
+
             validationCode.Show();
         }
 
         private void btLanguageEnglish_Click(object sender, RoutedEventArgs e)
         {
             LoadStringResource("en-US");
-            
+
         }
 
         private void btLanguageSpanish_Click(object sender, RoutedEventArgs e)
@@ -157,3 +150,4 @@ namespace AdivinaQue.Client.Views
         }
     }
 }
+

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         x:Class="AdivinaQue.Client.Views.Game"
         mc:Ignorable="d"
-        Title="Game" Height="700" Width="1000" Closing="Window_Closing">
+        Title="Game" Height="700" Width="1000" Closing="Window_Closing" MouseMove="Window_MouseMove">
     <Grid  Background="Lavender">
 
         <Grid.ColumnDefinitions>

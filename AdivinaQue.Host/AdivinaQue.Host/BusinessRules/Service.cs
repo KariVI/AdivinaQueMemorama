@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
+using System.Threading;
 using System.Configuration;
 
 namespace AdivinaQue.Host.BusinessRules
@@ -152,8 +153,7 @@ namespace AdivinaQue.Host.BusinessRules
             int port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"]);
             string passwordAdmin = ConfigurationManager.AppSettings["PasswordAdmin"];
             string displayName = "Administrador de Adivina ¿Qué? Memorama";
-            try
-            {
+           
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(from, displayName);
                 mail.To.Add(to);
@@ -171,13 +171,8 @@ namespace AdivinaQue.Host.BusinessRules
                 client.Send(mail);
                 message = "Exito";
 
-            }
-            catch (SmtpException ex)
-            {
-                message = "Error";
-                throw new BusinessException("Error send Mail", ex);
-
-            }
+            
+            
             return message;
         }
         public void GetScores(String username)

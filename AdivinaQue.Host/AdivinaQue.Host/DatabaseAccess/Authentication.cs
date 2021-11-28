@@ -105,6 +105,8 @@ namespace AdivinaQue.Host.DatabaseAccess
             catch (EntityException ex)
             {
                 status = AuthenticationStatus.Failed;
+                throw new BusinessException("Failed Update", ex);
+                
             }
             return status;
 
