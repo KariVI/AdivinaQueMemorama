@@ -27,8 +27,7 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void RecieveScores(Dictionary<string, int> globalScores);
         
-        [OperationContract(IsOneWay = true)]
-        void RecieveTopics(List<String> topics);
+  
         [OperationContract(IsOneWay = true)]
         void ReceiveCardSeed(List<int> randomImageList, List<int> randomPositionList);
         [OperationContract(IsOneWay = true)]

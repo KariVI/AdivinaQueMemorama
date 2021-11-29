@@ -195,9 +195,6 @@
   <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveScores" />
   </wsdl:message>
-  <wsdl:message name="IService_RecieveTopics_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:RecieveTopics" />
-  </wsdl:message>
   <wsdl:message name="IService_ReceiveCardSeed_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveCardSeed" />
   </wsdl:message>
@@ -342,9 +339,6 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RecieveTopics">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveTopics" message="tns:IService_RecieveTopics_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardSeed">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCardSeed" message="tns:IService_ReceiveCardSeed_OutputCallbackMessage" />
@@ -625,12 +619,6 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
       <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RecieveTopics">
-      <soap12:operation soapAction="http://tempuri.org/IService/RecieveTopics" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

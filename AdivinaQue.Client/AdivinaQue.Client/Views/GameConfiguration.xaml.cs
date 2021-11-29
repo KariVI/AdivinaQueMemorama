@@ -25,6 +25,7 @@ namespace AdivinaQue.Client.Views
         private String username;
         private String toUsername;
         CallBack callback;
+        private int sizeBoard;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
 
         public Home Home { get => home; set => home = value; }
@@ -37,8 +38,9 @@ namespace AdivinaQue.Client.Views
 
         public GameConfiguration(CallBack callback, String username, String toUsername)
         {
-
+            sizeBoard = 12;
             InitializeComponent();
+            cbSizeBoard = new ComboBox();
             topicsCollection = new ObservableCollection<string>();
             this.callback = callback;
             InstanceContext context = new InstanceContext(callback);
@@ -49,57 +51,35 @@ namespace AdivinaQue.Client.Views
 
         private void ConfirmBt_Click(object sender, RoutedEventArgs e)
         {
-            string category = "All";
+            string category;
 
             if (lbxTopic.SelectedItem != null)
             {
                 string categoryAuxiliar = lbxTopic.SelectedItem.ToString();
                 int found = categoryAuxiliar.IndexOf(": ");
-                category = categoryAuxiliar.Substring(found + 2);
+                category = categoryAuxiliar.Substring(found + 2);              
+                Game game = new Game(server, sizeBoard, category);
+                
+                int[] randomPositionList = GenerateRandomNumbers(sizeBoard);
+                int[] randomImageList = GenerateRandomNumbers(sizeBoard / 2);
+                server.SendBoard(toUsername, sizeBoard, category);
+                server.SendRival(username, toUsername);
+                server.SendBoardLists(toUsername, randomImageList, randomPositionList);
+                callback.setServer(server);
+                callback.SetGame(game);
 
-            }
-
-            int sizeBoard = 0;
-            if (cbSizeBoard.Text.Equals("2 x 2"))
-            {
-                sizeBoard = 2;
-            }
-            else if (cbSizeBoard.Text.Equals("3 x 3"))
-            {
-                sizeBoard = 3;
-
-            }
-            else if (cbSizeBoard.Text.Equals("4 x 4"))
-            {
-                sizeBoard = 4;
-
-            }
-            else if (cbSizeBoard.Text.Equals("5 x 5"))
-            {
-                sizeBoard = 5;
-
+                game.SetUsername(username);
+                game.SetUsernameRival(toUsername);
+                game.SetRandomLists(randomImageList, randomPositionList);
+                game.home = home;
+                game.Show();
+                backHome = false;
+                this.Close();
             }
             else
             {
-                sizeBoard = 6;
-
+                Alert.ShowDialogWithResponse(Application.Current.Resources["lbSelected"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
-            Game game = new Game( server, sizeBoard, category);
-            int[] randomPositionList = GenerateRandomNumbers(sizeBoard * sizeBoard);
-            int[] randomImageList = GenerateRandomNumbers((sizeBoard * sizeBoard) / 2);
-            server.SendBoard(toUsername, sizeBoard, category);     
-            server.SendBoardLists(toUsername, randomImageList, randomPositionList);
-            callback.setServer(server);
-            callback.SetGame(game);
-            server.SendRival(username, toUsername);
-            
-            game.SetUsername(username);
-            game.SetUsernameRival(toUsername);
-            game.SetRandomLists(randomImageList, randomPositionList);
-            game.home = home;
-            game.Show();
-            backHome = false;
-            this.Close();
         }
 
         public int[] GenerateRandomNumbers(int size)
@@ -123,6 +103,35 @@ namespace AdivinaQue.Client.Views
             {
                 Home.Show();
             }
+        }
+
+        private void cbSizeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem comboBoxItem = ((sender as ComboBox).SelectedItem as ComboBoxItem);
+
+            string sizeSelected = comboBoxItem.Content.ToString();
+
+            if (sizeSelected.Equals("3 x 4"))
+            {
+                sizeBoard = 12;
+
+            }
+            else if (sizeSelected.Equals("4 x 4"))
+            {
+                sizeBoard = 16;
+
+            }
+            else if (sizeSelected.Equals("5 x 4"))
+            {
+                sizeBoard = 20;
+
+            }
+            else if (sizeSelected.Equals("6 x 5"))
+            {
+                sizeBoard = 30;
+
+            }
+            
         }
     }
 }

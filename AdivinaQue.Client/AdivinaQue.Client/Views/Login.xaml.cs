@@ -35,7 +35,9 @@ namespace AdivinaQue.Client.Views
                     }
                     else if (!value && numberFailedEnter == 3)
                     {
-
+                        Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        //mandar mensaje al usuario que cambiamos su contraseña por sobrepasar los intentos 
+                        //pa que el señor hacker no le haga nada malo 
                     }
                     else if (value)
                     {

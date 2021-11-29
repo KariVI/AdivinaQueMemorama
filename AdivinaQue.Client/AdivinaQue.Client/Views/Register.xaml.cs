@@ -80,38 +80,40 @@ namespace AdivinaQue.Client.Views
 
             }
 
-
-
-
             return dataStatus;
 
         }
 
         private void SendMessage(DataStatus dataStatus)
         {
-            if(dataStatus == DataStatus.UserNameInvalid)
+            if (dataStatus == DataStatus.UserNameInvalid)
             {
-                MessageBox.Show("Please write a valid username");
+                Alert.ShowDialog(Application.Current.Resources["lbValidUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
-            if(dataStatus == DataStatus.NameInvalid)
+            if (dataStatus == DataStatus.NameInvalid)
             {
-                MessageBox.Show("Name field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbNameInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.PasswordInvalid)
             {
-                MessageBox.Show("Password field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.ShortPassword)
             {
-                MessageBox.Show("Password minimum 8 characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordShort"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
+
+            if (dataStatus == DataStatus.EmailIncorrect)
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbEmailInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.UserNameDuplicate)
             {
-                MessageBox.Show("This username already exists");
+                Alert.ShowDialog(Application.Current.Resources["lbDuplicateUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 

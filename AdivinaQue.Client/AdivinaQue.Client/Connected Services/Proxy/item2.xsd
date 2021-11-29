@@ -367,32 +367,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RecieveTopics">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q13:ArrayOfstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="ReceiveCardSeed">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomImageList" nillable="true" type="q14:ArrayOfint" />
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomPositionList" nillable="true" type="q15:ArrayOfint" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomImageList" nillable="true" type="q13:ArrayOfint" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="randomPositionList" nillable="true" type="q14:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveCorrectPair">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cards" nillable="true" type="q16:ArrayOfKeyValueOfBitmapImagestringLeJ6E6Rh" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cards" nillable="true" type="q15:ArrayOfKeyValueOfBitmapImagestringLeJ6E6Rh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveCardTurn">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging" minOccurs="0" name="image" nillable="true" type="q17:BitmapImage" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging" minOccurs="0" name="image" nillable="true" type="q16:BitmapImage" />
         <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -428,7 +421,7 @@
   <xs:element name="ReceiveUsersPlayed">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="usersPlayed" nillable="true" type="q18:ArrayOfstring" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="usersPlayed" nillable="true" type="q17:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

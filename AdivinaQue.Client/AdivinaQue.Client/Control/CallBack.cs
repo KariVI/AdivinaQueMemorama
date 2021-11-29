@@ -58,14 +58,7 @@ namespace AdivinaQue.Client.Control
             }
             return value;
         }
-        public void RecieveTopics(string[] topics)
-        {
-            foreach (var topic in topics)
-            {
-               // gameConfiguration.topicsCollection.Add(topic);
 
-            }
-        }
         public void SetGameConfiguration(GameConfiguration gameConfiguration)
         {
             this.gameConfiguration = gameConfiguration;

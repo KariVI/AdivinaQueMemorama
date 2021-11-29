@@ -55,9 +55,14 @@ namespace AdivinaQue.Client.Views
                     }
                     this.Close();
                 }
+                else
+                {
+                    SendMessage(ValidateData());
+                }
             }
             else
             {
+                
                 Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
