@@ -63,8 +63,9 @@ namespace AdivinaQue.Client.Views
                 int[] randomPositionList = GenerateRandomNumbers(sizeBoard);
                 int[] randomImageList = GenerateRandomNumbers(sizeBoard / 2);
                 server.SendBoard(toUsername, sizeBoard, category);
-                server.SendRival(username, toUsername);
+                
                 server.SendBoardLists(toUsername, randomImageList, randomPositionList);
+                server.SendRival(username, toUsername);
                 callback.setServer(server);
                 callback.SetGame(game);
 

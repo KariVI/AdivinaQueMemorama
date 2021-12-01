@@ -141,8 +141,9 @@ namespace AdivinaQue.Client.Views
 
                 bt.Click += new RoutedEventHandler(button_onclick);
                 bt.Width = 639 / column;
-                bt.Height = 624 / column;
-                bt.Background = Brushes.LavenderBlush;
+                bt.Height = 624 / row;
+                Color color = (Color)ColorConverter.ConvertFromString("#CCCCFF");
+                bt.Background = new SolidColorBrush(color);
                 bt.Content = null;
                 string btName = "bt" + i.ToString();
                 bt.Name = btName;
@@ -316,7 +317,8 @@ namespace AdivinaQue.Client.Views
                     {
                         if (bt.Content == null)
                         {
-
+                            gameCards[bt.Name].DecodePixelWidth= 639/column;
+                            gameCards[bt.Name].DecodePixelHeight = 624 / row;
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
                             server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
