@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetTcpBinding_IService_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IPlayerMgt_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameMgt_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -45,331 +74,427 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/System.Net.Cache" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService_Join_InputMessage">
+  <wsdl:message name="IPlayerMgt_Join_InputMessage">
     <wsdl:part name="parameters" element="tns:Join" />
   </wsdl:message>
-  <wsdl:message name="IService_Join_OutputMessage">
+  <wsdl:message name="IPlayerMgt_Join_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SendMessage_InputMessage">
+  <wsdl:message name="IPlayerMgt_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
-  <wsdl:message name="IService_GetConnectedUsers_InputMessage">
+  <wsdl:message name="IPlayerMgt_GetConnectedUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedUsers" />
   </wsdl:message>
-  <wsdl:message name="IService_DisconnectUser_InputMessage">
+  <wsdl:message name="IPlayerMgt_DisconnectUser_InputMessage">
     <wsdl:part name="parameters" element="tns:DisconnectUser" />
   </wsdl:message>
-  <wsdl:message name="IService_Register_InputMessage">
+  <wsdl:message name="IPlayerMgt_Register_InputMessage">
     <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
-  <wsdl:message name="IService_Register_OutputMessage">
+  <wsdl:message name="IPlayerMgt_Register_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SearchUsername_InputMessage">
+  <wsdl:message name="IPlayerMgt_SearchUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchUsername" />
   </wsdl:message>
-  <wsdl:message name="IService_SearchUsername_OutputMessage">
+  <wsdl:message name="IPlayerMgt_SearchUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchUsernameResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_FindUsername_InputMessage">
+  <wsdl:message name="IPlayerMgt_FindUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:FindUsername" />
   </wsdl:message>
-  <wsdl:message name="IService_FindUsername_OutputMessage">
+  <wsdl:message name="IPlayerMgt_FindUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindUsernameResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SearchInfoPlayerByUsername_InputMessage">
+  <wsdl:message name="IPlayerMgt_SearchInfoPlayerByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchInfoPlayerByUsername" />
   </wsdl:message>
-  <wsdl:message name="IService_GenerateCode_InputMessage">
+  <wsdl:message name="IPlayerMgt_GenerateCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GenerateCode" />
   </wsdl:message>
-  <wsdl:message name="IService_GenerateCode_OutputMessage">
+  <wsdl:message name="IPlayerMgt_GenerateCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerateCodeResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Modify_InputMessage">
+  <wsdl:message name="IPlayerMgt_Modify_InputMessage">
     <wsdl:part name="parameters" element="tns:Modify" />
   </wsdl:message>
-  <wsdl:message name="IService_Modify_OutputMessage">
+  <wsdl:message name="IPlayerMgt_Modify_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Delete_InputMessage">
+  <wsdl:message name="IPlayerMgt_Delete_InputMessage">
     <wsdl:part name="parameters" element="tns:Delete" />
   </wsdl:message>
-  <wsdl:message name="IService_Delete_OutputMessage">
+  <wsdl:message name="IPlayerMgt_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SendInvitation_InputMessage">
+  <wsdl:message name="IPlayerMgt_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
   </wsdl:message>
-  <wsdl:message name="IService_SendInvitation_OutputMessage">
+  <wsdl:message name="IPlayerMgt_SendInvitation_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SendMail_InputMessage">
+  <wsdl:message name="IPlayerMgt_SendMail_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMail" />
   </wsdl:message>
-  <wsdl:message name="IService_SendMail_OutputMessage">
+  <wsdl:message name="IPlayerMgt_SendMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendMailResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetEmails_InputMessage">
+  <wsdl:message name="IPlayerMgt_GetEmails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmails" />
   </wsdl:message>
-  <wsdl:message name="IService_GetEmails_OutputMessage">
+  <wsdl:message name="IPlayerMgt_GetEmails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetScores_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetScores" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendBoard_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendBoard" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendRival_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendRival" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendBoardLists_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendBoardLists" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendCorrectCards_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendCorrectCards" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendCardTurn_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendCardTurn" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendScoreRival_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendScoreRival" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendNextTurnRival_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendNextTurnRival" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendNumberCardsFinded_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendNumberCardsFinded" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendWinner_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendWinner" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendGame" />
-  </wsdl:message>
-  <wsdl:message name="IService_SendGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendGameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetEmailByUser_InputMessage">
+  <wsdl:message name="IPlayerMgt_GetEmailByUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmailByUser" />
   </wsdl:message>
-  <wsdl:message name="IService_GetEmailByUser_OutputMessage">
+  <wsdl:message name="IPlayerMgt_GetEmailByUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmailByUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_ChangePassword_InputMessage">
+  <wsdl:message name="IPlayerMgt_ChangePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
   </wsdl:message>
-  <wsdl:message name="IService_ChangePassword_OutputMessage">
+  <wsdl:message name="IPlayerMgt_ChangePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_RecieveMessage_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
-  <wsdl:message name="IService_RecieveUsers_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_RecieveUsers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveUsers" />
   </wsdl:message>
-  <wsdl:message name="IService_RecievePlayer_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_RecievePlayer_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecievePlayer" />
   </wsdl:message>
-  <wsdl:message name="IService_SendInvitationGame_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_SendInvitationGame_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendInvitationGame" />
   </wsdl:message>
-  <wsdl:message name="IService_SendInvitationGame_InputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_SendInvitationGame_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendInvitationGameResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SendBoardConfigurate_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_SendBoardConfigurate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendBoardConfigurate" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveRival_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveRival_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveRival" />
   </wsdl:message>
-  <wsdl:message name="IService_RecieveScores_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_RecieveScores_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveScores" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveCardSeed_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveCardSeed_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveCardSeed" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveCorrectPair_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveCorrectPair_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveCorrectPair" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveCardTurn_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveCardTurn_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveCardTurn" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveScoreRival_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveScoreRival_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveScoreRival" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveNextTurn_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveNextTurn_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveNextTurn" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveNumberCardsFinded_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveNumberCardsFinded_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveNumberCardsFinded" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveWinner_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveWinner" />
   </wsdl:message>
-  <wsdl:message name="IService_ReceiveUsersPlayed_OutputCallbackMessage">
+  <wsdl:message name="IPlayerMgt_ReceiveUsersPlayed_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveUsersPlayed" />
   </wsdl:message>
-  <wsdl:portType name="IService">
+  <wsdl:message name="IGameMgt_SendBoard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendBoard" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendRival_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendRival" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendBoardLists_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendBoardLists" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendCorrectCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendCorrectCards" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendCardTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendCardTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendScoreRival_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendScoreRival" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendNextTurnRival_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNextTurnRival" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendNumberCardsFinded_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNumberCardsFinded" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendWinner" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_RecieveMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveMessage" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_RecieveUsers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveUsers" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_RecievePlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecievePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendInvitationGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendInvitationGame_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_SendBoardConfigurate_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendBoardConfigurate" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveRival_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveRival" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_RecieveScores_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RecieveScores" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveCardSeed_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveCardSeed" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveCorrectPair_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveCorrectPair" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveCardTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveCardTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveScoreRival_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveScoreRival" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveNextTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNextTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveNumberCardsFinded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNumberCardsFinded" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveWinner" />
+  </wsdl:message>
+  <wsdl:message name="IGameMgt_ReceiveUsersPlayed_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveUsersPlayed" />
+  </wsdl:message>
+  <wsdl:portType name="IPlayerMgt">
     <wsdl:operation name="Join">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Join" message="tns:IService_Join_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/JoinResponse" message="tns:IService_Join_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/Join" message="tns:IPlayerMgt_Join_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/JoinResponse" message="tns:IPlayerMgt_Join_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMessage" message="tns:IService_SendMessage_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SendMessage" message="tns:IPlayerMgt_SendMessage_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetConnectedUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetConnectedUsers" message="tns:IService_GetConnectedUsers_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetConnectedUsers" message="tns:IPlayerMgt_GetConnectedUsers_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DisconnectUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DisconnectUser" message="tns:IService_DisconnectUser_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/DisconnectUser" message="tns:IPlayerMgt_DisconnectUser_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Register">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Register" message="tns:IService_Register_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RegisterResponse" message="tns:IService_Register_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/Register" message="tns:IPlayerMgt_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RegisterResponse" message="tns:IPlayerMgt_Register_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SearchUsername">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchUsername" message="tns:IService_SearchUsername_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SearchUsernameResponse" message="tns:IService_SearchUsername_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SearchUsername" message="tns:IPlayerMgt_SearchUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/SearchUsernameResponse" message="tns:IPlayerMgt_SearchUsername_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="FindUsername">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/FindUsername" message="tns:IService_FindUsername_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/FindUsernameResponse" message="tns:IService_FindUsername_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/FindUsername" message="tns:IPlayerMgt_FindUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/FindUsernameResponse" message="tns:IPlayerMgt_FindUsername_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SearchInfoPlayerByUsername">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchInfoPlayerByUsername" message="tns:IService_SearchInfoPlayerByUsername_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername" message="tns:IPlayerMgt_SearchInfoPlayerByUsername_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GenerateCode">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GenerateCode" message="tns:IService_GenerateCode_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GenerateCodeResponse" message="tns:IService_GenerateCode_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GenerateCode" message="tns:IPlayerMgt_GenerateCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GenerateCodeResponse" message="tns:IPlayerMgt_GenerateCode_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Modify">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Modify" message="tns:IService_Modify_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ModifyResponse" message="tns:IService_Modify_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/Modify" message="tns:IPlayerMgt_Modify_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ModifyResponse" message="tns:IPlayerMgt_Modify_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Delete">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Delete" message="tns:IService_Delete_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteResponse" message="tns:IService_Delete_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/Delete" message="tns:IPlayerMgt_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/DeleteResponse" message="tns:IPlayerMgt_Delete_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendInvitation">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitation" message="tns:IService_SendInvitation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationResponse" message="tns:IService_SendInvitation_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SendInvitation" message="tns:IPlayerMgt_SendInvitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/SendInvitationResponse" message="tns:IPlayerMgt_SendInvitation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendMail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMail" message="tns:IService_SendMail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMailResponse" message="tns:IService_SendMail_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SendMail" message="tns:IPlayerMgt_SendMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/SendMailResponse" message="tns:IPlayerMgt_SendMail_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmails" message="tns:IService_GetEmails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetEmailsResponse" message="tns:IService_GetEmails_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetScores">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetScores" message="tns:IService_GetScores_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendBoard">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendBoard" message="tns:IService_SendBoard_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendRival">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendRival" message="tns:IService_SendRival_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendBoardLists">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendBoardLists" message="tns:IService_SendBoardLists_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUsersResponse" message="tns:IService_GetUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendCorrectCards">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendCorrectCards" message="tns:IService_SendCorrectCards_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendCardTurn">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendCardTurn" message="tns:IService_SendCardTurn_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendScoreRival">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendScoreRival" message="tns:IService_SendScoreRival_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendNextTurnRival">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendNextTurnRival" message="tns:IService_SendNextTurnRival_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendNumberCardsFinded">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendNumberCardsFinded" message="tns:IService_SendNumberCardsFinded_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendWinner">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendWinner" message="tns:IService_SendWinner_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendGame" message="tns:IService_SendGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendGameResponse" message="tns:IService_SendGame_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetEmails" message="tns:IPlayerMgt_GetEmails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GetEmailsResponse" message="tns:IPlayerMgt_GetEmails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmailByUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEmailByUser" message="tns:IService_GetEmailByUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetEmailByUserResponse" message="tns:IService_GetEmailByUser_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetEmailByUser" message="tns:IPlayerMgt_GetEmailByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GetEmailByUserResponse" message="tns:IPlayerMgt_GetEmailByUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/ChangePassword" message="tns:IService_ChangePassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ChangePasswordResponse" message="tns:IService_ChangePassword_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/ChangePassword" message="tns:IPlayerMgt_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ChangePasswordResponse" message="tns:IPlayerMgt_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsers" message="tns:IPlayerMgt_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsersResponse" message="tns:IPlayerMgt_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetScores" message="tns:IPlayerMgt_GetScores_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveMessage" message="tns:IService_RecieveMessage_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecieveMessage" message="tns:IPlayerMgt_RecieveMessage_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveUsers">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveUsers" message="tns:IService_RecieveUsers_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecieveUsers" message="tns:IPlayerMgt_RecieveUsers_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecievePlayer">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecievePlayer" message="tns:IService_RecievePlayer_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecievePlayer" message="tns:IPlayerMgt_RecievePlayer_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendInvitationGame">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendInvitationGame" message="tns:IService_SendInvitationGame_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendInvitationGameResponse" message="tns:IService_SendInvitationGame_InputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/SendInvitationGame" message="tns:IPlayerMgt_SendInvitationGame_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/SendInvitationGameResponse" message="tns:IPlayerMgt_SendInvitationGame_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendBoardConfigurate">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SendBoardConfigurate" message="tns:IService_SendBoardConfigurate_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/SendBoardConfigurate" message="tns:IPlayerMgt_SendBoardConfigurate_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveRival">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveRival" message="tns:IService_ReceiveRival_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveRival" message="tns:IPlayerMgt_ReceiveRival_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/RecieveScores" message="tns:IService_RecieveScores_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecieveScores" message="tns:IPlayerMgt_RecieveScores_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardSeed">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCardSeed" message="tns:IService_ReceiveCardSeed_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveCardSeed" message="tns:IPlayerMgt_ReceiveCardSeed_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveCorrectPair">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCorrectPair" message="tns:IService_ReceiveCorrectPair_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveCorrectPair" message="tns:IPlayerMgt_ReceiveCorrectPair_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardTurn">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveCardTurn" message="tns:IService_ReceiveCardTurn_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveCardTurn" message="tns:IPlayerMgt_ReceiveCardTurn_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveScoreRival">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveScoreRival" message="tns:IService_ReceiveScoreRival_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveScoreRival" message="tns:IPlayerMgt_ReceiveScoreRival_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveNextTurn">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveNextTurn" message="tns:IService_ReceiveNextTurn_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveNextTurn" message="tns:IPlayerMgt_ReceiveNextTurn_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveNumberCardsFinded">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveNumberCardsFinded" message="tns:IService_ReceiveNumberCardsFinded_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveNumberCardsFinded" message="tns:IPlayerMgt_ReceiveNumberCardsFinded_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveWinner">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveWinner" message="tns:IService_ReceiveWinner_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveWinner" message="tns:IPlayerMgt_ReceiveWinner_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveUsersPlayed">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveUsersPlayed" message="tns:IService_ReceiveUsersPlayed_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/ReceiveUsersPlayed" message="tns:IPlayerMgt_ReceiveUsersPlayed_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
-    <wsp:PolicyReference URI="#NetTcpBinding_IService_policy" />
+  <wsdl:portType name="IGameMgt">
+    <wsdl:operation name="SendBoard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendBoard" message="tns:IGameMgt_SendBoard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendRival" message="tns:IGameMgt_SendRival_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBoardLists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendBoardLists" message="tns:IGameMgt_SendBoardLists_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCorrectCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendCorrectCards" message="tns:IGameMgt_SendCorrectCards_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCardTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendCardTurn" message="tns:IGameMgt_SendCardTurn_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendScoreRival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendScoreRival" message="tns:IGameMgt_SendScoreRival_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNextTurnRival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendNextTurnRival" message="tns:IGameMgt_SendNextTurnRival_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberCardsFinded">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendNumberCardsFinded" message="tns:IGameMgt_SendNumberCardsFinded_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendWinner" message="tns:IGameMgt_SendWinner_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendGame" message="tns:IGameMgt_SendGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/SendGameResponse" message="tns:IGameMgt_SendGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/RecieveMessage" message="tns:IGameMgt_RecieveMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveUsers">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/RecieveUsers" message="tns:IGameMgt_RecieveUsers_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/RecievePlayer" message="tns:IGameMgt_RecievePlayer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitationGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/SendInvitationGame" message="tns:IGameMgt_SendInvitationGame_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendInvitationGameResponse" message="tns:IGameMgt_SendInvitationGame_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBoardConfigurate">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/SendBoardConfigurate" message="tns:IGameMgt_SendBoardConfigurate_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRival">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveRival" message="tns:IGameMgt_ReceiveRival_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/RecieveScores" message="tns:IGameMgt_RecieveScores_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCardSeed">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveCardSeed" message="tns:IGameMgt_ReceiveCardSeed_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCorrectPair">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveCorrectPair" message="tns:IGameMgt_ReceiveCorrectPair_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCardTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveCardTurn" message="tns:IGameMgt_ReceiveCardTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveScoreRival">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveScoreRival" message="tns:IGameMgt_ReceiveScoreRival_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNextTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveNextTurn" message="tns:IGameMgt_ReceiveNextTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNumberCardsFinded">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveNumberCardsFinded" message="tns:IGameMgt_ReceiveNumberCardsFinded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveWinner" message="tns:IGameMgt_ReceiveWinner_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveUsersPlayed">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameMgt/ReceiveUsersPlayed" message="tns:IGameMgt_ReceiveUsersPlayed_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IPlayerMgt" type="tns:IPlayerMgt">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPlayerMgt_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="Join">
-      <soap12:operation soapAction="http://tempuri.org/IService/Join" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/Join" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -378,25 +503,25 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendMessage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SendMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetConnectedUsers">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetConnectedUsers" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetConnectedUsers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="DisconnectUser">
-      <soap12:operation soapAction="http://tempuri.org/IService/DisconnectUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/DisconnectUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="Register">
-      <soap12:operation soapAction="http://tempuri.org/IService/Register" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/Register" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -405,7 +530,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SearchUsername">
-      <soap12:operation soapAction="http://tempuri.org/IService/SearchUsername" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SearchUsername" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -414,7 +539,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="FindUsername">
-      <soap12:operation soapAction="http://tempuri.org/IService/FindUsername" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/FindUsername" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -423,13 +548,13 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SearchInfoPlayerByUsername">
-      <soap12:operation soapAction="http://tempuri.org/IService/SearchInfoPlayerByUsername" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GenerateCode">
-      <soap12:operation soapAction="http://tempuri.org/IService/GenerateCode" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GenerateCode" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -438,7 +563,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Modify">
-      <soap12:operation soapAction="http://tempuri.org/IService/Modify" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/Modify" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -447,7 +572,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Delete">
-      <soap12:operation soapAction="http://tempuri.org/IService/Delete" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/Delete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -456,7 +581,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendInvitation">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendInvitation" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SendInvitation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -465,7 +590,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendMail">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendMail" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SendMail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -474,85 +599,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEmails">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetEmails" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetScores">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetScores" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendBoard">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendBoard" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendRival">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendRival" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendBoardLists">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendBoardLists" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SendCorrectCards">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendCorrectCards" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendCardTurn">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendCardTurn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendScoreRival">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendScoreRival" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendNextTurnRival">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendNextTurnRival" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendNumberCardsFinded">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendNumberCardsFinded" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendWinner">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendWinner" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendGame">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendGame" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetEmails" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -561,7 +608,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEmailByUser">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetEmailByUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetEmailByUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -570,7 +617,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
-      <soap12:operation soapAction="http://tempuri.org/IService/ChangePassword" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ChangePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -578,26 +625,41 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
-      <soap12:operation soapAction="http://tempuri.org/IService/RecieveMessage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecieveMessage" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecieveUsers">
-      <soap12:operation soapAction="http://tempuri.org/IService/RecieveUsers" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecieveUsers" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecievePlayer">
-      <soap12:operation soapAction="http://tempuri.org/IService/RecievePlayer" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecievePlayer" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendInvitationGame">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendInvitationGame" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SendInvitationGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -606,77 +668,246 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendBoardConfigurate">
-      <soap12:operation soapAction="http://tempuri.org/IService/SendBoardConfigurate" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/SendBoardConfigurate" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveRival">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveRival" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveRival" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecieveScores">
-      <soap12:operation soapAction="http://tempuri.org/IService/RecieveScores" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecieveScores" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardSeed">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCardSeed" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveCardSeed" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveCorrectPair">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCorrectPair" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveCorrectPair" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveCardTurn">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveCardTurn" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveCardTurn" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveScoreRival">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveScoreRival" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveScoreRival" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveNextTurn">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveNextTurn" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveNextTurn" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveNumberCardsFinded">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveNumberCardsFinded" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveNumberCardsFinded" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveWinner">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveWinner" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveWinner" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveUsersPlayed">
-      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveUsersPlayed" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ReceiveUsersPlayed" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameMgt" type="tns:IGameMgt">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameMgt_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendBoard">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendRival">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendRival" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendBoardLists">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendBoardLists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendCorrectCards">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendCorrectCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendCardTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendCardTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendScoreRival">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendScoreRival" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendNextTurnRival">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendNextTurnRival" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberCardsFinded">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendNumberCardsFinded" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveMessage">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/RecieveMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveUsers">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/RecieveUsers" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecievePlayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/RecievePlayer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitationGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendInvitationGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBoardConfigurate">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendBoardConfigurate" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRival">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveRival" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecieveScores">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/RecieveScores" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCardSeed">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveCardSeed" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCorrectPair">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveCorrectPair" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveCardTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveCardTurn" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveScoreRival">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveScoreRival" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNextTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveNextTurn" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNumberCardsFinded">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveNumberCardsFinded" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveWinner">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveWinner" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveUsersPlayed">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/ReceiveUsersPlayed" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
-    <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
-      <soap12:address location="net.tcp://localhost:9090/Service/Service" />
+    <wsdl:port name="NetTcpBinding_IPlayerMgt" binding="tns:NetTcpBinding_IPlayerMgt">
+      <soap12:address location="net.tcp://localhost:9090/Service/ServicePlayer" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:9090/Service/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:9090/Service/ServicePlayer</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-A884PK0\kari</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameMgt" binding="tns:NetTcpBinding_IGameMgt">
+      <soap12:address location="net.tcp://localhost:9090/Service/ServiceGame" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:9090/Service/ServiceGame</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>DESKTOP-A884PK0\kari</Upn>
         </Identity>

@@ -47,12 +47,12 @@ namespace AdivinaQue.Client.Views
         private int[] randomImageList;
         private int[] randomPositionList;
         private static DispatcherTimer timer;
-
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
+         Proxy.GameMgtClient server;
         private bool backHome = true;
        
 
-        public Game(Proxy.ServiceClient server, int sizeBoard, string category)
+        public Game(Proxy.GameMgtClient server, int sizeBoard, string category)
         {
             this.server = server;
             this.sizeBoard = sizeBoard;
@@ -77,9 +77,15 @@ namespace AdivinaQue.Client.Views
             {
                 totalCards = TOTAL_CARDS_ADMIN;
             }
-                
+            Console.WriteLine(server.ToString());
+
             InitializeComponent();
             SetTimer(this);
+        }
+
+        public void setServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
+        {
+            serverPlayer = playerMgtClient;
         }
 
         private void UpdateSizes()

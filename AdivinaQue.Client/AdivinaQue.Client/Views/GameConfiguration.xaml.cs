@@ -21,7 +21,8 @@ namespace AdivinaQue.Client.Views
     public partial class GameConfiguration : Window
     {
         public ObservableCollection<String> topicsCollection;
-        Proxy.ServiceClient server;
+        Proxy.GameMgtClient serverGame;
+        Proxy.PlayerMgtClient serverPlayer;
         private String username;
         private String toUsername;
         CallBack callback;
@@ -36,6 +37,7 @@ namespace AdivinaQue.Client.Views
         private Home home;
         private bool backHome = true;
 
+        
         public GameConfiguration(CallBack callback, String username, String toUsername)
         {
             sizeBoard = 12;
@@ -44,7 +46,8 @@ namespace AdivinaQue.Client.Views
             topicsCollection = new ObservableCollection<string>();
             this.callback = callback;
             InstanceContext context = new InstanceContext(callback);
-            server = new Proxy.ServiceClient(context);
+            serverPlayer = new Proxy.PlayerMgtClient(context);
+            serverGame = new Proxy.GameMgtClient(context);
             this.username = username;
             this.toUsername = toUsername;
         }
@@ -58,15 +61,15 @@ namespace AdivinaQue.Client.Views
                 string categoryAuxiliar = lbxTopic.SelectedItem.ToString();
                 int found = categoryAuxiliar.IndexOf(": ");
                 category = categoryAuxiliar.Substring(found + 2);              
-                Game game = new Game(server, sizeBoard, category);
+                Game game = new Game(serverGame, sizeBoard, category);
                 
                 int[] randomPositionList = GenerateRandomNumbers(sizeBoard);
                 int[] randomImageList = GenerateRandomNumbers(sizeBoard / 2);
-                server.SendBoard(toUsername, sizeBoard, category);
-                
-                server.SendBoardLists(toUsername, randomImageList, randomPositionList);
-                server.SendRival(username, toUsername);
-                callback.setServer(server);
+                serverGame.SendBoard(toUsername, sizeBoard, category);
+
+                serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
+                serverGame.SendRival(username, toUsername);
+                callback.setServer(serverGame);
                 callback.SetGame(game);
 
                 game.SetUsername(username);

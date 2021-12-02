@@ -7,17 +7,19 @@ using System.Windows;
 
 namespace AdivinaQue.Client.Views
 {
+
+    // Proxy.PlayerMgtClient serverPlayer;
     public partial class Home : Window
     {
-        private ServiceClient server;
+        private Proxy.PlayerMgtClient serverPlayer;
         private string username;
         private Chat chat;
         private CallBack callback;
        
-        public Home(ServiceClient server,CallBack callback)
+        public Home(Proxy.PlayerMgtClient server,CallBack callback)
         {
             InitializeComponent();
-            this.server = server;
+            this.serverPlayer = server;
             this.callback = callback;
             callback.setHome(this);
         }
@@ -26,12 +28,12 @@ namespace AdivinaQue.Client.Views
         {
             CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            server = new Proxy.ServiceClient(context);
+            serverPlayer = new Proxy.PlayerMgtClient(context);
             Modify modify = new Modify(callback,this);
             callback.SetModify(modify);
             modify.SetHome(this);
             modify.SetUsername(username);
-            modify.SetServer(server);
+            modify.SetServer(serverPlayer);
             this.Hide();
             modify.Show();
         }
@@ -47,7 +49,7 @@ namespace AdivinaQue.Client.Views
         {
             try
             {
-                server.DisconnectUser(username);
+                serverPlayer.DisconnectUser(username);
                 if(chat != null)
                 {
                     chat.Close();
@@ -73,14 +75,14 @@ namespace AdivinaQue.Client.Views
         private void btStartGame_Click(object sender, RoutedEventArgs e)
         {
             InstanceContext context = new InstanceContext(callback);
-            server = new Proxy.ServiceClient(context);
+            serverPlayer = new Proxy.PlayerMgtClient(context);
             callback.SetCurrentUsername(username);
            
             try
             {
-                PlayersList playersList = new PlayersList(server, username, this,callback);
+                PlayersList playersList = new PlayersList(serverPlayer, username, this,callback);
                 callback.SetPlayersList(playersList);
-                server.GetConnectedUsers();
+                serverPlayer.GetConnectedUsers();
                 playersList.Show();
                 this.Hide();
             }
@@ -95,9 +97,9 @@ namespace AdivinaQue.Client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Podio podio = new Podio(server, username,this);
+            Podio podio = new Podio(serverPlayer, username,this);
             callback.SetPodio(podio);
-            server.GetScores(username);
+            serverPlayer.GetScores(username);
             podio.Show();
             this.Hide();
         }
@@ -110,12 +112,12 @@ namespace AdivinaQue.Client.Views
         private void btChat_Click(object sender, RoutedEventArgs e)
         {
 
-            chat = new Chat(server);
+            chat = new Chat(serverPlayer);
             chat.setUsername(username);
             callback.SetChat(chat);
             try
             {
-                server.GetConnectedUsers();
+                serverPlayer.GetConnectedUsers();
                 chat.Show();
             }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)

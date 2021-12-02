@@ -15,7 +15,7 @@ namespace ClientTest
         [ClassInitialize]
         public static void InitializeClass(TestContext context)
         {
-            serviceHost = new ServiceHost(typeof(AdivinaQue.Client.Control.CallBack));
+            serviceHost = new ServiceHost(typeof(AdivinaQue.Client.Control.CallBackPlayerMgr));
             serviceHost.Open();
         }
         [ClassCleanup]
@@ -27,7 +27,7 @@ namespace ClientTest
         [TestMethod]
         public void TestRegister()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             Player player = new Player();
@@ -41,7 +41,7 @@ namespace ClientTest
         [TestMethod]
         public void TestDelete()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             Assert.IsTrue(server.Delete("Marii"));
@@ -49,7 +49,7 @@ namespace ClientTest
         [TestMethod]
         public void TestDeleteFailed()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             Assert.IsFalse(server.Delete("Juan"));
@@ -73,7 +73,7 @@ namespace ClientTest
         [TestMethod]
         public void TextSearchUsername()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             server.Join("Mari", "1234");
@@ -83,7 +83,7 @@ namespace ClientTest
         [TestMethod]
         public void TextSearchUsernameFailed()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             Assert.IsFalse(server.SearchUsername("Roberto"));
@@ -122,7 +122,7 @@ namespace ClientTest
         [TestMethod]
         public void TestModify()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             Player player = new Player();
@@ -152,7 +152,7 @@ namespace ClientTest
         [TestMethod]
         public void TextGenerateCode()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             string code = server.GenerateCode();
@@ -163,7 +163,7 @@ namespace ClientTest
 
         public void SendGameTest()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
             GameCurrently gameCurrently = new GameCurrently();
@@ -182,7 +182,7 @@ namespace ClientTest
         [TestMethod]
         public void TestGetEmail()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
 
@@ -192,7 +192,7 @@ namespace ClientTest
         [TestMethod]
         public void TestChangePassword()
         {
-            CallBack callback = new CallBack();
+            CallBackPlayerMgr callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
 
@@ -202,7 +202,7 @@ namespace ClientTest
         [TestMethod]
         public void TestFindUsername()
         {
-            CallBack callback = new CallBack();
+            CallBack callback = new CallBackPlayerMgr();
             InstanceContext context = new InstanceContext(callback);
             ServiceClient server = new ServiceClient(context);
 
