@@ -3,6 +3,7 @@ using AdivinaQue.Client.Proxy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading;
 
@@ -15,7 +16,7 @@ namespace ClientTest
         [ClassInitialize]
         public static void InitializeClass(TestContext context)
         {
-            serviceHost = new ServiceHost(typeof(AdivinaQue.Client.Control.CallBackPlayerMgr));
+            serviceHost = new ServiceHost(typeof(AdivinaQue.Client.Control.CallBack));
             serviceHost.Open();
         }
         [ClassCleanup]
@@ -27,134 +28,133 @@ namespace ClientTest
         [TestMethod]
         public void TestRegister()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             Player player = new Player();
-            player.Username = "Marii";
-            player.Password = "1234";
-            player.Name = "Mariana Yazmin Vargas";
-            player.Email = "MarianaVSYazmin@gmail.com";
+            player.Username = "AlonsoRRV";
+            player.Password = "alonso2wRRV";
+            player.Name = "Alonso Rodriguez Rodriguez";
+            player.Email = "alonsoRodriguez1234@gmail.com";
             Assert.IsTrue(server.Register(player));
         }
 
         [TestMethod]
         public void TestDelete()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             Assert.IsTrue(server.Delete("Marii"));
         }
         [TestMethod]
         public void TestDeleteFailed()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             Assert.IsFalse(server.Delete("Juan"));
         }
 
         [TestMethod]
         public void TestReceiveMessage()
         {
-            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
-            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
-            InstanceContext context = new InstanceContext(mockCallback.Object);
-            ServiceClient server = new ServiceClient(context);
-            server.Join("Mari", "1234");
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.Join("MariV", "mariV");
 
-            server.SendMessage("Hola", "Mari", "Todos");
-            Thread.Sleep(1000);
+            server.SendMessage("Hola", "MariV", "Todos");
+            Thread.Sleep(2000);
             mockCallback.Verify(mock => mock.RecieveMessage(It.IsAny<string>()), Times.AtLeastOnce());
-            server.DisconnectUser("Mari");
-            // mockSomeClass.VerifyAll();
+            server.DisconnectUser("MariV");
         }
         [TestMethod]
         public void TextSearchUsername()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
-            server.Join("Mari", "1234");
-            Assert.IsTrue(server.SearchUsername("Mari"));
-            server.DisconnectUser("Mari");
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.Join("MariV", "Mariv");
+            Assert.IsTrue(server.SearchUsername("Mariv"));
+            server.DisconnectUser("MariV");
         }
         [TestMethod]
         public void TextSearchUsernameFailed()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             Assert.IsFalse(server.SearchUsername("Roberto"));
         }
 
+        /// <summary>
+        /// pendiente
+        /// </summary>
         [TestMethod]
         public void TestSearchInfoPlayerByUsername()
         {
-            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
-            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
             InstanceContext context = new InstanceContext(mockCallback.Object);
-            ServiceClient server = new ServiceClient(context);
-            server.SearchInfoPlayerByUsername("Mari");
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.SearchInfoPlayerByUsername("MariV");
             Thread.Sleep(1000);
             mockCallback.Verify(mock => mock.RecievePlayer(It.IsAny<Player>()), Times.AtLeastOnce());
 
-            // mockSomeClass.VerifyAll();
         }
 
+        /// <summary>
+        /// pendiente
+        /// </summary>
         [TestMethod]
         public void TestSearchInfoPlayerByUsernameFailed()
         {
-            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
-            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
             InstanceContext context = new InstanceContext(mockCallback.Object);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
 
 
             server.SearchInfoPlayerByUsername("Pepe");
             Thread.Sleep(1000);
             mockCallback.Verify(mock => mock.RecievePlayer(It.IsAny<Player>()), Times.Never);
 
-            // mockSomeClass.VerifyAll();
         }
 
         [TestMethod]
         public void TestModify()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             Player player = new Player();
-            player.Username = "Mari";
-            player.Password = "1234";
-            player.Name = "Mariana Yazmin Vargas";
+            player.Username = "MariV";
+            player.Password = "mariV";
+            player.Name = "Mariana Yazmin Vargas Segura";
             player.Email = "MarianaVSYazmin@gmail.com";
-            Assert.IsTrue(server.Modify(player, "Mari"));
+            Assert.IsTrue(server.Modify(player, "MariV"));
         }
 
         [TestMethod]
         public void TestSendInvitation()
         {
-            Mock<IServiceCallback> mockCallback = new Mock<IServiceCallback>() { CallBase = true };
-            //mockCallback.Setup(mock => mock.RecieveMessage(It.IsAny<String>()));
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
             InstanceContext context = new InstanceContext(mockCallback.Object);
-            ServiceClient server = new ServiceClient(context);
-            server.Join("Mari", "1234");
-            server.Join("Kari", "123");
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.Join("MariV", "mariV");
+            server.Join("Kari", "karival3");
             server.SendInvitation("Mari", "Kari");
             Thread.Sleep(1000);
             mockCallback.Verify(mock => mock.SendInvitationGame(It.IsAny<string>()), Times.AtLeastOnce());
 
-            // mockSomeClass.VerifyAll();
         }
 
         [TestMethod]
         public void TextGenerateCode()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
             string code = server.GenerateCode();
             Assert.IsNotNull(code);
         }
@@ -163,18 +163,18 @@ namespace ClientTest
 
         public void SendGameTest()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            GameMgtClient server = new GameMgtClient(context);
             GameCurrently gameCurrently = new GameCurrently();
             System.DateTime dateTime = System.DateTime.Today;
-            /* gameCurrently.Players =  new System.Collections.Generic.Dictionary<string, int>();
-             gameCurrently.date = dateTime.ToString();
-             gameCurrently.winner = "angy";
-             gameCurrently.scoreWinner = 5;
-             gameCurrently.topic = "Pruebas";
-             gameCurrently.Players.Add("angy", 5);
-             gameCurrently.Players.Add("MariV", 3);*/
+             gameCurrently.Players =  new System.Collections.Generic.Dictionary<string, int>();
+             gameCurrently.Date = dateTime.ToString();
+             gameCurrently.Winner = "Kari";
+             gameCurrently.ScoreWinner = 5;
+             gameCurrently.Topic = "Pruebas";
+             gameCurrently.Players.Add("Kari", 5);
+             gameCurrently.Players.Add("MariV", 3);
             Console.WriteLine(gameCurrently.Players.ToString());
             Assert.IsTrue(server.SendGame(gameCurrently));
         }
@@ -182,9 +182,9 @@ namespace ClientTest
         [TestMethod]
         public void TestGetEmail()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
 
             Assert.IsTrue(server.GetEmailByUser("MariV").Equals("mariV@gmail.com"));
         }
@@ -192,22 +192,149 @@ namespace ClientTest
         [TestMethod]
         public void TestChangePassword()
         {
-            CallBackPlayerMgr callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
 
-            Assert.IsTrue(server.ChangePassword("egy", "AW12"));
+            Assert.IsTrue(server.ChangePassword("egy", "AW12QEdgar"));
         }
 
         [TestMethod]
         public void TestFindUsername()
         {
-            CallBack callback = new CallBackPlayerMgr();
+            CallBack callback = new CallBack();
             InstanceContext context = new InstanceContext(callback);
-            ServiceClient server = new ServiceClient(context);
+            PlayerMgtClient server = new PlayerMgtClient(context);
 
             Assert.IsTrue(server.FindUsername("egy"));
         }
+
+        [TestMethod]
+        public void TestFindUsernameFailed()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+
+            Assert.IsFalse(server.FindUsername("pepe"));
+        }
+
+        [TestMethod]
+        public void TestJoinFailed()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            Assert.IsFalse(server.Join("MariV", "mari"));
+            server.DisconnectUser("MariV");
+
+        }
+
+
+
+
+        [TestMethod]
+        public void TestGetScores()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.Join("MariV", "mariV");
+
+            server.GetScores("MariV");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.RecieveScores(It.IsAny<Dictionary<string, int>>()), Times.AtLeastOnce());
+        }
+
+
+
+        [TestMethod]
+        public void TestGetConnectedUsers()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            server.Join("MariV", "mariV");
+
+            server.GetConnectedUsers();
+            Thread.Sleep(1000);
+
+            mockCallback.Verify(mock => mock.RecieveUsers(It.IsAny<Dictionary<string, object>>()), Times.AtLeastOnce());
+        }
+
+
+        [TestMethod]
+        public void TestSendBoard()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+            GameMgtClient server = new GameMgtClient(context);
+            mgtClient.Join("MariV", "mariV");
+
+            server.SendBoard("MariV", 20, "All");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.SendBoardConfigurate(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()), Times.AtLeastOnce());
+        }
+
+        [TestMethod]
+
+        public void TestGetEmails()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            List<string> emailsExpected = new List<string>();
+            emailsExpected.Add("Kari11");
+            emailsExpected.Add("mariV@gmail.com");
+            emailsExpected.Add("angelicaiglesiase@hotmail.com");
+            emailsExpected.Add("angelicaiglesiase@hotmail.com");
+            server.GetEmails();
+            bool value = true;
+
+            foreach (var email in server.GetEmails())
+            {
+                if (!emailsExpected.Contains(email))
+                {
+                    value = false;
+                }
+            }
+
+            Assert.IsTrue(value);
+
+        }
+
+
+        [TestMethod]
+
+        public void TestGetUsers()
+        {
+            CallBack callback = new CallBack();
+            InstanceContext context = new InstanceContext(callback);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            List<string> usersExpected = new List<string>();
+            usersExpected.Add("kari11 @gmail.com");
+            usersExpected.Add("MariV");
+            usersExpected.Add("angy");
+            usersExpected.Add("egy");
+            bool value = true;
+
+            foreach (var user in server.GetUsers())
+            {
+                Console.WriteLine(user);
+
+                if (!usersExpected.Contains(user))
+                {
+                    value = false;
+                }
+            }
+
+            Assert.IsTrue(value);
+
+        }
+
 
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AdivinaQue.Host.InterfaceContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="Player">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -9,4 +10,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="GameCurrently">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Players" nillable="true" type="q1:ArrayOfKeyValueOfstringint" />
+      <xs:element minOccurs="0" name="ScoreWinner" type="xs:int" />
+      <xs:element minOccurs="0" name="Topic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Winner" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameCurrently" nillable="true" type="tns:GameCurrently" />
 </xs:schema>

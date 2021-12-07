@@ -113,3 +113,4 @@ C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\ref\HostTest.dll
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.pdb
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\obj\Debug\net5.0\HostTest.genruntimeconfig.cache
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\HostTest\bin\Debug\net5.0\HostTest.dll.config

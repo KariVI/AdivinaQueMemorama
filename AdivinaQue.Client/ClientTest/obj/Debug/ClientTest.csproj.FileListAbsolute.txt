@@ -27,3 +27,5 @@ C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\Moq.xml
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\log4net.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\bin\Debug\log4net.xml

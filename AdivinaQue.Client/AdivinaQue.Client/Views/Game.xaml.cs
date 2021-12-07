@@ -77,7 +77,6 @@ namespace AdivinaQue.Client.Views
             {
                 totalCards = TOTAL_CARDS_ADMIN;
             }
-            Console.WriteLine(server.ToString());
 
             InitializeComponent();
             SetTimer(this);
