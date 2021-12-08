@@ -1,0 +1,96 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj",
+        "projectName": "AdivinaQue.Host",
+        "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
+        "projectName": "HostUnitTest",
+        "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
+        "packagesPath": "C:\\Users\\jack-\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jack-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
+                "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.0.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

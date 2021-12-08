@@ -21,19 +21,19 @@ namespace AdivinaQue.Client.Views
     {
         public ObservableCollection<String> playersCollection;
         public ObservableCollection<int> scoresCollection;
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
         String username;
         private Home home;
 
         public ListView players { get { return lvPlayer; } set { lvPlayer = value; } }
         public ListView victories { get { return lvVictory; } set { lvVictory = value; } }
 
-        public Podio(Proxy.ServiceClient server, String username, Home home)
+        public Podio(Proxy.PlayerMgtClient server, String username, Home home)
         {
             InitializeComponent();
             playersCollection = new ObservableCollection<String>();
             scoresCollection = new ObservableCollection<int>();
-            this.server = server;
+            this.serverPlayer = server;
             this.username = username;
             this.home = home;
             players.ItemsSource = playersCollection;

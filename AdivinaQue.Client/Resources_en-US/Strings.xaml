@@ -22,13 +22,16 @@
     <system:String x:Key="lbTitleHome">Homepage</system:String>
 
     <system:String x:Key="lbTitleUsers">Connected users</system:String>
-
+    <system:String x:Key="lbRebaseEnters">You got to the attempts allowed </system:String>
     <system:String x:Key="lbTitleValidationCode">Validation Code</system:String>
     <system:String x:Key="btSendCode">Send code</system:String>
     <system:String x:Key="btVerify">Verify</system:String>
     <system:String x:Key="lbCodeMessage">Enter the code that was sent to your email</system:String>
     <system:String x:Key="lbEmailMessage">Enter your email</system:String>
     <system:String x:Key="btConfirm">Confirm</system:String>
+    <system:String x:Key="btPassword">Miss your password?</system:String>
+    <system:String x:Key="lbDuplicateUsername">This username already exists</system:String>
+
 
 
     <system:String x:Key="btSend">Send</system:String>
@@ -76,6 +79,8 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
     <system:String x:Key="lbCorrectEmail">Email validated</system:String>
+    <system:String x:Key="errorPair">Sorry , ty again</system:String>
+    <system:String x:Key="lbSelected">Selected a Topic , please</system:String>
 
 </ResourceDictionary>
    

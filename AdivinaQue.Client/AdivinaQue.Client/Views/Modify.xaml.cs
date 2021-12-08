@@ -14,7 +14,7 @@ namespace AdivinaQue.Client.Views
         private string username;
         private Player newPlayer;
         private CallBack callback;
-        private ServiceClient server;
+        private PlayerMgtClient server;
         private Home home;
         private bool backHome = true;
 
@@ -55,9 +55,14 @@ namespace AdivinaQue.Client.Views
                     }
                     this.Close();
                 }
+                else
+                {
+                    SendMessage(ValidateData());
+                }
             }
             else
             {
+                
                 Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
@@ -186,7 +191,7 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        internal void SetServer(ServiceClient server)
+        internal void SetServer(PlayerMgtClient server)
         {
             this.server = server;
             try

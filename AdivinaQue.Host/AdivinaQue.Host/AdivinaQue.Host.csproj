@@ -51,6 +51,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,7 +95,8 @@
     </Compile>
     <Compile Include="InterfaceContract\GameCurrently.cs" />
     <Compile Include="InterfaceContract\IClient.cs" />
-    <Compile Include="InterfaceContract\IService.cs" />
+    <Compile Include="InterfaceContract\IGameMgt.cs" />
+    <Compile Include="InterfaceContract\IPlayerMgt.cs" />
     <Compile Include="InterfaceContract\Player.cs" />
     <Compile Include="Logs\BusinessException.cs" />
     <Compile Include="Logs\Log.cs" />

@@ -15,13 +15,13 @@ namespace AdivinaQue.Client.Views
     {
         private String codeExpected;
 
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient servePlayer;
 
         public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
-        public ValidationCode(Proxy.ServiceClient server)
+        public ValidationCode(Proxy.PlayerMgtClient server)
         {
             
-            this.server = server;
+            this.servePlayer = server;
             InitializeComponent();
         }
 
@@ -33,7 +33,7 @@ namespace AdivinaQue.Client.Views
                 if (codeReceived.Equals(codeExpected))
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbCorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
-                    Register register = new Register(server, tbEmail.Text);
+                    Register register = new Register(servePlayer, tbEmail.Text);
                     this.Close();
                     register.Show();
 
@@ -88,7 +88,7 @@ namespace AdivinaQue.Client.Views
                                             </style>
                                             <h2>" + code + "</h2>";
                         
-                            String messageEmailSuccesful = server.SendMail(tbEmail.Text, "Código de validación", body);
+                            String messageEmailSuccesful = servePlayer.SendMail(tbEmail.Text, "Código de validación", body);
                         
                         if (messageEmailSuccesful == "Exito")
                         {
@@ -118,7 +118,7 @@ namespace AdivinaQue.Client.Views
 
         private bool SearchDuplicateEmail() {
             bool value = false;
-            string[] emails = server.GetEmails();
+            string[] emails = servePlayer.GetEmails();
                 foreach(var email in emails ){  
                     if(email.Equals(tbEmail.Text)){ 
                         value=true;

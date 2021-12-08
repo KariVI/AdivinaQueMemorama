@@ -24,7 +24,7 @@ namespace AdivinaQue.Client.Views
         {
             InitializeComponent();
         }
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient server;
         private string username;
         private string typeMessage;
 
@@ -40,7 +40,7 @@ namespace AdivinaQue.Client.Views
         public ListView Messages { get { return listMessages; } set { listMessages = value; } }
 
 
-        public Chat(Proxy.ServiceClient server)
+        public Chat(Proxy.PlayerMgtClient server)
         {
             InitializeComponent();
             this.server = server;
