@@ -11,14 +11,18 @@ namespace AdivinaQue.Client.Views
     {
         CallBack callback;
         InstanceContext context;
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
+        Proxy.GameMgtClient serverGame;
+
         private int numberFailedEnter = 0;
         public Login()
         {
             InitializeComponent();
             callback = new CallBack();
             context = new InstanceContext(callback);
-            server = new Proxy.ServiceClient(context);
+            serverPlayer = new Proxy.PlayerMgtClient(context);
+            serverGame = new Proxy.GameMgtClient(context);
+
             LoadStringResource("es-MEX");
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -27,7 +31,7 @@ namespace AdivinaQue.Client.Views
             {
                 try
                 {
-                    Boolean value = server.Join(tbUsername.Text, Password.Password.ToString());
+                    Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
                     if (!value && numberFailedEnter < 3)
                     {
                         Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
@@ -35,15 +39,17 @@ namespace AdivinaQue.Client.Views
                     }
                     else if (!value && numberFailedEnter == 3)
                     {
-
+                        Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        //mandar mensaje al usuario que cambiamos su contraseña por sobrepasar los intentos 
                     }
                     else if (value)
                     {
-                        Home home = new Home(server, callback);
+                        Home home = new Home(serverPlayer, callback);
                         home.setUsername(tbUsername.Text);
                         callback.SetCurrentUsername(tbUsername.Text);
-                        callback.setServer(server);
-                        server.GetConnectedUsers();
+                        callback.setServer(serverGame);
+                        callback.setServerPlayer(serverPlayer);
+                        serverPlayer.GetConnectedUsers();
                         home.Show();
                         this.Close();
                     }
@@ -81,7 +87,7 @@ namespace AdivinaQue.Client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ValidationCode validationCode = new ValidationCode(server);
+            ValidationCode validationCode = new ValidationCode(serverPlayer);
             callback.SetValidateCode(validationCode);
 
             validationCode.Show();
@@ -118,13 +124,13 @@ namespace AdivinaQue.Client.Views
         {
             if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrWhiteSpace(tbUsername.Text))
             {
-                if (server.FindUsername(tbUsername.Text))
+                if (serverPlayer.FindUsername(tbUsername.Text))
                 {
                     String passwordDefault = GenerateCodeValidation();
 
-                    if (server.ChangePassword(tbUsername.Text, passwordDefault))
+                    if (serverPlayer.ChangePassword(tbUsername.Text, passwordDefault))
                     {
-                        string email = server.GetEmailByUser(tbUsername.Text);
+                        string email = serverPlayer.GetEmailByUser(tbUsername.Text);
 
                         string body = @"<style>     
                                                         h3{color:#E267B4;}
@@ -133,7 +139,7 @@ namespace AdivinaQue.Client.Views
                                                         <h4>" + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
                                                         "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
 
-                        String messageEmailSuccesful = server.SendMail(email, "Nueva contraseña", body);
+                        String messageEmailSuccesful = serverPlayer.SendMail(email, "Nueva contraseña", body);
                         MessageBox.Show("Check your email for a new password");
                     }
                 }

@@ -20,7 +20,7 @@ namespace AdivinaQue.Client.Views
         private String code ;
         string username;
         Player player;
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient server;
         public AuthMail(String code, Player player)
         {
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace AdivinaQue.Client.Views
             this.Close();
         }
 
-        internal void setServer(ServiceClient server)
+        internal void setServer(PlayerMgtClient server)
         {
             this.server = server;
         }

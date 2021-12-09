@@ -14,8 +14,9 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
+            <ScrollViewer  HorizontalScrollBarVisibility="Visible" Background="Lavender">
             <WrapPanel x:Name="wpCards"  HorizontalAlignment="Left" Height="624" Margin="24,22,0,0" VerticalAlignment="Top" Width="639"/>
-
+            </ScrollViewer>
         </Grid>
         <Grid Grid.Column="1">
             <Label  Content="Contrincante" Margin="10,5,0,0" FontFamily="Tw Cen MT Condensed" FontSize="13"/>

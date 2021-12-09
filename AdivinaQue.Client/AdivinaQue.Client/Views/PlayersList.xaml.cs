@@ -12,7 +12,7 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class PlayersList : Window
     {
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ObservableCollection<String> usersCollection;
         public ObservableCollection<string> usersPlayed;
@@ -20,12 +20,11 @@ namespace AdivinaQue.Client.Views
         private Home home;
         Boolean backHome = true;
         CallBack callback;
-        public PlayersList(Proxy.ServiceClient server, String username, Home home, CallBack callBack)
+        public PlayersList(Proxy.PlayerMgtClient server, String username, Home home, CallBack callBack)
         {
             InitializeComponent();
             this.callback = callBack;
-            this.server = server;
-            
+            this.serverPlayer = server;
             usersCollection = new ObservableCollection<string>();
             usersPlayed = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;
@@ -37,7 +36,7 @@ namespace AdivinaQue.Client.Views
         {
             try
             {
-                server.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
+                serverPlayer.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
             }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
             {
@@ -58,7 +57,7 @@ namespace AdivinaQue.Client.Views
                 try
                 {
                     var player = listUsers.SelectedValue.ToString();
-                    bool result = server.SendInvitation(player, username);
+                    bool result = serverPlayer.SendInvitation(player, username);
                     showResponse(result, player);
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)

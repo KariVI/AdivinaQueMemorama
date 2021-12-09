@@ -20,6 +20,10 @@
     <system:String x:Key="btModify">Configuracion</system:String>
     <system:String x:Key="lbGretting">Bienvenido</system:String>
     <system:String x:Key="lbTitleHome">Menu principal</system:String>
+    <system:String x:Key="btPassword">¿Olvidaste tu contraseña?</system:String>
+    <system:String x:Key="lbRebaseEnters">Llegaste a los intentos permitidos</system:String>
+    <system:String x:Key="lbDuplicateUsername">Este nombre de usuario ya existe</system:String>
+
 
     <system:String x:Key="lbTitleUsers">Usuarios conectados</system:String>
 
@@ -75,4 +79,8 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Porfavor escribe el codigo correcto</system:String>
     <system:String x:Key="lbCorrectEmail">Correo validado</system:String>
+    <system:String x:Key="errorPair">Lo siento, intenta de nuevo</system:String>
+    <system:String x:Key="lbSelected">Selecciona un tema, por favor</system:String>
+
+
 </ResourceDictionary>

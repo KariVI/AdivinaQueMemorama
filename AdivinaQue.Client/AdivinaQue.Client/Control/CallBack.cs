@@ -9,7 +9,7 @@ namespace AdivinaQue.Client.Control
 {
 
 
-    public class CallBack : IServiceCallback
+    public class CallBack : IGameMgtCallback, IPlayerMgtCallback
     {
         private Chat chat;
         private Modify modify;
@@ -20,8 +20,9 @@ namespace AdivinaQue.Client.Control
         private GameConfiguration gameConfiguration;
         private Game game;
         private Home home;
-        Proxy.ServiceClient server;
-        private List<string> usersPlayedList;
+        Proxy.GameMgtClient serverGame;
+        Proxy.PlayerMgtClient serverPlayer;
+
 
         public void SetPodio(Podio podio)
         {
@@ -31,10 +32,14 @@ namespace AdivinaQue.Client.Control
         {
             this.home = home;
         }
-
-        public void setServer(Proxy.ServiceClient server)
+        public void setServerPlayer(Proxy.PlayerMgtClient server)
         {
-           this.server = server;
+            this.serverPlayer = server;
+        }
+
+        public void setServer(Proxy.GameMgtClient server)
+        {
+           this.serverGame = server;
         }
 
         public void RecieveMessage(String message)
@@ -59,14 +64,7 @@ namespace AdivinaQue.Client.Control
             }
             return value;
         }
-        public void RecieveTopics(string[] topics)
-        {
-            foreach (var topic in topics)
-            {
-               // gameConfiguration.topicsCollection.Add(topic);
 
-            }
-        }
         public void SetGameConfiguration(GameConfiguration gameConfiguration)
         {
             this.gameConfiguration = gameConfiguration;
@@ -83,8 +81,7 @@ namespace AdivinaQue.Client.Control
                 playersList.usersCollection.Clear();
                 foreach (var username  in users.Keys)
                 {
-            
-                    if (username != currentUsername && !usersPlayedList.Contains(username))
+                    if(username != currentUsername)
                     {
                         playersList.usersCollection.Add(username);
                     }
@@ -145,7 +142,8 @@ namespace AdivinaQue.Client.Control
 
         public void SendBoardConfigurate(string username, int size, string category)
         {
-            game = new Game(server,size, category);
+            game = new Game(serverGame,size, category);
+            
             game.SetUsername(username);
             home.Hide();
             game.home = home;
@@ -201,9 +199,6 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveUsersPlayed(string[] usersPlayed)
         {
-            usersPlayedList = new List<string>();
-            Array.ForEach(usersPlayed, value => usersPlayedList.Add(usersPlayed.ToString()));
-            
             if (playersList != null)
             {
                 playersList.usersPlayed.Clear();

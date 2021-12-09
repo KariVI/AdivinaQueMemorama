@@ -23,6 +23,12 @@ namespace AdivinaQue.Client.Views
         private int scoreRival;
         private int numberCardsFinded;
         private bool endGame = false;
+        private int totalCards;
+        private readonly int TOTAL_CARDS_DESIGN = 48;
+        private readonly int TOTAL_CARDS_TESTS = 44;
+        private readonly int TOTAL_CARDS_ADMIN = 40;
+        private int column;
+        private int row;
         public int ScorePlayer { set { scorePlayer = value; } get { return scorePlayer; } }
         public int ScoreRival { set { scoreRival = value; } get { return scoreRival; } }
         public int NumberCardsFinded { set { numberCardsFinded = value; } get { return numberCardsFinded; } }
@@ -41,11 +47,12 @@ namespace AdivinaQue.Client.Views
         private int[] randomImageList;
         private int[] randomPositionList;
         private static DispatcherTimer timer;
-
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
+         Proxy.GameMgtClient server;
         private bool backHome = true;
+       
 
-        public Game(Proxy.ServiceClient server, int sizeBoard, string category)
+        public Game(Proxy.GameMgtClient server, int sizeBoard, string category)
         {
             this.server = server;
             this.sizeBoard = sizeBoard;
@@ -58,14 +65,56 @@ namespace AdivinaQue.Client.Views
             
             numberCardsFinded = 0;
             nextTurn = true;
+            UpdateSizes();
+
+            if (category == "Diseño")
+            {
+                totalCards = TOTAL_CARDS_DESIGN;
+            }else if (category == "Pruebas")
+            {
+                totalCards = TOTAL_CARDS_TESTS;
+            }else
+            {
+                totalCards = TOTAL_CARDS_ADMIN;
+            }
 
             InitializeComponent();
             SetTimer(this);
         }
+
+        public void setServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
+        {
+            serverPlayer = playerMgtClient;
+        }
+
+        private void UpdateSizes()
+        {
+            if (sizeBoard == 12)
+            {
+                row = 4;
+                column = 3;
+            }else if (sizeBoard==16)
+            {
+                row = 4;
+                column = 4;
+            }else if (sizeBoard == 20)
+            {
+                row = 5;
+                column = 4;
+            }else if (sizeBoard == 30)
+            {
+                row = 6;
+                column = 5;
+            }
+            else
+            {
+                row = 6;
+                column = 6;
+            }
+        }
         public void InitializeBoard()
         {
             GetImages();
-
             AddButton();
             GetRandomCards();
         }
@@ -89,18 +138,21 @@ namespace AdivinaQue.Client.Views
         public void AddButton()
         {
 
-            for (int i = 0; i < (sizeBoard * sizeBoard); i++)
+            for (int i = 0; i < sizeBoard ; i++)
             {
+
 
                 Button bt = new Button();
 
                 bt.Click += new RoutedEventHandler(button_onclick);
-                bt.Width = 639 / sizeBoard;
-                bt.Height = 624 / sizeBoard;
-                bt.Background = Brushes.LavenderBlush;
+                bt.Width = 639 / column;
+                bt.Height = 624 / row;
+                Color color = (Color)ColorConverter.ConvertFromString("#CCCCFF");
+                bt.Background = new SolidColorBrush(color);
                 bt.Content = null;
                 string btName = "bt" + i.ToString();
                 bt.Name = btName;
+
                 wpCards.Children.Add(bt);
                 buttons.Add(bt);
 
@@ -111,7 +163,7 @@ namespace AdivinaQue.Client.Views
         {
 
 
-            for (int i = 1; i < 9; i++)
+            for (int i = 1; i <= (totalCards / 2); i++)
             {
                 string locationQuestion = "images/" + category + "/" + i + "-1.png";
                 string locationAnswer = "images/" + category + "/" + i + "-2.png";
@@ -140,7 +192,7 @@ namespace AdivinaQue.Client.Views
             string btName = "";
             Random randomPosition = new Random();
             int indexButton = 0;
-            for (int i = 0; i < (sizeBoard * sizeBoard) / 2; i++)
+            for (int i = 0; i < (sizeBoard/ 2); i++)
             {
                 int index = randomImageList[i];
                 btName = "bt" + randomPositionList[indexButton].ToString();
@@ -216,6 +268,7 @@ namespace AdivinaQue.Client.Views
             bool correct = VerifyTurn();            
             Button btCard1 = getButton(upCards.Values.First());
             Button btCard2 = getButton(upCards.Values.ElementAt(1));
+
             if (correct)
             {
 
@@ -232,10 +285,11 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-
+                Alert.ShowDialog(Application.Current.Resources["errorPair"].ToString(), Application.Current.Resources["btOk"].ToString());
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
+            nextTurn = false;
             server.SendNextTurnRival(usernameRival, true);
 
 
@@ -268,11 +322,13 @@ namespace AdivinaQue.Client.Views
                     {
                         if (bt.Content == null)
                         {
-
+                            gameCards[bt.Name].DecodePixelWidth= 639/column;
+                            gameCards[bt.Name].DecodePixelHeight = 624 / row;
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
                             server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
                             upCards.Add(gameCards[bt.Name], bt.Name);
+
                             if (upCards.Count() == 2)
                             {
                                 UpdateBoard();

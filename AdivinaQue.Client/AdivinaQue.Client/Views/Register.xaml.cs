@@ -10,14 +10,14 @@ namespace AdivinaQue.Client.Views
     public partial class Register : Window
     {
 
-        Proxy.ServiceClient server;
+        Proxy.PlayerMgtClient serverPlayer;
         private String email;
 
 
-        public Register(Proxy.ServiceClient server, String email)
+        public Register(Proxy.PlayerMgtClient server, String email)
         {
           
-            this.server = server;
+            this.serverPlayer = server;
             this.email = email;
             InitializeComponent();
 
@@ -80,48 +80,50 @@ namespace AdivinaQue.Client.Views
 
             }
 
-
-
-
             return dataStatus;
 
         }
 
         private void SendMessage(DataStatus dataStatus)
         {
-            if(dataStatus == DataStatus.UserNameInvalid)
+            if (dataStatus == DataStatus.UserNameInvalid)
             {
-                MessageBox.Show("Please write a valid username");
+                Alert.ShowDialog(Application.Current.Resources["lbValidUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
-            if(dataStatus == DataStatus.NameInvalid)
+            if (dataStatus == DataStatus.NameInvalid)
             {
-                MessageBox.Show("Name field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbNameInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.PasswordInvalid)
             {
-                MessageBox.Show("Password field doesn't have special characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.ShortPassword)
             {
-                MessageBox.Show("Password minimum 8 characters");
+                Alert.ShowDialog(Application.Current.Resources["lbPasswordShort"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
+
+            if (dataStatus == DataStatus.EmailIncorrect)
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbEmailInvalid"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
             if (dataStatus == DataStatus.UserNameDuplicate)
             {
-                MessageBox.Show("This username already exists");
+                Alert.ShowDialog(Application.Current.Resources["lbDuplicateUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
         private string[] ConvertUpperStrings()
         {
-            int numberUsers = server.GetUsers().Length;
+            int numberUsers = serverPlayer.GetUsers().Length;
             string[] usernames = new string[numberUsers];
             for (int i = 0; i < numberUsers; i++)
             {
-                usernames[i] = server.GetUsers()[i].ToUpper();
+                usernames[i] = serverPlayer.GetUsers()[i].ToUpper();
 
             }
 
@@ -153,7 +155,7 @@ namespace AdivinaQue.Client.Views
             player.Password = Password.Password.ToString();
             player.Name = tbName.Text.Trim();
             player.Email = email;
-            server.Register(player);
+            serverPlayer.Register(player);
             MessageBox.Show("Saved Data");
             this.Close();
 

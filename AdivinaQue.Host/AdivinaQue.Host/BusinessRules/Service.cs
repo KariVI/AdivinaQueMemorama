@@ -16,9 +16,10 @@ namespace AdivinaQue.Host.BusinessRules
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single)]
 
-    public class Service : IService
+    public class Service : IPlayerMgt, IGameMgt
     {
         public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
+
         public List<string> currentlyUserPlayed = new List<string>();
      
         
@@ -150,7 +151,7 @@ namespace AdivinaQue.Host.BusinessRules
 
         public void SendBoard(String toUsername, int size, string category)
         {
-             users[toUsername].SendBoardConfigurate(toUsername,size,category);
+            users[toUsername].SendBoardConfigurate(toUsername,size,category);
         }
         public string SendMail(string to, string asunto, string body)
         {

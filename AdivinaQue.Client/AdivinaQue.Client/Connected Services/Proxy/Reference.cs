@@ -216,261 +216,192 @@ namespace AdivinaQue.Client.Proxy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(AdivinaQue.Client.Proxy.IServiceCallback))]
-    public interface IService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IPlayerMgt", CallbackContract=typeof(AdivinaQue.Client.Proxy.IPlayerMgtCallback))]
+    public interface IPlayerMgt {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Join", ReplyAction="http://tempuri.org/IPlayerMgt/JoinResponse")]
         bool Join(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Join", ReplyAction="http://tempuri.org/IPlayerMgt/JoinResponse")]
         System.Threading.Tasks.Task<bool> JoinAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendMessage")]
         void SendMessage(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendMessage")]
         System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetConnectedUsers")]
         void GetConnectedUsers();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetConnectedUsers")]
         System.Threading.Tasks.Task GetConnectedUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/DisconnectUser")]
         void DisconnectUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/DisconnectUser")]
         System.Threading.Tasks.Task DisconnectUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Register", ReplyAction="http://tempuri.org/IPlayerMgt/RegisterResponse")]
         bool Register(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Register", ReplyAction="http://tempuri.org/IPlayerMgt/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SearchUsername", ReplyAction="http://tempuri.org/IPlayerMgt/SearchUsernameResponse")]
         bool SearchUsername(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SearchUsername", ReplyAction="http://tempuri.org/IPlayerMgt/SearchUsernameResponse")]
         System.Threading.Tasks.Task<bool> SearchUsernameAsync(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/FindUsername", ReplyAction="http://tempuri.org/IPlayerMgt/FindUsernameResponse")]
         bool FindUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/FindUsername", ReplyAction="http://tempuri.org/IPlayerMgt/FindUsernameResponse")]
         System.Threading.Tasks.Task<bool> FindUsernameAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername")]
         void SearchInfoPlayerByUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername")]
         System.Threading.Tasks.Task SearchInfoPlayerByUsernameAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GenerateCode", ReplyAction="http://tempuri.org/IService/GenerateCodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GenerateCode", ReplyAction="http://tempuri.org/IPlayerMgt/GenerateCodeResponse")]
         string GenerateCode();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GenerateCode", ReplyAction="http://tempuri.org/IService/GenerateCodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GenerateCode", ReplyAction="http://tempuri.org/IPlayerMgt/GenerateCodeResponse")]
         System.Threading.Tasks.Task<string> GenerateCodeAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Modify", ReplyAction="http://tempuri.org/IService/ModifyResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Modify", ReplyAction="http://tempuri.org/IPlayerMgt/ModifyResponse")]
         bool Modify(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Modify", ReplyAction="http://tempuri.org/IService/ModifyResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Modify", ReplyAction="http://tempuri.org/IPlayerMgt/ModifyResponse")]
         System.Threading.Tasks.Task<bool> ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Delete", ReplyAction="http://tempuri.org/IPlayerMgt/DeleteResponse")]
         bool Delete(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Delete", ReplyAction="http://tempuri.org/IPlayerMgt/DeleteResponse")]
         System.Threading.Tasks.Task<bool> DeleteAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitation", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationResponse")]
         bool SendInvitation(string toUsername, string fromUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitation", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationResponse")]
         System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendMail", ReplyAction="http://tempuri.org/IPlayerMgt/SendMailResponse")]
         string SendMail(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendMail", ReplyAction="http://tempuri.org/IPlayerMgt/SendMailResponse")]
         System.Threading.Tasks.Task<string> SendMailAsync(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmails", ReplyAction="http://tempuri.org/IService/GetEmailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmails", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailsResponse")]
         string[] GetEmails();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmails", ReplyAction="http://tempuri.org/IService/GetEmailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmails", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailsResponse")]
         System.Threading.Tasks.Task<string[]> GetEmailsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
-        void GetScores(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
-        System.Threading.Tasks.Task GetScoresAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoard")]
-        void SendBoard(string toUsername, int size, string category);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoard")]
-        System.Threading.Tasks.Task SendBoardAsync(string toUsername, int size, string category);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendRival")]
-        void SendRival(string rival, string fromUsername);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendRival")]
-        System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoardLists")]
-        void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoardLists")]
-        System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        string[] GetUsers();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        System.Threading.Tasks.Task<string[]> GetUsersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
-        void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCorrectCards")]
-        System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCardTurn")]
-        void SendCardTurn(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendCardTurn")]
-        System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendScoreRival")]
-        void SendScoreRival(string toUsername, int score);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendScoreRival")]
-        System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNextTurnRival")]
-        void SendNextTurnRival(string toUsername, bool nextTurn);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNextTurnRival")]
-        System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNumberCardsFinded")]
-        void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendNumberCardsFinded")]
-        System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendWinner")]
-        void SendWinner(string toUsername, string winner);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendWinner")]
-        System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
-        bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendGame", ReplyAction="http://tempuri.org/IService/SendGameResponse")]
-        System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmailByUser", ReplyAction="http://tempuri.org/IService/GetEmailByUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmailByUser", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailByUserResponse")]
         string GetEmailByUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEmailByUser", ReplyAction="http://tempuri.org/IService/GetEmailByUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmailByUser", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailByUserResponse")]
         System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ChangePassword", ReplyAction="http://tempuri.org/IService/ChangePasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/ChangePassword", ReplyAction="http://tempuri.org/IPlayerMgt/ChangePasswordResponse")]
         bool ChangePassword(string username, string newPassword);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ChangePassword", ReplyAction="http://tempuri.org/IService/ChangePasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/ChangePassword", ReplyAction="http://tempuri.org/IPlayerMgt/ChangePasswordResponse")]
         System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetCurrentlyUserPlayed")]
-        void GetCurrentlyUserPlayed();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetUsers", ReplyAction="http://tempuri.org/IPlayerMgt/GetUsersResponse")]
+        string[] GetUsers();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetCurrentlyUserPlayed")]
-        System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetUsers", ReplyAction="http://tempuri.org/IPlayerMgt/GetUsersResponse")]
+        System.Threading.Tasks.Task<string[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetScores")]
+        void GetScores(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetScores")]
+        System.Threading.Tasks.Task GetScoresAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceCallback {
+    public interface IPlayerMgtCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveMessage")]
         void RecieveMessage(string message);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveUsers")]
         void RecieveUsers(System.Collections.Generic.Dictionary<string, object> users);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecievePlayer")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecievePlayer")]
         void RecievePlayer(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitationGame", ReplyAction="http://tempuri.org/IService/SendInvitationGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitationGame", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationGameResponse")]
         bool SendInvitationGame(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendBoardConfigurate")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendBoardConfigurate")]
         void SendBoardConfigurate(string username, int size, string category);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveRival")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveRival")]
         void ReceiveRival(string rival);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveScores")]
         void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveTopics")]
-        void RecieveTopics(string[] topics);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCardSeed")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCardSeed")]
         void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCorrectPair")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCorrectPair")]
         void ReceiveCorrectPair(System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveCardTurn")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCardTurn")]
         void ReceiveCardTurn(System.Windows.Media.Imaging.BitmapImage image, string name);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveScoreRival")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveScoreRival")]
         void ReceiveScoreRival(int score);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveNextTurn")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveNextTurn")]
         void ReceiveNextTurn(bool nextTurn);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveNumberCardsFinded")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveNumberCardsFinded")]
         void ReceiveNumberCardsFinded(int numberCardsFinded);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveWinner")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveWinner")]
         void ReceiveWinner(string winner);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveUsersPlayed")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveUsersPlayed")]
         void ReceiveUsersPlayed(string[] usersPlayed);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : AdivinaQue.Client.Proxy.IService, System.ServiceModel.IClientChannel {
+    public interface IPlayerMgtChannel : AdivinaQue.Client.Proxy.IPlayerMgt, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<AdivinaQue.Client.Proxy.IService>, AdivinaQue.Client.Proxy.IService {
+    public partial class PlayerMgtClient : System.ServiceModel.DuplexClientBase<AdivinaQue.Client.Proxy.IPlayerMgt>, AdivinaQue.Client.Proxy.IPlayerMgt {
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
@@ -586,12 +517,179 @@ namespace AdivinaQue.Client.Proxy {
             return base.Channel.GetEmailsAsync();
         }
         
+        public string GetEmailByUser(string username) {
+            return base.Channel.GetEmailByUser(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username) {
+            return base.Channel.GetEmailByUserAsync(username);
+        }
+        
+        public bool ChangePassword(string username, string newPassword) {
+            return base.Channel.ChangePassword(username, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword) {
+            return base.Channel.ChangePasswordAsync(username, newPassword);
+        }
+        
+        public string[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
         public void GetScores(string username) {
             base.Channel.GetScores(username);
         }
         
         public System.Threading.Tasks.Task GetScoresAsync(string username) {
             return base.Channel.GetScoresAsync(username);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IGameMgt", CallbackContract=typeof(AdivinaQue.Client.Proxy.IGameMgtCallback))]
+    public interface IGameMgt {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoard")]
+        void SendBoard(string toUsername, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoard")]
+        System.Threading.Tasks.Task SendBoardAsync(string toUsername, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendRival")]
+        void SendRival(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendRival")]
+        System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardLists")]
+        void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardLists")]
+        System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCorrectCards")]
+        void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCorrectCards")]
+        System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCardTurn")]
+        void SendCardTurn(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCardTurn")]
+        System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, System.Windows.Media.Imaging.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendScoreRival")]
+        void SendScoreRival(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendScoreRival")]
+        System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNextTurnRival")]
+        void SendNextTurnRival(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNextTurnRival")]
+        System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNumberCardsFinded")]
+        void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNumberCardsFinded")]
+        System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendWinner")]
+        void SendWinner(string toUsername, string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendWinner")]
+        System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendGame", ReplyAction="http://tempuri.org/IGameMgt/SendGameResponse")]
+        bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendGame", ReplyAction="http://tempuri.org/IGameMgt/SendGameResponse")]
+        System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameMgtCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveMessage")]
+        void RecieveMessage(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveUsers")]
+        void RecieveUsers(System.Collections.Generic.Dictionary<string, object> users);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecievePlayer")]
+        void RecievePlayer(AdivinaQue.Client.Proxy.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendInvitationGame", ReplyAction="http://tempuri.org/IGameMgt/SendInvitationGameResponse")]
+        bool SendInvitationGame(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardConfigurate")]
+        void SendBoardConfigurate(string username, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveRival")]
+        void ReceiveRival(string rival);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveScores")]
+        void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCardSeed")]
+        void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCorrectPair")]
+        void ReceiveCorrectPair(System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCardTurn")]
+        void ReceiveCardTurn(System.Windows.Media.Imaging.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveScoreRival")]
+        void ReceiveScoreRival(int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveNextTurn")]
+        void ReceiveNextTurn(bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveNumberCardsFinded")]
+        void ReceiveNumberCardsFinded(int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveWinner")]
+        void ReceiveWinner(string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveUsersPlayed")]
+        void ReceiveUsersPlayed(string[] usersPlayed);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameMgtChannel : AdivinaQue.Client.Proxy.IGameMgt, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameMgtClient : System.ServiceModel.DuplexClientBase<AdivinaQue.Client.Proxy.IGameMgt>, AdivinaQue.Client.Proxy.IGameMgt {
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public void SendBoard(string toUsername, int size, string category) {
@@ -616,14 +714,6 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList) {
             return base.Channel.SendBoardListsAsync(toUsername, randomImageList, randomPositionList);
-        }
-        
-        public string[] GetUsers() {
-            return base.Channel.GetUsers();
-        }
-        
-        public System.Threading.Tasks.Task<string[]> GetUsersAsync() {
-            return base.Channel.GetUsersAsync();
         }
         
         public void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<System.Windows.Media.Imaging.BitmapImage, string> cards) {
@@ -680,30 +770,6 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
             return base.Channel.SendGameAsync(gameCurrently);
-        }
-        
-        public string GetEmailByUser(string username) {
-            return base.Channel.GetEmailByUser(username);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username) {
-            return base.Channel.GetEmailByUserAsync(username);
-        }
-        
-        public bool ChangePassword(string username, string newPassword) {
-            return base.Channel.ChangePassword(username, newPassword);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword) {
-            return base.Channel.ChangePasswordAsync(username, newPassword);
-        }
-        
-        public void GetCurrentlyUserPlayed() {
-            base.Channel.GetCurrentlyUserPlayed();
-        }
-        
-        public System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync() {
-            return base.Channel.GetCurrentlyUserPlayedAsync();
         }
     }
 }

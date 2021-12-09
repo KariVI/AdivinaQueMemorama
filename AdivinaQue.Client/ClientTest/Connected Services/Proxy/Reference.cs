@@ -9,159 +9,592 @@
 //------------------------------------------------------------------------------
 
 namespace ClientTest.Proxy {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BitmapImage", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging")]
+    [System.SerializableAttribute()]
+    public partial class BitmapImage : ClientTest.Proxy.BitmapSource {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Uri BaseUriField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientTest.Proxy.BitmapCacheOption CacheOptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientTest.Proxy.BitmapCreateOptions CreateOptionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DecodePixelHeightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DecodePixelWidthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientTest.Proxy.Rotation RotationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientTest.Proxy.Int32Rect SourceRectField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.IO.Stream StreamSourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Net.Cache.RequestCachePolicy UriCachePolicyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Uri UriSourceField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Uri BaseUri {
+            get {
+                return this.BaseUriField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BaseUriField, value) != true)) {
+                    this.BaseUriField = value;
+                    this.RaisePropertyChanged("BaseUri");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientTest.Proxy.BitmapCacheOption CacheOption {
+            get {
+                return this.CacheOptionField;
+            }
+            set {
+                if ((this.CacheOptionField.Equals(value) != true)) {
+                    this.CacheOptionField = value;
+                    this.RaisePropertyChanged("CacheOption");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientTest.Proxy.BitmapCreateOptions CreateOptions {
+            get {
+                return this.CreateOptionsField;
+            }
+            set {
+                if ((this.CreateOptionsField.Equals(value) != true)) {
+                    this.CreateOptionsField = value;
+                    this.RaisePropertyChanged("CreateOptions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DecodePixelHeight {
+            get {
+                return this.DecodePixelHeightField;
+            }
+            set {
+                if ((this.DecodePixelHeightField.Equals(value) != true)) {
+                    this.DecodePixelHeightField = value;
+                    this.RaisePropertyChanged("DecodePixelHeight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DecodePixelWidth {
+            get {
+                return this.DecodePixelWidthField;
+            }
+            set {
+                if ((this.DecodePixelWidthField.Equals(value) != true)) {
+                    this.DecodePixelWidthField = value;
+                    this.RaisePropertyChanged("DecodePixelWidth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientTest.Proxy.Rotation Rotation {
+            get {
+                return this.RotationField;
+            }
+            set {
+                if ((this.RotationField.Equals(value) != true)) {
+                    this.RotationField = value;
+                    this.RaisePropertyChanged("Rotation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientTest.Proxy.Int32Rect SourceRect {
+            get {
+                return this.SourceRectField;
+            }
+            set {
+                if ((this.SourceRectField.Equals(value) != true)) {
+                    this.SourceRectField = value;
+                    this.RaisePropertyChanged("SourceRect");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.IO.Stream StreamSource {
+            get {
+                return this.StreamSourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreamSourceField, value) != true)) {
+                    this.StreamSourceField = value;
+                    this.RaisePropertyChanged("StreamSource");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Net.Cache.RequestCachePolicy UriCachePolicy {
+            get {
+                return this.UriCachePolicyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UriCachePolicyField, value) != true)) {
+                    this.UriCachePolicyField = value;
+                    this.RaisePropertyChanged("UriCachePolicy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Uri UriSource {
+            get {
+                return this.UriSourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UriSourceField, value) != true)) {
+                    this.UriSourceField = value;
+                    this.RaisePropertyChanged("UriSource");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DispatcherObject", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Threading")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.DependencyObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.Freezable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.Animatable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.ImageSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class DispatcherObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DependencyObject", Namespace="http://schemas.datacontract.org/2004/07/System.Windows")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.Freezable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.Animatable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.ImageSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class DependencyObject : ClientTest.Proxy.DispatcherObject {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Freezable", Namespace="http://schemas.datacontract.org/2004/07/System.Windows")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.Animatable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.ImageSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class Freezable : ClientTest.Proxy.DependencyObject {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Animatable", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Animation")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.ImageSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class Animatable : ClientTest.Proxy.Freezable {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ImageSource", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapSource))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class ImageSource : ClientTest.Proxy.Animatable {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BitmapSource", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientTest.Proxy.BitmapImage))]
+    public partial class BitmapSource : ClientTest.Proxy.ImageSource {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Int32Rect", Namespace="http://schemas.datacontract.org/2004/07/System.Windows")]
+    [System.SerializableAttribute()]
+    public partial struct Int32Rect : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int _heightField;
+        
+        private int _widthField;
+        
+        private int _xField;
+        
+        private int _yField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int _height {
+            get {
+                return this._heightField;
+            }
+            set {
+                if ((this._heightField.Equals(value) != true)) {
+                    this._heightField = value;
+                    this.RaisePropertyChanged("_height");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int _width {
+            get {
+                return this._widthField;
+            }
+            set {
+                if ((this._widthField.Equals(value) != true)) {
+                    this._widthField = value;
+                    this.RaisePropertyChanged("_width");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int _x {
+            get {
+                return this._xField;
+            }
+            set {
+                if ((this._xField.Equals(value) != true)) {
+                    this._xField = value;
+                    this.RaisePropertyChanged("_x");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int _y {
+            get {
+                return this._yField;
+            }
+            set {
+                if ((this._yField.Equals(value) != true)) {
+                    this._yField = value;
+                    this.RaisePropertyChanged("_y");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BitmapCacheOption", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging")]
+    public enum BitmapCacheOption : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Default = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OnDemand = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OnLoad = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 2,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.FlagsAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BitmapCreateOptions", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging")]
+    public enum BitmapCreateOptions : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PreservePixelFormat = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DelayCreation = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        IgnoreColorProfile = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        IgnoreImageCache = 8,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Rotation", Namespace="http://schemas.datacontract.org/2004/07/System.Windows.Media.Imaging")]
+    public enum Rotation : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rotate0 = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rotate90 = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rotate180 = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rotate270 = 3,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IService", CallbackContract=typeof(ClientTest.Proxy.IServiceCallback))]
-    public interface IService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IPlayerMgt", CallbackContract=typeof(ClientTest.Proxy.IPlayerMgtCallback))]
+    public interface IPlayerMgt {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Join", ReplyAction="http://tempuri.org/IPlayerMgt/JoinResponse")]
         bool Join(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Join", ReplyAction="http://tempuri.org/IService/JoinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Join", ReplyAction="http://tempuri.org/IPlayerMgt/JoinResponse")]
         System.Threading.Tasks.Task<bool> JoinAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendMessage")]
         void SendMessage(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendMessage")]
         System.Threading.Tasks.Task SendMessageAsync(string message, string username, string userReceptor);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetConnectedUsers")]
         void GetConnectedUsers();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetConnectedUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetConnectedUsers")]
         System.Threading.Tasks.Task GetConnectedUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/DisconnectUser")]
         void DisconnectUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/DisconnectUser")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/DisconnectUser")]
         System.Threading.Tasks.Task DisconnectUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Register", ReplyAction="http://tempuri.org/IPlayerMgt/RegisterResponse")]
         bool Register(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Register", ReplyAction="http://tempuri.org/IPlayerMgt/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SearchUsername", ReplyAction="http://tempuri.org/IPlayerMgt/SearchUsernameResponse")]
         bool SearchUsername(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsername", ReplyAction="http://tempuri.org/IService/SearchUsernameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SearchUsername", ReplyAction="http://tempuri.org/IPlayerMgt/SearchUsernameResponse")]
         System.Threading.Tasks.Task<bool> SearchUsernameAsync(string newUsername);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/FindUsername", ReplyAction="http://tempuri.org/IPlayerMgt/FindUsernameResponse")]
+        bool FindUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/FindUsername", ReplyAction="http://tempuri.org/IPlayerMgt/FindUsernameResponse")]
+        System.Threading.Tasks.Task<bool> FindUsernameAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername")]
         void SearchInfoPlayerByUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SearchInfoPlayerByUsername")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SearchInfoPlayerByUsername")]
         System.Threading.Tasks.Task SearchInfoPlayerByUsernameAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
-        string SendMailValidation(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GenerateCode", ReplyAction="http://tempuri.org/IPlayerMgt/GenerateCodeResponse")]
+        string GenerateCode();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMailValidation", ReplyAction="http://tempuri.org/IService/SendMailValidationResponse")]
-        System.Threading.Tasks.Task<string> SendMailValidationAsync(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GenerateCode", ReplyAction="http://tempuri.org/IPlayerMgt/GenerateCodeResponse")]
+        System.Threading.Tasks.Task<string> GenerateCodeAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
-        void Modify(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Modify", ReplyAction="http://tempuri.org/IPlayerMgt/ModifyResponse")]
+        bool Modify(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Modify")]
-        System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Modify", ReplyAction="http://tempuri.org/IPlayerMgt/ModifyResponse")]
+        System.Threading.Tasks.Task<bool> ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Delete", ReplyAction="http://tempuri.org/IPlayerMgt/DeleteResponse")]
         bool Delete(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Delete", ReplyAction="http://tempuri.org/IService/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/Delete", ReplyAction="http://tempuri.org/IPlayerMgt/DeleteResponse")]
         System.Threading.Tasks.Task<bool> DeleteAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
-        void SendMailInvitation(string email);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SendMailInvitation")]
-        System.Threading.Tasks.Task SendMailInvitationAsync(string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitation", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationResponse")]
         bool SendInvitation(string toUsername, string fromUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitation", ReplyAction="http://tempuri.org/IService/SendInvitationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitation", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationResponse")]
         System.Threading.Tasks.Task<bool> SendInvitationAsync(string toUsername, string fromUsername);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendMail", ReplyAction="http://tempuri.org/IPlayerMgt/SendMailResponse")]
         string SendMail(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMail", ReplyAction="http://tempuri.org/IService/SendMailResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendMail", ReplyAction="http://tempuri.org/IPlayerMgt/SendMailResponse")]
         System.Threading.Tasks.Task<string> SendMailAsync(string to, string asunto, string body);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmails", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailsResponse")]
+        string[] GetEmails();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmails", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailsResponse")]
+        System.Threading.Tasks.Task<string[]> GetEmailsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmailByUser", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailByUserResponse")]
+        string GetEmailByUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetEmailByUser", ReplyAction="http://tempuri.org/IPlayerMgt/GetEmailByUserResponse")]
+        System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/ChangePassword", ReplyAction="http://tempuri.org/IPlayerMgt/ChangePasswordResponse")]
+        bool ChangePassword(string username, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/ChangePassword", ReplyAction="http://tempuri.org/IPlayerMgt/ChangePasswordResponse")]
+        System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetUsers", ReplyAction="http://tempuri.org/IPlayerMgt/GetUsersResponse")]
+        string[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/GetUsers", ReplyAction="http://tempuri.org/IPlayerMgt/GetUsersResponse")]
+        System.Threading.Tasks.Task<string[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetScores")]
         void GetScores(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetScores")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetScores")]
         System.Threading.Tasks.Task GetScoresAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
-        void GetEmails(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetEmails")]
-        System.Threading.Tasks.Task GetEmailsAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
-        void GetTopics(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetTopics")]
-        System.Threading.Tasks.Task GetTopicsAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceCallback {
+    public interface IPlayerMgtCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveMessage")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveMessage")]
         void RecieveMessage(string message);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveUsers")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveUsers")]
         void RecieveUsers(System.Collections.Generic.Dictionary<string, object> users);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecievePlayer")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecievePlayer")]
         void RecievePlayer(AdivinaQue.Client.Proxy.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendInvitationGame", ReplyAction="http://tempuri.org/IService/SendInvitationGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/SendInvitationGame", ReplyAction="http://tempuri.org/IPlayerMgt/SendInvitationGameResponse")]
         bool SendInvitationGame(string username);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveScores")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/SendBoardConfigurate")]
+        void SendBoardConfigurate(string username, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveRival")]
+        void ReceiveRival(string rival);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/RecieveScores")]
         void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveEmails")]
-        void RecieveEmails(string[] emails);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCardSeed")]
+        void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/RecieveTopics")]
-        void RecieveTopics(string[] topics);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCorrectPair")]
+        void ReceiveCorrectPair(System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveCardTurn")]
+        void ReceiveCardTurn(ClientTest.Proxy.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveScoreRival")]
+        void ReceiveScoreRival(int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveNextTurn")]
+        void ReceiveNextTurn(bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveNumberCardsFinded")]
+        void ReceiveNumberCardsFinded(int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveWinner")]
+        void ReceiveWinner(string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ReceiveUsersPlayed")]
+        void ReceiveUsersPlayed(string[] usersPlayed);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : ClientTest.Proxy.IService, System.ServiceModel.IClientChannel {
+    public interface IPlayerMgtChannel : ClientTest.Proxy.IPlayerMgt, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<ClientTest.Proxy.IService>, ClientTest.Proxy.IService {
+    public partial class PlayerMgtClient : System.ServiceModel.DuplexClientBase<ClientTest.Proxy.IPlayerMgt>, ClientTest.Proxy.IPlayerMgt {
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerMgtClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
@@ -213,6 +646,14 @@ namespace ClientTest.Proxy {
             return base.Channel.SearchUsernameAsync(newUsername);
         }
         
+        public bool FindUsername(string username) {
+            return base.Channel.FindUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> FindUsernameAsync(string username) {
+            return base.Channel.FindUsernameAsync(username);
+        }
+        
         public void SearchInfoPlayerByUsername(string username) {
             base.Channel.SearchInfoPlayerByUsername(username);
         }
@@ -221,19 +662,19 @@ namespace ClientTest.Proxy {
             return base.Channel.SearchInfoPlayerByUsernameAsync(username);
         }
         
-        public string SendMailValidation(string email) {
-            return base.Channel.SendMailValidation(email);
+        public string GenerateCode() {
+            return base.Channel.GenerateCode();
         }
         
-        public System.Threading.Tasks.Task<string> SendMailValidationAsync(string email) {
-            return base.Channel.SendMailValidationAsync(email);
+        public System.Threading.Tasks.Task<string> GenerateCodeAsync() {
+            return base.Channel.GenerateCodeAsync();
         }
         
-        public void Modify(AdivinaQue.Client.Proxy.Player player, string username) {
-            base.Channel.Modify(player, username);
+        public bool Modify(AdivinaQue.Client.Proxy.Player player, string username) {
+            return base.Channel.Modify(player, username);
         }
         
-        public System.Threading.Tasks.Task ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
+        public System.Threading.Tasks.Task<bool> ModifyAsync(AdivinaQue.Client.Proxy.Player player, string username) {
             return base.Channel.ModifyAsync(player, username);
         }
         
@@ -243,14 +684,6 @@ namespace ClientTest.Proxy {
         
         public System.Threading.Tasks.Task<bool> DeleteAsync(string username) {
             return base.Channel.DeleteAsync(username);
-        }
-        
-        public void SendMailInvitation(string email) {
-            base.Channel.SendMailInvitation(email);
-        }
-        
-        public System.Threading.Tasks.Task SendMailInvitationAsync(string email) {
-            return base.Channel.SendMailInvitationAsync(email);
         }
         
         public bool SendInvitation(string toUsername, string fromUsername) {
@@ -269,6 +702,38 @@ namespace ClientTest.Proxy {
             return base.Channel.SendMailAsync(to, asunto, body);
         }
         
+        public string[] GetEmails() {
+            return base.Channel.GetEmails();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetEmailsAsync() {
+            return base.Channel.GetEmailsAsync();
+        }
+        
+        public string GetEmailByUser(string username) {
+            return base.Channel.GetEmailByUser(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetEmailByUserAsync(string username) {
+            return base.Channel.GetEmailByUserAsync(username);
+        }
+        
+        public bool ChangePassword(string username, string newPassword) {
+            return base.Channel.ChangePassword(username, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword) {
+            return base.Channel.ChangePasswordAsync(username, newPassword);
+        }
+        
+        public string[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
         public void GetScores(string username) {
             base.Channel.GetScores(username);
         }
@@ -276,21 +741,228 @@ namespace ClientTest.Proxy {
         public System.Threading.Tasks.Task GetScoresAsync(string username) {
             return base.Channel.GetScoresAsync(username);
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IGameMgt", CallbackContract=typeof(ClientTest.Proxy.IGameMgtCallback))]
+    public interface IGameMgt {
         
-        public void GetEmails(string username) {
-            base.Channel.GetEmails(username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoard")]
+        void SendBoard(string toUsername, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoard")]
+        System.Threading.Tasks.Task SendBoardAsync(string toUsername, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendRival")]
+        void SendRival(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendRival")]
+        System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardLists")]
+        void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardLists")]
+        System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCorrectCards")]
+        void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCorrectCards")]
+        System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCardTurn")]
+        void SendCardTurn(string toUsername, ClientTest.Proxy.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendCardTurn")]
+        System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, ClientTest.Proxy.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendScoreRival")]
+        void SendScoreRival(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendScoreRival")]
+        System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNextTurnRival")]
+        void SendNextTurnRival(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNextTurnRival")]
+        System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNumberCardsFinded")]
+        void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendNumberCardsFinded")]
+        System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendWinner")]
+        void SendWinner(string toUsername, string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendWinner")]
+        System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendGame", ReplyAction="http://tempuri.org/IGameMgt/SendGameResponse")]
+        bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendGame", ReplyAction="http://tempuri.org/IGameMgt/SendGameResponse")]
+        System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameMgtCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveMessage")]
+        void RecieveMessage(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveUsers")]
+        void RecieveUsers(System.Collections.Generic.Dictionary<string, object> users);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecievePlayer")]
+        void RecievePlayer(AdivinaQue.Client.Proxy.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendInvitationGame", ReplyAction="http://tempuri.org/IGameMgt/SendInvitationGameResponse")]
+        bool SendInvitationGame(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendBoardConfigurate")]
+        void SendBoardConfigurate(string username, int size, string category);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveRival")]
+        void ReceiveRival(string rival);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/RecieveScores")]
+        void RecieveScores(System.Collections.Generic.Dictionary<string, int> globalScores);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCardSeed")]
+        void ReceiveCardSeed(int[] randomImageList, int[] randomPositionList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCorrectPair")]
+        void ReceiveCorrectPair(System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveCardTurn")]
+        void ReceiveCardTurn(ClientTest.Proxy.BitmapImage image, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveScoreRival")]
+        void ReceiveScoreRival(int score);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveNextTurn")]
+        void ReceiveNextTurn(bool nextTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveNumberCardsFinded")]
+        void ReceiveNumberCardsFinded(int numberCardsFinded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveWinner")]
+        void ReceiveWinner(string winner);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/ReceiveUsersPlayed")]
+        void ReceiveUsersPlayed(string[] usersPlayed);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameMgtChannel : ClientTest.Proxy.IGameMgt, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameMgtClient : System.ServiceModel.DuplexClientBase<ClientTest.Proxy.IGameMgt>, ClientTest.Proxy.IGameMgt {
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public System.Threading.Tasks.Task GetEmailsAsync(string username) {
-            return base.Channel.GetEmailsAsync(username);
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public void GetTopics(string username) {
-            base.Channel.GetTopics(username);
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public System.Threading.Tasks.Task GetTopicsAsync(string username) {
-            return base.Channel.GetTopicsAsync(username);
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameMgtClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void SendBoard(string toUsername, int size, string category) {
+            base.Channel.SendBoard(toUsername, size, category);
+        }
+        
+        public System.Threading.Tasks.Task SendBoardAsync(string toUsername, int size, string category) {
+            return base.Channel.SendBoardAsync(toUsername, size, category);
+        }
+        
+        public void SendRival(string rival, string fromUsername) {
+            base.Channel.SendRival(rival, fromUsername);
+        }
+        
+        public System.Threading.Tasks.Task SendRivalAsync(string rival, string fromUsername) {
+            return base.Channel.SendRivalAsync(rival, fromUsername);
+        }
+        
+        public void SendBoardLists(string toUsername, int[] randomImageList, int[] randomPositionList) {
+            base.Channel.SendBoardLists(toUsername, randomImageList, randomPositionList);
+        }
+        
+        public System.Threading.Tasks.Task SendBoardListsAsync(string toUsername, int[] randomImageList, int[] randomPositionList) {
+            return base.Channel.SendBoardListsAsync(toUsername, randomImageList, randomPositionList);
+        }
+        
+        public void SendCorrectCards(string toUsername, System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards) {
+            base.Channel.SendCorrectCards(toUsername, cards);
+        }
+        
+        public System.Threading.Tasks.Task SendCorrectCardsAsync(string toUsername, System.Collections.Generic.Dictionary<ClientTest.Proxy.BitmapImage, string> cards) {
+            return base.Channel.SendCorrectCardsAsync(toUsername, cards);
+        }
+        
+        public void SendCardTurn(string toUsername, ClientTest.Proxy.BitmapImage image, string name) {
+            base.Channel.SendCardTurn(toUsername, image, name);
+        }
+        
+        public System.Threading.Tasks.Task SendCardTurnAsync(string toUsername, ClientTest.Proxy.BitmapImage image, string name) {
+            return base.Channel.SendCardTurnAsync(toUsername, image, name);
+        }
+        
+        public void SendScoreRival(string toUsername, int score) {
+            base.Channel.SendScoreRival(toUsername, score);
+        }
+        
+        public System.Threading.Tasks.Task SendScoreRivalAsync(string toUsername, int score) {
+            return base.Channel.SendScoreRivalAsync(toUsername, score);
+        }
+        
+        public void SendNextTurnRival(string toUsername, bool nextTurn) {
+            base.Channel.SendNextTurnRival(toUsername, nextTurn);
+        }
+        
+        public System.Threading.Tasks.Task SendNextTurnRivalAsync(string toUsername, bool nextTurn) {
+            return base.Channel.SendNextTurnRivalAsync(toUsername, nextTurn);
+        }
+        
+        public void SendNumberCardsFinded(string toUsername, int numberCardsFinded) {
+            base.Channel.SendNumberCardsFinded(toUsername, numberCardsFinded);
+        }
+        
+        public System.Threading.Tasks.Task SendNumberCardsFindedAsync(string toUsername, int numberCardsFinded) {
+            return base.Channel.SendNumberCardsFindedAsync(toUsername, numberCardsFinded);
+        }
+        
+        public void SendWinner(string toUsername, string winner) {
+            base.Channel.SendWinner(toUsername, winner);
+        }
+        
+        public System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner) {
+            return base.Channel.SendWinnerAsync(toUsername, winner);
+        }
+        
+        public bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
+            return base.Channel.SendGame(gameCurrently);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendGameAsync(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {
+            return base.Channel.SendGameAsync(gameCurrently);
         }
     }
 }

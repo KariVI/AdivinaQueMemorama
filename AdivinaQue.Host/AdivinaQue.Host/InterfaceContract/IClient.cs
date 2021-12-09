@@ -26,9 +26,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void ReceiveRival(String rival);
         [OperationContract(IsOneWay = true)]
         void RecieveScores(Dictionary<string, int> globalScores);
-        
-        [OperationContract(IsOneWay = true)]
-        void RecieveTopics(List<String> topics);
+
+
         [OperationContract(IsOneWay = true)]
         void ReceiveCardSeed(List<int> randomImageList, List<int> randomPositionList);
         [OperationContract(IsOneWay = true)]
@@ -38,13 +37,14 @@ namespace AdivinaQue.Host.InterfaceContract
         [OperationContract(IsOneWay = true)]
         void ReceiveScoreRival(int score);
         [OperationContract(IsOneWay = true)]
-        void ReceiveNextTurn( bool nextTurn);
+        void ReceiveNextTurn(bool nextTurn);
         [OperationContract(IsOneWay = true)]
-        void ReceiveNumberCardsFinded( int numberCardsFinded);
+        void ReceiveNumberCardsFinded(int numberCardsFinded);
         [OperationContract(IsOneWay = true)]
         void ReceiveWinner(string winner);
         [OperationContract(IsOneWay = true)]
         void ReceiveUsersPlayed(List<string> usersPlayed);
+
     }
 
     

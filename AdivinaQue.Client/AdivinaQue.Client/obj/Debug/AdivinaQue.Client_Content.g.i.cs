@@ -8,23 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/1-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/1-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/2-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/2-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/3-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/3-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/4-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/4-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/5-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/5-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/6-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/6-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/7-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/7-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/8-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/8-2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/9-1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pruebas/9-2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dise%c3%b1o/23-1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dise%c3%b1o/23-2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dise%c3%b1o/24-1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dise%c3%b1o/24-2.png")]
 
 
