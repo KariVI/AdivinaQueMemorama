@@ -386,6 +386,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ChangePassword", ReplyAction="http://tempuri.org/IService/ChangePasswordResponse")]
         System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetCurrentlyUserPlayed")]
+        void GetCurrentlyUserPlayed();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetCurrentlyUserPlayed")]
+        System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -690,6 +696,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword) {
             return base.Channel.ChangePasswordAsync(username, newPassword);
+        }
+        
+        public void GetCurrentlyUserPlayed() {
+            base.Channel.GetCurrentlyUserPlayed();
+        }
+        
+        public System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync() {
+            return base.Channel.GetCurrentlyUserPlayedAsync();
         }
     }
 }

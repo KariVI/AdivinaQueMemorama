@@ -1,12 +1,3 @@
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.dll
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Strings.baml
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US_MarkupCompile.cache
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.g.resources
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.csproj.CoreCompileInputs.cache
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.dll
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.csproj.AssemblyReference.cache
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.dll
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Strings.baml
@@ -15,3 +6,11 @@ C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_e
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.csproj.CoreCompileInputs.cache
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.dll
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.pdb
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\bin\Debug\Resources_en-US.pdb
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Strings.baml
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US_MarkupCompile.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.g.resources
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.csproj.CoreCompileInputs.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\obj\Debug\Resources_en-US.pdb

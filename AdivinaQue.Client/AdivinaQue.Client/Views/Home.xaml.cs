@@ -80,6 +80,7 @@ namespace AdivinaQue.Client.Views
             {
                 PlayersList playersList = new PlayersList(server, username, this,callback);
                 callback.SetPlayersList(playersList);
+                server.GetCurrentlyUserPlayed();
                 server.GetConnectedUsers();
                 playersList.Show();
                 this.Hide();

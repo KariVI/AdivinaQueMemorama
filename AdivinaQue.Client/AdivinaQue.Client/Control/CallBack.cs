@@ -21,6 +21,7 @@ namespace AdivinaQue.Client.Control
         private Game game;
         private Home home;
         Proxy.ServiceClient server;
+        private List<string> usersPlayedList;
 
         public void SetPodio(Podio podio)
         {
@@ -82,7 +83,8 @@ namespace AdivinaQue.Client.Control
                 playersList.usersCollection.Clear();
                 foreach (var username  in users.Keys)
                 {
-                    if(username != currentUsername)
+            
+                    if (username != currentUsername && !usersPlayedList.Contains(username))
                     {
                         playersList.usersCollection.Add(username);
                     }
@@ -199,6 +201,9 @@ namespace AdivinaQue.Client.Control
 
         public void ReceiveUsersPlayed(string[] usersPlayed)
         {
+            usersPlayedList = new List<string>();
+            Array.ForEach(usersPlayed, value => usersPlayedList.Add(usersPlayed.ToString()));
+            
             if (playersList != null)
             {
                 playersList.usersPlayed.Clear();

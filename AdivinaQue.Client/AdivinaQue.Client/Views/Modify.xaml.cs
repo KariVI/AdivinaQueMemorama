@@ -103,7 +103,7 @@ namespace AdivinaQue.Client.Views
                 dataStatus = DataStatus.EmailIncorrect;
             }
 
-
+           
             return dataStatus;
 
         }

@@ -92,7 +92,7 @@ namespace AdivinaQue.Client.Views
             callback.setServer(server);
             callback.SetGame(game);
             server.SendRival(username, toUsername);
-            
+            server.GetConnectedUsers();
             game.SetUsername(username);
             game.SetUsernameRival(toUsername);
             game.SetRandomLists(randomImageList, randomPositionList);

@@ -25,6 +25,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.callback = callBack;
             this.server = server;
+            
             usersCollection = new ObservableCollection<string>();
             usersPlayed = new ObservableCollection<string>();
             listUsers.ItemsSource = usersCollection;

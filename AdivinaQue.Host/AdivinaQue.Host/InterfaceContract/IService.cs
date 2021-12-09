@@ -73,5 +73,7 @@ namespace AdivinaQue.Host.InterfaceContract
 
         [OperationContract]
         bool ChangePassword(string username, string newPassword);
+        [OperationContract(IsOneWay = true)]
+        void GetCurrentlyUserPlayed();
     }
 }

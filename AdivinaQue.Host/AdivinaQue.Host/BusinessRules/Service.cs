@@ -25,6 +25,7 @@ namespace AdivinaQue.Host.BusinessRules
         public void DisconnectUser(String username)
         {
             users.Remove(username);
+            currentlyUserPlayed.Remove(username);
             Console.WriteLine("Usuario {0} se desconecto", username);
             GetConnectedUsers();
         }
@@ -46,7 +47,13 @@ namespace AdivinaQue.Host.BusinessRules
                 other.RecieveUsers(users);
             }
         }
-
+        public void GetCurrentlyUserPlayed()
+        {
+            foreach (var other in users.Values)
+            {
+                other.ReceiveUsersPlayed(currentlyUserPlayed);
+            }
+        }
         public bool Join(string username, string password)
         {
             Authentication authentication = new Authentication();
@@ -211,6 +218,8 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendRival(string rival, string fromUsername)
         {
             users[fromUsername].ReceiveRival(rival);
+            currentlyUserPlayed.Add(rival);
+            currentlyUserPlayed.Add(fromUsername);
         }
 
         public void SendBoardLists(string toUsername, List<int> randomImageList, List<int> randomPositionList)
@@ -298,4 +307,5 @@ namespace AdivinaQue.Host.BusinessRules
             users[toUsername].ReceiveCardTurn(image, name);
         }
     }
+    
 }
