@@ -54,7 +54,7 @@ namespace AdivinaQue.Client.Views
                 {
                     chat.Close();
                 }
-            } catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException  )
+            } catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException  || ex is CommunicationObjectFaultedException )
 
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
@@ -87,7 +87,7 @@ namespace AdivinaQue.Client.Views
                 playersList.Show();
                 this.Hide();
             }
-            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();
@@ -100,9 +100,21 @@ namespace AdivinaQue.Client.Views
         {
             Podio podio = new Podio(serverPlayer, username,this);
             callback.SetPodio(podio);
-            serverPlayer.GetScores(username);
-            podio.Show();
-            this.Hide();
+            try
+            {
+                serverPlayer.GetScores(username);
+                podio.Show();
+                this.Hide();
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
+            
+            
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -121,7 +133,7 @@ namespace AdivinaQue.Client.Views
                 serverPlayer.GetConnectedUsers();
                 chat.Show();
             }
-            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();

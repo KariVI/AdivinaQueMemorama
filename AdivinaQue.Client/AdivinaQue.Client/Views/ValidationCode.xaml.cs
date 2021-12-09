@@ -15,13 +15,13 @@ namespace AdivinaQue.Client.Views
     {
         private String codeExpected;
 
-        Proxy.PlayerMgtClient servePlayer;
+        Proxy.PlayerMgtClient serverPlayer;
 
         public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
         public ValidationCode(Proxy.PlayerMgtClient server)
         {
             
-            this.servePlayer = server;
+            this.serverPlayer = server;
             InitializeComponent();
         }
 
@@ -33,7 +33,7 @@ namespace AdivinaQue.Client.Views
                 if (codeReceived.Equals(codeExpected))
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbCorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
-                    Register register = new Register(servePlayer, tbEmail.Text);
+                    Register register = new Register(serverPlayer, tbEmail.Text);
                     this.Close();
                     register.Show();
 
@@ -45,7 +45,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                MessageBox.Show("Please write a code");
+                Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
@@ -82,43 +82,49 @@ namespace AdivinaQue.Client.Views
                     if (!SearchDuplicateEmail())
                     {
                         String code = GenerateCodeValidation();
+                        string message = Application.Current.Resources["lbEmailCodeMessage"].ToString();
                         codeExpected = code;
                         string body = @"<style>
                                             h2{color:#E267B4;}
                                             </style>
-                                            <h2>" + code + "</h2>";
-                        
-                            String messageEmailSuccesful = servePlayer.SendMail(tbEmail.Text, "Código de validación", body);
-                        
+                                            <h2>" + message + "</h2>";
+
+                        string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
+                        String messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
+
                         if (messageEmailSuccesful == "Exito")
                         {
 
-                            MessageBox.Show("Code sended");
+                            Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
                         }
                         else
                         {
-                            MessageBox.Show("Don't be possible send an email");
+                            Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
+
                         }
                     }
                     else
                     {
-                        MessageBox.Show("This email already exists , try again ");
+                        Alert.ShowDialog(Application.Current.Resources["lbDuplicateEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+   
                     }
                 } else
                 {
-                    MessageBox.Show("Please write a correct email");
+                    Alert.ShowDialog(Application.Current.Resources["lbIncorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+
                 }
             }
             else
             {
-                MessageBox.Show("Please write an email");
+                Alert.ShowDialog(Application.Current.Resources["lbVoidEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+               
             }
             
         }
 
         private bool SearchDuplicateEmail() {
             bool value = false;
-            string[] emails = servePlayer.GetEmails();
+            string[] emails = serverPlayer.GetEmails();
                 foreach(var email in emails ){  
                     if(email.Equals(tbEmail.Text)){ 
                         value=true;

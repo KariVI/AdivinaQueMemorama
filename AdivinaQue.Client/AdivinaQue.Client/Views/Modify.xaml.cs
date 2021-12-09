@@ -36,23 +36,7 @@ namespace AdivinaQue.Client.Views
                     newPlayer.Username = tbUsername.Text.Trim();
                     newPlayer.Email = tbEmail.Text.Trim();
                     newPlayer.Password = pbPassword.Password;
-
-                    try
-                    {
-                        String code = server.GenerateCode();
-                        server.SendMail(tbEmail.Text, "Modify confirm", "Ingrese el codigo en la aplicacion: " + code);
-                        AuthMail authmail = new AuthMail(code, newPlayer);
-                        authmail.setServer(server);
-                        authmail.setUsername(username);
-                        authmail.Show();
-                    }
-                    catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
-                    {
-                        Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
-                        Login login = new Login();
-                        backHome = false;
-                        login.Show();
-                    }
+                    sendEmail();
                     this.Close();
                 }
                 else
@@ -64,6 +48,51 @@ namespace AdivinaQue.Client.Views
             {
                 
                 Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
+        }
+
+        private void sendEmail()
+        {
+            try
+            {
+                Validate validate = new Validate();
+                if (validate.ValidationEmail(tbEmail.Text))
+                {
+                    String code = server.GenerateCode();
+                    string message = Application.Current.Resources["lbEmailCodeMessage"].ToString();
+                    string body = @"<style>
+                                            h2{color:#E267B4;}
+                                            </style>
+                                            <h2>" + message + "</h2>";
+                    string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
+                    String messageEmailSuccesful = server.SendMail(tbEmail.Text, subject, body);
+                    AuthMail authmail = new AuthMail(code, newPlayer, home);
+                    backHome = false;
+                    authmail.setServer(server);
+                    authmail.setUsername(username);
+                    authmail.Show();
+                    if (messageEmailSuccesful == "Exito")
+                    {
+
+                        Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    }
+                    else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                    }
+                }else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbIncorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                    }
+             }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Login login = new Login();
+                backHome = false;
+                login.Show();
             }
         }
 
@@ -145,15 +174,25 @@ namespace AdivinaQue.Client.Views
         private bool SearchDuplicateUsername()
         {
             bool value = false;
-            string[] usernames = server.GetUsers();
-            foreach (var username in usernames)
+            try
             {
-                if (username.Equals(tbUsername.Text))
+                string[] usernames = server.GetUsers();
+              foreach (var username in usernames)
                 {
+                  if (username.Equals(tbUsername.Text))
+                 {
                     value = true;
+                    }
                 }
+             }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                backHome = false;
+                Login login = new Login();
+                login.Show();
+                this.Close();
             }
-
             return value;
         }
 
@@ -180,7 +219,7 @@ namespace AdivinaQue.Client.Views
                         Alert.ShowDialog(Application.Current.Resources["lbDeleteAccountFailed"].ToString(), Application.Current.Resources["btOk"].ToString());
                     }
                 }
-                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
@@ -198,7 +237,7 @@ namespace AdivinaQue.Client.Views
             {
                 server.SearchInfoPlayerByUsername(username);
             }
-            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();

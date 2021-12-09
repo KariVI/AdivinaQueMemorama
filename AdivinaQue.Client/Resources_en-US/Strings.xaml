@@ -84,6 +84,23 @@
 
     <system:String x:Key="lbPlayersPlayed">Currently playing</system:String>
     <system:String x:Key="lbPlayersAvailable">Available</system:String>
+    <system:String x:Key="lbSavedData">Data saved</system:String>
 
+    <system:String x:Key="lbNewPassword">Check your email for a new password</system:String>
+    <system:String x:Key="lbNoExistentUsername">This username doesn't exist in the app</system:String>
+    <system:String x:Key="lbNewPasswordDataError">Please write an username for send a new password</system:String>
+    <system:String x:Key="lbCodeSended">Code sended</system:String>
+    <system:String x:Key="lbEmailSendError">Unable to send an email</system:String>
+    <system:String x:Key="lbDuplicateEmail">This email already exists , try again</system:String>
+    <system:String x:Key="lbIncorrectEmail">Please write a correct email</system:String>
+    <system:String x:Key="lbVoidEmail">Please write an email</system:String>
+    <system:String x:Key="lbEmailCodeMessage">code</system:String>
+    <system:String x:Key="lbEmailCodeSubject">Validation code</system:String>
+    <system:String x:Key="lbSubjetcPassword">New password</system:String>
+    <system:String x:Key="lbDefaultPassword">Default password: </system:String>
+
+    <system:String x:Key="lbEmailSended">Email sended</system:String>
+    <system:String x:Key="lbInvitationSubject">Invitation to play</system:String>
+    <system:String x:Key="lbInvitationMessage">You are invited to play Adivina Que! Click here to play</system:String>
 </ResourceDictionary>
    

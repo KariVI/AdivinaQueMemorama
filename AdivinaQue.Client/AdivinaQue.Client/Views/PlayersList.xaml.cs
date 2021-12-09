@@ -39,9 +39,33 @@ namespace AdivinaQue.Client.Views
         {
             try
             {
-                serverPlayer.SendMail(tbEmail.Text, "Invitation to play", "Ingrese el codigo en la aplicacion: " + "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
+                Validate validate = new Validate();
+                if (validate.ValidationEmail(tbEmail.Text))
+                {
+                    string subject = Application.Current.Resources["lbInvitationSubject"].ToString();
+                    string message = Application.Current.Resources["lbInvitationMessage"].ToString();
+                    string messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, "Invitation to play",  "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
+
+                    if (messageEmailSuccesful == "Exito")
+                    {
+
+                        Alert.ShowDialog(Application.Current.Resources["lbEmailSended"].ToString(), Application.Current.Resources["btOk"].ToString());
+                        this.Close();
+                    }
+                    else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                    }
+                }
+                else
+                {
+                    Alert.ShowDialog(Application.Current.Resources["lbIncorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                }
+
             }
-            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 backHome = false;
@@ -49,7 +73,7 @@ namespace AdivinaQue.Client.Views
                 login.Show();
                 this.Close();
             }
-            this.Close();
+            
         }
 
         private void btSend_Click(object sender, RoutedEventArgs e)
@@ -63,7 +87,7 @@ namespace AdivinaQue.Client.Views
                     bool result = serverPlayer.SendInvitation(player, username);
                     showResponse(result, player);
                 }
-                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     backHome = false;

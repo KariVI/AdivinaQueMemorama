@@ -39,7 +39,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                MessageBox.Show("Exists empty fields");
+                Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
@@ -156,7 +156,7 @@ namespace AdivinaQue.Client.Views
             player.Name = tbName.Text.Trim();
             player.Email = email;
             serverPlayer.Register(player);
-            MessageBox.Show("Saved Data");
+            Alert.ShowDialog(Application.Current.Resources["lbSavedData"].ToString(), Application.Current.Resources["btOk"].ToString());
             this.Close();
 
         }

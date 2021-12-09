@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,19 +21,35 @@ namespace AdivinaQue.Client.Views
         private String code ;
         string username;
         Player player;
+        private Home home;
         Proxy.PlayerMgtClient server;
-        public AuthMail(String code, Player player)
+        private bool backHome = true;
+
+        public AuthMail(String code, Player player,Home home)
         {
             InitializeComponent();
             this.code = code;
             this.player = player;
+            this.home = home;
         }
         private void btConfirm_Click(object sender, RoutedEventArgs e)
         {
-            if (this.code == tbCode.Text)
+            if (!string.IsNullOrEmpty(tbCode.Text) && !IsVoid())
             {
-                
-                server.Modify(player, username);
+                if (this.code == tbCode.Text)
+            {
+                try
+                {
+                    server.Modify(player, username);
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
+                {
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    backHome = false;
+                    Login login = new Login();
+                    login.Show();
+                    this.Close();
+                }
                 Alert.ShowDialog(Application.Current.Resources["lbModifySucces"].ToString(), Application.Current.Resources["btOk"].ToString());
                 this.Close();
             }
@@ -42,12 +59,21 @@ namespace AdivinaQue.Client.Views
                Alert.ShowDialog(Application.Current.Resources["lbIncorrectCode"].ToString(), Application.Current.Resources["btOk"].ToString());
             
             }
+            }
+            else
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
+            }
         }
-        private void btCancel_Click()
+        private bool IsVoid()
         {
-            this.Close();
+            bool value = false;
+            if (string.IsNullOrWhiteSpace(tbCode.Text))
+            {
+                value = true;
+            }
+            return value;
         }
-
         internal void setServer(PlayerMgtClient server)
         {
             this.server = server;
@@ -60,7 +86,15 @@ namespace AdivinaQue.Client.Views
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (backHome)
+            {
+                home.Show();
+            }
         }
     }
 }

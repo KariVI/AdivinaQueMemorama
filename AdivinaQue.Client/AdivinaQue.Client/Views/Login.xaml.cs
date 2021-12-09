@@ -25,7 +25,7 @@ namespace AdivinaQue.Client.Views
 
             LoadStringResource("es-MEX");
         }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text))
             {
@@ -54,7 +54,7 @@ namespace AdivinaQue.Client.Views
                         this.Close();
                     }
                 }
-                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException)
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
 
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
@@ -132,25 +132,27 @@ namespace AdivinaQue.Client.Views
                     {
                         string email = serverPlayer.GetEmailByUser(tbUsername.Text);
 
+                        string message = Application.Current.Resources["lbDefaultPassword"].ToString();
+                        string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
                         string body = @"<style>     
                                                         h3{color:#E267B4;}
                                                         </style>
                                                         <p> Tu nueva contraseña es: </p>
-                                                        <h4>" + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                                        <h4>" + message + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
                                                         "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
 
-                        String messageEmailSuccesful = serverPlayer.SendMail(email, "Nueva contraseña", body);
-                        MessageBox.Show("Check your email for a new password");
+                        String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
+                        Alert.ShowDialog(Application.Current.Resources["lbNewPassword"].ToString(), Application.Current.Resources["btOk"].ToString());
                     }
                 }
                 else
                 {
-                    MessageBox.Show("This username doesn't exist in the app");
+                    Alert.ShowDialog(Application.Current.Resources["lbNoExistentUsername"].ToString(), Application.Current.Resources["btOk"].ToString());
                 }
             }
             else
             {
-                MessageBox.Show("Please write an username for send a new password");
+                Alert.ShowDialog(Application.Current.Resources["lbNewPasswordDataError"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
 
         }

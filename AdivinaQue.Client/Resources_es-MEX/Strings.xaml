@@ -84,5 +84,22 @@
     <system:String x:Key="lbPlayersPlayed">Ahora jugando</system:String>
     <system:String x:Key="lbPlayersAvailable">Disponible</system:String>
 
+    <system:String x:Key="lbSavedData">Informacion guardada con exito</system:String>
 
+    <system:String x:Key="lbNewPassword">Revisa tu correo para una nueva contraseña</system:String>
+    <system:String x:Key="lbNoExistentUsername">No existe un usuario registrado con ese nombre de usuario</system:String>
+    <system:String x:Key="lbNewPasswordDataError">Por favor, escribe un nombre de usuario</system:String>
+    <system:String x:Key="lbCodeSended">Codigo enviad</system:String>
+    <system:String x:Key="lbEmailSendError">No fue posible enviar el correo</system:String>
+    <system:String x:Key="lbDuplicateEmail">El correo ya se encuentra registrado</system:String>
+    <system:String x:Key="lbIncorrectEmail">Por favor, escribe un correo correcto</system:String>
+    <system:String x:Key="lbVoidEmail">Escribe un correo</system:String>
+    <system:String x:Key="lbEmailCodeMessage">Codigo</system:String>
+    <system:String x:Key="lbEmailCodeSubject">Codigo de validacion</system:String>
+    <system:String x:Key="lbSubjetcPassword">Nueva contraseña</system:String>
+    <system:String x:Key="lbDefaultPassword">Contraseña default:</system:String>
+
+    <system:String x:Key="lbEmailSended">Correo enviado</system:String>
+    <system:String x:Key="lbInvitationSubject">Invitacion</system:String>
+    <system:String x:Key="lbInvitationMessage">Lo han invitado a jugar Adivina Que! Instale el juego AQUI</system:String>
 </ResourceDictionary>

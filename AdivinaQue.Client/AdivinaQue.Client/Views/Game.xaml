@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         x:Class="AdivinaQue.Client.Views.Game"
         mc:Ignorable="d"
-        Title="Game" Height="700" Width="1000" Closing="Window_Closing" MouseMove="Window_MouseMove">
+        Title="Game" Height="700" Width="1000" Closing="Window_Closing" MouseMove="Window_MouseMove"  >
     <Grid  Background="Lavender">
 
         <Grid.ColumnDefinitions>
@@ -14,7 +14,7 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <ScrollViewer  HorizontalScrollBarVisibility="Visible" Background="Lavender">
+            <ScrollViewer  HorizontalScrollBarVisibility="Visible" Background="Lavender" >
             <WrapPanel x:Name="wpCards"  HorizontalAlignment="Left" Height="624" Margin="24,22,0,0" VerticalAlignment="Top" Width="639"/>
             </ScrollViewer>
         </Grid>
