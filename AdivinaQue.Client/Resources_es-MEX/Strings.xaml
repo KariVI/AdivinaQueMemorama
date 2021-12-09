@@ -81,6 +81,8 @@
     <system:String x:Key="lbCorrectEmail">Correo validado</system:String>
     <system:String x:Key="errorPair">Lo siento, intenta de nuevo</system:String>
     <system:String x:Key="lbSelected">Selecciona un tema, por favor</system:String>
+    <system:String x:Key="lbPlayersPlayed">Ahora jugando</system:String>
+    <system:String x:Key="lbPlayersAvailable">Disponible</system:String>
 
 
 </ResourceDictionary>

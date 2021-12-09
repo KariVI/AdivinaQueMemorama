@@ -167,6 +167,9 @@
   <wsdl:message name="IPlayerMgt_GetScores_InputMessage">
     <wsdl:part name="parameters" element="tns:GetScores" />
   </wsdl:message>
+  <wsdl:message name="IPlayerMgt_GetCurrentlyUserPlayed_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentlyUserPlayed" />
+  </wsdl:message>
   <wsdl:message name="IPlayerMgt_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
   </wsdl:message>
@@ -363,6 +366,9 @@
     </wsdl:operation>
     <wsdl:operation name="GetScores">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetScores" message="tns:IPlayerMgt_GetScores_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyUserPlayed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed" message="tns:IPlayerMgt_GetCurrentlyUserPlayed_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecieveMessage" message="tns:IPlayerMgt_RecieveMessage_OutputCallbackMessage" />
@@ -640,6 +646,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyUserPlayed">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecieveMessage" style="document" />
       <wsdl:output>
@@ -900,7 +912,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/ServicePlayer</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -909,7 +921,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/ServiceGame</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

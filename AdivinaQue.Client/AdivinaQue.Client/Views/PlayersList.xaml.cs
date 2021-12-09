@@ -14,8 +14,9 @@ namespace AdivinaQue.Client.Views
     {
         Proxy.PlayerMgtClient serverPlayer;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
+        public ListBox listUsersPlayed { get { return UsersPlaying; } set { UsersPlaying = value; } }
         public ObservableCollection<String> usersCollection;
-        public ObservableCollection<string> usersPlayed;
+        public ObservableCollection<string> usersPlayedCollection;
         private String username;
         private Home home;
         Boolean backHome = true;
@@ -23,15 +24,17 @@ namespace AdivinaQue.Client.Views
         public PlayersList(Proxy.PlayerMgtClient server, String username, Home home, CallBack callBack)
         {
             InitializeComponent();
+
             this.callback = callBack;
             this.serverPlayer = server;
             usersCollection = new ObservableCollection<string>();
-            usersPlayed = new ObservableCollection<string>();
-            listUsers.ItemsSource = usersCollection;
+            usersPlayedCollection = new ObservableCollection<string>();
+            listUsers.ItemsSource = usersCollection; 
+            listUsersPlayed.ItemsSource = usersPlayedCollection;
             this.username = username;
             this.home = home;
+            
         }
-
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
         {
             try

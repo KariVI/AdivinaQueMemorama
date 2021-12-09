@@ -222,7 +222,6 @@ namespace AdivinaQue.Host.BusinessRules
             currentlyUserPlayed.Add(rival);
             currentlyUserPlayed.Add(fromUsername);
         }
-
         public void SendBoardLists(string toUsername, List<int> randomImageList, List<int> randomPositionList)
         {
             users[toUsername].ReceiveCardSeed(randomImageList, randomPositionList);
@@ -268,6 +267,10 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendWinner(string toUsername, string winner)
         {
             users[toUsername].ReceiveWinner(winner);
+            currentlyUserPlayed.Remove(toUsername);
+            currentlyUserPlayed.Remove(winner);
+            GetCurrentlyUserPlayed();
+            GetConnectedUsers();
         }
 
         public string GetEmailByUser(string username)

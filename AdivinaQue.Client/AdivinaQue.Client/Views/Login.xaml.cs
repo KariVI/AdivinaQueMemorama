@@ -47,8 +47,8 @@ namespace AdivinaQue.Client.Views
                         Home home = new Home(serverPlayer, callback);
                         home.setUsername(tbUsername.Text);
                         callback.SetCurrentUsername(tbUsername.Text);
-                        callback.setServer(serverGame);
-                        callback.setServerPlayer(serverPlayer);
+                        callback.SetServer(serverGame);
+                        callback.SetServerPlayer(serverPlayer);
                         serverPlayer.GetConnectedUsers();
                         home.Show();
                         this.Close();

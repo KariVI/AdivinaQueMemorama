@@ -49,6 +49,8 @@ namespace AdivinaQue.Host.InterfaceContract
 
         [OperationContract(IsOneWay = true)]
         void GetScores(string username);
+        [OperationContract(IsOneWay = true)]
+        void GetCurrentlyUserPlayed();
 
     }
 }

@@ -326,6 +326,12 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetScores")]
         System.Threading.Tasks.Task GetScoresAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed")]
+        void GetCurrentlyUserPlayed();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed")]
+        System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -547,6 +553,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task GetScoresAsync(string username) {
             return base.Channel.GetScoresAsync(username);
+        }
+        
+        public void GetCurrentlyUserPlayed() {
+            base.Channel.GetCurrentlyUserPlayed();
+        }
+        
+        public System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync() {
+            return base.Channel.GetCurrentlyUserPlayedAsync();
         }
     }
     

@@ -21,7 +21,7 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
             this.serverPlayer = server;
             this.callback = callback;
-            callback.setHome(this);
+            callback.SetHome(this);
         }
 
         private void btModify_Click(object sender, RoutedEventArgs e)
@@ -83,6 +83,7 @@ namespace AdivinaQue.Client.Views
                 PlayersList playersList = new PlayersList(serverPlayer, username, this,callback);
                 callback.SetPlayersList(playersList);
                 serverPlayer.GetConnectedUsers();
+                serverPlayer.GetCurrentlyUserPlayed();
                 playersList.Show();
                 this.Hide();
             }

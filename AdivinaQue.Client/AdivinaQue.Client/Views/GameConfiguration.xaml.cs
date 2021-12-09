@@ -69,8 +69,9 @@ namespace AdivinaQue.Client.Views
 
                 serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
                 serverGame.SendRival(username, toUsername);
-                callback.setServer(serverGame);
+                callback.SetServer(serverGame);
                 callback.SetGame(game);
+                serverPlayer.GetCurrentlyUserPlayed();
 
                 game.SetUsername(username);
                 game.SetUsernameRival(toUsername);

@@ -65,5 +65,8 @@
     <system:String x:Key="btOk">Ok</system:String>
     <system:String x:Key="lbDeclineInvitation">decline your invitation</system:String>
     <system:String x:Key="lbAvailability">Are you still playing?</system:String>
+    <system:String x:Key="lbPlayersPlayed">Currently playing</system:String>
+    <system:String x:Key="lbPlayersAvailable">Available</system:String>
+
 
 </ResourceDictionary>

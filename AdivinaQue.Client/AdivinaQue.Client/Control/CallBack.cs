@@ -3,6 +3,7 @@ using AdivinaQue.Client.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Client.Control
@@ -22,22 +23,22 @@ namespace AdivinaQue.Client.Control
         private Home home;
         Proxy.GameMgtClient serverGame;
         Proxy.PlayerMgtClient serverPlayer;
-
+        private List<String> usersPlayed = new List<String>();
 
         public void SetPodio(Podio podio)
         {
             this.podio = podio;
         }
-        public void setHome(Home home)
+        public void SetHome(Home home)
         {
             this.home = home;
         }
-        public void setServerPlayer(Proxy.PlayerMgtClient server)
+        public void SetServerPlayer(Proxy.PlayerMgtClient server)
         {
             this.serverPlayer = server;
         }
 
-        public void setServer(Proxy.GameMgtClient server)
+        public void SetServer(Proxy.GameMgtClient server)
         {
            this.serverGame = server;
         }
@@ -201,10 +202,14 @@ namespace AdivinaQue.Client.Control
         {
             if (playersList != null)
             {
-                playersList.usersPlayed.Clear();
-                foreach (var user in usersPlayed)
+                playersList.usersPlayedCollection.Clear();
+                foreach (var player in usersPlayed)
                 {
-                    playersList.usersPlayed.Add(user);
+                    if (playersList.usersCollection.Contains(player))
+                    {
+                        playersList.usersCollection.Remove(player);
+                    }   
+                    playersList.usersPlayedCollection.Add(player);
                 }
             }
         }
