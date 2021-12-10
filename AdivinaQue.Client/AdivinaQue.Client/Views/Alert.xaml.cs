@@ -88,6 +88,10 @@ namespace AdivinaQue.Client.Views
                 timer.Stop();
             }
         }
+        public  void CloseAlert()
+        {
+            this.Close();
+        }
     }
 
     public enum AlertResult
@@ -96,5 +100,6 @@ namespace AdivinaQue.Client.Views
         Yes = 2,
         Unavaible = 3,
     }
+   
     
 }

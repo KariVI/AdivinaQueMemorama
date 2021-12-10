@@ -137,6 +137,7 @@ C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.CoreCompileInputs.cache
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.csproj.CopyComplete
 C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\AdivinaQue.Client.exe
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\App.baml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\Alert.baml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\AuthMail.baml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\Chat.baml
@@ -149,4 +150,3 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQu
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\Podio.baml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\Register.baml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\ValidationCode.baml
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\Views\App.baml

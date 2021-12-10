@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,7 +36,7 @@ namespace AdivinaQue.Client.Views
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         private List<Button> buttons = new List<Button>();
-        private Dictionary<BitmapImage, string> upCards = new Dictionary<BitmapImage, string>();
+        private static Dictionary<BitmapImage, string> upCards = new Dictionary<BitmapImage, string>();
         public Dictionary<BitmapImage, string> upCardRival = new Dictionary<BitmapImage, string>();
         public Dictionary<BitmapImage, string> upCardsRival = new Dictionary<BitmapImage, string>();
         public Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
@@ -50,7 +51,7 @@ namespace AdivinaQue.Client.Views
         Proxy.PlayerMgtClient serverPlayer;
          Proxy.GameMgtClient server;
         private bool backHome = true;
-       
+        private static DispatcherTimer timerButton;
 
         public Game(Proxy.GameMgtClient server, int sizeBoard, string category)
         {
@@ -80,6 +81,7 @@ namespace AdivinaQue.Client.Views
 
             InitializeComponent();
             SetTimer(this);
+            SetTimerButton(this);
         }
 
         public void setServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
@@ -263,7 +265,7 @@ namespace AdivinaQue.Client.Views
             return correct;
         }
 
-       public void UpdateBoard()
+       public  void UpdateBoard()
         {
             bool correct = VerifyTurn();            
             Button btCard1 = getButton(upCards.Values.First());
@@ -279,13 +281,14 @@ namespace AdivinaQue.Client.Views
                 server.SendNumberCardsFinded(usernameRival, numberCardsFinded);
                 tbPlayerScore.Text = Convert.ToString(scorePlayer);
 
+              
 
                 btCard1.Name = "blocked";
                 btCard2.Name = "blocked";
             }
             else
             {
-                Alert.ShowDialog(Application.Current.Resources["errorPair"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Thread.Sleep(1000);
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
@@ -298,7 +301,7 @@ namespace AdivinaQue.Client.Views
                 AssignWinner();
             }
             upCards = new Dictionary<BitmapImage, string>();
-
+            timerButton.Start();
         }
         public Button getButton(string name)
         {
@@ -322,6 +325,7 @@ namespace AdivinaQue.Client.Views
                     {
                         if (bt.Content == null)
                         {
+                            
                             gameCards[bt.Name].DecodePixelWidth= 639/column;
                             gameCards[bt.Name].DecodePixelHeight = 624 / row;
                             buttonAuxiliar.Source = gameCards[bt.Name];
@@ -329,10 +333,7 @@ namespace AdivinaQue.Client.Views
                             server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
                             upCards.Add(gameCards[bt.Name], bt.Name);
 
-                            if (upCards.Count() == 2)
-                            {
-                                UpdateBoard();
-                            }
+                            
                         }
                     }
                 }
@@ -441,6 +442,20 @@ namespace AdivinaQue.Client.Views
                 }
             };
             timer.Start();
+        }
+
+        public static void SetTimerButton(Game game)
+        {
+            timerButton = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            timerButton.Tick += delegate {
+                timerButton.Stop();
+                if (upCards.Count() == 2)
+                {
+                    game.UpdateBoard();
+                }
+                timerButton.Start();
+            };
+            timerButton.Start();
         }
 
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
