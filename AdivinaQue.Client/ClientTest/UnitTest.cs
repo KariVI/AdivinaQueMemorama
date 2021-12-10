@@ -142,8 +142,8 @@ namespace ClientTest
             InstanceContext context = new InstanceContext(mockCallback.Object);
             PlayerMgtClient server = new PlayerMgtClient(context);
             server.Join("MariV", "mariV");
-            server.Join("Kari", "karival3");
-            server.SendInvitation("Mari", "Kari");
+            server.Join("egy", "AW12QEdgar");
+            server.SendInvitation("MariV", "egy");
             Thread.Sleep(1000);
             mockCallback.Verify(mock => mock.SendInvitationGame(It.IsAny<string>()), Times.AtLeastOnce());
 
@@ -170,10 +170,10 @@ namespace ClientTest
             System.DateTime dateTime = System.DateTime.Today;
              gameCurrently.Players =  new System.Collections.Generic.Dictionary<string, int>();
              gameCurrently.Date = dateTime.ToString();
-             gameCurrently.Winner = "Kari";
+             gameCurrently.Winner = "egy";
              gameCurrently.ScoreWinner = 5;
              gameCurrently.Topic = "Pruebas";
-             gameCurrently.Players.Add("Kari", 5);
+             gameCurrently.Players.Add("egy", 5);
              gameCurrently.Players.Add("MariV", 3);
             Console.WriteLine(gameCurrently.Players.ToString());
             Assert.IsTrue(server.SendGame(gameCurrently));
@@ -186,7 +186,7 @@ namespace ClientTest
             InstanceContext context = new InstanceContext(callback);
             PlayerMgtClient server = new PlayerMgtClient(context);
 
-            Assert.IsTrue(server.GetEmailByUser("MariV").Equals("mariV@gmail.com"));
+            Assert.IsTrue(server.GetEmailByUser("MariV").Equals("MarianaVSYazmin@gmail.com"));
         }
 
         [TestMethod]
@@ -279,6 +279,23 @@ namespace ClientTest
             mockCallback.Verify(mock => mock.SendBoardConfigurate(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()), Times.AtLeastOnce());
         }
 
+
+        [TestMethod]
+        public void TestSendRival()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+            GameMgtClient server = new GameMgtClient(context);
+            mgtClient.Join("MariV", "mariV");
+
+            server.SendRival("MariV", "egy");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.ReceiveRival(It.IsAny<string>()), Times.AtLeastOnce());
+        }
+
         [TestMethod]
 
         public void TestGetEmails()
@@ -306,6 +323,39 @@ namespace ClientTest
 
         }
 
+        [TestMethod]
+
+        public void TestSendWinner()
+        {
+            Mock<IGameMgtCallback> mockCallback = new Mock<IGameMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback);
+            GameMgtClient server = new GameMgtClient(context);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+
+            mgtClient.Join("MariV", "mariV");
+            server.SendWinner("egy", "MariV");
+            Thread.Sleep(1000);
+
+            mockCallback.Verify(mock => mock.ReceiveWinner(It.IsAny<string>()), Times.AtLeastOnce());
+        }
+
+        [TestMethod]
+
+        public void TestGetEmailByUser()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+
+            string email= mgtClient.GetEmailByUser("MariV");
+            Assert.AreEqual(email, "MarianaVSYazmin@gmail.com");
+            
+        }
+
+
+     
 
         [TestMethod]
 
@@ -315,6 +365,7 @@ namespace ClientTest
             InstanceContext context = new InstanceContext(callback);
             PlayerMgtClient server = new PlayerMgtClient(context);
             List<string> usersExpected = new List<string>();
+
             usersExpected.Add("kari11 @gmail.com");
             usersExpected.Add("MariV");
             usersExpected.Add("angy");
@@ -332,6 +383,22 @@ namespace ClientTest
             }
 
             Assert.IsTrue(value);
+
+        }
+
+        [TestMethod]
+        public void TestSendNumberCardsFinded()
+        {
+            Mock<IPlayerMgtCallback> mockCallback = new Mock<IPlayerMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient server = new PlayerMgtClient(context);
+            GameMgtClient mgtGame = new GameMgtClient(context);
+
+            server.Join("MariV", "mariV");
+            server.Join("egy", "AW12QEdgar");
+            mgtGame.SendNumberCardsFinded("MariV", 12);
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.ReceiveNumberCardsFinded(It.IsAny<int>()), Times.AtLeastOnce());
 
         }
 
