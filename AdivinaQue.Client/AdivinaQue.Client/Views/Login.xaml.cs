@@ -25,7 +25,7 @@ namespace AdivinaQue.Client.Views
 
             LoadStringResource("es-MEX");
         }
-        private async void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text))
             {

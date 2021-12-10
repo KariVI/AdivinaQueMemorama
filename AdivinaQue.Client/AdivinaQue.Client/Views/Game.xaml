@@ -15,12 +15,15 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <ScrollViewer  HorizontalScrollBarVisibility="Visible" Background="Lavender" >
-            <WrapPanel x:Name="wpCards"  HorizontalAlignment="Left" Height="624" Margin="24,22,0,0" VerticalAlignment="Top" Width="639"/>
+                <WrapPanel x:Name="wpCards"  HorizontalAlignment="Left" Height="624" Margin="24,22,0,0" VerticalAlignment="Top" Width="639"/>
             </ScrollViewer>
         </Grid>
         <Grid Grid.Column="1">
-            <Label  Content="Contrincante" Margin="10,5,0,0" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
-            <Label x:Name="lbUserName" Content=" AAA" Margin="10,25,181,600" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
+            <Label Margin="10,5,0,0" FontFamily="Tw Cen MT Condensed" FontSize="13">
+                
+            </Label>
+            <TextBlock x:Name="lbMessage"  Margin="48,268,27,304"  HorizontalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed" RenderTransformOrigin="0.483,-0.224"/>
+            <Label x:Name="lbUserName" Content=" AAA" Margin="10,25,181,600"  FontFamily="Tw Cen MT Condensed" FontSize="13"/>
             <Label  Content="Rival" Margin="180,5,0,0" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
             <Label x:Name="lbRival" Content=" aaaa" Margin="180,25,27,600" FontFamily="Tw Cen MT Condensed" FontSize="13"/>
             <Label x:Name="lbPlayerScore" Content="Player One" Background="Pink"  FontFamily="Tw Cen MT Condensed" FontSize="13" HorizontalAlignment="Left" Width="100" Margin="50,100,0,0" VerticalAlignment="Top"/>
