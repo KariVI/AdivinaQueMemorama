@@ -79,11 +79,11 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Porfavor escribe el codigo correcto</system:String>
     <system:String x:Key="lbCorrectEmail">Correo validado</system:String>
-    <system:String x:Key="errorPair">Lo siento, intenta de nuevo</system:String>
+    <system:String x:Key="correctPair">Par correcto</system:String>
+    <system:String x:Key="incorrectPair">Lo siento, intenta de nuevo</system:String>
     <system:String x:Key="lbSelected">Selecciona un tema, por favor</system:String>
     <system:String x:Key="lbPlayersPlayed">Ahora jugando</system:String>
     <system:String x:Key="lbPlayersAvailable">Disponible</system:String>
-
     <system:String x:Key="lbSavedData">Informacion guardada con exito</system:String>
 
     <system:String x:Key="lbNewPassword">Revisa tu correo para una nueva contraseña</system:String>

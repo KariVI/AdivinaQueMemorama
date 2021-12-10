@@ -61,7 +61,8 @@
     <system:String x:Key="lbEmailInvalid">Email incorrect, please write again</system:String>
     <system:String x:Key="lbDeleteAccountFailed">Unable to delete your account, try again</system:String>
     <system:String x:Key="lbDeleteAccountCorrect">Account successfully deleted</system:String>
-    
+    <system:String x:Key="correctPair">Correct pair</system:String>
+    <system:String x:Key="incorrectPair">Sorry, try again</system:String>
     <system:String x:Key="btOk">Ok</system:String>
     <system:String x:Key="lbDeclineInvitation">decline your invitation</system:String>
     <system:String x:Key="lbAvailability">Are you still playing?</system:String>
@@ -86,4 +87,6 @@
     <system:String x:Key="lbEmailSended">Email sended</system:String>
     <system:String x:Key="lbInvitationSubject">Invitation to play</system:String>
     <system:String x:Key="lbInvitationMessage">You are invited to play Adivina Que! Click here to play</system:String>
+    
+    
 </ResourceDictionary>

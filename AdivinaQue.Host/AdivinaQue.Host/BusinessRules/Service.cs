@@ -267,8 +267,11 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendWinner(string toUsername, string winner)
         {
             users[toUsername].ReceiveWinner(winner);
-            currentlyUserPlayed.Remove(toUsername);
-            currentlyUserPlayed.Remove(winner);
+        }
+        public void DisconnectPlayers(string username, string rival)
+        {
+            currentlyUserPlayed.Remove(username);
+            currentlyUserPlayed.Remove(rival);
             GetCurrentlyUserPlayed();
             GetConnectedUsers();
         }

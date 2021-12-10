@@ -248,7 +248,7 @@ namespace AdivinaQue.Client.Views
 
                 if (pairCards[upCards.Keys.First()].Equals(upCards.Keys.ElementAt(1)))
                 {
-
+                    lbMessage.Text = Application.Current.Resources["correctPair"].ToString();
                     correct = true;
                 }
             }
@@ -256,7 +256,7 @@ namespace AdivinaQue.Client.Views
             {
                 if (pairCards[upCards.Keys.ElementAt(1)].Equals(upCards.Keys.First()))
                 {
-
+                    lbMessage.Text = Application.Current.Resources["correctPair"].ToString();
                     correct = true;
                 }
             }
@@ -286,6 +286,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
+                lbMessage.Text = Application.Current.Resources["incorrectPair"].ToString();
                 Thread.Sleep(1000);
                 btCard1.Content = null;
                 btCard2.Content = null;
@@ -337,7 +338,7 @@ namespace AdivinaQue.Client.Views
                 }
                 else
                 {
-                    Alert.ShowDialogWithResponse(Application.Current.Resources["lbTurn"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    lbMessage.Text = Application.Current.Resources["lbTurn"].ToString();
                 }
             }
             
@@ -420,6 +421,7 @@ namespace AdivinaQue.Client.Views
             {
                 home.Show();
             }
+            server.DisconnectPlayers(username, usernameRival);
             timer.Stop();
         }
 

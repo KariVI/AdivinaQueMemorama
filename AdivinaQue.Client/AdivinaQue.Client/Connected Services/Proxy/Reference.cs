@@ -622,6 +622,12 @@ namespace AdivinaQue.Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/SendWinner")]
         System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/DisconnectPlayers")]
+        void DisconnectPlayers(string username, string rival);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameMgt/DisconnectPlayers")]
+        System.Threading.Tasks.Task DisconnectPlayersAsync(string username, string rival);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameMgt/SendGame", ReplyAction="http://tempuri.org/IGameMgt/SendGameResponse")]
         bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently);
         
@@ -776,6 +782,14 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task SendWinnerAsync(string toUsername, string winner) {
             return base.Channel.SendWinnerAsync(toUsername, winner);
+        }
+        
+        public void DisconnectPlayers(string username, string rival) {
+            base.Channel.DisconnectPlayers(username, rival);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectPlayersAsync(string username, string rival) {
+            return base.Channel.DisconnectPlayersAsync(username, rival);
         }
         
         public bool SendGame(AdivinaQue.Client.Proxy.GameCurrently gameCurrently) {

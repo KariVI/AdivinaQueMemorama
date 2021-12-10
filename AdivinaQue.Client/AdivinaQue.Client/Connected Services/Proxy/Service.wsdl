@@ -245,6 +245,9 @@
   <wsdl:message name="IGameMgt_SendWinner_InputMessage">
     <wsdl:part name="parameters" element="tns:SendWinner" />
   </wsdl:message>
+  <wsdl:message name="IGameMgt_DisconnectPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectPlayers" />
+  </wsdl:message>
   <wsdl:message name="IGameMgt_SendGame_InputMessage">
     <wsdl:part name="parameters" element="tns:SendGame" />
   </wsdl:message>
@@ -444,6 +447,9 @@
     </wsdl:operation>
     <wsdl:operation name="SendWinner">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendWinner" message="tns:IGameMgt_SendWinner_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisconnectPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/DisconnectPlayers" message="tns:IGameMgt_DisconnectPlayers_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameMgt/SendGame" message="tns:IGameMgt_SendGame_InputMessage" />
@@ -799,6 +805,12 @@
     </wsdl:operation>
     <wsdl:operation name="SendWinner">
       <soap12:operation soapAction="http://tempuri.org/IGameMgt/SendWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DisconnectPlayers">
+      <soap12:operation soapAction="http://tempuri.org/IGameMgt/DisconnectPlayers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

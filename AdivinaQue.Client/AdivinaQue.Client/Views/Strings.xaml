@@ -57,4 +57,6 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
     <system:String x:Key="lbCorrectEmail">Email validated</system:String>
+    <system:String x:Key="correctPair">Correct pair</system:String>
+    <system:String x:Key="incorrectPair">Sorry, try again</system:String>
 </ResourceDictionary>
