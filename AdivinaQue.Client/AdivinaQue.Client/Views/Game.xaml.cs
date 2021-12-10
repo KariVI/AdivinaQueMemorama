@@ -142,8 +142,6 @@ namespace AdivinaQue.Client.Views
 
             for (int i = 0; i < sizeBoard ; i++)
             {
-
-
                 Button bt = new Button();
 
                 bt.Click += new RoutedEventHandler(button_onclick);

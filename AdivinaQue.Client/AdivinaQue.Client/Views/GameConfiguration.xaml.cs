@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -62,6 +63,7 @@ namespace AdivinaQue.Client.Views
                 {
                 serverGame.SendBoard(toUsername, sizeBoard, category);
                 serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
+                 Thread.Sleep(1000);
                 serverGame.SendRival(username, toUsername);
                 callback.SetServer(serverGame);
                 callback.SetGame(game);

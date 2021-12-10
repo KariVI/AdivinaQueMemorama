@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {}
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj",
+        "projectUniqueName": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj",
         "projectName": "AdivinaQue.Host",
-        "projectPath": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
+        "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {
+    "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
+        "projectUniqueName": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
         "projectName": "HostUnitTest",
-        "projectPath": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
-        "packagesPath": "C:\\Users\\Mariana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\obj\\",
+        "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\HostUnitTest.csproj",
+        "packagesPath": "C:\\Users\\jack-\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\HostUnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mariana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jack-\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,8 +38,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
-                "projectPath": "C:\\Users\\Mariana\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
+              "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj": {
+                "projectPath": "C:\\Users\\jack-\\Documents\\GitHub\\AdivinaQueMemorama\\AdivinaQue.Host\\AdivinaQue.Host\\AdivinaQue.Host.csproj"
               }
             }
           }
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }
