@@ -14,3 +14,4 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.csproj.CoreCompileInputs.cache
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.dll
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.pdb
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Debug\Resources_es-MEX.csproj.AssemblyReference.cache

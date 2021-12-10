@@ -423,6 +423,7 @@ namespace AdivinaQue.Client.Views
             {
                 home.Show();
             }
+            server.DisconnectPlayers(username, usernameRival);
             timer.Stop();
         }
 

@@ -22,6 +22,8 @@ namespace AdivinaQue.Client.Views
             this.serverPlayer = server;
             this.callback = callback;
             callback.SetHome(this);
+            chat = new Chat(serverPlayer);
+            
         }
 
         private void btModify_Click(object sender, RoutedEventArgs e)
@@ -64,7 +66,9 @@ namespace AdivinaQue.Client.Views
         public void setUsername(string username)
         {
             this.username = username;
-            setLabel();     
+            setLabel();
+            chat.setUsername(username);
+            callback.SetChat(chat);
         }
 
         public void setLabel()
@@ -125,9 +129,7 @@ namespace AdivinaQue.Client.Views
         private void btChat_Click(object sender, RoutedEventArgs e)
         {
 
-            chat = new Chat(serverPlayer);
-            chat.setUsername(username);
-            callback.SetChat(chat);
+            
             try
             {
                 serverPlayer.GetConnectedUsers();

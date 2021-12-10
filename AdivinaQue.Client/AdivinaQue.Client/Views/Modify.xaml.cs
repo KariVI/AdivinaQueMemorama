@@ -63,7 +63,7 @@ namespace AdivinaQue.Client.Views
                     string body = @"<style>
                                             h2{color:#E267B4;}
                                             </style>
-                                            <h2>" + message + "</h2>";
+                                            <h2>" + message + " " + code+ "</h2>";
                     string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
                     String messageEmailSuccesful = server.SendMail(tbEmail.Text, subject, body);
                     AuthMail authmail = new AuthMail(code, newPlayer, home);

@@ -84,9 +84,14 @@ namespace AdivinaQue.Client.Views
         }
 
         private void Window_Closed(object sender, EventArgs e)
+        {   
+            this.Hide();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-           
-            this.Close();
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

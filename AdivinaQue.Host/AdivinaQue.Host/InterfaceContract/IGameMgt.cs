@@ -33,6 +33,8 @@ namespace AdivinaQue.Host.InterfaceContract
         void SendNumberCardsFinded(string toUsername, int numberCardsFinded);
         [OperationContract(IsOneWay = true)]
         void SendWinner(string toUsername, string winner);
+        [OperationContract(IsOneWay = true)]
+        void DisconnectPlayers(string username, string rival);
 
         [OperationContract]
         bool SendGame(GameCurrently gameCurrently);

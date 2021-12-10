@@ -138,7 +138,7 @@ namespace AdivinaQue.Client.Views
                                                         h3{color:#E267B4;}
                                                         </style>
                                                         <p> Tu nueva contraseña es: </p>
-                                                        <h4>" + message + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                                        <h4>" + message + " "+ passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
                                                         "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
 
                         String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
