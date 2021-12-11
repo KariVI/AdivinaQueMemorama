@@ -65,7 +65,7 @@ namespace AdivinaQue.Client.Views
             scoreRival = 0;
             
             numberCardsFinded = 0;
-            nextTurn = true;
+            nextTurn = false;
             UpdateSizes();
 
             if (category == "Diseño")
@@ -84,7 +84,7 @@ namespace AdivinaQue.Client.Views
             SetTimerButton(this);
         }
 
-        public void setServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
+        public void SetServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
         {
             serverPlayer = playerMgtClient;
         }
@@ -273,15 +273,12 @@ namespace AdivinaQue.Client.Views
 
             if (correct)
             {
-
                 server.SendCorrectCards(usernameRival, upCards);
                 scorePlayer++;
                 server.SendScoreRival(usernameRival, scorePlayer);
                 numberCardsFinded = numberCardsFinded + 2;
                 server.SendNumberCardsFinded(usernameRival, numberCardsFinded);
                 tbPlayerScore.Text = Convert.ToString(scorePlayer);
-
-
                 btCard1.Name = "blocked";
                 btCard2.Name = "blocked";
             }
@@ -293,17 +290,18 @@ namespace AdivinaQue.Client.Views
                 btCard2.Content = null;
             }
             nextTurn = false;
-            lbMessage.Text = "";
             server.SendNextTurnRival(usernameRival, true);
-
-
             if (numberCardsFinded == gameCards.Count)
             {
                 AssignWinner();
             }
             upCards = new Dictionary<BitmapImage, string>();
             timerButton.Start();
+            Thread.Sleep(100);
+            lbMessage.Text = "";
+
         }
+
         public Button GetButton(string name)
         {
             int i = 0;
@@ -341,6 +339,8 @@ namespace AdivinaQue.Client.Views
                 else
                 {
                     lbMessage.Text = Application.Current.Resources["lbTurn"].ToString();
+                    Thread.Sleep(10);
+                    lbMessage.Text = "";
                 }
             }
             

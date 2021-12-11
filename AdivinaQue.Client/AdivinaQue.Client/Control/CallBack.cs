@@ -71,9 +71,6 @@ namespace AdivinaQue.Client.Control
             this.gameConfiguration = gameConfiguration;
         }
 
-     
-  
-
         public void RecieveUsers(Dictionary<string, object> users)
         {
             

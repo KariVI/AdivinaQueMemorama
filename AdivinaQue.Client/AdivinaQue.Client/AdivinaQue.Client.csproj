@@ -259,16 +259,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resources_en-US\Resources_en-US.csproj">
-      <Project>{8bfdc630-be99-4f8c-b6f3-87b5cc1780aa}</Project>
-      <Name>Resources_en-US</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Resources_es-MEX\Resources_es-MEX.csproj">
-      <Project>{4c11ec5c-eeab-490c-99a2-057ad62d669a}</Project>
-      <Name>Resources_es-MEX</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
@@ -414,6 +404,16 @@
     <Resource Include="Images\Diseño\23-2.png" />
     <Resource Include="Images\Diseño\24-1.png" />
     <Resource Include="Images\Diseño\24-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resources_en-US\Resources_en-US.csproj">
+      <Project>{8bfdc630-be99-4f8c-b6f3-87b5cc1780aa}</Project>
+      <Name>Resources_en-US</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources_es-MEX\Resources_es-MEX.csproj">
+      <Project>{4c11ec5c-eeab-490c-99a2-057ad62d669a}</Project>
+      <Name>Resources_es-MEX</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -82,6 +82,7 @@ namespace AdivinaQue.Client.Views
                 game.SetUsername(username);
                 game.SetUsernameRival(toUsername);
                 game.SetRandomLists(randomImageList, randomPositionList);
+                game.NextTurn = true;
                 game.home = home;
                 game.Show();
                 backHome = false;
