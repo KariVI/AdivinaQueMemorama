@@ -63,7 +63,7 @@ namespace AdivinaQue.Client.Views
                 {
                 serverGame.SendBoard(toUsername, sizeBoard, category);
                 serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
-                 Thread.Sleep(1000);
+                 Thread.Sleep(100);
                 serverGame.SendRival(username, toUsername);
                 callback.SetServer(serverGame);
                 callback.SetGame(game);

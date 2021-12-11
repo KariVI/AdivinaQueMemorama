@@ -36,7 +36,7 @@ namespace AdivinaQue.Client.Views
                     newPlayer.Username = tbUsername.Text.Trim();
                     newPlayer.Email = tbEmail.Text.Trim();
                     newPlayer.Password = pbPassword.Password;
-                    sendEmail();
+                    SendEmail();
                     this.Close();
                 }
                 else
@@ -51,7 +51,7 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        private void sendEmail()
+        private void SendEmail()
         {
             try
             {
@@ -68,8 +68,8 @@ namespace AdivinaQue.Client.Views
                     String messageEmailSuccesful = server.SendMail(tbEmail.Text, subject, body);
                     AuthMail authmail = new AuthMail(code, newPlayer, home);
                     backHome = false;
-                    authmail.setServer(server);
-                    authmail.setUsername(username);
+                    authmail.SetServer(server);
+                    authmail.SetUsername(username);
                     authmail.Show();
                     if (messageEmailSuccesful == "Exito")
                     {
@@ -211,7 +211,7 @@ namespace AdivinaQue.Client.Views
                     if (server.Delete(username))
                     {
                         Alert.ShowDialog(Application.Current.Resources["lbDeleteAccountCorrect"].ToString(), Application.Current.Resources["btOk"].ToString());
-                        home.disconect();
+                        home.Disconect();
                         this.Close();
                     }
                     else

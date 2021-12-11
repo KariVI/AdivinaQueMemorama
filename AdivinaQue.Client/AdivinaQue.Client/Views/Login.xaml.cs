@@ -45,7 +45,7 @@ namespace AdivinaQue.Client.Views
                     else if (value)
                     {
                         Home home = new Home(serverPlayer, callback);
-                        home.setUsername(tbUsername.Text);
+                        home.SetUsername(tbUsername.Text);
                         callback.SetCurrentUsername(tbUsername.Text);
                         callback.SetServer(serverGame);
                         callback.SetServerPlayer(serverPlayer);

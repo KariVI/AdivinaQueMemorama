@@ -74,12 +74,12 @@ namespace AdivinaQue.Client.Views
             }
             return value;
         }
-        internal void setServer(PlayerMgtClient server)
+        internal void SetServer(PlayerMgtClient server)
         {
             this.server = server;
         }
 
-        internal void setUsername(string username)
+        internal void SetUsername(string username)
         {
             this.username = username;
         }

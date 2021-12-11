@@ -79,7 +79,7 @@
     <system:String x:Key="lbModifySucces">user modified successfully</system:String>
     <system:String x:Key="lbIncorrectCode">Please write the correct code</system:String>
     <system:String x:Key="lbCorrectEmail">Email validated</system:String>
-    <system:String x:Key="errorPair">Sorry , ty again</system:String>
+    <system:String x:Key="incorrectPair">Sorry , ty again</system:String>
     <system:String x:Key="lbSelected">Select a Topic , please</system:String>
 
     <system:String x:Key="lbPlayersPlayed">Currently playing</system:String>

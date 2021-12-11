@@ -199,9 +199,6 @@ namespace AdivinaQue.Host.BusinessRules
 
         }
 
-  
-
-
         public List<String> GetEmails()
         {
             Authentication authentication = new Authentication();

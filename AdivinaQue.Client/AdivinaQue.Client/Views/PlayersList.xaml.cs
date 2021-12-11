@@ -85,7 +85,7 @@ namespace AdivinaQue.Client.Views
                 {
                     var player = listUsers.SelectedValue.ToString();
                     bool result = serverPlayer.SendInvitation(player, username);
-                    showResponse(result, player);
+                    ShowResponse(result, player);
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
@@ -97,7 +97,7 @@ namespace AdivinaQue.Client.Views
                 }
             }
         }
-        private void showResponse(bool result, string player)
+        private void ShowResponse(bool result, string player)
         {
             if (result)
             {

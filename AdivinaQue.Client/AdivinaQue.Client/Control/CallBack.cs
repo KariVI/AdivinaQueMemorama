@@ -164,7 +164,7 @@ namespace AdivinaQue.Client.Control
         public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
         {
 
-                game.turnOffRivalCards();
+                game.TurnOffRivalCards();
                 game.upCardRival.Clear();
                 game.upCardsRival.Clear();            
                 game.SetCorrectCards(cards);
@@ -181,7 +181,7 @@ namespace AdivinaQue.Client.Control
         {
 
             game.NextTurn = nextTurn;
-            game.turnOffRivalCards();
+            game.TurnOffRivalCards();
             game.upCardRival.Clear();
             game.upCardsRival.Clear();
 
@@ -220,7 +220,7 @@ namespace AdivinaQue.Client.Control
             game.upCardRival.Clear();
             game.upCardRival.Add(image, name);
             game.upCardsRival.Add(image, name);
-            game.turnRivalSelection();
+            game.TurnRivalSelection();
 
             
         }

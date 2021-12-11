@@ -41,13 +41,13 @@ namespace AdivinaQue.Client.Views
         }
         private void btLogout_Click(object sender, RoutedEventArgs e)
         {
-            disconect();
+            Disconect();
             Login login = new Login();
             login.Show();
             this.Close();
         }
 
-        public void disconect()
+        public void Disconect()
         {
             try
             {
@@ -63,15 +63,15 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        public void setUsername(string username)
+        public void SetUsername(string username)
         {
             this.username = username;
-            setLabel();
-            chat.setUsername(username);
+            SetLabel();
+            chat.SetUsername(username);
             callback.SetChat(chat);
         }
 
-        public void setLabel()
+        public void SetLabel()
         {
             lbUser.Content = Application.Current.Resources["lbGretting"].ToString()+" " + username;
         }
@@ -123,7 +123,7 @@ namespace AdivinaQue.Client.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            disconect();
+            Disconect();
         }
 
         private void btChat_Click(object sender, RoutedEventArgs e)

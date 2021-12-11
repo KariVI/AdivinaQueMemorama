@@ -60,13 +60,13 @@ namespace AdivinaQue.Client.Views
             return result;
         }
 
-        private void no_Click(object sender, RoutedEventArgs e)
+        private void No_Click(object sender, RoutedEventArgs e)
         {
             result = AlertResult.No;
             Close();
         }
 
-        private void yes_Click(object sender, RoutedEventArgs e)
+        private void Yes_Click(object sender, RoutedEventArgs e)
         {
             result = AlertResult.Yes;
             timer.Stop();
@@ -75,10 +75,10 @@ namespace AdivinaQue.Client.Views
         private void SetTimer()
         {        
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            timer.Tick += onTick;
+            timer.Tick += OnTick;
         }
         private int time = 0;
-        private  void onTick(object sender, EventArgs e)
+        private  void OnTick(object sender, EventArgs e)
         {
                time++;
                 lbTime.Content = "("+ (40 - time).ToString()+")";

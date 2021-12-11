@@ -52,13 +52,13 @@ namespace AdivinaQue.Client.Views
 
         }
 
-        public void setUsername(string username)
+        public void SetUsername(string username)
         {
             
             this.username = username;
-            setLabel();
+            SetLabel();
         }
-        public void setLabel()
+        public void SetLabel()
         {
             lbUser.Content = Application.Current.Resources["lbGretting"].ToString() + " " + username;
         }
