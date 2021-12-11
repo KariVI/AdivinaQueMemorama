@@ -45,7 +45,10 @@ namespace AdivinaQue.Client.Control
 
         public void RecieveMessage(String message)
         {
-            chat.messagesCollection.Add(message);
+            if (chat != null)
+            {
+                chat.messagesCollection.Add(message);
+            }
         }
         public void SetChat(Chat chat)
         {
@@ -93,6 +96,7 @@ namespace AdivinaQue.Client.Control
                 {
                     chat.usersCollection.Add(username);
                 }
+                chat.usersCollection.Remove(currentUsername);
             }
 
 

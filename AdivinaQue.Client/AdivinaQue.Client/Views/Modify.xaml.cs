@@ -1,5 +1,7 @@
 ﻿using AdivinaQue.Client.Control;
+using AdivinaQue.Client.Logs;
 using AdivinaQue.Client.Proxy;
+using log4net;
 using System;
 using System.ServiceModel;
 using System.Windows;
@@ -17,6 +19,8 @@ namespace AdivinaQue.Client.Views
         private PlayerMgtClient server;
         private Home home;
         private bool backHome = true;
+        private static readonly ILog Logs = Log.GetLogger();
+
 
         public Modify(CallBack callback, Home home)
         {
@@ -89,6 +93,8 @@ namespace AdivinaQue.Client.Views
              }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();
                 backHome = false;
@@ -187,6 +193,8 @@ namespace AdivinaQue.Client.Views
              }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 backHome = false;
                 Login login = new Login();
@@ -221,6 +229,8 @@ namespace AdivinaQue.Client.Views
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
+
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
                     backHome = false;
@@ -239,6 +249,8 @@ namespace AdivinaQue.Client.Views
             }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
             {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 Login login = new Login();
                 backHome = false;

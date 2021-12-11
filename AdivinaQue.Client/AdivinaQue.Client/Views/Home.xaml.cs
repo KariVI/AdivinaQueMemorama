@@ -8,7 +8,6 @@ using System.Windows;
 namespace AdivinaQue.Client.Views
 {
 
-    // Proxy.PlayerMgtClient serverPlayer;
     public partial class Home : Window
     {
         private Proxy.PlayerMgtClient serverPlayer;
@@ -41,10 +40,8 @@ namespace AdivinaQue.Client.Views
         }
         private void btLogout_Click(object sender, RoutedEventArgs e)
         {
-            Disconect();
-            Login login = new Login();
-            login.Show();
             this.Close();
+          
         }
 
         public void Disconect()
@@ -56,6 +53,9 @@ namespace AdivinaQue.Client.Views
                 {
                     chat.Close();
                 }
+                Login login = new Login();
+                login.Show();
+                this.Close();
             } catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException  || ex is CommunicationObjectFaultedException )
 
             {

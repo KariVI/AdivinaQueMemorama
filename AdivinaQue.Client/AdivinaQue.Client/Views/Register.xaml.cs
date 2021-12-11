@@ -1,5 +1,8 @@
 ﻿using AdivinaQue.Client.Control;
+using AdivinaQue.Client.Logs;
+using log4net;
 using System;
+using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +15,8 @@ namespace AdivinaQue.Client.Views
 
         Proxy.PlayerMgtClient serverPlayer;
         private String email;
+        private static readonly ILog Logs = Log.GetLogger();
+
 
 
         public Register(Proxy.PlayerMgtClient server, String email)
@@ -119,7 +124,18 @@ namespace AdivinaQue.Client.Views
 
         private string[] ConvertUpperStrings()
         {
-            int numberUsers = serverPlayer.GetUsers().Length;
+            int numberUsers=0;
+            try
+            {
+                numberUsers=serverPlayer.GetUsers().Length;
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+            {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                this.Close();
+            }
+
             string[] usernames = new string[numberUsers];
             for (int i = 0; i < numberUsers; i++)
             {
@@ -155,9 +171,18 @@ namespace AdivinaQue.Client.Views
             player.Password = Password.Password.ToString();
             player.Name = tbName.Text.Trim();
             player.Email = email;
-            serverPlayer.Register(player);
-            Alert.ShowDialog(Application.Current.Resources["lbSavedData"].ToString(), Application.Current.Resources["btOk"].ToString());
-            this.Close();
+            try
+            {
+                serverPlayer.Register(player);
+                Alert.ShowDialog(Application.Current.Resources["lbSavedData"].ToString(), Application.Current.Resources["btOk"].ToString());
+                this.Close();
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+            {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+             
+            }
+          
 
         }
 

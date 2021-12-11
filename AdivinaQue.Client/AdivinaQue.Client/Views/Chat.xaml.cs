@@ -66,24 +66,22 @@ namespace AdivinaQue.Client.Views
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(MessageContent.Text))
+            if (!string.IsNullOrEmpty(MessageContent.Text) && !string.IsNullOrWhiteSpace(MessageContent.Text))
+            {
 
                 if (ListUsers.SelectedValue != null)
                 {
-                    Console.WriteLine(typeMessage);
                     typeMessage = ListUsers.SelectedValue.ToString();
                 }
-
                 server.SendMessage(MessageContent.Text, username, typeMessage);
-       
-            
-            ListUsers.SelectedValue = null;
-            MessageContent.Clear();
-            typeMessage = "Todos";
+                ListUsers.SelectedValue = null;
+                MessageContent.Clear();
+                typeMessage = "Todos";
+            }
 
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+       private void Window_Closed(object sender, EventArgs e)
         {   
             this.Hide();
         }

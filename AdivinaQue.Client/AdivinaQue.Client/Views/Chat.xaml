@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         mc:Ignorable="d"
-        Title="Chat" Height="450" Width="600" Closing="Window_Closing">
+        Title="Chat" Height="450" Width="600" 
+        >
     <Grid Background ="Lavender">
 
 

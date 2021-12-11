@@ -1,8 +1,11 @@
-﻿using AdivinaQue.Client.Proxy;
+﻿using AdivinaQue.Client.Logs;
+using AdivinaQue.Client.Proxy;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.ServiceModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
@@ -40,6 +43,8 @@ namespace AdivinaQue.Client.Views
         public Dictionary<BitmapImage, string> upCardRival = new Dictionary<BitmapImage, string>();
         public Dictionary<BitmapImage, string> upCardsRival = new Dictionary<BitmapImage, string>();
         public Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
+        private static readonly ILog Logs = Log.GetLogger();
+
         private bool nextTurn;
         public bool NextTurn { set { nextTurn = value; } get { return nextTurn; } }
 
@@ -134,7 +139,6 @@ namespace AdivinaQue.Client.Views
         {
             this.usernameRival = usernameRival;
             lbRivalScore.Content = usernameRival;
-            lbRival.Content = usernameRival;
 
         }
         public void AddButton()
@@ -297,8 +301,7 @@ namespace AdivinaQue.Client.Views
             }
             upCards = new Dictionary<BitmapImage, string>();
             timerButton.Start();
-            Thread.Sleep(100);
-            lbMessage.Text = "";
+          
 
         }
 
@@ -329,7 +332,19 @@ namespace AdivinaQue.Client.Views
                             gameCards[bt.Name].DecodePixelHeight = 624 / row;
                             buttonAuxiliar.Source = gameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
-                            server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
+                            try { 
+                                 server.SendCardTurn(usernameRival,gameCards[bt.Name], bt.Name);
+                             }
+                            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+                            {
+                                Logs.Error($"Fallo la conexión ({ ex.Message})");
+                                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                                backHome = false;
+                                endGame = false;
+                                this.Close();
+
+                                
+                            }
                             upCards.Add(gameCards[bt.Name], bt.Name);
 
                             
@@ -339,8 +354,7 @@ namespace AdivinaQue.Client.Views
                 else
                 {
                     lbMessage.Text = Application.Current.Resources["lbTurn"].ToString();
-                    Thread.Sleep(10);
-                    lbMessage.Text = "";
+                   
                 }
             }
             
@@ -423,7 +437,9 @@ namespace AdivinaQue.Client.Views
             {
                 home.Show();
             }
+            
             server.DisconnectPlayers(username, usernameRival);
+            
             timer.Stop();
         }
 

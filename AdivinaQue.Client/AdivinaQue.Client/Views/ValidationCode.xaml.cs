@@ -1,4 +1,6 @@
 ﻿using AdivinaQue.Client.Control;
+using AdivinaQue.Client.Logs;
+using log4net;
 using System;
 
 using System.Collections.Generic;
@@ -16,6 +18,8 @@ namespace AdivinaQue.Client.Views
         private String codeExpected;
 
         Proxy.PlayerMgtClient serverPlayer;
+        private static readonly ILog Logs = Log.GetLogger();
+
 
         public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
         public ValidationCode(Proxy.PlayerMgtClient server)
@@ -87,21 +91,32 @@ namespace AdivinaQue.Client.Views
                         string body = @"<style>
                                             h2{color:#E267B4;}
                                             </style>
-                                            <h2>" + message + "</h2>";
+                                            <h2>" + message + ": " + code + "</h2>";
 
                         string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
-                        String messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
 
-                        if (messageEmailSuccesful == "Exito")
+                        String messageEmailSuccesful="Error";
+                        try
                         {
+                            messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
+                            if (messageEmailSuccesful == "Exito")
+                            {
 
-                            Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
+                                Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
+                            }
+                            else
+                            {
+                                Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                            }
                         }
-                        else
+                        catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
                         {
-                            Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
-
+                            Logs.Error($"Fallo la conexión ({ ex.Message})");
                         }
+
+
+                       
                     }
                     else
                     {
@@ -124,12 +139,25 @@ namespace AdivinaQue.Client.Views
 
         private bool SearchDuplicateEmail() {
             bool value = false;
-            string[] emails = serverPlayer.GetEmails();
-                foreach(var email in emails ){  
-                    if(email.Equals(tbEmail.Text)){ 
-                        value=true;
+            
+            try
+            {
+                string[] emails=emails = serverPlayer.GetEmails();
+                foreach (var email in emails)
+                {
+                    if (email.Equals(tbEmail.Text))
+                    {
+                        value = true;
                     }
                 }
+            }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+            {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                this.Close();
+            }
+           
                          
             return value;
         }

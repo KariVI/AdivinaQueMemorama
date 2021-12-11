@@ -1,4 +1,6 @@
 ﻿using AdivinaQue.Client.Control;
+using AdivinaQue.Client.Logs;
+using log4net;
 using System;
 using System.Linq;
 using System.ServiceModel;
@@ -13,6 +15,7 @@ namespace AdivinaQue.Client.Views
         InstanceContext context;
         Proxy.PlayerMgtClient serverPlayer;
         Proxy.GameMgtClient serverGame;
+        private static readonly ILog Logs = Log.GetLogger();
 
         private int numberFailedEnter = 0;
         public Login()
@@ -50,12 +53,14 @@ namespace AdivinaQue.Client.Views
                         callback.SetServer(serverGame);
                         callback.SetServerPlayer(serverPlayer);
                         serverPlayer.GetConnectedUsers();
+                        this.Hide();
                         home.Show();
-                        this.Close();
                     }
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
+
 
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
@@ -156,6 +161,14 @@ namespace AdivinaQue.Client.Views
             }
 
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+      
+
+      
     }
 }
 
