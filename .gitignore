@@ -9,3 +9,5 @@ AdivinaQue.Host/AdivinaQue.Host/obj/Debug/AdivinaQue.Host.csproj.FileListAbsolut
 *.cache
 *.pdb
 *.dll
+AdivinaQue.Client/AdivinaQue.Client/bin/Debug/Resources_es-MEX.dll
+AdivinaQue.Client/AdivinaQue.Client/bin/Debug/AdivinaQue.Client.exe
