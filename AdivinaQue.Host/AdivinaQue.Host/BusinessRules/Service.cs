@@ -33,7 +33,7 @@ namespace AdivinaQue.Host.BusinessRules
         public bool Delete(string username)
         {
             Authentication authentication = new Authentication();
-            AuthenticationStatus status = authentication.Delete(username);
+            AuthenticationStatus status = authentication.DeleteSucessful(username);
             bool value = false;
             if (status == AuthenticationStatus.Success)
             {
@@ -58,7 +58,7 @@ namespace AdivinaQue.Host.BusinessRules
         public bool Join(string username, string password)
         {
             Authentication authentication = new Authentication();
-            AuthenticationStatus status = authentication.Login(username, password);
+            AuthenticationStatus status = authentication.LoginSuccesful(username, password);
             Boolean value = false;
             if (status == AuthenticationStatus.Success)
             {
@@ -73,7 +73,7 @@ namespace AdivinaQue.Host.BusinessRules
         public Boolean Register(Player player)
         {
             Authentication authentication = new Authentication();
-            AuthenticationStatus status = authentication.Register(player);
+            AuthenticationStatus status = authentication.RegisterSucessful(player);
             Boolean value = false;
 
             if (status == AuthenticationStatus.Success)
@@ -86,7 +86,7 @@ namespace AdivinaQue.Host.BusinessRules
         public bool Modify(Player player, String username)
         {
             Authentication authentication = new Authentication();
-            AuthenticationStatus status = authentication.UpdatePlayer(player, username);
+            AuthenticationStatus status = authentication.UpdateSucessful(player, username);
             bool value = true;
             if(status == AuthenticationStatus.Failed)
             {
@@ -249,7 +249,7 @@ namespace AdivinaQue.Host.BusinessRules
             bool value = false;
             Authentication authentication = new Authentication();
 
-                if (authentication.AddGame(gameCurrently) == AuthenticationStatus.Success)
+                if (authentication.AddGameSucessful(gameCurrently) == AuthenticationStatus.Success)
                 {
                     value = true;
                 }
@@ -285,7 +285,7 @@ namespace AdivinaQue.Host.BusinessRules
             Authentication authentication = new Authentication();
             bool value = false;
 
-            if (authentication.UpdatePassword(username, newPassword) == AuthenticationStatus.Success)
+            if (authentication.UpdateSucessfulPassword(username, newPassword) == AuthenticationStatus.Success)
             {
                 value = true;
             }

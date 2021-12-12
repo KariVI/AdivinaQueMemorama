@@ -59,6 +59,7 @@ namespace AdivinaQue.Client.Views
             } catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException  || ex is CommunicationObjectFaultedException )
 
             {
+                
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
@@ -129,7 +130,6 @@ namespace AdivinaQue.Client.Views
         private void btChat_Click(object sender, RoutedEventArgs e)
         {
 
-            
             try
             {
                 serverPlayer.GetConnectedUsers();

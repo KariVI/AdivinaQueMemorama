@@ -281,6 +281,55 @@ namespace ClientTest
 
         [TestMethod]
 
+        public void TestSendScoreRival()
+        {
+            Mock<IGameMgtCallback> mockCallback = new Mock<IGameMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+            GameMgtClient server = new GameMgtClient(context);
+            mgtClient.Join("MariV", "mariV");
+            server.SendScoreRival("MariV", 12);
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.ReceiveScoreRival(It.IsAny<int>()), Times.AtLeastOnce());
+            mgtClient.DisconnectUser("MariV");
+        }
+
+        [TestMethod]
+
+        public void TestSendNumberCardsFinded()
+        {
+            Mock<IGameMgtCallback> mockCallback = new Mock<IGameMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+            GameMgtClient server = new GameMgtClient(context);
+            mgtClient.Join("MariV", "mariV");
+            server.SendNumberCardsFinded("MariV", 12);
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.ReceiveNumberCardsFinded(It.IsAny<int>()), Times.AtLeastOnce());
+            mgtClient.DisconnectUser("MariV");
+        }
+
+        [TestMethod]
+
+        public void TestSendWinner()
+        {
+            Mock<IGameMgtCallback> mockCallback = new Mock<IGameMgtCallback>() { CallBase = true };
+            InstanceContext context = new InstanceContext(mockCallback.Object);
+            PlayerMgtClient mgtClient = new PlayerMgtClient(context);
+
+            GameMgtClient server = new GameMgtClient(context);
+            mgtClient.Join("MariV", "mariV");
+            server.SendWinner("MariV", "egy");
+            Thread.Sleep(1000);
+            mockCallback.Verify(mock => mock.ReceiveWinner(It.IsAny<string>()), Times.AtLeastOnce());
+            mgtClient.DisconnectUser("MariV");
+        }
+
+
+        [TestMethod]
+
         public void TestGetEmails()
         {
             CallBack callback = new CallBack();
@@ -292,17 +341,18 @@ namespace ClientTest
             emailsExpected.Add("angelicaiglesiase@hotmail.com");
             emailsExpected.Add("angelicaiglesiase@hotmail.com");
             server.GetEmails();
-            bool value = true;
+            int valueExpected =4 ;
+            int valueReceived = 0;
 
             foreach (var email in server.GetEmails())
             {
-                if (!emailsExpected.Contains(email))
+                if (emailsExpected.Contains(email))
                 {
-                    value = false;
+                    valueReceived++;
                 }
             }
 
-            Assert.IsTrue(value);
+            Assert.AreEqual(valueExpected,valueReceived);
 
         }
 
@@ -319,7 +369,8 @@ namespace ClientTest
             usersExpected.Add("MariV");
             usersExpected.Add("angy");
             usersExpected.Add("egy");
-            bool value = true;
+            int valueExpected = 4;
+            int valueReceived = 0;
 
             foreach (var user in server.GetUsers())
             {
@@ -327,11 +378,11 @@ namespace ClientTest
 
                 if (!usersExpected.Contains(user))
                 {
-                    value = false;
+                    valueReceived++;
                 }
             }
 
-            Assert.IsTrue(value);
+            Assert.AreEqual(valueExpected, valueReceived);
 
         }
 

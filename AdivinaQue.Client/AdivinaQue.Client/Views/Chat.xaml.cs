@@ -1,7 +1,10 @@
-﻿using System;
+﻿using AdivinaQue.Client.Logs;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +33,8 @@ namespace AdivinaQue.Client.Views
 
         public ObservableCollection<String> messagesCollection;
         public ObservableCollection<String> usersCollection;
+        private static readonly ILog Logs = Log.GetLogger();
+
 
 
         public Label MessageTitle { get { return Title; } set { Title = value; } }
@@ -73,7 +78,19 @@ namespace AdivinaQue.Client.Views
                 {
                     typeMessage = ListUsers.SelectedValue.ToString();
                 }
-                server.SendMessage(MessageContent.Text, username, typeMessage);
+                try
+                {
+                    server.SendMessage(MessageContent.Text, username, typeMessage);
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+
+                {
+
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    this.Close();
+
+                }
                 ListUsers.SelectedValue = null;
                 MessageContent.Clear();
                 typeMessage = "Todos";

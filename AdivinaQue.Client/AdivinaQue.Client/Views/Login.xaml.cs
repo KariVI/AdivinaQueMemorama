@@ -59,9 +59,7 @@ namespace AdivinaQue.Client.Views
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
-                    Logs.Error($"Fallo la conexión ({ ex.Message})");
-
-
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");                                        
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Login login = new Login();
                     this.Close();

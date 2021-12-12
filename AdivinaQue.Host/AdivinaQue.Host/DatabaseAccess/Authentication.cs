@@ -23,7 +23,7 @@ namespace AdivinaQue.Host.DatabaseAccess
         }
         public List<int> ListScores { get { return listScores; } set { listScores = value; } }
         public List<string> ListPlayers { get { return listPlayers; } set { listPlayers = value; } }
-        public AuthenticationStatus Login(string userName, string password)
+        public AuthenticationStatus LoginSuccesful(string userName, string password)
         {
             AuthenticationStatus status = AuthenticationStatus.Failed;
             string passwordHashed = ComputeSHA256Hash(password);
@@ -84,7 +84,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         
         }
-        public AuthenticationStatus UpdatePlayer(Player player,String username)
+        public AuthenticationStatus UpdateSucessful(Player player,String username)
         {
             string passwordHashed = ComputeSHA256Hash(player.Password);
             AuthenticationStatus status = AuthenticationStatus.Success;
@@ -112,7 +112,7 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         }
 
-        public AuthenticationStatus UpdatePassword( String username, String password)
+        public AuthenticationStatus UpdateSucessfulPassword( String username, String password)
         {
             string passwordHashed = ComputeSHA256Hash(password);
             AuthenticationStatus status = AuthenticationStatus.Success;
@@ -134,7 +134,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             return status;
 
         }
-        public AuthenticationStatus Register(Player player)
+        public AuthenticationStatus RegisterSucessful(Player player)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
             string passwordHashed = ComputeSHA256Hash(player.Password);
@@ -148,7 +148,6 @@ namespace AdivinaQue.Host.DatabaseAccess
             catch (EntityException ex)
             {
                 status = AuthenticationStatus.Failed;
-                Console.WriteLine(ex.Message);
                 Logs.Error($"Fallo la conexión ({ ex.Message})");
                 
             }
@@ -157,7 +156,7 @@ namespace AdivinaQue.Host.DatabaseAccess
         }
 
 
-        public AuthenticationStatus Delete(string username)
+        public AuthenticationStatus DeleteSucessful(string username)
         {
             AuthenticationStatus status;
             using (var context = new AdivinaQueAppContext())
@@ -189,7 +188,7 @@ namespace AdivinaQue.Host.DatabaseAccess
             string codeString = new String(code);
             return codeString;
         }
-        public AuthenticationStatus SendMail(string email, string newMessage)
+        public AuthenticationStatus SendMailSucessful(string email, string newMessage)
         {
             string userMail = "AdivinaQueTeam@hotmail.com";
             string password = "MarianaKarina1234";
@@ -214,7 +213,8 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             catch (SmtpException ex)
             {
-                Console.WriteLine(ex.Message);
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+
             }
             return status;
         }
@@ -252,7 +252,7 @@ namespace AdivinaQue.Host.DatabaseAccess
         }
 
 
-        public AuthenticationStatus AddGame(GameCurrently gameCurrently)
+        public AuthenticationStatus AddGameSucessful(GameCurrently gameCurrently)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
             AuthenticationStatus status = AuthenticationStatus.Success;
@@ -284,12 +284,12 @@ namespace AdivinaQue.Host.DatabaseAccess
         private int GetIdUser(string username)
         {
             int id = 0;
-            using (var context = new AdivinaQueAppContext())
-            {
-                var query = (from Players in context.Players where Players.userName==username
-                            select  Players.Id).First(); 
-                id =query;
-            }
+                using (var context = new AdivinaQueAppContext())
+                {
+                    var query = (from Players in context.Players where Players.userName==username
+                                select  Players.Id).First(); 
+                    id =query;
+                }
 
 
             return id;

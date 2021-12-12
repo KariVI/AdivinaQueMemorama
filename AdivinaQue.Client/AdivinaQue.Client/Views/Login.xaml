@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdivinaQue.Client.Views"
         
         mc:Ignorable="d"
-        Title="{DynamicResource HeaderLogin}" Height="500" Width="472.5">
+        Title="{DynamicResource HeaderLogin}" Height="500" Width="472.5" Closed="Window_Closed"  >
 
     <Grid Background ="Lavender" Margin="0,0,-8,-53" >
         <TextBox x:Name="tbUsername" Background="#c0aee0" HorizontalAlignment="Left" Height="25" Margin="78,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" SelectionOpacity="0.2"/>
