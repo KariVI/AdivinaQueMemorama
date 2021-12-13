@@ -46,6 +46,8 @@ namespace AdivinaQue.Host.InterfaceContract
         bool ChangePassword(string username, string newPassword);
         [OperationContract]
         List<string> GetUsers();
+        [OperationContract]
+        List<string> GetUsersConnected();
 
         [OperationContract(IsOneWay = true)]
         void GetScores(string username);

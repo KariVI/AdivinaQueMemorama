@@ -2,6 +2,8 @@
 using AdivinaQue.Client.Logs;
 using log4net;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Windows;
@@ -28,43 +30,70 @@ namespace AdivinaQue.Client.Views
 
             LoadStringResource("es-MEX");
         }
+
+        private bool VerifyUserConnected()
+        {
+            bool value = false;
+            string[] usersConnected = serverPlayer.GetUsersConnected();
+            if (usersConnected.Contains(tbUsername.Text))
+            {
+                value = true;
+            }
+            return value;
+        }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbUsername.Text))
+            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(Password.Password.ToString()) 
+                && !string.IsNullOrWhiteSpace(tbUsername.Text) && !string.IsNullOrWhiteSpace(Password.Password.ToString()))
             {
                 try
                 {
-                    Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
-                    if (!value && numberFailedEnter < 3)
-                    {
-                        Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
-                        numberFailedEnter++;
+                    if (!VerifyUserConnected()) { 
+                        Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
+                        if (!value && numberFailedEnter < 3)
+                        {
+                            Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
+                            numberFailedEnter++;
+                        }
+                        else if (!value && numberFailedEnter == 3)
+                        {
+                            if (ChangePasswordSucessful())
+                            {
+                                Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
+                            }
+                        }
+                        else if (value)
+                        {
+                            Home home = new Home(serverPlayer, callback);
+                            home.SetUsername(tbUsername.Text);
+                            callback.SetCurrentUsername(tbUsername.Text);
+                            callback.SetServer(serverGame);
+                            callback.SetServerPlayer(serverPlayer);
+                            serverPlayer.GetConnectedUsers();
+                            this.Hide();
+                            home.Show();
+                        }
                     }
-                    else if (!value && numberFailedEnter == 3)
+                    else
                     {
-                        Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
-                        //mandar mensaje al usuario que cambiamos su contraseña por sobrepasar los intentos 
-                    }
-                    else if (value)
-                    {
-                        Home home = new Home(serverPlayer, callback);
-                        home.SetUsername(tbUsername.Text);
-                        callback.SetCurrentUsername(tbUsername.Text);
-                        callback.SetServer(serverGame);
-                        callback.SetServerPlayer(serverPlayer);
-                        serverPlayer.GetConnectedUsers();
-                        this.Hide();
-                        home.Show();
+                        Alert.ShowDialog(Application.Current.Resources["lbUserConnected"].ToString(), Application.Current.Resources["btOk"].ToString());
+
                     }
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
                     Logs.Error($"Fallo la conexión ({ ex.Message})");                                        
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
-                    Login login = new Login();
+                    numberFailedEnter = 0;
                     this.Close();
-                    login.Show();
+
                 }
+            }
+            else
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbEmptyFields"].ToString(), Application.Current.Resources["btOk"].ToString());
+
             }
 
         }
@@ -122,29 +151,42 @@ namespace AdivinaQue.Client.Views
             return resultString;
         }
 
+        private bool ChangePasswordSucessful()
+        {
+            bool value = false;
+            String passwordDefault = GenerateCodeValidation();
 
+            if (serverPlayer.ChangePassword(tbUsername.Text, passwordDefault))
+            {
+                string email = serverPlayer.GetEmailByUser(tbUsername.Text);
+
+                string message = Application.Current.Resources["lbDefaultPassword"].ToString();
+                string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
+                string body = @"<style>     
+                                                        h3{color:#E267B4;}
+                                                        </style>
+                                                        <p> Tu nueva contraseña es: </p>
+                                                        <h4>" + message + " " + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                                "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
+
+                String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
+                if (messageEmailSuccesful == "Exito")
+                {
+                    value = true;
+                }
+            }
+
+                return value;
+
+        }
         private void btPassword_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrWhiteSpace(tbUsername.Text))
             {
                 if (serverPlayer.FindUsername(tbUsername.Text))
                 {
-                    String passwordDefault = GenerateCodeValidation();
-
-                    if (serverPlayer.ChangePassword(tbUsername.Text, passwordDefault))
+                    if (ChangePasswordSucessful())
                     {
-                        string email = serverPlayer.GetEmailByUser(tbUsername.Text);
-
-                        string message = Application.Current.Resources["lbDefaultPassword"].ToString();
-                        string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
-                        string body = @"<style>     
-                                                        h3{color:#E267B4;}
-                                                        </style>
-                                                        <p> Tu nueva contraseña es: </p>
-                                                        <h4>" + message + " "+ passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
-                                                        "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
-
-                        String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
                         Alert.ShowDialog(Application.Current.Resources["lbNewPassword"].ToString(), Application.Current.Resources["btOk"].ToString());
                     }
                 }

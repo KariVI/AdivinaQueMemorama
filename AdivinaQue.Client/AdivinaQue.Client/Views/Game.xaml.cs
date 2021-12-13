@@ -342,6 +342,8 @@ namespace AdivinaQue.Client.Views
                                 backHome = false;
                                 endGame = false;
                                 this.Close();
+                                Login login = new Login();
+                                login.Show();
 
                                 
                             }

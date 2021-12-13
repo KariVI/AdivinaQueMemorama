@@ -20,7 +20,7 @@ namespace HostTest
             player.Password = "Alonso12Hernandez";
             AuthenticationStatus authenticationStatus = AuthenticationStatus.Success;
 
-            NUnit.Framework.Assert.AreEqual(authenticationStatus, authentication.Register(player));
+            NUnit.Framework.Assert.AreEqual(authenticationStatus, authentication.RegisterSucessful(player));
         }
     }
 }

@@ -310,6 +310,17 @@ namespace AdivinaQue.Host.BusinessRules
         {
             users[toUsername].ReceiveCardTurn(image, name);
         }
+
+        public List<string> GetUsersConnected()
+        {
+            List<string> usersConnected= new List<string>();
+            foreach(var user in users.Keys)
+            {
+                usersConnected.Add(user);
+            }
+
+            return usersConnected;
+        }
     }
     
 }

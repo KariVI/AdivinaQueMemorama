@@ -22,7 +22,7 @@
     <system:String x:Key="lbTitleHome">Homepage</system:String>
 
     <system:String x:Key="lbTitleUsers">Connected users</system:String>
-    <system:String x:Key="lbRebaseEnters">You got to the attempts allowed </system:String>
+    <system:String x:Key="lbRebaseEnters">You got to the attempts allowed,  for security we changed your password, please check your email </system:String>
     <system:String x:Key="lbTitleValidationCode">Validation Code</system:String>
     <system:String x:Key="btSendCode">Send code</system:String>
     <system:String x:Key="btVerify">Verify</system:String>
@@ -31,7 +31,7 @@
     <system:String x:Key="btConfirm">Confirm</system:String>
     <system:String x:Key="btPassword">Miss your password?</system:String>
     <system:String x:Key="lbDuplicateUsername">This username already exists</system:String>
-
+    <system:String x:Key="lbUserConnected">This username already connected</system:String>
 
 
     <system:String x:Key="btSend">Send</system:String>

@@ -21,8 +21,9 @@
     <system:String x:Key="lbGretting">Bienvenido</system:String>
     <system:String x:Key="lbTitleHome">Menu principal</system:String>
     <system:String x:Key="btPassword">¿Olvidaste tu contraseña?</system:String>
-    <system:String x:Key="lbRebaseEnters">Llegaste a los intentos permitidos</system:String>
+    <system:String x:Key="lbRebaseEnters">Llegaste a los intentos permitidos, por seguridad hemos cambiado tu contraseña, por favor checa tu email</system:String>
     <system:String x:Key="lbDuplicateUsername">Este nombre de usuario ya existe</system:String>
+    <system:String x:Key="lbUserConnected">Este usuario ya esta conectado</system:String>
 
 
     <system:String x:Key="lbTitleUsers">Usuarios conectados</system:String>
