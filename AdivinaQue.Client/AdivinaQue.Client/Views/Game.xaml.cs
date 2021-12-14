@@ -246,7 +246,7 @@ namespace AdivinaQue.Client.Views
         }
         public bool VerifyTurn()
         {
-            nextTurn = false;
+           
             bool correct = false;
             if (pairCards.ContainsKey(upCards.Keys.First()))
             {
@@ -288,13 +288,15 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
+                nextTurn = false;
                 lbMessage.Text = Application.Current.Resources["incorrectPair"].ToString();
                 Thread.Sleep(1000);
+                server.SendNextTurnRival(usernameRival, true);
                 btCard1.Content = null;
                 btCard2.Content = null;
             }
-            nextTurn = false;
-            server.SendNextTurnRival(usernameRival, true);
+           
+            
             if (numberCardsFinded == gameCards.Count)
             {
                 AssignWinner();
