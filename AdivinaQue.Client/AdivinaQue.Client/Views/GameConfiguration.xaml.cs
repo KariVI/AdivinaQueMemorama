@@ -30,8 +30,10 @@ namespace AdivinaQue.Client.Views
         Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
         private Home home;
         private bool backHome = true;
+        private  int TOTAL_CARDS_DESIGN = 48;
+        private  int TOTAL_CARDS_TESTS = 44;
+        private  int TOTAL_CARDS_ADMIN = 40;
 
-        
         public GameConfiguration(CallBack callback, String username, String toUsername)
         {
             sizeBoard = 12;
@@ -57,8 +59,22 @@ namespace AdivinaQue.Client.Views
                 category = categoryAuxiliar.Substring(found + 2);              
                 Game game = new Game(serverGame, sizeBoard, category);
                 
-                int[] randomPositionList = GenerateRandomNumbers(sizeBoard);
-                int[] randomImageList = GenerateRandomNumbers(sizeBoard / 2);
+                int[] randomPositionList = GenerateRandomNumbers(sizeBoard, sizeBoard);
+                int cardsNumber = 0;
+                switch (category)
+                {
+                    case "Diseño":
+                        cardsNumber = TOTAL_CARDS_DESIGN;
+                        break;
+                    case "Pruebas":
+                        cardsNumber = TOTAL_CARDS_TESTS;
+                        break;
+                    case "Administración":
+                        cardsNumber = TOTAL_CARDS_ADMIN;
+                        break;
+
+                }
+                int[] randomImageList = GenerateRandomNumbers(sizeBoard,cardsNumber / 2);
                 try
                 {
                 serverGame.SendBoard(toUsername, sizeBoard, category);
@@ -94,13 +110,13 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        public int[] GenerateRandomNumbers(int size)
+        public int[] GenerateRandomNumbers(int sizeList,int sizeRandom)
         {
             Random randomNumber = new Random();
             List<int> randomList = new List<int>();
-            while (randomList.Count() < size)
+            while (randomList.Count() < sizeList)
             {
-                int buttonPosition = randomNumber.Next(size);
+                int buttonPosition = randomNumber.Next(sizeRandom);
                 if (!randomList.Contains(buttonPosition))
                 {
                     randomList.Add(buttonPosition);

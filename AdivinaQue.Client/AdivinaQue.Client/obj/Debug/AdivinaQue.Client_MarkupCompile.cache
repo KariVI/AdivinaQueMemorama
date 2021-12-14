@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\obj\Debug\
 AdivinaQue.Client
 none
 false
 DEBUG;TRACE
-C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
 14993898814
 
 211054397593
-221421363136
+22534102043
 Strings.xaml;Views\Alert.xaml;Views\AuthMail.xaml;Views\Chat.xaml;Views\Game.xaml;Views\GameConfiguration.xaml;Views\Home.xaml;Views\Login.xaml;Views\Modify.xaml;Views\PlayersList.xaml;Views\Podio.xaml;Views\Register.xaml;Views\Strings.xaml;Views\ValidationCode.xaml;
 
 False
