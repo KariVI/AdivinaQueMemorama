@@ -320,7 +320,7 @@ namespace AdivinaQue.Client.Views
             Button bt = sender as Button;
             if (numberCardsFinded != gameCards.Count )
             {
-                if (nextTurn)
+                if (nextTurn && upCards.Count() < 2)
                 {             
                     Image buttonAuxiliar = new Image();
                     if (bt.Name != "blocked")
