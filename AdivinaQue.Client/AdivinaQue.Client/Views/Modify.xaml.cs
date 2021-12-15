@@ -220,6 +220,7 @@ namespace AdivinaQue.Client.Views
             this.server = server;
             try
             {
+
                 server.SearchInfoPlayerByUsername(username);
             }
             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )

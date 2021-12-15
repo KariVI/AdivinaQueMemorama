@@ -2,6 +2,7 @@
 using AdivinaQue.Client.Proxy;
 using System;
 using System.ServiceModel;
+using System.Threading;
 using System.Timers;
 using System.Windows;
 
@@ -27,11 +28,9 @@ namespace AdivinaQue.Client.Views
 
         private void btModify_Click(object sender, RoutedEventArgs e)
         {
-            CallBack callBack = new CallBack();
-            InstanceContext context = new InstanceContext(callBack);
-            serverPlayer = new Proxy.PlayerMgtClient(context);
             Modify modify = new Modify(callback,this);
             callback.SetModify(modify);
+            Thread.Sleep(100);
             modify.SetHome(this);
             modify.SetUsername(username);
             modify.SetServer(serverPlayer);
