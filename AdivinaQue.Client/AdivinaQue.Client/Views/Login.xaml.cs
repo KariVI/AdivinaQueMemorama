@@ -2,24 +2,28 @@
 using AdivinaQue.Client.Logs;
 using log4net;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 
 namespace AdivinaQue.Client.Views
 {
-
+    /// <summary>
+    /// Lógica de interacción para Login.xaml
+    /// </summary>
     public partial class Login : Window
     {
         CallBack callback;
         InstanceContext context;
         Proxy.PlayerMgtClient serverPlayer;
         Proxy.GameMgtClient serverGame;
-        private static readonly ILog Logs = Log.GetLogger();
 
+        private static readonly ILog Logs = Log.GetLogger();
         private int numberFailedEnter = 0;
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase Login.xaml.
+        /// </summary>
         public Login()
         {
             InitializeComponent();
@@ -31,6 +35,10 @@ namespace AdivinaQue.Client.Views
             LoadStringResource("es-MEX");
         }
 
+        /// <summary>
+        /// Verifica que el usuario no se encuentre actualmente conectado.
+        /// </summary>
+        /// <returns> True si ya se encuentra conectado y false en caso contrario </returns>
         private bool VerifyUserConnected()
         {
             bool value = false;
@@ -42,10 +50,15 @@ namespace AdivinaQue.Client.Views
             return value;
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para iniciar sesión.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(Password.Password.ToString()) 
-                && !string.IsNullOrWhiteSpace(tbUsername.Text) && !string.IsNullOrWhiteSpace(Password.Password.ToString()))
+            if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(pbPassword.Password.ToString())
+                && !string.IsNullOrWhiteSpace(tbUsername.Text) && !string.IsNullOrWhiteSpace(pbPassword.Password.ToString()))
             {
                 try
                 {
@@ -55,12 +68,11 @@ namespace AdivinaQue.Client.Views
                     else
                     {
                         Alert.ShowDialog(Application.Current.Resources["lbUserConnected"].ToString(), Application.Current.Resources["btOk"].ToString());
-
                     }
                 }
-                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
                 {
-                    Logs.Error($"Fallo la conexión ({ ex.Message})");                                        
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
                     Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                     numberFailedEnter = 0;
                     this.Close();
@@ -75,9 +87,12 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Inicia sesión, manda los datos de los textbox al servidor y si son correctos entra al menú principal.
+        /// </summary>
         private void Join()
         {
-            Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
+            Boolean value = serverPlayer.Join(tbUsername.Text, pbPassword.Password.ToString());
             if (!value && numberFailedEnter < 3)
             {
                 Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
@@ -102,15 +117,17 @@ namespace AdivinaQue.Client.Views
                 home.Show();
             }
         }
+
+        /// <summary>
+        /// Carga los recursos para determinado idioma.
+        /// </summary>
+        /// <param name="locale">String que indica el idioma a cargar</param>
         private void LoadStringResource(string locale)
         {
             var resources = new ResourceDictionary();
-
             resources.Source = new Uri("pack://application:,,,/Resources_" + locale + ";component/Strings.xaml", UriKind.Absolute);
-
             var current = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
                              m => m.Source.OriginalString.EndsWith("Strings.xaml"));
-
 
             if (current != null)
             {
@@ -120,9 +137,12 @@ namespace AdivinaQue.Client.Views
             Application.Current.Resources.MergedDictionaries.Add(resources);
         }
 
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para registrarse.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtRegister_Click(object sender, RoutedEventArgs e)
         {
             ValidationCode validationCode = new ValidationCode(serverPlayer);
             callback.SetValidateCode(validationCode);
@@ -130,17 +150,31 @@ namespace AdivinaQue.Client.Views
             validationCode.Show();
         }
 
-        private void btLanguageEnglish_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para cambiar el idioma a inglés.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtLanguageEnglish_Click(object sender, RoutedEventArgs e)
         {
             LoadStringResource("en-US");
 
         }
 
-        private void btLanguageSpanish_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para cambiar el idioma a español.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtLanguageSpanish_Click(object sender, RoutedEventArgs e)
         {
             LoadStringResource("es-MEX");
         }
 
+        /// <summary>
+        /// Genera un código aleatorio.
+        /// </summary>
+        /// <returns>String de 5 caracteres aleatorios.</returns>
         public string GenerateCodeValidation()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -156,6 +190,10 @@ namespace AdivinaQue.Client.Views
             return resultString;
         }
 
+        /// <summary>
+        /// Cambia la contraseña del usuario que intenta iniciar sesión.
+        /// </summary>
+        /// <returns>true si fue posible cambiar la contraseña, false en caso contrario</returns>
         private bool ChangePasswordSucessful()
         {
             bool value = false;
@@ -184,6 +222,12 @@ namespace AdivinaQue.Client.Views
                 return value;
 
         }
+
+        /// <summary>
+        /// Controlador del botón para cambiar la contraseña.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btPassword_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrWhiteSpace(tbUsername.Text))
@@ -207,13 +251,16 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        ///  Controlador para el botón de cerrar ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             App.Current.Shutdown();
         }
-      
-
-      
+    
     }
 }
 
