@@ -19,10 +19,10 @@ namespace AdivinaQue.Client.Views
    
     public partial class Podio : Window
     {
-        public ObservableCollection<String> playersCollection;
-        public ObservableCollection<int> scoresCollection;
-        Proxy.PlayerMgtClient serverPlayer;
-        String username;
+        public ObservableCollection<String> PlayersCollection { get; set; }
+        public ObservableCollection<int> ScoresCollection { get; set; }
+        private readonly Proxy.PlayerMgtClient serverPlayer;
+        private readonly string username;
         private Home home;
 
         public ListView players { get { return lvPlayer; } set { lvPlayer = value; } }
@@ -31,13 +31,13 @@ namespace AdivinaQue.Client.Views
         public Podio(Proxy.PlayerMgtClient server, String username, Home home)
         {
             InitializeComponent();
-            playersCollection = new ObservableCollection<String>();
-            scoresCollection = new ObservableCollection<int>();
+            PlayersCollection = new ObservableCollection<String>();
+            ScoresCollection = new ObservableCollection<int>();
             this.serverPlayer = server;
             this.username = username;
             this.home = home;
-            players.ItemsSource = playersCollection;
-            lvVictory.ItemsSource = scoresCollection;
+            players.ItemsSource = PlayersCollection;
+            lvVictory.ItemsSource = ScoresCollection;
         }
 
         private void Window_Closed(object sender, EventArgs e)

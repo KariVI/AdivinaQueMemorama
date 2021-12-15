@@ -27,8 +27,8 @@ namespace AdivinaQue.Client.Views
 
         private void btModify_Click(object sender, RoutedEventArgs e)
         {
-            CallBack callback = new CallBack();
-            InstanceContext context = new InstanceContext(callback);
+            CallBack callBack = new CallBack();
+            InstanceContext context = new InstanceContext(callBack);
             serverPlayer = new Proxy.PlayerMgtClient(context);
             Modify modify = new Modify(callback,this);
             callback.SetModify(modify);

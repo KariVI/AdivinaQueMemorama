@@ -1,0 +1,39 @@
+﻿C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Control\CallBack.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Control\Validate.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Logs\Log.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Alert.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\AuthMail.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Chat.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\DataStatus.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Game.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\GameConfiguration.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Home.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Login.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Modify.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\PlayersList.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Podio.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Register.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\ValidationCode.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\AssemblyInfo.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\Resources.resx
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item1.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item2.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item3.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item410.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item411.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item412.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item413.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item42.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item43.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item46.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item47.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\Service.wsdl
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\packages.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\Settings.settings
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\App.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item.disco
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\configuration91.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\configuration.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\Reference.svcmap

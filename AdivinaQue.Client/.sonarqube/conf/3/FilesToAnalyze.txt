@@ -1,0 +1,186 @@
+﻿C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Control\CallBack.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Control\Validate.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Logs\Log.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Alert.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\AuthMail.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Chat.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\DataStatus.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Game.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\GameConfiguration.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Home.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Login.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Modify.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\PlayersList.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Podio.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Register.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\App.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\ValidationCode.xaml.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\AssemblyInfo.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\Resources.resx
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item1.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item2.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item3.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item410.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item411.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item412.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item413.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item42.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item43.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item46.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item47.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\Service.wsdl
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\packages.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Properties\Settings.settings
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\App.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\item.disco
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\configuration91.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\configuration.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Connected Services\Proxy\Reference.svcmap
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Strings.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Alert.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\AuthMail.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Chat.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Game.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\GameConfiguration.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Home.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Login.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Modify.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\PlayersList.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Podio.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Register.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\Strings.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Views\ValidationCode.xaml
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\1-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\1-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\2-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\2-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\3-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\3-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\1-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\1-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\2-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\2-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\3-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\3-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\4-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\4-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\5-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\5-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\6-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\6-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\7-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\7-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\8-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\8-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\9-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\9-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\10-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\10-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\11-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\11-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\12-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\12-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\13-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\13-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\14-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\14-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\15-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\15-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\16-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\16-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\17-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\17-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\18-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\18-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\19-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\19-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\20-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\20-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\21-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\21-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\22-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Pruebas\22-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\10-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\10-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\11-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\11-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\12-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\12-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\13-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\13-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\14-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\14-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\15-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\15-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\16-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\16-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\17-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\17-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\18-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\18-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\19-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\19-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\20-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\20-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\21-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\21-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\22-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\22-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\4-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\4-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\5-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\5-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\6-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\6-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\7-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\7-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\8-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\8-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\9-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\9-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\1-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\1-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\10-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\10-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\11-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\11-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\12-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\12-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\13-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\13-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\14-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\14-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\15-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\15-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\16-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\16-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\17-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\17-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\18-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\18-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\19-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\19-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\2-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\2-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\20-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\20-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\3-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\3-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\4-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\4-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\5-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\5-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\6-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\6-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\7-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\7-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\8-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\8-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\9-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Administración\9-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\23-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\23-2.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\24-1.png
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\AdivinaQue.Client\Images\Diseño\24-2.png

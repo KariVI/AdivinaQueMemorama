@@ -15,13 +15,12 @@ namespace AdivinaQue.Client.Views
 {
     public partial class ValidationCode : Window
     {
-        private String codeExpected;
 
         Proxy.PlayerMgtClient serverPlayer;
         private static readonly ILog Logs = Log.GetLogger();
 
 
-        public String CodeExpected { get { return codeExpected; } set { codeExpected = value; } }
+        public String CodeExpected { get ;  set ; } 
         public ValidationCode(Proxy.PlayerMgtClient server)
         {
             
@@ -34,7 +33,7 @@ namespace AdivinaQue.Client.Views
             if (!string.IsNullOrEmpty(tbCode.Text )  && !IsVoid())
             {
                 string codeReceived = tbCode.Text;
-                if (codeReceived.Equals(codeExpected))
+                if (codeReceived.Equals(CodeExpected))
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbCorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
                     Register register = new Register(serverPlayer, tbEmail.Text);
@@ -83,46 +82,7 @@ namespace AdivinaQue.Client.Views
             {
                 Validate validate = new Validate();
                 if (validate.ValidationEmail(tbEmail.Text)){
-                    if (!SearchDuplicateEmail())
-                    {
-                        String code = GenerateCodeValidation();
-                        string message = Application.Current.Resources["lbEmailCodeMessage"].ToString();
-                        codeExpected = code;
-                        string body = @"<style>
-                                            h2{color:#E267B4;}
-                                            </style>
-                                            <h2>" + message + ": " + code + "</h2>";
-
-                        string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
-
-                        String messageEmailSuccesful="Error";
-                        try
-                        {
-                            messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
-                            if (messageEmailSuccesful == "Exito")
-                            {
-
-                                Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
-                            }
-                            else
-                            {
-                                Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
-
-                            }
-                        }
-                        catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
-                        {
-                            Logs.Error($"Fallo la conexión ({ ex.Message})");
-                        }
-
-
-                       
-                    }
-                    else
-                    {
-                        Alert.ShowDialog(Application.Current.Resources["lbDuplicateEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
-   
-                    }
+                    SendMail();
                 } else
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbIncorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
@@ -137,12 +97,56 @@ namespace AdivinaQue.Client.Views
             
         }
 
+        private void SendMail()
+        {
+            if (!SearchDuplicateEmail())
+            {
+                String code = GenerateCodeValidation();
+                string message = Application.Current.Resources["lbEmailCodeMessage"].ToString();
+                CodeExpected = code;
+                string body = @"<style>
+                                            h2{color:#E267B4;}
+                                            </style>
+                                            <h2>" + message + ": " + code + "</h2>";
+
+                string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
+
+                String messageEmailSuccesful = "Error";
+                try
+                {
+                    messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
+                    if (messageEmailSuccesful == "Exito")
+                    {
+
+                        Alert.ShowDialog(Application.Current.Resources["lbCodeSended"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    }
+                    else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbEmailSendError"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+                    }
+                }
+                catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+                {
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
+                }
+
+
+
+            }
+            else
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbDuplicateEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
+
+            }
+        }
+
         private bool SearchDuplicateEmail() {
             bool value = false;
             
             try
             {
-                string[] emails=emails = serverPlayer.GetEmails();
+                string[] emails= serverPlayer.GetEmails();
                 foreach (var email in emails)
                 {
                     if (email.Equals(tbEmail.Text))

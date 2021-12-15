@@ -76,6 +76,7 @@
     <system:String x:Key="lbNoExistentUsername">This username doesn't exist in the app</system:String>
     <system:String x:Key="lbNewPasswordDataError">Please write an username for send a new password</system:String>
 
+    <system:String x:Key="btPassword">Did you forget your password?</system:String>
     <system:String x:Key="lbCodeSended">Code sended</system:String>
     <system:String x:Key="lbEmailSendError">Unable to send an email</system:String>
     <system:String x:Key="lbDuplicateEmail">This email already exists , try again</system:String>

@@ -13,29 +13,7 @@ namespace ClientTest
     public class UnitTestServer
     {
 
-        [TestMethod]
 
-        public void TestGetUsersConnected()
-        {
-            CallBack callback = new CallBack();
-            InstanceContext context = new InstanceContext(callback);
-            PlayerMgtClient server = new PlayerMgtClient(context);
-            List<string> usersExpected = new List<string>();
-            server.Join("MariV", "mariV");
-            usersExpected.Add("MariV");
-            bool value = true;
-
-            foreach (var user in server.GetUsersConnected())
-            {
-                if (!usersExpected.Contains(user))
-                {
-                    value = false;
-                }
-            }
-
-            Assert.IsTrue(value);
-
-        }
 
         /* private static ServiceHost serviceHost;
          [ClassInitialize]

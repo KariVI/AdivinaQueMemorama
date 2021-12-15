@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# S2971: "IEnumerable" LINQs should be simplified
+dotnet_diagnostic.S2971.severity = none
+
+# S1075: URIs should not be hardcoded
+dotnet_diagnostic.S1075.severity = none
+
+# S3267: Loops should be simplified with "LINQ" expressions
+dotnet_diagnostic.S3267.severity = none

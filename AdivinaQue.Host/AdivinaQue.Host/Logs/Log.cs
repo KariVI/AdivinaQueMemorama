@@ -8,10 +8,10 @@ using log4net;
 
 namespace AdivinaQue.Host.Logs
 {
-    public class Log
+    public static class Log
     {
 
-            public static ILog GetLogger([CallerFilePath] string filename = "")
+             public static ILog GetLogger([CallerFilePath] string filename = "")
             {
                 return LogManager.GetLogger(filename);
             }

@@ -23,16 +23,13 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Chat : Window
     {
-        public Chat()
-        {
-            InitializeComponent();
-        }
+      
         Proxy.PlayerMgtClient server;
         private string username;
         private string typeMessage;
 
-        public ObservableCollection<String> messagesCollection;
-        public ObservableCollection<String> usersCollection;
+        public ObservableCollection<String> MessagesCollection { get; set;  }
+        public ObservableCollection<String> UsersCollection { get; set; }
         private static readonly ILog Logs = Log.GetLogger();
 
 
@@ -49,13 +46,15 @@ namespace AdivinaQue.Client.Views
         {
             InitializeComponent();
             this.server = server;
-            messagesCollection = new ObservableCollection<String>();
-            usersCollection = new ObservableCollection<string>();
+            MessagesCollection = new ObservableCollection<String>();
+            UsersCollection = new ObservableCollection<string>();
             typeMessage = "Todos";
-            Messages.ItemsSource = messagesCollection;
-            ListUsers.ItemsSource = usersCollection;
+            Messages.ItemsSource = MessagesCollection;
+            ListUsers.ItemsSource = UsersCollection;
 
         }
+
+
 
         public void SetUsername(string username)
         {

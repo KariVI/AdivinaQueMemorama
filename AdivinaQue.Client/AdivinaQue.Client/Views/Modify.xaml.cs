@@ -177,32 +177,7 @@ namespace AdivinaQue.Client.Views
 
         }
 
-        private bool SearchDuplicateUsername()
-        {
-            bool value = false;
-            try
-            {
-                string[] usernames = server.GetUsers();
-              foreach (var username in usernames)
-                {
-                  if (username.Equals(tbUsername.Text))
-                 {
-                    value = true;
-                    }
-                }
-             }
-            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
-            {
-                Logs.Error($"Fallo la conexión ({ ex.Message})");
-
-                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
-                backHome = false;
-                Login login = new Login();
-                login.Show();
-                this.Close();
-            }
-            return value;
-        }
+     
 
         private void BtCancel_Click(object sender, RoutedEventArgs e)
         {

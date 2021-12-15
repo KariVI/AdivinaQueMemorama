@@ -9,10 +9,10 @@ namespace AdivinaQue.Client.Views
     /// </summary>
     public partial class Alert : Window
     {
-        AlertResult result;
+        
         private static DispatcherTimer timer;
         Alert alert;
-        public AlertResult Result { get => result; set => result = value; }
+        public AlertResult Result { get; set; }
 
         private Alert()
         {
@@ -21,7 +21,9 @@ namespace AdivinaQue.Client.Views
            
 
         }
-        public static AlertResult ShowDialog( string message, string button1Text, string button2Text)
+        public static AlertResult ShowDialog(string message,
+                                             string button1Text,
+                                             string button2Text)
         {
             Alert messageBox = new Alert();
             return messageBox.ShowDialogInternal( message, button1Text, button2Text);
@@ -45,7 +47,7 @@ namespace AdivinaQue.Client.Views
             SetTimer(); 
             timer.Start();
             ShowDialog();
-            return result;
+            return Result;
         }
 
         public AlertResult ShowDialogInternal(string message, string button1Text)
@@ -57,33 +59,33 @@ namespace AdivinaQue.Client.Views
             SetTimer();
             timer.Start();
             ShowDialog();
-            return result;
+            return Result;
         }
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            result = AlertResult.No;
+            Result = AlertResult.No;
             Close();
         }
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            result = AlertResult.Yes;
+            Result = AlertResult.Yes;
             timer.Stop();
             Close();
         }
-        private void SetTimer()
+        private  void SetTimer()
         {        
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             timer.Tick += OnTick;
         }
         private int time = 0;
-        private  void OnTick(object sender, EventArgs e)
+        private   void OnTick(object sender, EventArgs e)
         {
                time++;
                 lbTime.Content = "("+ (40 - time).ToString()+")";
                if(time == 40) { 
-                alert.result = AlertResult.Unavaible;
+                alert.Result = AlertResult.Unavaible;
                 alert.Close();
                 timer.Stop();
             }

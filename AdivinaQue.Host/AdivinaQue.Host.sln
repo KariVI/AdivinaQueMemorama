@@ -5,9 +5,10 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdivinaQue.Host", "AdivinaQue.Host\AdivinaQue.Host.csproj", "{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostTest", "HostTest\HostTest.csproj", "{F061DB73-6C12-43AC-A1F5-4B002E84AC15}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostUnitTest", "HostUnitTest\HostUnitTest.csproj", "{8B2656A4-CACC-43CE-B248-0A8FF882FCB7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EBCDE5C4-20B6-4009-9B26-CBC6083C19A8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +20,6 @@ Global
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE5F5F4-42AE-4663-8937-5FB18D2E2043}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F061DB73-6C12-43AC-A1F5-4B002E84AC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F061DB73-6C12-43AC-A1F5-4B002E84AC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F061DB73-6C12-43AC-A1F5-4B002E84AC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F061DB73-6C12-43AC-A1F5-4B002E84AC15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B2656A4-CACC-43CE-B248-0A8FF882FCB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B2656A4-CACC-43CE-B248-0A8FF882FCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B2656A4-CACC-43CE-B248-0A8FF882FCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B2656A4-CACC-43CE-B248-0A8FF882FCB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

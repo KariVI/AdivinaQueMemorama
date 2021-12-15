@@ -18,9 +18,9 @@ namespace AdivinaQue.Host.BusinessRules
 
     public class Service : IPlayerMgt, IGameMgt
     {
-        public Dictionary<string, IClient> users = new Dictionary<String, IClient>();
+        private Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
-        public List<string> currentlyUserPlayed = new List<string>();
+        private List<string>  currentlyUserPlayed = new List<string>();
      
         
         public void DisconnectUser(String username)
@@ -155,7 +155,7 @@ namespace AdivinaQue.Host.BusinessRules
         }
         public string SendMail(string to, string asunto, string body)
         {
-            string message = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
+            string message = "";
             string from = ConfigurationManager.AppSettings["EmailAdmin"];
             string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
             int port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"]);
@@ -209,8 +209,8 @@ namespace AdivinaQue.Host.BusinessRules
         public List<String> GetUsers()
         {
             Authentication authentication = new Authentication();
-            List<String> users = authentication.GetUsers();
-            return users;
+            List<String> usersRegister = authentication.GetUsers();
+            return usersRegister;
         }
 
         public void SendRival(string rival, string fromUsername)
