@@ -51,7 +51,7 @@ namespace AdivinaQue.Client.Views {
         
         #line 17 "..\..\..\Views\Login.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.PasswordBox Password;
+        internal System.Windows.Controls.PasswordBox pbPassword;
         
         #line default
         #line hidden
@@ -122,12 +122,12 @@ namespace AdivinaQue.Client.Views {
             this.tbUsername = ((System.Windows.Controls.TextBox)(target));
             return;
             case 3:
-            this.Password = ((System.Windows.Controls.PasswordBox)(target));
+            this.pbPassword = ((System.Windows.Controls.PasswordBox)(target));
             return;
             case 4:
             
             #line 19 "..\..\..\Views\Login.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.BtRegister_Click);
             
             #line default
             #line hidden
@@ -136,7 +136,7 @@ namespace AdivinaQue.Client.Views {
             this.LoginBt = ((System.Windows.Controls.Button)(target));
             
             #line 20 "..\..\..\Views\Login.xaml"
-            this.LoginBt.Click += new System.Windows.RoutedEventHandler(this.LoginButton_Click);
+            this.LoginBt.Click += new System.Windows.RoutedEventHandler(this.BtLogin_Click);
             
             #line default
             #line hidden
@@ -145,7 +145,7 @@ namespace AdivinaQue.Client.Views {
             this.btLanguageSpanish = ((System.Windows.Controls.Button)(target));
             
             #line 21 "..\..\..\Views\Login.xaml"
-            this.btLanguageSpanish.Click += new System.Windows.RoutedEventHandler(this.btLanguageSpanish_Click);
+            this.btLanguageSpanish.Click += new System.Windows.RoutedEventHandler(this.BtLanguageSpanish_Click);
             
             #line default
             #line hidden
@@ -154,7 +154,7 @@ namespace AdivinaQue.Client.Views {
             this.btLanguageEnglish = ((System.Windows.Controls.Button)(target));
             
             #line 22 "..\..\..\Views\Login.xaml"
-            this.btLanguageEnglish.Click += new System.Windows.RoutedEventHandler(this.btLanguageEnglish_Click);
+            this.btLanguageEnglish.Click += new System.Windows.RoutedEventHandler(this.BtLanguageEnglish_Click);
             
             #line default
             #line hidden
