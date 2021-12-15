@@ -14,6 +14,9 @@ using System.Configuration;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
+    /// <summary>
+    /// Lógica para la administración de la base de datos 
+    /// </summary>
     public class Authentication
     {
         public List<int> ListScores { get; set; }
@@ -22,7 +25,14 @@ namespace AdivinaQue.Host.DatabaseAccess
         public Authentication()
         {
         }
-   
+
+        /// <summary>
+        /// Buscar si un usuario se encuentra registrado para el inicio de sesión  
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns> Sucess si se encuentra  y Failed en caso contrario </returns>
+
         public AuthenticationStatus LoginSuccesful(string userName, string password)
         {
             AuthenticationStatus status = AuthenticationStatus.Failed;
@@ -42,6 +52,10 @@ namespace AdivinaQue.Host.DatabaseAccess
             return status;
         }
 
+        /// <summary>
+        /// Recuperar la lista de Emails registrados en el sistema 
+        /// </summary>
+        /// <returns> Una lista de strings con los emails </returns>
         public List<String> GetEmails()
         {
 
@@ -55,7 +69,10 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.ToList<String>();
             }
         }
-
+        /// <summary>
+        /// Recuperar la lista de Usuarios  registrados en el sistema 
+        /// </summary>
+        /// <returns> Una lista de strings con los usuarios </returns>
         public List<String> GetUsers()
         {
 
@@ -69,6 +86,11 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.ToList<String>();
             }
         }
+        /// <summary>
+        /// Recuperar un jugador por medio del nombre de usuario 
+        /// </summary>
+        ///<param name="username"></param>
+       /// <returns> Un jugador  </returns>
         public Player RetrievePlayer(string username)
         {
             using (var context = new AdivinaQueAppContext())
@@ -84,6 +106,12 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         
         }
+        /// <summary>
+        /// Actualizar la información de un jugador 
+        /// </summary>
+        ///<param name="player"> Nueva información del jugador</param>
+        ///<param name="username"></param>
+        /// <returns> Sucess si se pudo actualizar la información  y Failed en caso contrario  </returns>
         public AuthenticationStatus UpdateSucessful(Player player,String username)
         {
             string passwordHashed = ComputeSHA256Hash(player.Password);
@@ -112,6 +140,13 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         }
 
+        /// <summary>
+        /// Actualizar la contraseña de un jugador 
+        /// </summary>
+        ///<param name="username"></param>
+       ///<param name="password"> </param>
+        /// <returns> Sucess si se pudo actualizar la  contraseña  y Failed en caso contrario  </returns>
+
         public AuthenticationStatus UpdateSucessfulPassword( String username, String password)
         {
             string passwordHashed = ComputeSHA256Hash(password);
@@ -136,6 +171,13 @@ namespace AdivinaQue.Host.DatabaseAccess
             return status;
 
         }
+
+        /// <summary>
+        /// Registrar un nuevo jugador 
+        /// </summary>
+        /// ///<param name="player"> Nuevo jugador</param>
+        /// <returns> Sucess si se pudo registrar el jugador  y Failed en caso contrario  </returns>
+
         public AuthenticationStatus RegisterSucessful(Player player)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
@@ -157,7 +199,11 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         }
 
-
+        /// <summary>
+        /// Eliminar un  jugador 
+        /// </summary>
+        ///<param name="username"> </param>
+        /// <returns> Sucess si se pudo eliminar al  jugador  y Failed en caso contrario  </returns>
         public AuthenticationStatus DeleteSucessful(string username)
         {
             AuthenticationStatus status;
@@ -177,6 +223,11 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
             return status;
         }
+        /// <summary>
+        /// Generar un código 
+        /// </summary> 
+        /// <returns> Una cadena con el código generado  </returns>
+
         public string GenerateCode()
         {
             var posibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -190,6 +241,13 @@ namespace AdivinaQue.Host.DatabaseAccess
             string codeString = new String(code);
             return codeString;
         }
+
+        /// <summary>
+        /// Enviar un correo para mencionarle a alguien que se registre al juego
+        /// </summary>
+        ///<param name="email"> </param>
+        ///<param name="newMessage"> </param>
+        /// <returns> Sucess si se pudo enviar el correo y Failed en caso contrario  </returns>
 
         public AuthenticationStatus SendMailSucessful(string email, string newMessage)
         {
@@ -223,6 +281,12 @@ namespace AdivinaQue.Host.DatabaseAccess
             return status;
         }
 
+        /// <summary>
+        /// Hashear una cadena
+        /// </summary>
+        ///<param name="input"> </param>
+        /// <returns>Cadena hasheada   </returns>
+
         private string ComputeSHA256Hash(string input)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -238,6 +302,12 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return builder.ToString();
             }
         }
+
+        /// <summary>
+        /// Obtener los puntajes de los jugadores registrados
+        /// </summary>
+        /// <returns>Regresa una lista de cadena con los puntajes de los jugadores  </returns>
+
         public List<GlobalScore> GetPlayers()
         {
 
@@ -254,6 +324,12 @@ namespace AdivinaQue.Host.DatabaseAccess
                 return query.ToList();
             }
         }
+
+        /// <summary>
+        /// Añadir un nuevo juego finalizado 
+        /// </summary>
+        ///<param name="gameCurrently"> </param>
+        /// <returns> Sucess si se pudo añadir el juego y Failed en caso contrario  </returns>
 
 
         public AuthenticationStatus AddGameSucessful(GameCurrently gameCurrently)
@@ -284,6 +360,11 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         }
 
+        /// <summary>
+        /// Buscar la ID de un jugador por medio de nombre del usuario 
+        /// </summary>
+        ///<param name="username"> </param>
+        /// <returns> La ID del usuario  </returns>
 
         private int GetIdUser(string username)
         {
@@ -295,9 +376,14 @@ namespace AdivinaQue.Host.DatabaseAccess
                     id =query;
                 }
 
-
             return id;
         }
+
+        /// <summary>
+        /// Buscar email de un jugador por medio de nombre del usuario 
+        /// </summary>
+        ///<param name="username"> </param>
+        /// <returns> El email de usuario y si no existe regresa cadena vacia  </returns>
 
         public string GetEmail(string username)
         {
@@ -313,6 +399,12 @@ namespace AdivinaQue.Host.DatabaseAccess
 
             return email;
         }
+
+
+        /// <summary>
+        /// Añadir un jugador al podio o conteo de puntajes 
+        /// </summary>
+        ///<param name="username"> </param>
         private void AddPodio(string username) {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
             int idUsername = GetIdUser(username);
@@ -320,6 +412,11 @@ namespace AdivinaQue.Host.DatabaseAccess
             AdivinaQueAppContext.Score.Add(new Score() {IdPlayer= idUsername, totalGames=0 });
             AdivinaQueAppContext.SaveChanges();
         }
+
+        /// <summary>
+        /// Añadir una victoria de un juego terminado
+        /// </summary>
+        ///<param name="gameCurrently"> </param>
 
         private void AddVictory(GameCurrently gameCurrently)
         {
@@ -369,6 +466,12 @@ namespace AdivinaQue.Host.DatabaseAccess
             }
         }
 
+        /// <summary>
+        /// Buscar la ID de un juego por medio de la información del juego 
+        /// </summary>
+        ///<param name="gameCurrently"> </param>
+        /// <returns> La ID de un juego  </returns>
+
         public int GetIdGame(GameCurrently gameCurrently)
         {
             int id = 0;
@@ -393,6 +496,11 @@ namespace AdivinaQue.Host.DatabaseAccess
 
             return id;
         }
+
+        /// <summary>
+        /// Añadir participantes de un juego finalizado
+        /// </summary>
+        ///<param name="gameCurrently"> </param>
         private void AddParticipateGame( GameCurrently gameCurrently)
         {
             AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
