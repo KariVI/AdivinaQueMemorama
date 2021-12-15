@@ -1,0 +1,4 @@
+﻿C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\Class1.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\Properties\AssemblyInfo.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\.editorconfig
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_en-US\Strings.xaml

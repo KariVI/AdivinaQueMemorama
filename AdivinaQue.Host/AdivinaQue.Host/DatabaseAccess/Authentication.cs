@@ -10,19 +10,19 @@ using System.Collections.Generic;
 using AdivinaQue.Host.Exception;
 using log4net;
 using AdivinaQue.Host.Logs;
+using System.Configuration;
 
 namespace AdivinaQue.Host.DatabaseAccess
 {
     public class Authentication
     {
-        private List<int> listScores;
-        private List<string> listPlayers;
+        public List<int> ListScores { get; set; }
+        public List<string> ListPlayers { get; set; }
         private static readonly ILog Logs = Log.GetLogger();
         public Authentication()
         {
         }
-        public List<int> ListScores { get { return listScores; } set { listScores = value; } }
-        public List<string> ListPlayers { get { return listPlayers; } set { listPlayers = value; } }
+   
         public AuthenticationStatus LoginSuccesful(string userName, string password)
         {
             AuthenticationStatus status = AuthenticationStatus.Failed;
@@ -130,6 +130,8 @@ namespace AdivinaQue.Host.DatabaseAccess
             catch (EntityException ex)
             {
                 status = AuthenticationStatus.Failed;
+                                throw new BusinessException("Failed Update", ex);
+
             }
             return status;
 
@@ -188,10 +190,12 @@ namespace AdivinaQue.Host.DatabaseAccess
             string codeString = new String(code);
             return codeString;
         }
+
         public AuthenticationStatus SendMailSucessful(string email, string newMessage)
         {
-            string userMail = "AdivinaQueTeam@hotmail.com";
-            string password = "MarianaKarina1234";
+           
+            string userMail = ConfigurationManager.AppSettings["EmailAdmin"];
+            string password = ConfigurationManager.AppSettings["PasswordAdmin"];
             string subject = "Register Memorama game";
             string sendMail = email;
             string message = newMessage;
@@ -319,22 +323,21 @@ namespace AdivinaQue.Host.DatabaseAccess
 
         private void AddVictory(GameCurrently gameCurrently)
         {
-            AdivinaQueAppContext AdivinaQueAppContext = new AdivinaQueAppContext();
 
             if (gameCurrently.Winner.Equals("both"))
             {
 
-                foreach (var player in gameCurrently.Players)
+                foreach (var player in  gameCurrently.Players.Select(player => player.Key))
                 {
                     using (var context = new AdivinaQueAppContext())
                     {
-                        var idWinner = GetIdUser(player.Key);
+                        var idWinner = GetIdUser(player);
                         var oldScore = (from account in context.Score
                                      where account.IdPlayer == idWinner
                                      select account.totalGames).First();
 
                         int newScore = (int)(oldScore + 1);
-                        int idPlayer = GetIdUser(player.Key);
+                        int idPlayer = GetIdUser(player);
 
                         var Score = (from account in context.Score
                                      where account.IdPlayer == idPlayer

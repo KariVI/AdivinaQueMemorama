@@ -17,8 +17,8 @@ namespace AdivinaQue.Client.Views
         Proxy.PlayerMgtClient serverPlayer;
         public ListBox listUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ListBox listUsersPlayed { get { return UsersPlaying; } set { UsersPlaying = value; } }
-        public ObservableCollection<String> usersCollection;
-        public ObservableCollection<string> usersPlayedCollection;
+        public ObservableCollection<String> UsersCollection { get; set; }
+        public ObservableCollection<string> UsersPlayedCollection { get; set; }
         private String username;
         private static readonly ILog Logs = Log.GetLogger();
         private Home home;
@@ -30,10 +30,10 @@ namespace AdivinaQue.Client.Views
 
             this.callback = callBack;
             this.serverPlayer = server;
-            usersCollection = new ObservableCollection<string>();
-            usersPlayedCollection = new ObservableCollection<string>();
-            listUsers.ItemsSource = usersCollection; 
-            listUsersPlayed.ItemsSource = usersPlayedCollection;
+            UsersCollection = new ObservableCollection<string>();
+            UsersPlayedCollection = new ObservableCollection<string>();
+            listUsers.ItemsSource = UsersCollection; 
+            listUsersPlayed.ItemsSource = UsersPlayedCollection;
             this.username = username;
             this.home = home;
             
@@ -45,8 +45,7 @@ namespace AdivinaQue.Client.Views
                 Validate validate = new Validate();
                 if (validate.ValidationEmail(tbEmail.Text))
                 {
-                    string subject = Application.Current.Resources["lbInvitationSubject"].ToString();
-                    string message = Application.Current.Resources["lbInvitationMessage"].ToString();
+                    
                     string messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, "Invitation to play",  "Lo han invitado a jugar Adivina Que! Instale el juego AQUI");
 
                     if (messageEmailSuccesful == "Exito")

@@ -230,9 +230,6 @@ namespace ClientTest
 
         }
 
-
-
-
         [TestMethod]
         public void TestGetScores()
         {
@@ -245,8 +242,6 @@ namespace ClientTest
             Thread.Sleep(1000);
             mockCallback.Verify(mock => mock.RecieveScores(It.IsAny<Dictionary<string, int>>()), Times.AtLeastOnce());
         }
-
-
 
         [TestMethod]
         public void TestGetConnectedUsers()

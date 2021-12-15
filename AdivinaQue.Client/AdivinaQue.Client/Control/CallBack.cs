@@ -21,9 +21,9 @@ namespace AdivinaQue.Client.Control
         private GameConfiguration gameConfiguration;
         private Game game;
         private Home home;
-        Proxy.GameMgtClient serverGame;
-        Proxy.PlayerMgtClient serverPlayer;
-        private List<String> usersPlayed = new List<String>();
+        private  Proxy.GameMgtClient serverGame;
+        private Proxy.PlayerMgtClient serverPlayer;
+        private  List<String> usersPlayed = new List<String>();
 
         public void SetPodio(Podio podio)
         {
@@ -47,7 +47,7 @@ namespace AdivinaQue.Client.Control
         {
             if (chat != null)
             {
-                chat.messagesCollection.Add(message);
+                chat.MessagesCollection.Add(message);
             }
         }
         public void SetChat(Chat chat)
@@ -79,24 +79,24 @@ namespace AdivinaQue.Client.Control
             
             if(playersList != null)
             {
-                playersList.usersCollection.Clear();
+                playersList.UsersCollection.Clear();
                 foreach (var username  in users.Keys)
                 {
                     if(username != currentUsername)
                     {
-                        playersList.usersCollection.Add(username);
+                        playersList.UsersCollection.Add(username);
                     }
                 }
                  
             }
             if (chat!= null)
             {
-                chat.usersCollection.Clear();
+                chat.UsersCollection.Clear();
                 foreach (var username in users.Keys)
                 {
-                    chat.usersCollection.Add(username);
+                    chat.UsersCollection.Add(username);
                 }
-                chat.usersCollection.Remove(currentUsername);
+                chat.UsersCollection.Remove(currentUsername);
             }
 
 
@@ -118,12 +118,12 @@ namespace AdivinaQue.Client.Control
         {
             if (podio != null)
             {
-                podio.playersCollection.Clear();
-                podio.scoresCollection.Clear();
+                podio.PlayersCollection.Clear();
+                podio.ScoresCollection.Clear();
                 foreach (var player in globalScores)
                 {
-                    podio.playersCollection.Add(player.Key);
-                    podio.scoresCollection.Add(player.Value);
+                    podio.PlayersCollection.Add(player.Key);
+                    podio.ScoresCollection.Add(player.Value);
 
                 }
             }
@@ -166,8 +166,8 @@ namespace AdivinaQue.Client.Control
         {
 
                 game.TurnOffRivalCards();
-                game.upCardRival.Clear();
-                game.upCardsRival.Clear();            
+                game.UpCardRival.Clear();
+                game.UpCardsRival.Clear();            
                 game.SetCorrectCards(cards);
           
         }
@@ -183,8 +183,8 @@ namespace AdivinaQue.Client.Control
 
             game.NextTurn = nextTurn;
             game.TurnOffRivalCards();
-            game.upCardRival.Clear();
-            game.upCardsRival.Clear();
+            game.UpCardRival.Clear();
+            game.UpCardsRival.Clear();
 
 
 
@@ -204,23 +204,23 @@ namespace AdivinaQue.Client.Control
         {
             if (playersList != null)
             {
-                playersList.usersPlayedCollection.Clear();
+                playersList.UsersPlayedCollection.Clear();
                 foreach (var player in usersPlayed)
                 {
-                    if (playersList.usersCollection.Contains(player))
+                    if (playersList.UsersCollection.Contains(player))
                     {
-                        playersList.usersCollection.Remove(player);
+                        playersList.UsersCollection.Remove(player);
                     }   
-                    playersList.usersPlayedCollection.Add(player);
+                    playersList.UsersPlayedCollection.Add(player);
                 }
             }
         }
 
         public void ReceiveCardTurn(BitmapImage image, string name)
         {
-            game.upCardRival.Clear();
-            game.upCardRival.Add(image, name);
-            game.upCardsRival.Add(image, name);
+            game.UpCardRival.Clear();
+            game.UpCardRival.Add(image, name);
+            game.UpCardsRival.Add(image, name);
             game.TurnRivalSelection();
 
             

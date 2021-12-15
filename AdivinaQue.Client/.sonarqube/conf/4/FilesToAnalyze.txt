@@ -1,0 +1,29 @@
+﻿C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\UnitTestServer.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\UnitTest.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Properties\AssemblyInfo.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\ValidateTest.cs
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\App.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item1.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item2.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item3.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item4.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item41.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item42.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item43.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item44.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item45.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item46.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item47.xsd
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\Service.wsdl
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\packages.config
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\item.disco
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\configuration91.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\configuration.svcinfo
+C:\Users\jack-\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\ClientTest\Connected Services\Proxy\Reference.svcmap

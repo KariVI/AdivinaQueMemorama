@@ -14,7 +14,6 @@ namespace AdivinaQue.Client.Views
 
     public partial class GameConfiguration : Window
     {
-        public ObservableCollection<String> topicsCollection;
         Proxy.GameMgtClient serverGame;
         Proxy.PlayerMgtClient serverPlayer;
         private String username;
@@ -23,12 +22,11 @@ namespace AdivinaQue.Client.Views
         private int sizeBoard;
         public ListBox lbxTopic { get { return lbxTopics; } set { lbxTopics = value; } }
 
-        public Home Home { get => home; set => home = value; }
+        public Home Home { get; set ; }
 
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         Dictionary<string, BitmapImage> gameCards = new Dictionary<string, BitmapImage>();
-        private Home home;
         private bool backHome = true;
         private  int TOTAL_CARDS_DESIGN = 48;
         private  int TOTAL_CARDS_TESTS = 44;
@@ -39,7 +37,6 @@ namespace AdivinaQue.Client.Views
             sizeBoard = 12;
             InitializeComponent();
             cbSizeBoard = new ComboBox();
-            topicsCollection = new ObservableCollection<string>();
             this.callback = callback;
             InstanceContext context = new InstanceContext(callback);
             serverPlayer = new Proxy.PlayerMgtClient(context);
@@ -74,6 +71,8 @@ namespace AdivinaQue.Client.Views
                         break;
 
                 }
+
+
                 int[] randomImageList = GenerateRandomNumbers(sizeBoard,cardsNumber / 2);
                 try
                 {
@@ -99,7 +98,7 @@ namespace AdivinaQue.Client.Views
                 game.SetUsernameRival(toUsername);
                 game.SetRandomLists(randomImageList, randomPositionList);
                 game.NextTurn = true;
-                game.home = home;
+                game.home = Home;
                 game.Show();
                 backHome = false;
                 this.Close();
@@ -110,11 +109,12 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+
         public int[] GenerateRandomNumbers(int sizeList,int sizeRandom)
         {
             Random randomNumber = new Random();
             List<int> randomList = new List<int>();
-            while (randomList.Count() < sizeList)
+            while (randomList.Count < sizeList)
             {
                 int buttonPosition = randomNumber.Next(sizeRandom);
                 if (!randomList.Contains(buttonPosition))

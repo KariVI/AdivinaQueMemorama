@@ -6,7 +6,7 @@ using log4net;
 
 namespace AdivinaQue.Client.Logs
 {
-    public class Log
+    public static class Log
     {
         public static ILog GetLogger([CallerFilePath] string filename = "")
         {

@@ -49,31 +49,8 @@ namespace AdivinaQue.Client.Views
             {
                 try
                 {
-                    if (!VerifyUserConnected()) { 
-                        Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
-                        if (!value && numberFailedEnter < 3)
-                        {
-                            Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
-                            numberFailedEnter++;
-                        }
-                        else if (!value && numberFailedEnter == 3)
-                        {
-                            if (ChangePasswordSucessful())
-                            {
-                                Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
-                            }
-                        }
-                        else if (value)
-                        {
-                            Home home = new Home(serverPlayer, callback);
-                            home.SetUsername(tbUsername.Text);
-                            callback.SetCurrentUsername(tbUsername.Text);
-                            callback.SetServer(serverGame);
-                            callback.SetServerPlayer(serverPlayer);
-                            serverPlayer.GetConnectedUsers();
-                            this.Hide();
-                            home.Show();
-                        }
+                    if (!VerifyUserConnected()) {
+                        Join();
                     }
                     else
                     {
@@ -96,6 +73,34 @@ namespace AdivinaQue.Client.Views
 
             }
 
+        }
+
+        private void Join()
+        {
+            Boolean value = serverPlayer.Join(tbUsername.Text, Password.Password.ToString());
+            if (!value && numberFailedEnter < 3)
+            {
+                Alert.ShowDialog(Application.Current.Resources["lbWrongCredentials"].ToString(), Application.Current.Resources["btOk"].ToString());
+                numberFailedEnter++;
+            }
+            else if (!value && numberFailedEnter == 3)
+            {
+                if (ChangePasswordSucessful())
+                {
+                    Alert.ShowDialog(Application.Current.Resources["lbRebaseEnters"].ToString(), Application.Current.Resources["btOk"].ToString());
+                }
+            }
+            else if (value)
+            {
+                Home home = new Home(serverPlayer, callback);
+                home.SetUsername(tbUsername.Text);
+                callback.SetCurrentUsername(tbUsername.Text);
+                callback.SetServer(serverGame);
+                callback.SetServerPlayer(serverPlayer);
+                serverPlayer.GetConnectedUsers();
+                this.Hide();
+                home.Show();
+            }
         }
         private void LoadStringResource(string locale)
         {
@@ -163,11 +168,11 @@ namespace AdivinaQue.Client.Views
                 string message = Application.Current.Resources["lbDefaultPassword"].ToString();
                 string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
                 string body = @"<style>     
-                                                        h3{color:#E267B4;}
-                                                        </style>
-                                                        <p> Tu nueva contraseña es: </p>
-                                                        <h4>" + message + " " + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
-                                                "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
+                                 h3{color:#E267B4;}
+                                 </style>
+                                  <p> Tu nueva contraseña es: </p>
+                                  <h4>" + message + " " + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                  "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
 
                 String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
                 if (messageEmailSuccesful == "Exito")
