@@ -21,8 +21,11 @@ namespace AdivinaQue.Host.BusinessRules
         private Dictionary<string, IClient> users = new Dictionary<String, IClient>();
 
         private List<string>  currentlyUserPlayed = new List<string>();
-     
-        
+
+        /// <summary>
+        /// Desconectar a un jugador del servidor
+        /// </summary>
+        ///<param name="username"> </param>
         public void DisconnectUser(String username)
         {
             users.Remove(username);
@@ -30,6 +33,11 @@ namespace AdivinaQue.Host.BusinessRules
             Console.WriteLine("Usuario {0} se desconecto", username);
             GetConnectedUsers();
         }
+        /// <summary>
+        /// Eliminar a un jugador del juego
+        /// </summary>
+        ///<param name="username"> </param>
+        ///<returns>True si fue posible eliminarlo y false si fue el caso contrario</returns>
         public bool Delete(string username)
         {
             Authentication authentication = new Authentication();
@@ -41,6 +49,10 @@ namespace AdivinaQue.Host.BusinessRules
             }
             return value;
         }
+        /// <summary>
+        /// Obtener a los usuarios conectados 
+        /// </summary>
+        
         public void GetConnectedUsers()
         {
             foreach (var other in users.Values)
@@ -48,6 +60,9 @@ namespace AdivinaQue.Host.BusinessRules
                 other.RecieveUsers(users);
             }
         }
+        /// <summary>
+        /// Obtener a los usuarios que estan jugando actualmente 
+        /// </summary>
         public void GetCurrentlyUserPlayed()
         {
             foreach (var other in users.Values)
@@ -55,6 +70,13 @@ namespace AdivinaQue.Host.BusinessRules
                 other.ReceiveUsersPlayed(currentlyUserPlayed);
             }
         }
+
+        /// <summary>
+        /// Ingresar al servidor 
+        /// </summary>
+        ///<param name="username"> </param>
+        ///<param name="password"> </param>
+        ///<returns>True si fue posible ingresar y false si fue el caso contrario</returns>
         public bool Join(string username, string password)
         {
             Authentication authentication = new Authentication();
@@ -70,6 +92,11 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
+        /// <summary>
+        /// Registrar un jugador
+        /// </summary>
+        ///<param name="player"> </param>
+        ///<returns>True si fue posible registrar al jugador y false si fue el caso contrario</returns>
         public Boolean Register(Player player)
         {
             Authentication authentication = new Authentication();
@@ -83,6 +110,12 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
+        /// <summary>
+        /// Actualizar la información de un jugador 
+        /// </summary>
+        ///<param name="player"> Nueva información del jugador</param>
+        ///<param name="username"></param>
+        /// <returns> True si se pudo actualizar la información  y False en caso contrario  </returns>
         public bool Modify(Player player, String username)
         {
             Authentication authentication = new Authentication();
@@ -95,12 +128,21 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
+        /// <summary>
+        /// Generar un código 
+        /// </summary> 
+        /// <returns> Una cadena con el código generado  </returns>
         public string GenerateCode()
         {
             Authentication authentication = new Authentication();
             var code = authentication.GenerateCode();
             return code;
         }
+
+        /// <summary>
+        /// Buscar la información de un jugador por medio de su nombre de usuario 
+        /// </summary> 
+        ///<param name="username"></param>
 
         public void SearchInfoPlayerByUsername(String username)
         {
@@ -114,6 +156,12 @@ namespace AdivinaQue.Host.BusinessRules
             }
         }
 
+        /// <summary>
+        /// Buscar si existe el jugador en el servidor 
+        /// </summary> 
+        ///<param name="newUsername"></param>
+        /// <returns> Una cadena con el código generado  </returns>
+
         public bool SearchUsername(string newUsername)
         {
             bool value = false;
@@ -123,6 +171,13 @@ namespace AdivinaQue.Host.BusinessRules
             }
             return value;
         }
+
+        /// <summary>
+        /// Enviar un mensaje a un jugador conectado
+        /// </summary> 
+        ///<param name="message"></param>
+        /// <param name="username"></param>
+        /// <param name="userReceptor"></param>
 
         public void SendMessage(String message, String username, String userReceptor)
         {
@@ -143,16 +198,39 @@ namespace AdivinaQue.Host.BusinessRules
 
             }
         }
+
+        /// <summary>
+        /// Enviar una invitación a una nueva partida 
+        /// </summary> 
+        ///<param name="message"></param>
+        /// <param name="username"></param>
+        /// <param name="userReceptor"></param>
         public bool SendInvitation(String toUsername, String fromUsername)
         {
             var result = users[toUsername].SendInvitationGame(fromUsername);
             return result;
         }
 
+
+        /// <summary>
+        /// Mandar las especificaciones del tablero  al rival
+        /// </summary> 
+        /// <param name="toUsername"> Quien va recibir el tablero</param>
+        /// <param name="size"></param>
+        /// <param name="category"></param>
         public void SendBoard(String toUsername, int size, string category)
         {
             users[toUsername].SendBoardConfigurate(toUsername,size,category);
         }
+
+        /// <summary>
+        /// Mandar un correo de confirmaciób
+        /// </summary> 
+        /// <param name="to"> Quien va recibir el tablero</param>
+        /// <param name="asunto"></param>
+        /// <param name="body"></param>
+        /// <returns> Mandar una cadena de exito o error al enviar el correo</returns>
+
         public string SendMail(string to, string asunto, string body)
         {
             string message = "";
@@ -183,6 +261,12 @@ namespace AdivinaQue.Host.BusinessRules
             
             return message;
         }
+
+        /// <summary>
+        /// Mandar la lista de puntajes
+         /// </summary> 
+        /// <param name="username"> Quien va recibir los puntajes</param>
+
         public void GetScores(String username)
         {
             Authentication authentication = new Authentication();
@@ -198,6 +282,10 @@ namespace AdivinaQue.Host.BusinessRules
 
 
         }
+        /// <summary>
+        /// Recuperar la lista de Emails registrados en el sistema 
+        /// </summary>
+        /// <returns> Una lista de strings con los emails </returns>
 
         public List<String> GetEmails()
         {
@@ -206,6 +294,10 @@ namespace AdivinaQue.Host.BusinessRules
             return emails;
         }
 
+        /// <summary>
+        /// Recuperar la lista de Usuarios  registrados en el sistema 
+        /// </summary>
+        /// <returns> Una lista de strings con los usuarios </returns>
         public List<String> GetUsers()
         {
             Authentication authentication = new Authentication();
@@ -213,36 +305,77 @@ namespace AdivinaQue.Host.BusinessRules
             return usersRegister;
         }
 
+
+
+        /// <summary>
+        /// Mandar el rival al otro jugador
+       /// </summary> 
+        /// <param name="rival"> </param>
+        /// <param name="fromUsername"> </param>
         public void SendRival(string rival, string fromUsername)
         {
             users[fromUsername].ReceiveRival(rival);
             currentlyUserPlayed.Add(rival);
             currentlyUserPlayed.Add(fromUsername);
         }
+
+        /// <summary>
+        /// Mandar las listas correspondientes al tablero 
+        /// </summary> 
+        /// <param name="toUsername"> </param>
+        /// <param name="randomImageList"> Imagenes del tablero </param>
+        /// <param name="randomPositionList"> Posiciones del tablero </param>
+
+
         public void SendBoardLists(string toUsername, List<int> randomImageList, List<int> randomPositionList)
         {
             users[toUsername].ReceiveCardSeed(randomImageList, randomPositionList);
         }
+        /// <summary>
+        /// Mandar las cartas correctas al rival 
+        /// </summary> 
+        /// <param name="toUsername"> </param>
+        /// <param name="cards"> Par de cartas </param>
 
         public void SendCorrectCards(string toUsername, Dictionary<BitmapImage, string> cards)
         {
             users[toUsername].ReceiveCorrectPair(cards);
         }
 
+        /// <summary>
+        /// Mandar el puntaje del jugador al rival 
+        /// </summary> 
+        /// <param name="toUsername"> </param>
+        /// <param name="score"> Par de cartas </param>
+
         public void SendScoreRival(string toUsername, int score)
         {
             users[toUsername].ReceiveScoreRival(score);
         }
-
+        /// <summary>
+        /// Mandar el siguiente turno al rival 
+        /// <param name="toUsername"> </param>
+        /// <param name="nextTurn"> Par de cartas </param>
+        /// </summary> 
         public void SendNextTurnRival(string toUsername, bool nextTurn)
         {
             users[toUsername].ReceiveNextTurn(nextTurn);
         }
+        /// <summary>
+        /// Mandar el total de cartas encontradas en el tablero  al rival
+        /// </summary> 
+        /// <param name="toUsername"> </param>
+        /// <param name="numberCardsFinded"> Total de cartas encontradas</param>
 
         public void SendNumberCardsFinded(string toUsername, int numberCardsFinded)
         {
             users[toUsername].ReceiveNumberCardsFinded(numberCardsFinded);
         }
+        /// <summary>       
+        /// Mandar el juego finalizado para registrar  
+        ///   </summary> 
+        /// <param name="gameCurrently"> Juego finalizado </param>
+
 
         public bool SendGame(GameCurrently gameCurrently)
         {
@@ -260,11 +393,23 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
             
         }
+        /// <summary>
+        /// Mandar el ganador al rival
+        /// </summary> 
+        /// <param name="toUsername"> </param>
+        ///  <param name="winner"> </param>
+
 
         public void SendWinner(string toUsername, string winner)
         {
             users[toUsername].ReceiveWinner(winner);
         }
+        /// <summary>
+        /// Cuando finaliza un juego es necesario quitar a los jugadores del listado de personas jugando 
+        /// </summary> 
+        /// <param name="username"> </param>
+        ///  <param name="rival"> </param>
+
         public void DisconnectPlayers(string username, string rival)
         {
             currentlyUserPlayed.Remove(username);
@@ -273,6 +418,12 @@ namespace AdivinaQue.Host.BusinessRules
             GetConnectedUsers();
         }
 
+
+        /// <summary>
+        /// Buscar email de un jugador por medio de nombre del usuario 
+        /// </summary>
+        ///<param name="username"> </param>
+        /// <returns> El email de usuario  </returns>
         public string GetEmailByUser(string username)
         {
             Authentication authentication = new Authentication();
@@ -280,6 +431,12 @@ namespace AdivinaQue.Host.BusinessRules
             return authentication.GetEmail(username);
         }
 
+        /// <summary>
+        /// Actualizar la contraseña de un jugador 
+        /// </summary>
+        ///<param name="username"></param>
+        ///<param name="newPassword"> </param>
+        /// <returns> True si se pudo actualizar la  contraseña  y False en caso contrario  </returns>
         public bool ChangePassword(string username, string newPassword)
         {
             Authentication authentication = new Authentication();
@@ -292,6 +449,11 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
+        /// <summary>
+        /// Buscar a un jugador
+        /// </summary>
+        ///<param name="username"></param>
+        /// <returns> True si se pudo localizar al jugador y False en caso contrario  </returns>
         public bool FindUsername(string username)
         {
             bool value = false;
@@ -304,13 +466,23 @@ namespace AdivinaQue.Host.BusinessRules
             return value;
         }
 
-       
+        /// <summary>
+        /// Mandar las cartas que esta volteando actualmente el jugador al rival
+        ///</summary> 
+        /// <param name="toUsername"> </param>
+        ///  <param name="image">  Imagen de la carta</param>
+        ///  <param name="name">  Identificador de la carta</param>
+
 
         public void SendCardTurn(string toUsername, BitmapImage image, string name)
         {
             users[toUsername].ReceiveCardTurn(image, name);
         }
 
+        /// <summary>
+        /// Obtener a los usuarios conectados 
+        /// </summary>
+        /// <returns> Lista de cadenas con los nombres de los usuarios conectados</returns>
         public List<string> GetUsersConnected()
         {
             List<string> usersConnected= new List<string>();
