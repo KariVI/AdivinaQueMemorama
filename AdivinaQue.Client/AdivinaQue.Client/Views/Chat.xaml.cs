@@ -41,7 +41,10 @@ namespace AdivinaQue.Client.Views
         public ListBox ListUsers { get { return UsersConnected; } set { UsersConnected = value; } }
         public ListView Messages { get { return listMessages; } set { listMessages = value; } }
 
-
+        /// <summary>
+        /// Inicializa una nueva instancia de chat.xaml.
+        /// </summary>
+        /// <param name="server"></param>
         public Chat(Proxy.PlayerMgtClient server)
         {
             InitializeComponent();
@@ -54,21 +57,30 @@ namespace AdivinaQue.Client.Views
 
         }
 
-
-
+        /// <summary>
+        /// Inicializa el nombre de usuario y llama a los métodos que depende de este valor.
+        /// </summary>
+        /// <param name="username"></param>
         public void SetUsername(string username)
         {
-            
             this.username = username;
-            SetLabel();
+            SetLabelGretting();
         }
-        public void SetLabel()
+
+        /// <summary>
+        /// Inicializa la label de saludo.
+        /// </summary>
+        public void SetLabelGretting()
         {
             lbUser.Content = Application.Current.Resources["lbGretting"].ToString() + " " + username;
         }
 
-
-        private void SendButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para enviar un mensaje.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtSendMessage_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MessageContent.Text) && !string.IsNullOrWhiteSpace(MessageContent.Text))
             {
@@ -97,11 +109,11 @@ namespace AdivinaQue.Client.Views
 
         }
 
-       private void Window_Closed(object sender, EventArgs e)
-        {   
-            this.Hide();
-        }
-
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;

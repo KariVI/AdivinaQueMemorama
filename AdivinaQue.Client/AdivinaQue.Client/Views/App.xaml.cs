@@ -14,7 +14,11 @@ namespace AdivinaQue.Client
     /// </summary>
     public partial class App : Application
     {
-      
+        /// <summary>
+        /// Controlador del evento StartUp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
         public void Aplication_StartUp(object sender, StartupEventArgs eventArgs) {
             Login login = new Login();
             login.ShowDialog(); 

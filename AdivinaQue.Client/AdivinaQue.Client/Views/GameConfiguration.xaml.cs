@@ -11,7 +11,9 @@ using System.Windows.Media.Imaging;
 
 namespace AdivinaQue.Client.Views
 {
-
+    /// <summary>
+    /// Lógica de interacción para GameConfiguration.xaml
+    /// </summary>
     public partial class GameConfiguration : Window
     {
         Proxy.GameMgtClient serverGame;
@@ -32,6 +34,12 @@ namespace AdivinaQue.Client.Views
         private  int TOTAL_CARDS_TESTS = 44;
         private  int TOTAL_CARDS_ADMIN = 40;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de  GameConfiguration.xaml.
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="username"></param>
+        /// <param name="toUsername"></param>
         public GameConfiguration(CallBack callback, String username, String toUsername)
         {
             sizeBoard = 12;
@@ -44,8 +52,12 @@ namespace AdivinaQue.Client.Views
             this.username = username;
             this.toUsername = toUsername;
         }
-
-        private void ConfirmBt_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón confirmar configuración.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtConfirm_Click(object sender, RoutedEventArgs e)
         {
             string category;
 
@@ -57,23 +69,9 @@ namespace AdivinaQue.Client.Views
                 Game game = new Game(serverGame, sizeBoard, category);
                 
                 int[] randomPositionList = GenerateRandomNumbers(sizeBoard, sizeBoard);
-                int cardsNumber = 0;
-                switch (category)
-                {
-                    case "Diseño":
-                        cardsNumber = TOTAL_CARDS_DESIGN;
-                        break;
-                    case "Pruebas":
-                        cardsNumber = TOTAL_CARDS_TESTS;
-                        break;
-                    case "Administración":
-                        cardsNumber = TOTAL_CARDS_ADMIN;
-                        break;
-
-                }
-
-
+                int cardsNumber = GetNumberCards(category);
                 int[] randomImageList = GenerateRandomNumbers(sizeBoard,cardsNumber / 2);
+
                 try
                 {
                 serverGame.SendBoard(toUsername, sizeBoard, category);
@@ -105,11 +103,40 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                Alert.ShowDialogWithResponse(Application.Current.Resources["lbSelected"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(Application.Current.Resources["lbSelected"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
+        /// <summary>
+        /// Devuelve el número de cartas dependiendo de la categoría seleccionada.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns>Número entero de cartas de determinada categoría.</returns>
+        public int GetNumberCards(string category)
+        {
+            int cardsNumber = 0;
+            switch (category)
+            {
+                case "Diseño":
+                    cardsNumber = TOTAL_CARDS_DESIGN;
+                    break;
+                case "Pruebas":
+                    cardsNumber = TOTAL_CARDS_TESTS;
+                    break;
+                case "Administración":
+                    cardsNumber = TOTAL_CARDS_ADMIN;
+                    break;
 
+            }
+            return cardsNumber;
+        }
+
+        /// <summary>
+        /// Genera números aleatorios.
+        /// </summary>
+        /// <param name="sizeList">Tanaño de la lista de números aleatorios.</param>
+        /// <param name="sizeRandom">Tamaño máximo que tendra cada número aleatorio.</param>
+        /// <returns>Lista con números enteros aleatorios no repetidos</returns>
         public int[] GenerateRandomNumbers(int sizeList,int sizeRandom)
         {
             Random randomNumber = new Random();
@@ -125,6 +152,11 @@ namespace AdivinaQue.Client.Views
             return randomList.ToArray();
         }
 
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             if (backHome)
@@ -133,7 +165,12 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        private void cbSizeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Controlador para el evento del combobox de tamaño del tablero.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbSizeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem comboBoxItem = ((sender as ComboBox).SelectedItem as ComboBoxItem);
 

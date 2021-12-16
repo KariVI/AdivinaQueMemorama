@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 
 namespace AdivinaQue.Client.Views
 {
-   
+    /// <summary>
+    /// Lógica de interacción para Podio.xaml.
+    /// </summary>
     public partial class Podio : Window
     {
         public ObservableCollection<String> PlayersCollection { get; set; }
@@ -28,6 +30,12 @@ namespace AdivinaQue.Client.Views
         public ListView players { get { return lvPlayer; } set { lvPlayer = value; } }
         public ListView victories { get { return lvVictory; } set { lvVictory = value; } }
 
+        /// <summary>
+        /// Inicializa una nueva instancia de Podio.xaml.
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="username"></param>
+        /// <param name="home"></param>
         public Podio(Proxy.PlayerMgtClient server, String username, Home home)
         {
             InitializeComponent();
@@ -40,13 +48,23 @@ namespace AdivinaQue.Client.Views
             lvVictory.ItemsSource = ScoresCollection;
         }
 
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
             home.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para regresar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtReturn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             home.Show();

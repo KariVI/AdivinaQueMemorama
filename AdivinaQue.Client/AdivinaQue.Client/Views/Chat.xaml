@@ -69,7 +69,7 @@
             <Grid Grid.Row="2" Background="#efaeb9" Margin="-10,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="MessageContent"  Background="#e4b6b3" Width="264" TextWrapping="Wrap" AcceptsReturn="true" Margin="10"  />
-                    <Button x:Name="SendButton" Content="{DynamicResource btSend}" Margin="14" HorizontalAlignment="Center" BorderThickness="0"  Background="#cf7c77" Width="80" Height="30" Click="SendButton_Click"/>
+                    <Button x:Name="SendButton" Content="{DynamicResource btSend}" Margin="14" HorizontalAlignment="Center" BorderThickness="0"  Background="#cf7c77" Width="80" Height="30" Click="BtSendMessage_Click"/>
                 </StackPanel>
 
 

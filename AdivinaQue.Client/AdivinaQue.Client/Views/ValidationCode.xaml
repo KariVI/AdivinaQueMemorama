@@ -10,10 +10,10 @@
         <TextBox Name="tbCode" Background="#c0aee0" HorizontalAlignment="Left" Height="21" Margin="10,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259" />
         <Label Name="lbCode" Content="{DynamicResource lbCodeMessage}" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" FontSize="10">
         </Label>
-        <Button Name="EnterBt"  Content="{DynamicResource btVerify}" Background="#dda0dd" HorizontalAlignment="Left" Margin="291,154,0,0" VerticalAlignment="Top" Width="75" Height="20" RenderTransformOrigin="0.462,2.367" Click="EnterBt_Click" />
+        <Button Name="btVerify"  Content="{DynamicResource btVerify}" Background="#dda0dd" HorizontalAlignment="Left" Margin="291,154,0,0" VerticalAlignment="Top" Width="75" Height="20" RenderTransformOrigin="0.462,2.367" Click="BtVerify_Click" />
         <Label x:Name="lbEmail" Content="{DynamicResource lbEmailMessage}" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" FontSize="10"/>
         <TextBox x:Name="tbEmail" Background="#c0aee0"  MaxLength="100" HorizontalAlignment="Left" Height="21" Margin="10,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259" />
-        <Button Name ="SendCodeBt" Content="{DynamicResource btSendCode}" Background="#dda0dd" HorizontalAlignment="Left" Margin="283,69,0,0" VerticalAlignment="Top" Width="83" Click="SendCodeBt_Click"/>
+        <Button Name ="btSendCode" Content="{DynamicResource btSendCode}" Background="#dda0dd" HorizontalAlignment="Left" Margin="283,69,0,0" VerticalAlignment="Top" Width="83" Click="btSendCode_Click"/>
         <Label x:Name="lbEmail_Copy" Content="{DynamicResource lbTitleValidationCode}" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="OCR A Extended"/>
 
     </Grid>
