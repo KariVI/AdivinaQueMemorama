@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace AdivinaQue.Host.InterfaceContract
 {
     [DataContract]
+    /// <summary>
+    ///  Guardar la información sobre un jugador 
+    /// </summary> 
     public class Player
     {
         [DataMember]

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace AdivinaQue.Host.InterfaceContract
 {
     [DataContract]
+    /// <summary>
+    /// Guardar la información de una partida finalizada  
+    /// </summary> 
     public class GameCurrently
     {
         [DataMember]
