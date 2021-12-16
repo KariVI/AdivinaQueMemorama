@@ -21,7 +21,11 @@ namespace AdivinaQue.Client.Views
         private bool backHome = true;
         private static readonly ILog Logs = Log.GetLogger();
 
-
+        /// <summary>
+        /// Inicializa una nueva instancia de Modify.xaml.
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="home"></param>
         public Modify(CallBack callback, Home home)
         {
             InitializeComponent();
@@ -29,7 +33,13 @@ namespace AdivinaQue.Client.Views
             this.callback = callback;
             this.home = home;
         }
-      private void btUpdate_Click(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Controlador del botón para actualizar el jugador.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(pbPassword.Password.ToString()) && !string.IsNullOrEmpty(tbName.Text) &&
                 !string.IsNullOrEmpty(tbEmail.Text) && !IsVoid())
@@ -55,6 +65,9 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Envia un correo electrónico al correo que se encuentra escrito actualmente en el textbox.
+        /// </summary>
         private void SendEmail()
         {
             try
@@ -102,6 +115,10 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        ///  Verifica que los campos ingresados esten vacios.
+        /// </summary>
+        /// <returns>True si algún campo es vacío, false ningún campo es vacío</returns>
         private bool IsVoid()
         {
             bool value = false;
@@ -113,6 +130,10 @@ namespace AdivinaQue.Client.Views
             return value;
         }
 
+        /// <summary>
+        /// Valida los datos de registro ingresados en los textbox y passwordbox.
+        /// </summary>
+        /// <returns>Datastatus dependiento de los datos.</returns>
         private DataStatus ValidateData()
         {
             Validate validate = new Validate();
@@ -148,6 +169,10 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Envia un alerta al usuario dependiendo de la variable dataStatus.
+        /// </summary>
+        /// <param name="dataStatus"></param>
         private void SendMessage(DataStatus dataStatus)
         {
             if (dataStatus == DataStatus.UserNameInvalid)
@@ -178,12 +203,22 @@ namespace AdivinaQue.Client.Views
         }
 
      
-
+        /// <summary>
+        /// Controlador del botón para cancelar la modificación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             home.Show();
         }
+
+        /// <summary>
+        /// Controlador del botón eliminar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtDelete_Click(object sender, RoutedEventArgs e)
         {
             var option = Alert.ShowDialog(Application.Current.Resources["lbDeleteAccount"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
@@ -215,6 +250,10 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Inicializa el servidor y llama a los metodos que dependen de el.
+        /// </summary>
+        /// <param name="server"></param>
         internal void SetServer(PlayerMgtClient server)
         {
             this.server = server;
@@ -234,16 +273,22 @@ namespace AdivinaQue.Client.Views
             }
         }
 
-        internal void SetUsername(string username)
-        {
-            this.username = username;
-        }
+        /// <summary>
+        /// Inicializa la variable username.
+        /// </summary>
+        /// <param name="username"></param>
+        internal void SetUsername(string username) => this.username = username;
 
-        internal void SetHome(Home home)
-        {
-            this.home = home;
-        }
+        /// <summary>
+        /// Inicializa la variable home.
+        /// </summary>
+        /// <param name="home"></param>
+        internal void SetHome(Home home) => this.home = home;
 
+        /// <summary>
+        /// Inicializa los datos del jugador en los textbox.
+        /// </summary>
+        /// <param name="player">Jugador conectado actualmente.</param>
         public void SetPlayer(Player player)
         {
             tbName.Text = player.Name;
@@ -252,6 +297,11 @@ namespace AdivinaQue.Client.Views
             pbPassword.Password = "";
         }
 
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();

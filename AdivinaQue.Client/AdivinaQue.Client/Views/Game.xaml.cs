@@ -17,6 +17,9 @@ using System.Windows.Threading;
 
 namespace AdivinaQue.Client.Views
 {
+    /// <summary>
+    /// Lógica de interacción para Game.xaml.
+    /// </summary>
     public partial class Game : Window
     {
         private int sizeBoard;
@@ -54,7 +57,12 @@ namespace AdivinaQue.Client.Views
         private bool backHome = true;
         private static DispatcherTimer timerButton;
      
-
+        /// <summary>
+        /// Inicializa una nueva instancia de Game.xaml.
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="sizeBoard"></param>
+        /// <param name="category"></param>
         public Game(Proxy.GameMgtClient server, int sizeBoard, string category)
         {
             this.server = server;
@@ -85,15 +93,22 @@ namespace AdivinaQue.Client.Views
             }
 
             InitializeComponent();
-            SetTimer(this);
-            SetTimerButton(this);
+            SetTurnTimer(this);
+            SetCardButtonTimer(this);
         }
 
+        /// <summary>
+        /// Inicializa el servidor del jugador.
+        /// </summary>
+        /// <param name="playerMgtClient"></param>
         public void SetServerPlayer(Proxy.PlayerMgtClient playerMgtClient)
         {
             serverPlayer = playerMgtClient;
         }
 
+        /// <summary>
+        /// Actualiza el tamaño del tablero.
+        /// </summary>
         private void UpdateSizes()
         {
             if (sizeBoard == 12)
@@ -119,6 +134,10 @@ namespace AdivinaQue.Client.Views
                 column = 6;
             }
         }
+
+        /// <summary>
+        /// Inicializa el tablero.
+        /// </summary>
         public void InitializeBoard()
         {
             GetImages();
@@ -126,6 +145,10 @@ namespace AdivinaQue.Client.Views
             GetRandomCards();
         }
 
+        /// <summary>
+        /// Inicialia el nombre de usuario del jugador actual.
+        /// </summary>
+        /// <param name="username"></param>
         public void SetUsername(string username)
         {
             this.username = username;
@@ -135,12 +158,19 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Inicializa el nombre de usuario del rival.
+        /// </summary>
+        /// <param name="usernameRival"></param>
         public void SetUsernameRival(string usernameRival)
         {
             this.usernameRival = usernameRival;
             lbRivalScore.Content = usernameRival;
 
         }
+        /// <summary>
+        /// Añade los botones de las cartas al tablero.
+        /// </summary>
         public void AddButton()
         {
 
@@ -148,7 +178,7 @@ namespace AdivinaQue.Client.Views
             {
                 Button bt = new Button();
 
-                bt.Click += new RoutedEventHandler(Button_Onclick);
+                bt.Click += new RoutedEventHandler(BtCard_Onclick);
                 bt.Width =  (double) 639 / column;
                 bt.Height = (double) 624 / row;
                 Color color = (Color)ColorConverter.ConvertFromString("#CCCCFF");
@@ -162,7 +192,9 @@ namespace AdivinaQue.Client.Views
 
             }
         }
-
+        /// <summary>
+        /// Recupera el total de imagenes de los recursos.
+        /// </summary>
         public void GetImages()
         {
 
@@ -184,6 +216,12 @@ namespace AdivinaQue.Client.Views
 
             }
         }
+
+        /// <summary>
+        /// Inicializa la semilla(numeros aleatorios) del juego.
+        /// </summary>
+        /// <param name="randomImageList"></param>
+        /// <param name="randomPositionList"></param>
         public void SetRandomLists(int[] randomImageList, int[] randomPositionList)
         {
             this.randomImageList = randomImageList;
@@ -191,6 +229,9 @@ namespace AdivinaQue.Client.Views
             InitializeBoard();
         }
 
+        /// <summary>
+        /// Inicializa las cartas de acuerdo a la semilla de numeros aleatorios.
+        /// </summary>
         public void GetRandomCards()
         {
             string btName = "";
@@ -209,15 +250,18 @@ namespace AdivinaQue.Client.Views
             }
 
         }
-
-        internal void ShowWinner(string winner)
+        /// <summary>
+        /// Muestra el ganador en la GUI.
+        /// </summary>
+        /// <param name="winnerUsername">Nombre del ganador.</param>
+        internal void ShowWinner(string winnerUsername)
         {
             timer.Stop();
-            if (winner.Equals("both"))
+            if (winnerUsername.Equals("both"))
             {
                 Alert.ShowDialogWithResponse(Application.Current.Resources["lbTie"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
-            else if (winner.Equals(username))
+            else if (winnerUsername.Equals(username))
             {
                 Alert.ShowDialogWithResponse(Application.Current.Resources["lbWin"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
@@ -230,6 +274,10 @@ namespace AdivinaQue.Client.Views
             this.Close();
         }
 
+        /// <summary>
+        /// Bloquea las cartas correctas.
+        /// </summary>
+        /// <param name="cards">Diccionario que contiene las cartas correctas.</param>
         internal void SetCorrectCards(Dictionary<BitmapImage, string> cards)
         {
             Button btCard1 = GetButton(cards.Values.First());
@@ -244,6 +292,11 @@ namespace AdivinaQue.Client.Views
             btCard2.Name = "blocked";
 
         }
+
+        /// <summary>
+        /// Verifica las cartas del turno.
+        /// </summary>
+        /// <returns>True si las cartas se corresponden, false en caso contrario</returns>
         public bool VerifyTurn()
         {
            
@@ -268,6 +321,9 @@ namespace AdivinaQue.Client.Views
             return correct;
         }
 
+        /// <summary>
+        /// Actualiza el tablero dependiendo del turno jugado.
+        /// </summary>
        public  void UpdateBoard()
         {
             bool correct = VerifyTurn();            
@@ -302,10 +358,14 @@ namespace AdivinaQue.Client.Views
             }
             UpCards = new Dictionary<BitmapImage, string>();
             timerButton.Start();
-          
-
+         
         }
 
+        /// <summary>
+        /// Obtiene el botón dependiendo de su identificador.
+        /// </summary>
+        /// <param name="name">Identificador del botón.</param>
+        /// <returns>Botón que cumple con los parametros.</returns>
         public Button GetButton(string name)
         {
             int i = 0;
@@ -315,8 +375,13 @@ namespace AdivinaQue.Client.Views
             }
             return buttons[i];
         }
-        
-        public void Button_Onclick(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Controlador del botón para voltear una carta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void BtCard_Onclick(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
             if (NumberCardsFinded != GameCards.Count )
@@ -359,7 +424,9 @@ namespace AdivinaQue.Client.Views
             
 
         }
-
+        /// <summary>
+        /// Asigna un ganador.
+        /// </summary>
         public void AssignWinner()
         {
            
@@ -392,10 +459,13 @@ namespace AdivinaQue.Client.Views
 
             server.SendGame(gameCurrently);
             server.SendWinner(usernameRival, winner);
-            ShowWinner( winner);
+            ShowWinner(winner);
 
         }
 
+        /// <summary>
+        /// Muestra las cartas que selecciono el rival.
+        /// </summary>
         public void TurnRivalSelection()
         {
             Button btCard1 = GetButton(UpCardRival.Values.First());
@@ -405,6 +475,9 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Oculta las cartas que selecciono el rival.
+        /// </summary>
         public void TurnOffRivalCards()
         {
             if (UpCardsRival.Count == 2)
@@ -416,6 +489,12 @@ namespace AdivinaQue.Client.Views
                     btCard2.Content = null;
             }
         }
+
+        /// <summary>
+        /// Controlador del botón para cerrrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!endGame)
@@ -442,7 +521,11 @@ namespace AdivinaQue.Client.Views
             timer.Stop();
         }
 
-        public static void SetTimer(Game game)
+        /// <summary>
+        /// Inicializa el timer del turno.
+        /// </summary>
+        /// <param name="game"></param>
+        public static void SetTurnTimer(Game game)
         {
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
             timer.Tick += delegate {
@@ -461,7 +544,11 @@ namespace AdivinaQue.Client.Views
             timer.Start();
         }
 
-        public static void SetTimerButton(Game game)
+        /// <summary>
+        /// Inicializa el timer de los botones del tablero.
+        /// </summary>
+        /// <param name="game"></param>
+        public static void SetCardButtonTimer(Game game)
         {
             timerButton = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             timerButton.Tick += delegate {
@@ -475,6 +562,11 @@ namespace AdivinaQue.Client.Views
             timerButton.Start();
         }
 
+        /// <summary>
+        /// Controlador para el evento de MouseMove.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             timer.Stop();

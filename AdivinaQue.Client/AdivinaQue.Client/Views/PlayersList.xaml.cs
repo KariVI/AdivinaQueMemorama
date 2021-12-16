@@ -24,6 +24,14 @@ namespace AdivinaQue.Client.Views
         private Home home;
         Boolean backHome = true;
         CallBack callback;
+
+        /// <summary>
+        /// Inicializa una nueva instancia de PlayersList.xaml.
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="username"></param>
+        /// <param name="home"></param>
+        /// <param name="callBack"></param>
         public PlayersList(Proxy.PlayerMgtClient server, String username, Home home, CallBack callBack)
         {
             InitializeComponent();
@@ -38,6 +46,12 @@ namespace AdivinaQue.Client.Views
             this.home = home;
             
         }
+
+        /// <summary>
+        /// Controlador del botón para enviar un correo electrónico.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -78,7 +92,12 @@ namespace AdivinaQue.Client.Views
             
         }
 
-        private void btSend_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Envia una invitación al usuario seleccionado en la lista de usuarios.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtSendInvitation_Click(object sender, RoutedEventArgs e)
         {
 
             if (listUsers.SelectedValue != null)
@@ -101,11 +120,17 @@ namespace AdivinaQue.Client.Views
                 }
             }
         }
-        private void ShowResponse(bool result, string player)
+
+        /// <summary>
+        /// Muestra la respuesta de la invitación propordinada por el usuario invitado.
+        /// </summary>
+        /// <param name="result">True si acepto la invitación, false en caso contrario.</param>
+        /// <param name="rivalUsername">Nombre de usuario del jugador invitado.</param>
+        private void ShowResponse(bool result, string rivalUsername)
         {
             if (result)
             {
-                GameConfiguration gameConfiguration = new GameConfiguration(callback, username, player);
+                GameConfiguration gameConfiguration = new GameConfiguration(callback, username, rivalUsername);
                 gameConfiguration.Home = home;
                 callback.SetGameConfiguration(gameConfiguration);
                 backHome = false;
@@ -114,18 +139,26 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                Alert.ShowDialog(player + " " + Application.Current.Resources["lbDeclineInvitation"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(rivalUsername + " " + Application.Current.Resources["lbDeclineInvitation"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 
-
-
-        private void btReturn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador para el botón regresar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtReturn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             home.Show();
         }
 
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();

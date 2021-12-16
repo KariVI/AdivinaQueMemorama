@@ -3,35 +3,40 @@ using AdivinaQue.Client.Logs;
 using log4net;
 using System;
 using System.ServiceModel;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace AdivinaQue.Client.Views
 {
-   
+    /// <summary>
+    /// Lógica de interacción para Register.xaml.
+    /// </summary>
     public partial class Register : Window
     {
-
-        Proxy.PlayerMgtClient serverPlayer;
-        private String email;
+        private Proxy.PlayerMgtClient serverPlayer;
+        private string email;
         private static readonly ILog Logs = Log.GetLogger();
 
-
-
+        /// <summary>
+        /// Inicializa una nueva instancia de Register.xaml.
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="email"></param>
         public Register(Proxy.PlayerMgtClient server, String email)
         {
-          
             this.serverPlayer = server;
             this.email = email;
             InitializeComponent();
-
-
         }
-        private void RegisterBt_Click(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Controlador del botón para registrar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtRegister_Click(object sender, RoutedEventArgs e)
         {
 
-            if ( ! string.IsNullOrEmpty(tbUsername.Text)  && !string.IsNullOrEmpty(Password.Password.ToString()) && !string.IsNullOrEmpty(tbName.Text)  && !IsVoid() )
+            if ( ! string.IsNullOrEmpty(tbUsername.Text)  && !string.IsNullOrEmpty(pbPassword.Password.ToString()) && !string.IsNullOrEmpty(tbName.Text)  && !IsVoid() )
             {
                 if (ValidateData() == DataStatus.Correct)
                 {
@@ -48,15 +53,24 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Verifica que los campos ingresados esten vacios.
+        /// </summary>
+        /// <returns>True si algún campo es vacío, false ningún campo es vacío</returns>
         private bool IsVoid()
         {
             bool value = false;
-            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) || string.IsNullOrWhiteSpace(Password.Password.ToString()))
+            if (string.IsNullOrWhiteSpace(tbName.Text) || string.IsNullOrWhiteSpace(tbUsername.Text) || string.IsNullOrWhiteSpace(pbPassword.Password.ToString()))
             {
                 value = true;
             }
             return value;
         }
+
+        /// <summary>
+        /// Valida los datos de registro ingresados en los textbox y passwordbox.
+        /// </summary>
+        /// <returns>Datastatus dependiento de los datos.</returns>
         private DataStatus  ValidateData()
         {
             Validate validate = new Validate();
@@ -74,12 +88,12 @@ namespace AdivinaQue.Client.Views
                 dataStatus = DataStatus.NameInvalid;
             }
 
-            if (!validate.ValidationAlphanumeric(Password.Password.ToString()))
+            if (!validate.ValidationAlphanumeric(pbPassword.Password.ToString()))
             {
                 dataStatus = DataStatus.PasswordInvalid;
             }
 
-            if(Password.Password.ToString().Length < 9)
+            if(pbPassword.Password.ToString().Length < 9)
             {
                 dataStatus = DataStatus.ShortPassword;
 
@@ -89,6 +103,10 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Envia un alerta al usuario dependiendo de la variable dataStatus.
+        /// </summary>
+        /// <param name="dataStatus"></param>
         private void SendMessage(DataStatus dataStatus)
         {
             if (dataStatus == DataStatus.UserNameInvalid)
@@ -122,6 +140,10 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Convierte los nombres de usuario de los usuarios registrados a mayusculas.
+        /// </summary>
+        /// <returns>Arrego de string con los username de los usuarios registrados en mayusculas</returns>
         private string[] ConvertUpperStrings()
         {
             int numberUsers=0;
@@ -147,6 +169,10 @@ namespace AdivinaQue.Client.Views
 
         }
 
+        /// <summary>
+        /// Verifica que el nombre de usuario ya se encuentre registrado.
+        /// </summary>
+        /// <returns>true si el nombre de usuario ya esta registrado, false en caso contrario.</returns>
         private bool SearchDuplicateUsername()
         {
             bool value = false;
@@ -163,12 +189,15 @@ namespace AdivinaQue.Client.Views
             return value;
         }
 
+        /// <summary>
+        /// Envia el usuario al servidor para su registro.
+        /// </summary>
         public void RegisterUser()
         {
 
             Proxy.Player player = new Proxy.Player();
             player.Username = tbUsername.Text.Trim();
-            player.Password = Password.Password.ToString();
+            player.Password = pbPassword.Password.ToString();
             player.Name = tbName.Text.Trim();
             player.Email = email;
             try
@@ -186,12 +215,21 @@ namespace AdivinaQue.Client.Views
 
         }
 
-
-        private void CancelBt_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cancela el registro.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Controlador del botón para cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closedWindow(object sender, EventArgs e)
         {
             this.Close();

@@ -78,6 +78,7 @@
     <Compile Include="Views\Alert.xaml.cs">
       <DependentUpon>Alert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AlertResult.cs" />
     <Compile Include="Views\AuthMail.xaml.cs">
       <DependentUpon>AuthMail.xaml</DependentUpon>
     </Compile>

@@ -18,9 +18,12 @@ namespace AdivinaQue.Client.Views
 
         Proxy.PlayerMgtClient serverPlayer;
         private static readonly ILog Logs = Log.GetLogger();
-
-
         public String CodeExpected { get ;  set ; } 
+
+        /// <summary>
+        /// Inicializa una instacia de la clase ValidationCode.xaml.
+        /// </summary>
+        /// <param name="server"></param>
         public ValidationCode(Proxy.PlayerMgtClient server)
         {
             
@@ -28,7 +31,12 @@ namespace AdivinaQue.Client.Views
             InitializeComponent();
         }
 
-        private void EnterBt_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Conbtrolador del botón para verificar el código de autenticación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtVerify_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbCode.Text )  && !IsVoid())
             {
@@ -52,6 +60,10 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Verifica si el campo del correo electrónico esta vacio.
+        /// </summary>
+        /// <returns>true si esta vacio y false en caso contrario.</returns>
         private bool IsVoid()
         {
             bool value = false;
@@ -61,6 +73,10 @@ namespace AdivinaQue.Client.Views
             return value;
         }
 
+        /// <summary>
+        /// Genera un código aleatorio.
+        /// </summary>
+        /// <returns>String con 5 caracteres aleatorios.</returns>
         public string GenerateCodeValidation()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -76,7 +92,12 @@ namespace AdivinaQue.Client.Views
             return resultString;
         }
 
-        private void SendCodeBt_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Controlador del botón para enviar un código.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btSendCode_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(tbEmail.Text) )
             {
@@ -97,6 +118,9 @@ namespace AdivinaQue.Client.Views
             
         }
 
+        /// <summary>
+        /// Envia un correo electrónico.
+        /// </summary>
         private void SendMail()
         {
             if (!SearchDuplicateEmail())
@@ -141,6 +165,10 @@ namespace AdivinaQue.Client.Views
             }
         }
 
+        /// <summary>
+        /// Verifica si correo electrónico se encuentra registrado.
+        /// </summary>
+        /// <returns>True si el correo electrónico ya se encuentra registrado, false en caso contrario</returns>
         private bool SearchDuplicateEmail() {
             bool value = false;
             
@@ -161,8 +189,7 @@ namespace AdivinaQue.Client.Views
                 Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
                 this.Close();
             }
-           
-                         
+
             return value;
         }
     }
