@@ -103,7 +103,7 @@ namespace AdivinaQue.Client.Views
             }
             else
             {
-                Alert.ShowDialogWithResponse(Application.Current.Resources["lbSelected"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(Application.Current.Resources["lbSelected"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
         }
 

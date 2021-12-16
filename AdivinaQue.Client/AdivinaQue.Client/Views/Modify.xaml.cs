@@ -221,7 +221,7 @@ namespace AdivinaQue.Client.Views
         /// <param name="e"></param>
         private void BtDelete_Click(object sender, RoutedEventArgs e)
         {
-            var option = Alert.ShowDialog(Application.Current.Resources["lbDeleteAccount"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
+            var option = Alert.ShowDialogWithResponse(Application.Current.Resources["lbDeleteAccount"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
             if (option == AlertResult.Yes)
             {
                 try

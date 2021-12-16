@@ -259,15 +259,15 @@ namespace AdivinaQue.Client.Views
             timer.Stop();
             if (winnerUsername.Equals("both"))
             {
-                Alert.ShowDialogWithResponse(Application.Current.Resources["lbTie"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(Application.Current.Resources["lbTie"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
             else if (winnerUsername.Equals(username))
             {
-                Alert.ShowDialogWithResponse(Application.Current.Resources["lbWin"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(Application.Current.Resources["lbWin"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
             else 
             {
-                Alert.ShowDialogWithResponse(Application.Current.Resources["lbLost"].ToString(), Application.Current.Resources["btOk"].ToString());
+                Alert.ShowDialog(Application.Current.Resources["lbLost"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
             endGame = true;
             server.DisconnectPlayers(username, usernameRival);

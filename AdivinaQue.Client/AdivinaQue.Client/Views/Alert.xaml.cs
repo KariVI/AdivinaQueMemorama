@@ -26,28 +26,28 @@ namespace AdivinaQue.Client.Views
         }
 
         /// <summary>
-        ///  Muestra una alerta esperando una respueesta.
+        /// Muestra una alerta esperando respuesta.
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="button1Text"></param>
-        /// <param name="button2Text"></param>
-        /// <returns></returns>
-        public static AlertResult ShowDialog(string message,  string button1Text, string button2Text)
+        /// <param name="button1Text">Botón respuesta afirmativa</param>
+        /// <param name="button2Text">Botón respues negativa</param>
+        /// <returns>AlertResult dependiendo de la respuesta del usuario</returns>
+        public static AlertResult ShowDialogWithResponse(string message, string button1Text, string button2Text)
         {
             Alert messageBox = new Alert();
-            return messageBox.ShowDialogInternal( message, button1Text, button2Text);
+            return messageBox.ShowDialogInternalWithResponse(message, button1Text, button2Text);
         }
 
         /// <summary>
-        /// Muestra una alerta esperando una respueesta.
+        /// Muestra una alerta esperando respuesta.
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="button1Text"></param>
-        /// <returns></returns>
+        /// <param name="button1Text">Botón respuesta afirmativa</param>
+        /// <returns>AlertResult dependiendo de la respuesta del usuario</returns>
         public static AlertResult ShowDialogWithResponse(string message, string button1Text)
         {
             Alert messageBox = new Alert();
-            return messageBox.ShowDialogInternal(message, button1Text);
+            return messageBox.ShowDialogInternalWithResponse(message, button1Text);
         }
 
         /// <summary>
@@ -62,35 +62,17 @@ namespace AdivinaQue.Client.Views
         }
 
         /// <summary>
-        /// Muestra un mensaje con los parametros.
+        /// Crea un dialogo con los parametros dados.
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="button1Text"></param>
-        /// <param name="button2Text"></param>
-        /// <returns>Alert result dependiendo de la respuesta del usuario.</returns>
-        public AlertResult ShowDialogInternal(string message, string button1Text, string button2Text)
+        /// <param name="button1Text">Botón respuesta negativa</param>
+        /// <param name="button2Text">Botón respues afirmativa</param>
+        /// <returns>AlertResult dependiendo de la respuesta del usuario</returns>
+        public AlertResult ShowDialogInternalWithResponse(string message, string button1Text,string button2Text)
         {
             tbMessage.Text = message;
+            btYes.Content = button2Text;
             btNo.Content = button1Text;
-            btYes.Content = button2Text;          
-            SetTimer(); 
-            timer.Start();
-            ShowDialog();
-            return Result;
-        }
-
-        /// <summary>
-        /// Muestra un mensaje con los parametros.
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="button1Text"></param>
-        /// <returns>Alert result dependiendo de la respuesta del usuario.</returns>
-        public AlertResult ShowDialogInternal(string message, string button1Text)
-        {
-            tbMessage.Text = message;
-            btNo.Opacity = 0;
-            btNo.IsEnabled = false;
-            btYes.Content = button1Text;
             SetTimer();
             timer.Start();
             ShowDialog();
@@ -98,7 +80,40 @@ namespace AdivinaQue.Client.Views
         }
 
         /// <summary>
-        /// Controlador del botón sí.
+        /// Crea un dialogo con los parametros dados.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="button1Text">Botón respuesta afirmativa</param>
+        /// <returns>AlertResult dependiendo de la respuesta del usuario</returns>
+        public AlertResult ShowDialogInternalWithResponse(string message, string button1Text)
+        {
+            tbMessage.Text = message;
+            btYes.Content = button1Text;
+            btNo.Opacity = 0;
+            btNo.IsEnabled = false;
+            SetTimer();
+            timer.Start();
+            ShowDialog();
+            return Result;
+        }
+
+
+        /// <summary>
+        /// Crea un dialogo con los parametros dados.
+        /// </summary>
+        /// <param name="message">Mensaje a mostrar.</param>
+        /// <param name="button1Text">Botón de confirmación.</param>
+        public void ShowDialogInternal(string message, string button1Text)
+        {
+            tbMessage.Text = message;
+            btNo.Opacity = 0;
+            btNo.IsEnabled = false;
+            btYes.Content = button1Text;
+            ShowDialog();
+        }
+
+        /// <summary>
+        /// Controlador del botón no.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -116,7 +131,11 @@ namespace AdivinaQue.Client.Views
         private void BtYes_Click(object sender, RoutedEventArgs e)
         {
             Result = AlertResult.Yes;
-            timer.Stop();
+            if(timer != null)
+            {
+                timer.Stop();
+            }
+         
             Close();
         }
 

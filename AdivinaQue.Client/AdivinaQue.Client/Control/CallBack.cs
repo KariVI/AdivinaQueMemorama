@@ -60,7 +60,7 @@ namespace AdivinaQue.Client.Control
         }
         public bool SendInvitationGame(String username)
         {
-            var option = Alert.ShowDialog(username + " " + Application.Current.Resources["lbInvitation"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
+            var option = Alert.ShowDialogWithResponse(username + " " + Application.Current.Resources["lbInvitation"].ToString(), Application.Current.Resources["btNo"].ToString(), Application.Current.Resources["btYes"].ToString());
             bool value = false;
             if (option == AlertResult.Yes)
             {
