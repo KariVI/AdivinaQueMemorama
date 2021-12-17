@@ -11,7 +11,6 @@
             <ComboBoxItem Background="Gainsboro" Content="3 x 4" IsSelected="True"></ComboBoxItem>
             <ComboBoxItem Background="Gainsboro" Content="4 x 4"></ComboBoxItem>
             <ComboBoxItem Background="Gainsboro" Content="5 x 4"></ComboBoxItem>
-            <ComboBoxItem Background="Gainsboro" Content="6 x 5"></ComboBoxItem>
         </ComboBox>
         <Button x:Name="btConfirm" BorderThickness="0"   Background="Plum"  FontFamily="Tw Cen MT Condensed" FontSize="16" Content="{DynamicResource btConfirm}" HorizontalAlignment="Left" Margin="290,335,0,0" VerticalAlignment="Top" Width="75" Height="21" Click="BtConfirm_Click" RenderTransformOrigin="0.48,1.238"/>
         <Label Content="{DynamicResource lbSize}" HorizontalAlignment="Left" Margin="73,276,0,0" VerticalAlignment="Top"/>

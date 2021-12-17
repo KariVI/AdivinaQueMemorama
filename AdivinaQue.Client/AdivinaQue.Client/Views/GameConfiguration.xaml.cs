@@ -193,11 +193,7 @@ namespace AdivinaQue.Client.Views
                 sizeBoard = 20;
 
             }
-            else if (sizeSelected.Equals("6 x 5"))
-            {
-                sizeBoard = 30;
-
-            }
+          
             
         }
     }

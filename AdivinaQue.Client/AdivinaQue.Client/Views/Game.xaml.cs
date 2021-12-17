@@ -513,13 +513,18 @@ namespace AdivinaQue.Client.Views
         {
             if (UpCardsRival.Count == 2)
             {
-               
-                Button btCard1 = GetButton(UpCardsRival.Values.First());                                  
-                Button btCard2 = GetButton(UpCardsRival.Values.ElementAt(1));
-                btCard1.Content =null ;
-                btCard2.Content = null;
-        
+                if (DisponseButton(UpCardsRival.Values.First()) && DisponseButton(UpCardsRival.Values.ElementAt(1)))
+                {
+                    Button btCard1 = GetButton(UpCardsRival.Values.First());
+                    Button btCard2 = GetButton(UpCardsRival.Values.ElementAt(1));
+                    btCard1.Content = null;
+                    btCard2.Content = null;
+                    UpCardRival.Clear();
+                    UpCardsRival.Clear();
+                }
             }
+        
+            
         }
 
         /// <summary>
