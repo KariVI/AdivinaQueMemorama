@@ -51,7 +51,17 @@ namespace AdivinaQue.Client.Views
             Alert messageBox = new Alert();
             return messageBox.ShowDialogInternalWithResponse(message, button1Text);
         }
-
+        /// <summary>
+        /// Muestra una alerta esperando respuesta.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="button1Text">Botón respuesta afirmativa</param>
+        /// <returns>AlertResult dependiendo de la respuesta del usuario</returns>
+        public static void ShowDialogWithoutButton(string message)
+        {
+            Alert messageBox = new Alert();
+            messageBox.ShowDialogInternalWithoutButton(message);
+        }
         /// <summary>
         /// Muestra una alerta sin esperar respuesta.
         /// </summary>
@@ -114,6 +124,23 @@ namespace AdivinaQue.Client.Views
             ShowDialog();
         }
 
+        /// <summary>
+        /// Crea un dialogo iformativo.
+        /// </summary>
+        /// <param name="message">Mensaje a mostrar.</param>
+        /// <param name="button1Text">Botón de confirmación.</param>
+        public void ShowDialogInternalWithoutButton(string message)
+        {
+            tbMessage.Text = message;
+            btNo.Opacity = 0;
+            btNo.IsEnabled = false;
+            btYes.Opacity = 0;
+            btYes.IsEnabled = false;
+            TotalTime = 1;
+            SetTimer();
+            timer.Start();
+            ShowDialog();
+        }
         /// <summary>
         /// Controlador del botón no.
         /// </summary>

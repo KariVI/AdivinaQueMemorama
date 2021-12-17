@@ -251,7 +251,8 @@ namespace AdivinaQue.Client.Views
         /// </summary>
         /// <param name="winnerUsername">Nombre del ganador.</param>
         internal void ShowWinner(string winnerUsername)
-        {
+        { 
+            endGame = true;
             timer.Stop();
             if (winnerUsername.Equals("both"))
             {
@@ -265,7 +266,7 @@ namespace AdivinaQue.Client.Views
             {
                 Alert.ShowDialog(Application.Current.Resources["lbLost"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
-            endGame = true;
+          
             this.Close();
         }
 
@@ -342,8 +343,8 @@ namespace AdivinaQue.Client.Views
                 else
                 {
                     NextTurn = false;
-                    Alert.TotalTime = 3;
-                    Alert.ShowDialogWithResponse(Application.Current.Resources["incorrectPair"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    
+                    Alert.ShowDialogWithoutButton(Application.Current.Resources["incorrectPair"].ToString());
 
                     Thread.Sleep(100);
                     server.SendNextTurnRival(usernameRival, true);
