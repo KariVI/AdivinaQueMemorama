@@ -80,7 +80,7 @@ namespace AdivinaQue.Client.Views
                     serverGame.SendRival(username, toUsername);
                     callback.SetServer(serverGame);
                     callback.SetGame(game);
-                    serverPlayer.GetCurrentlyUserPlayed();
+                    
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
@@ -161,6 +161,7 @@ namespace AdivinaQue.Client.Views
         /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
+            serverGame.DisconnectPlayers(username, toUsername);
             if (backHome)
             {
                 Home.Show();

@@ -103,4 +103,5 @@
     <system:String x:Key="lbEmailSended">Correo enviado</system:String>
     <system:String x:Key="lbInvitationSubject">Invitacion</system:String>
     <system:String x:Key="lbInvitationMessage">Lo han invitado a jugar Adivina Que! Instale el juego AQUI</system:String>
+    <system:String x:Key="lbActuallyPlaying">Ya estas en una partida!</system:String>
 </ResourceDictionary>

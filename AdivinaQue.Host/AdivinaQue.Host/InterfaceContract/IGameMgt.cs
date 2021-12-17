@@ -96,5 +96,6 @@ namespace AdivinaQue.Host.InterfaceContract
         ///   </summary> 
         /// <param name="gameCurrently"> Juego finalizado </param>
         bool SendGame(GameCurrently gameCurrently);
+       
     }
 }

@@ -89,6 +89,6 @@
     <system:String x:Key="lbEmailSended">Email sended</system:String>
     <system:String x:Key="lbInvitationSubject">Invitation to play</system:String>
     <system:String x:Key="lbInvitationMessage">You are invited to play Adivina Que! Click here to play</system:String>
-    
-    
+
+    <system:String x:Key="lbActuallyPlaying">You are actually playing!</system:String>
 </ResourceDictionary>

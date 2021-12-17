@@ -224,10 +224,14 @@ namespace AdivinaQue.Client.Control
         public void SendBoardConfigurate(string username, int size, string category)
         {
             game = new Game(serverGame,size, category);
-            
-            game.SetUsername(username);
-            home.Hide();
             game.home = home;
+            game.SetUsername(username);
+           
+            if (playersList != null)
+            {
+                playersList.Close();
+            }
+            home.Hide();
             game.Show();        
         }
 
@@ -318,11 +322,15 @@ namespace AdivinaQue.Client.Control
                 playersList.UsersPlayedCollection.Clear();
                 foreach (var player in usersPlayed)
                 {
+
                     if (playersList.UsersCollection.Contains(player))
                     {
                         playersList.UsersCollection.Remove(player);
-                    }   
-                    playersList.UsersPlayedCollection.Add(player);
+                    }
+                    if (player != currentUsername)
+                    {
+                        playersList.UsersPlayedCollection.Add(player);
+                    }
                 }
             }
         }

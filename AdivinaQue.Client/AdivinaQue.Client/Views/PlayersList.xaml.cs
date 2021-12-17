@@ -99,14 +99,22 @@ namespace AdivinaQue.Client.Views
         /// <param name="e"></param>
         private void BtSendInvitation_Click(object sender, RoutedEventArgs e)
         {
-
+            
             if (listUsers.SelectedValue != null)
             {
                 try
                 {
-                    var player = listUsers.SelectedValue.ToString();
-                    bool result = serverPlayer.SendInvitation(player, username);
-                    ShowResponse(result, player);
+                    if (!serverPlayer.isPlaying(username))
+                    {
+                        var player = listUsers.SelectedValue.ToString();
+                        bool result = serverPlayer.SendInvitation(player, username);
+                        ShowResponse(result, player);
+                    }
+                    else
+                    {
+                        Alert.ShowDialog(Application.Current.Resources["lbActuallyPlaying"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    }
+                    
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
@@ -132,6 +140,21 @@ namespace AdivinaQue.Client.Views
             {
                 GameConfiguration gameConfiguration = new GameConfiguration(callback, username, rivalUsername);
                 gameConfiguration.Home = home;
+                try
+                {
+                    serverPlayer.ConnectCurrentlyUsers(username, rivalUsername);
+                    serverPlayer.GetCurrentlyUserPlayed();
+                }     
+                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+                {
+                    Logs.Error($"Fallo la conexión ({ ex.Message})");
+
+                    Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                    backHome = false;
+                    Login login = new Login();
+                    login.Show();
+                    this.Close();
+                }
                 callback.SetGameConfiguration(gameConfiguration);
                 backHome = false;
                 gameConfiguration.Show();

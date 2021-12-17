@@ -311,8 +311,33 @@ namespace AdivinaQue.Host.BusinessRules
         public void SendRival(string rival, string fromUsername)
         {
             users[fromUsername].ReceiveRival(rival);
+            
+        }
+
+        /// <summary>
+        /// Agregar usuarios a la lista de conectados
+        /// </summary> 
+        /// <param name="rival"> </param>
+        /// <param name="fromUsername"> </param>
+        public void ConnectCurrentlyUsers(string rival, string fromUsername)
+        {
             currentlyUserPlayed.Add(rival);
             currentlyUserPlayed.Add(fromUsername);
+        }
+
+        /// <summary>
+        /// Devuelve true si el jugador se encuentra jugando actualmente
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>True si el jugador esta jugando, false en caso contrario</returns>
+        public bool isPlaying(string username)
+        {
+            bool value = false;
+            if (currentlyUserPlayed.Contains(username))
+            {
+               value = true;
+            }
+            return value;
         }
 
         /// <summary>

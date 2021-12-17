@@ -338,6 +338,18 @@ namespace AdivinaQue.Client.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed")]
         System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ConnectCurrentlyUsers")]
+        void ConnectCurrentlyUsers(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerMgt/ConnectCurrentlyUsers")]
+        System.Threading.Tasks.Task ConnectCurrentlyUsersAsync(string rival, string fromUsername);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/isPlaying", ReplyAction="http://tempuri.org/IPlayerMgt/isPlayingResponse")]
+        bool isPlaying(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerMgt/isPlaying", ReplyAction="http://tempuri.org/IPlayerMgt/isPlayingResponse")]
+        System.Threading.Tasks.Task<bool> isPlayingAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -575,6 +587,22 @@ namespace AdivinaQue.Client.Proxy {
         
         public System.Threading.Tasks.Task GetCurrentlyUserPlayedAsync() {
             return base.Channel.GetCurrentlyUserPlayedAsync();
+        }
+        
+        public void ConnectCurrentlyUsers(string rival, string fromUsername) {
+            base.Channel.ConnectCurrentlyUsers(rival, fromUsername);
+        }
+        
+        public System.Threading.Tasks.Task ConnectCurrentlyUsersAsync(string rival, string fromUsername) {
+            return base.Channel.ConnectCurrentlyUsersAsync(rival, fromUsername);
+        }
+        
+        public bool isPlaying(string username) {
+            return base.Channel.isPlaying(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> isPlayingAsync(string username) {
+            return base.Channel.isPlayingAsync(username);
         }
     }
     

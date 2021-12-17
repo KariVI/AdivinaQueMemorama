@@ -1,0 +1,9 @@
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\bin\Release\Resources_es-MEX.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\bin\Release\Resources_es-MEX.pdb
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX.csproj.AssemblyReference.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Strings.baml
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX_MarkupCompile.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX.g.resources
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX.csproj.CoreCompileInputs.cache
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX.dll
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Client\Resources_es-MEX\obj\Release\Resources_es-MEX.pdb

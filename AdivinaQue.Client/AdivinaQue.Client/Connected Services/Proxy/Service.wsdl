@@ -164,11 +164,26 @@
   <wsdl:message name="IPlayerMgt_GetUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerMgt_GetUsersConnected_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersConnected" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_GetUsersConnected_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersConnectedResponse" />
+  </wsdl:message>
   <wsdl:message name="IPlayerMgt_GetScores_InputMessage">
     <wsdl:part name="parameters" element="tns:GetScores" />
   </wsdl:message>
   <wsdl:message name="IPlayerMgt_GetCurrentlyUserPlayed_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentlyUserPlayed" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_ConnectCurrentlyUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectCurrentlyUsers" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_isPlaying_InputMessage">
+    <wsdl:part name="parameters" element="tns:isPlaying" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerMgt_isPlaying_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isPlayingResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerMgt_RecieveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveMessage" />
@@ -367,11 +382,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsers" message="tns:IPlayerMgt_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsersResponse" message="tns:IPlayerMgt_GetUsers_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUsersConnected">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsersConnected" message="tns:IPlayerMgt_GetUsersConnected_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/GetUsersConnectedResponse" message="tns:IPlayerMgt_GetUsersConnected_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetScores">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetScores" message="tns:IPlayerMgt_GetScores_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCurrentlyUserPlayed">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/GetCurrentlyUserPlayed" message="tns:IPlayerMgt_GetCurrentlyUserPlayed_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectCurrentlyUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/ConnectCurrentlyUsers" message="tns:IPlayerMgt_ConnectCurrentlyUsers_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isPlaying">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerMgt/isPlaying" message="tns:IPlayerMgt_isPlaying_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/isPlayingResponse" message="tns:IPlayerMgt_isPlaying_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerMgt/RecieveMessage" message="tns:IPlayerMgt_RecieveMessage_OutputCallbackMessage" />
@@ -646,6 +672,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUsersConnected">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetUsersConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetScores">
       <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/GetScores" style="document" />
       <wsdl:input>
@@ -657,6 +692,21 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectCurrentlyUsers">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/ConnectCurrentlyUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isPlaying">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/isPlaying" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecieveMessage">
       <soap12:operation soapAction="http://tempuri.org/IPlayerMgt/RecieveMessage" style="document" />
@@ -924,7 +974,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/ServicePlayer</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -933,7 +983,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9090/Service/ServiceGame</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-A884PK0\kari</Upn>
+          <Upn>DESKTOP-GH4KAPE\Mariana</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -158,5 +158,20 @@ namespace AdivinaQue.Host.InterfaceContract
         /// </summary>
         void GetCurrentlyUserPlayed();
 
+        /// <summary>
+        /// Agregar usuarios a la lista de conectados
+        /// </summary> 
+        /// <param name="rival"> </param>
+        /// <param name="fromUsername"> </param>
+        [OperationContract(IsOneWay = true)]
+        void ConnectCurrentlyUsers(string rival, string fromUsername);
+        /// <summary>
+        /// Devuelve true si el jugador se encuentra jugando actualmente
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>True si el jugador esta jugando, false en caso contrario</returns>
+        [OperationContract]
+        bool isPlaying(string username);
+
     }
 }
