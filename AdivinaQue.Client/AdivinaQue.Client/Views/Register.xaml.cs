@@ -76,14 +76,14 @@ namespace AdivinaQue.Client.Views
             Validate validate = new Validate();
             DataStatus dataStatus = DataStatus.Correct;
 
-            if (!validate.ValidationAlphanumeric(tbUsername.Text)) {
+            if (!validate.ValidationAlphanumeric(tbUsername.Text.Trim())) {
                 dataStatus = DataStatus.UserNameInvalid;
             } else if (SearchDuplicateUsername())
             {
                 dataStatus = DataStatus.UserNameDuplicate;
             }
 
-            if (!validate.ValidationString(tbName.Text))
+            if (!validate.ValidationString(tbName.Text.Trim()))
             {
                 dataStatus = DataStatus.NameInvalid;
             }

@@ -342,7 +342,6 @@ namespace AdivinaQue.Client.Views
                 else
                 {
                     NextTurn = false;
-                    Alert.TotalTime = 3;
                     Alert.ShowDialogWithResponse(Application.Current.Resources["incorrectPair"].ToString(), Application.Current.Resources["btOk"].ToString());
 
                     Thread.Sleep(100);

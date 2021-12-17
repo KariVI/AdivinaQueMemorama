@@ -198,28 +198,38 @@ namespace AdivinaQue.Client.Views
         {
             bool value = false;
             String passwordDefault = GenerateCodeValidation();
-
-            if (serverPlayer.ChangePassword(tbUsername.Text, passwordDefault))
+            try
             {
-                string email = serverPlayer.GetEmailByUser(tbUsername.Text);
-
-                string message = Application.Current.Resources["lbDefaultPassword"].ToString();
-                string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
-                string body = @"<style>     
-                                 h3{color:#E267B4;}
-                                 </style>
-                                  <p> Tu nueva contraseña es: </p>
-                                  <h4>" + message + " " + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
-                                  "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
-
-                String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
-                if (messageEmailSuccesful == "Exito")
+                if (serverPlayer.ChangePassword(tbUsername.Text, passwordDefault))
                 {
-                    value = true;
+                    string email = serverPlayer.GetEmailByUser(tbUsername.Text);
+
+                    string message = Application.Current.Resources["lbDefaultPassword"].ToString();
+                    string subject = Application.Current.Resources["lbSubjetcPassword"].ToString();
+                    string body = @"<style>     
+                                     h3{color:#E267B4;}
+                                     </style>
+                                      <p> Tu nueva contraseña es: </p>
+                                      <h4>" + message + " " + passwordDefault + "</h3>" + "<p> Recuerda cambiar tu contraseña cuando inicies sesión " +
+                                      "<br> Si no fuiste tu el que solicito el cambio de contraseña, ignora el mensaje</p>  ";
+
+                    String messageEmailSuccesful = serverPlayer.SendMail(email, subject, body);
+                    if (messageEmailSuccesful == "Exito")
+                    {
+                        value = true;
+                    }
                 }
             }
+            catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
+            {
+                Logs.Error($"Fallo la conexión ({ ex.Message})");
+                Alert.ShowDialog(Application.Current.Resources["lbServerError"].ToString(), Application.Current.Resources["btOk"].ToString());
+                numberFailedEnter = 0;
+                this.Close();
 
-                return value;
+            }
+
+            return value;
 
         }
 

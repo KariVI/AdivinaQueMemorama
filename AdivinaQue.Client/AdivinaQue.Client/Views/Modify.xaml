@@ -12,13 +12,13 @@
             <RowDefinition Height="283*"/>
         </Grid.RowDefinitions>
         <Label Content="{DynamicResource lbEmail}" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.161,0.527" Grid.Row="1"/>
-        <TextBox Name="tbUsername" Background="#FFC0AEE0" HorizontalAlignment="Left" Height="23" Margin="195,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.Row="1" />
+        <TextBox Name="tbUsername" Background="#FFC0AEE0"  MaxLength="20"   HorizontalAlignment="Left" Height="23" Margin="195,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.Row="1" />
         <Label Content="{DynamicResource lbUsername}" HorizontalAlignment="Left" Margin="25,47,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.49,1.442" Grid.Row="1"/>
-        <TextBox Name="tbEmail" Background="#FFC0AEE0" HorizontalAlignment="Left" Height="23" Margin="195,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.Row="1" />
+        <TextBox Name="tbEmail" Background="#FFC0AEE0" MaxLength="100 " HorizontalAlignment="Left" Height="23" Margin="195,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.Row="1" />
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="25,158,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <PasswordBox Name="pbPassword" Background="#FFC0AEE0" HorizontalAlignment="Left" Margin="195,158,0,0" VerticalAlignment="Top" Height="26" Width="247" Grid.Row="1"/>
         <Label  Content="{DynamicResource lbName}" HorizontalAlignment="Left" Margin="25,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.727,1.231" Grid.RowSpan="2"/>
-        <TextBox Name="tbName" HorizontalAlignment="Left" Background="#FFC0AEE0" Height="23" Margin="195,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.RowSpan="2" />
+        <TextBox Name="tbName"  MaxLength="80" HorizontalAlignment="Left" Background="#FFC0AEE0" Height="23" Margin="195,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Grid.RowSpan="2" />
         <Button Name ="btCancel"  BorderThickness="0"  Background="Plum" Content="{DynamicResource btCancel}" HorizontalAlignment="Left" Margin="244,221,0,0" VerticalAlignment="Top" Width="86" Click="BtCancel_Click" Height="21" ClipToBounds="True" SnapsToDevicePixels="True" Grid.Row="1"/>
 
         <Button Name ="btUpdate"  Background="Plum" Content="{DynamicResource btUpdate}" HorizontalAlignment="Left" Margin="359,221,0,0" VerticalAlignment="Top" Width="83" Click="BtUpdate_Click" Height="21" RenderTransformOrigin="1.072,0.472" BorderThickness="0" ClipToBounds="True" SnapsToDevicePixels="True" Grid.Row="1"/>

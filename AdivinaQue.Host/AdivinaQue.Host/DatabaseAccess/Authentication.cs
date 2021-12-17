@@ -45,7 +45,6 @@ namespace AdivinaQue.Host.DatabaseAccess
 
                 if (Players > 0)
                 {
-
                     status = AuthenticationStatus.Success;
                 }
             }
@@ -472,7 +471,7 @@ namespace AdivinaQue.Host.DatabaseAccess
         ///<param name="gameCurrently"> </param>
         /// <returns> La ID de un juego  </returns>
 
-        public int GetIdGame(GameCurrently gameCurrently)
+        private int GetIdGame(GameCurrently gameCurrently)
         {
             int id = 0;
             using (var context = new AdivinaQueAppContext())
