@@ -65,7 +65,7 @@ namespace AdivinaQue.Client.Views
             {
                 string categoryAuxiliar = lbxTopic.SelectedItem.ToString();
                 int found = categoryAuxiliar.IndexOf(": ");
-                category = categoryAuxiliar.Substring(found + 2);              
+                category = categoryAuxiliar.Substring(found + 2);
                 Game game = new Game(serverGame, sizeBoard, category);
                 
                 int[] randomPositionList = GenerateRandomNumbers(sizeBoard, sizeBoard);
@@ -74,13 +74,13 @@ namespace AdivinaQue.Client.Views
 
                 try
                 {
-                serverGame.SendBoard(toUsername, sizeBoard, category);
-                serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
-                 Thread.Sleep(100);
-                serverGame.SendRival(username, toUsername);
-                callback.SetServer(serverGame);
-                callback.SetGame(game);
-                serverPlayer.GetCurrentlyUserPlayed();
+                    serverGame.SendBoard(toUsername, sizeBoard, category);
+                    serverGame.SendBoardLists(toUsername, randomImageList, randomPositionList);
+                     Thread.Sleep(100);
+                    serverGame.SendRival(username, toUsername);
+                    callback.SetServer(serverGame);
+                    callback.SetGame(game);
+                    serverPlayer.GetCurrentlyUserPlayed();
                 }
                 catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException )
                 {
@@ -117,7 +117,9 @@ namespace AdivinaQue.Client.Views
             int cardsNumber = 0;
             switch (category)
             {
-                case "Diseño":
+
+                case "Disenio":
+
                     cardsNumber = TOTAL_CARDS_DESIGN;
                     break;
                 case "Pruebas":

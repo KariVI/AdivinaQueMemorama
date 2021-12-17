@@ -44,7 +44,7 @@ namespace AdivinaQue.Client.Views
                 if (codeReceived.Equals(CodeExpected))
                 {
                     Alert.ShowDialog(Application.Current.Resources["lbCorrectEmail"].ToString(), Application.Current.Resources["btOk"].ToString());
-                    Register register = new Register(serverPlayer, tbEmail.Text);
+                    Register register = new Register(serverPlayer, tbEmail.Text.Trim());
                     this.Close();
                     register.Show();
 
@@ -102,7 +102,7 @@ namespace AdivinaQue.Client.Views
             if (!string.IsNullOrEmpty(tbEmail.Text) )
             {
                 Validate validate = new Validate();
-                if (validate.ValidationEmail(tbEmail.Text)){
+                if (validate.ValidationEmail(tbEmail.Text.Trim())){
                     SendMail();
                 } else
                 {
@@ -138,7 +138,7 @@ namespace AdivinaQue.Client.Views
                 String messageEmailSuccesful = "Error";
                 try
                 {
-                    messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text, subject, body);
+                    messageEmailSuccesful = serverPlayer.SendMail(tbEmail.Text.Trim(), subject, body);
                     if (messageEmailSuccesful == "Exito")
                     {
 
@@ -177,7 +177,7 @@ namespace AdivinaQue.Client.Views
                 string[] emails= serverPlayer.GetEmails();
                 foreach (var email in emails)
                 {
-                    if (email.Equals(tbEmail.Text))
+                    if (email.Equals(tbEmail.Text.Trim()))
                     {
                         value = true;
                     }

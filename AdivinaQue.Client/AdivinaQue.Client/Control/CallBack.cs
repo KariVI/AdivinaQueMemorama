@@ -256,8 +256,9 @@ namespace AdivinaQue.Client.Control
         /// <param name="cards">Diccionario con las cartas correctas </param>
         public void ReceiveCorrectPair(Dictionary<BitmapImage, string> cards)
         {
-
+           
                 game.TurnOffRivalCards();
+            
                 game.UpCardRival.Clear();
                 game.UpCardsRival.Clear();            
                 game.SetCorrectCards(cards);
