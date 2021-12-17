@@ -45,6 +45,11 @@ INSERT INTO [dbo].[Players]
            null)
 GO
 
+
+INSERT INTO [dbo].[Score]
+     VALUES
+           ('2',0)
+
 INSERT INTO [dbo].[Players]
         
      VALUES
