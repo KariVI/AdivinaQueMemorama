@@ -39,7 +39,7 @@ namespace AdivinaQue.Client.Views
         Dictionary<BitmapImage, BitmapImage> pairCards = new Dictionary<BitmapImage, BitmapImage>();
         private List<BitmapImage> totalImages = new List<BitmapImage>();
         private List<Button> buttons = new List<Button>();
-        private static Dictionary<BitmapImage, string> UpCards = new Dictionary<BitmapImage, string>();
+        private  Dictionary<BitmapImage, string> UpCards = new Dictionary<BitmapImage, string>();
         public Dictionary<BitmapImage, string> UpCardRival { set; get; }
         public Dictionary<BitmapImage, string> UpCardsRival { set; get; }
         public Dictionary<string, BitmapImage> GameCards { set; get; }
@@ -51,11 +51,11 @@ namespace AdivinaQue.Client.Views
 
         private int[] randomImageList;
         private int[] randomPositionList;
-        private static DispatcherTimer timer;
+        private  DispatcherTimer timer;
         Proxy.PlayerMgtClient serverPlayer;
          Proxy.GameMgtClient server;
         private bool backHome = true;
-        private static DispatcherTimer timerButton;
+        private  DispatcherTimer timerButton;
      
         /// <summary>
         /// Inicializa una nueva instancia de Game.xaml.
@@ -81,7 +81,7 @@ namespace AdivinaQue.Client.Views
             NextTurn = false;
             UpdateSizes();
 
-            if (category == "Diseño")
+            if (category == "Disenio")
             {
                 totalCards = TOTAL_CARDS_DESIGN;
             }else if (category == "Pruebas")
@@ -94,7 +94,7 @@ namespace AdivinaQue.Client.Views
 
             InitializeComponent();
             SetTurnTimer(this);
-            SetCardButtonTimer(this);
+            //SetCardButtonTimer(this);
         }
 
         /// <summary>
@@ -201,15 +201,11 @@ namespace AdivinaQue.Client.Views
 
             for (int i = 1; i <= (totalCards / 2); i++)
             {
-                string locationQuestion = "images/" + category + "/" + i + "-1.png";
-                string locationAnswer = "images/" + category + "/" + i + "-2.png";
+                string locationQuestion = "/images/" + category + "/" + i + "-1.png";
+                string locationAnswer = "/images/" + category + "/" + i + "-2.png";
 
-                BitmapImage imageQuestion = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
-               + ";component/"
-                 + locationQuestion, UriKind.Absolute));
-                BitmapImage imageAnswer = new BitmapImage(new Uri(@"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name
-           + ";component/"
-             + locationAnswer, UriKind.Absolute));
+                BitmapImage imageQuestion = new BitmapImage(new Uri(locationQuestion, UriKind.Relative));
+                BitmapImage imageAnswer = new BitmapImage(new Uri( locationAnswer, UriKind.Relative));
                 pairCards.Add(imageQuestion, imageAnswer);
                 totalImages.Add(imageQuestion);
 
@@ -270,7 +266,6 @@ namespace AdivinaQue.Client.Views
                 Alert.ShowDialog(Application.Current.Resources["lbLost"].ToString(), Application.Current.Resources["btOk"].ToString());
             }
             endGame = true;
-            server.DisconnectPlayers(username, usernameRival);
             this.Close();
         }
 
@@ -280,8 +275,10 @@ namespace AdivinaQue.Client.Views
         /// <param name="cards">Diccionario que contiene las cartas correctas.</param>
         internal void SetCorrectCards(Dictionary<BitmapImage, string> cards)
         {
+            
             Button btCard1 = GetButton(cards.Values.First());
             Button btCard2 = GetButton(cards.Values.ElementAt(1));
+     
             Image buttonAuxiliar1 = new Image();
             Image buttonAuxiliar2 = new Image();
             buttonAuxiliar1.Source = GameCards[btCard1.Name];
@@ -326,41 +323,67 @@ namespace AdivinaQue.Client.Views
         /// </summary>
        public  void UpdateBoard()
         {
-            bool correct = VerifyTurn();            
-            Button btCard1 = GetButton(UpCards.Values.First());
-            Button btCard2 = GetButton(UpCards.Values.ElementAt(1));
+            if (DisponseButton(UpCards.Values.First()) && DisponseButton(UpCards.Values.ElementAt(1)))
+            {
+                bool correct = VerifyTurn();
+                Button btCard1 = GetButton(UpCards.Values.First());
+                Button btCard2 = GetButton(UpCards.Values.ElementAt(1));
+                if (correct)
+                {
+                    server.SendCorrectCards(usernameRival, UpCards);
+                    ScorePlayer++;
+                    server.SendScoreRival(usernameRival, ScorePlayer);
+                    NumberCardsFinded = NumberCardsFinded + 2;
+                    server.SendNumberCardsFinded(usernameRival, NumberCardsFinded);
+                    tbPlayerScore.Text = Convert.ToString(ScorePlayer);
+                    btCard1.Name = "blocked";
+                    btCard2.Name = "blocked";
+                }
+                else
+                {
+                    NextTurn = false;
+                    Alert.TotalTime = 3;
+                    Alert.ShowDialogWithResponse(Application.Current.Resources["incorrectPair"].ToString(), Application.Current.Resources["btOk"].ToString());
 
-            if (correct)
-            {
-                server.SendCorrectCards(usernameRival, UpCards);
-                ScorePlayer++;
-                server.SendScoreRival(usernameRival, ScorePlayer);
-                NumberCardsFinded = NumberCardsFinded + 2;
-                server.SendNumberCardsFinded(usernameRival, NumberCardsFinded);
-                tbPlayerScore.Text = Convert.ToString(ScorePlayer);
-                btCard1.Name = "blocked";
-                btCard2.Name = "blocked";
-            }
-            else
-            {
-                NextTurn = false;
-                lbMessage.Text = Application.Current.Resources["incorrectPair"].ToString();
-                Thread.Sleep(1000);
-                server.SendNextTurnRival(usernameRival, true);
-                btCard1.Content = null;
-                btCard2.Content = null;
+                    Thread.Sleep(100);
+                    server.SendNextTurnRival(usernameRival, true);
+                    btCard1.Content = null;
+                    btCard2.Content = null;
+                }
+
+
+                if (NumberCardsFinded == GameCards.Count)
+                {
+                    AssignWinner();
+                }
+                UpCards.Clear();
             }
            
-            
-            if (NumberCardsFinded == GameCards.Count)
-            {
-                AssignWinner();
-            }
-            UpCards = new Dictionary<BitmapImage, string>();
-            timerButton.Start();
-         
+
+
+
+
         }
 
+        /// <summary>
+        /// Conocer si el botón esta disponible o bloqueado
+        /// </summary>
+        /// <param name="name">Identificador del botón.</param>
+        /// <returns>True si el botón esta disponible y false en caso contrario.</returns>
+        public bool DisponseButton(string name)
+        {
+            bool value = false;
+            int i = 0;
+            while (i < buttons.Count() )
+            {
+               if(buttons[i].Name.Equals(name))
+                {
+                    value = true;
+                }
+                i++;
+            }
+            return value;
+        }
         /// <summary>
         /// Obtiene el botón dependiendo de su identificador.
         /// </summary>
@@ -386,20 +409,25 @@ namespace AdivinaQue.Client.Views
             Button bt = sender as Button;
             if (NumberCardsFinded != GameCards.Count )
             {
-                if (NextTurn && UpCards.Count < 2)
-                {             
-                    Image buttonAuxiliar = new Image();
+                if (NextTurn && UpCards.Count<=2)
+                {
+                  Image buttonAuxiliar = new Image();
                     if (bt.Name != "blocked" && bt.Content == null)
                     {
-                        
-                            
                             GameCards[bt.Name].DecodePixelWidth= 639/column;
                             GameCards[bt.Name].DecodePixelHeight = 624 / row;
                             buttonAuxiliar.Source = GameCards[bt.Name];
                             bt.Content = buttonAuxiliar;
-                            try { 
-                                 server.SendCardTurn(usernameRival,GameCards[bt.Name], bt.Name);
-                             }
+                            try {                           
+                                server.SendCardTurn(usernameRival,GameCards[bt.Name], bt.Name);
+                                UpCards.Add(GameCards[bt.Name], bt.Name);
+
+                            if (UpCards.Count() == 2)
+                                {
+                                    UpdateBoard();
+                                }
+
+                            }
                             catch (Exception ex) when (ex is EndpointNotFoundException || ex is TimeoutException || ex is CommunicationObjectFaultedException)
                             {
                                 Logs.Error($"Fallo la conexión ({ ex.Message})");
@@ -412,7 +440,6 @@ namespace AdivinaQue.Client.Views
 
                                 
                             }
-                            UpCards.Add(GameCards[bt.Name], bt.Name);
                     }
                 }
                 else
@@ -468,10 +495,14 @@ namespace AdivinaQue.Client.Views
         /// </summary>
         public void TurnRivalSelection()
         {
-            Button btCard1 = GetButton(UpCardRival.Values.First());
-            Image buttonAuxiliar1 = new Image();
-            buttonAuxiliar1.Source = GameCards[btCard1.Name];
-            btCard1.Content = buttonAuxiliar1;
+            if (DisponseButton(UpCardRival.Values.First()))
+            {
+                Button btCard1 = GetButton(UpCardRival.Values.First());
+                Image buttonAuxiliar1 = new Image();
+                buttonAuxiliar1.Source = GameCards[btCard1.Name];
+                btCard1.Content = buttonAuxiliar1;
+            }
+
 
         }
 
@@ -482,11 +513,12 @@ namespace AdivinaQue.Client.Views
         {
             if (UpCardsRival.Count == 2)
             {
-                
-                    Button btCard1 = GetButton(UpCardsRival.Values.First());
-                    Button btCard2 = GetButton(UpCardsRival.Values.ElementAt(1));
-                    btCard1.Content =null ;
-                    btCard2.Content = null;
+               
+                Button btCard1 = GetButton(UpCardsRival.Values.First());                                  
+                Button btCard2 = GetButton(UpCardsRival.Values.ElementAt(1));
+                btCard1.Content =null ;
+                btCard2.Content = null;
+        
             }
         }
 
@@ -525,14 +557,14 @@ namespace AdivinaQue.Client.Views
         /// Inicializa el timer del turno.
         /// </summary>
         /// <param name="game"></param>
-        public static void SetTurnTimer(Game game)
+       public  void SetTurnTimer(Game game)
         {
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
             timer.Tick += delegate {
               var response =  Alert.ShowDialogWithResponse(Application.Current.Resources["lbAvailability"].ToString(), Application.Current.Resources["btYes"].ToString());
                 if(response == AlertResult.Unavaible)
                 {
-                    game.Close();
+                    this.Close();
                     timer.Stop();
                 }
                 else
@@ -544,29 +576,14 @@ namespace AdivinaQue.Client.Views
             timer.Start();
         }
 
-        /// <summary>
-        /// Inicializa el timer de los botones del tablero.
-        /// </summary>
-        /// <param name="game"></param>
-        public static void SetCardButtonTimer(Game game)
-        {
-            timerButton = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            timerButton.Tick += delegate {
-                timerButton.Stop();
-                if (UpCards.Count == 2)
-                {
-                    game.UpdateBoard();
-                }
-                timerButton.Start();
-            };
-            timerButton.Start();
-        }
 
         /// <summary>
         /// Controlador para el evento de MouseMove.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+      
+
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             timer.Stop();

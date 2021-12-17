@@ -475,6 +475,7 @@ namespace AdivinaQue.Host.BusinessRules
 
 
         public void SendCardTurn(string toUsername, BitmapImage image, string name)
+
         {
             users[toUsername].ReceiveCardTurn(image, name);
         }

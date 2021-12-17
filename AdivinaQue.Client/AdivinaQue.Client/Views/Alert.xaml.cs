@@ -13,6 +13,7 @@ namespace AdivinaQue.Client.Views
         private static DispatcherTimer timer;
         Alert alert;
         private int time = 0;
+        public static int TotalTime { set; get; }
 
         public AlertResult Result { get; set; }
         /// <summary>
@@ -21,6 +22,7 @@ namespace AdivinaQue.Client.Views
         private Alert()
         {
             alert = this;
+            TotalTime = 40;
             InitializeComponent();
 
         }
@@ -156,8 +158,8 @@ namespace AdivinaQue.Client.Views
         private   void OnTick(object sender, EventArgs e)
         {
                time++;
-               lbTime.Content = "("+ (40 - time).ToString()+")";
-               if(time == 40) { 
+               lbTime.Content = "("+ (TotalTime - time).ToString()+")";
+               if(time == TotalTime) { 
                 alert.Result = AlertResult.Unavaible;
                 alert.Close();
                 timer.Stop();

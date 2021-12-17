@@ -73,7 +73,7 @@ namespace AdivinaQue.Client.Views
             try
             {
                 Validate validate = new Validate();
-                if (validate.ValidationEmail(tbEmail.Text))
+                if (validate.ValidationEmail(tbEmail.Text.Trim()))
                 {
                     String code = server.GenerateCode();
                     string message = Application.Current.Resources["lbEmailCodeMessage"].ToString();
@@ -82,7 +82,7 @@ namespace AdivinaQue.Client.Views
                                             </style>
                                             <h2>" + message + " " + code+ "</h2>";
                     string subject = Application.Current.Resources["lbEmailCodeSubject"].ToString();
-                    String messageEmailSuccesful = server.SendMail(tbEmail.Text, subject, body);
+                    String messageEmailSuccesful = server.SendMail(tbEmail.Text.Trim(), subject, body);
                     AuthMail authmail = new AuthMail(code, newPlayer, home);
                     backHome = false;
                     authmail.SetServer(server);
@@ -139,11 +139,11 @@ namespace AdivinaQue.Client.Views
             Validate validate = new Validate();
             DataStatus dataStatus = DataStatus.Correct;
 
-            if (!validate.ValidationAlphanumeric(tbUsername.Text))
+            if (!validate.ValidationAlphanumeric(tbUsername.Text.Trim()))
             {
                 dataStatus = DataStatus.UserNameInvalid;
             }
-            if (!validate.ValidationString(tbName.Text))
+            if (!validate.ValidationString(tbName.Text.Trim()))
             {
                 dataStatus = DataStatus.NameInvalid;
             }
