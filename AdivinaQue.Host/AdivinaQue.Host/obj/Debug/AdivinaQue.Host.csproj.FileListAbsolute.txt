@@ -33,8 +33,8 @@ C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.xml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\bin\Debug\log4net.xml
+C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.AssemblyReference.cache
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CoreCompileInputs.cache
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.CopyComplete
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.exe
 C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.pdb
-C:\Users\Mariana\Documents\GitHub\AdivinaQueMemorama\AdivinaQue.Host\AdivinaQue.Host\obj\Debug\AdivinaQue.Host.csproj.AssemblyReference.cache

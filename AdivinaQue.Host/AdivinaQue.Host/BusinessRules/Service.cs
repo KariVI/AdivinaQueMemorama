@@ -1,16 +1,12 @@
 ﻿using AdivinaQue.Host.DatabaseAccess;
-using AdivinaQue.Host.Exception;
 using AdivinaQue.Host.InterfaceContract;
 using System;
 using System.Collections.Generic;
-using System.Windows;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.ServiceModel;
-using System.Web.UI.WebControls;
 using System.Windows.Media.Imaging;
-using System.Threading;
-using System.Configuration;
 
 namespace AdivinaQue.Host.BusinessRules
 {

@@ -14,7 +14,7 @@
     <system:String x:Key="btDelete">Delete</system:String>
     <system:String x:Key="lbTitleModify">Account setup</system:String>
     <system:String x:Key="btLogout">Logout</system:String>
-
+    <system:String x:Key="correctPair">Correct pair</system:String>
     <system:String x:Key="btStartGame">Start Game</system:String>
     <system:String x:Key="btGlobalScore">Global Score</system:String>
     <system:String x:Key="btModify">Account setup</system:String>

@@ -210,11 +210,12 @@ namespace AdivinaQue.Host.DatabaseAccess
             using (var context = new AdivinaQueAppContext())
             {
                 var playerToRemove = context.Players.SingleOrDefault(x => x.userName == username);
-                var scoreToRemove = context.Score.SingleOrDefault(x => x.IdPlayer == playerToRemove.Id);
+               
 
                 status = AuthenticationStatus.Failed;
                 if (playerToRemove != null)
                 {
+                    var scoreToRemove = context.Score.SingleOrDefault(x => x.IdPlayer == playerToRemove.Id);
                     context.Players.Remove(playerToRemove);
                     context.Score.Remove(scoreToRemove);
                     context.SaveChanges();

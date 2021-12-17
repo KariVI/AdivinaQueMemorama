@@ -1,4 +1,4 @@
-﻿
+﻿use AdivinaQue
  CREATE TABLE [dbo].[Card] (
         [Id] [int] NOT NULL IDENTITY,
         [description] [nvarchar](max),
@@ -35,3 +35,24 @@
         CONSTRAINT [FK_dbo.AdivinaQue_dbo.Pair_IdQuestion] FOREIGN KEY ([IdQuestion]) REFERENCES [dbo].[Card] ([Id]) ,
         CONSTRAINT [FK_dbo.AdivinaQue_dbo.Pair_IdAnswer] FOREIGN KEY ([IdAnswer]) REFERENCES [dbo].[Card] ([Id]) 
     )
+
+	
+    CREATE TABLE [dbo].[Players] (
+        [Id] [int] NOT NULL IDENTITY,
+        [name] [nvarchar](max),
+        [userName] [nvarchar](max),
+        [email] [nvarchar](max),
+        [password] [nvarchar](max),
+        [state] [nvarchar](max),
+        CONSTRAINT [PK_dbo.Players] PRIMARY KEY ([Id])
+    )
+
+
+CREATE TABLE [dbo].[Score](
+	[IdPlayer] [int] NOT NULL,
+	[totalGames] [int] NULL,
+ CONSTRAINT [PK_dbo.Score] PRIMARY KEY ([IdPlayer]),
+ CONSTRAINT [FK_dbo.AdivinaQue_dbo.Score.IdPlayer] FOREIGN KEY([IdPlayer])REFERENCES [dbo].[Players] ([Id])
+)
+
+    
